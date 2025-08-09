@@ -1,0 +1,843 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | itanveer.tech - Tanveer's Tech Journey</title>
+  <meta name="description" content="Learn about Kawsar Mahmud Tanveer Khan - a passionate EEE student exploring embedded systems, IoT, and smart grid technologies through hands-on projects and continuous learning.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Tanveer Khan, EEE student, embedded systems, IoT enthusiast, tech blogger, Arduino projects">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/about.html">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Me | itanveer.tech">
+  <meta name="twitter:description" content="Learn about Tanveer's tech journey, passion for embedded systems, and commitment to sharing knowledge through blogging.">
+  <meta name="twitter:image" content="assets/img/about.png">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+  :root {
+    --bg-color: #f8f9fb;
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+    --text-light: #546e7a;
+    --secondary-color: #7873f5;
+    --link-color: #657ced;
+    --shadow: 0 3px 12px rgba(120,115,245,0.18);
+    --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
+    --border-light: #e8eaf6;
+  }
+  
+  body {
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  /* Scroll animation */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.8s cubic-bezier(.18,1.25,.90,1.13);
+  }
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .section-title,
+  .about__subtitle {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: var(--shadow);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .about__text, .about__container b, .about__container li, .about__container span {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: var(--text-color);
+    text-shadow: 0 2px 8px rgba(67,233,123,0.07);
+    font-size: 1.09em;
+  }
+  
+  .about__container ul {
+    padding-left: 1.2em;
+  }
+  
+  .about__container b {
+    color: var(--secondary-color);
+    font-weight: 700;
+  }
+  
+  .about__container li {
+    margin-bottom: 0.25em;
+  }
+  
+  a { color: var(--link-color); }
+
+  /* CIRCULAR SKILLS SECTION */
+  .skills__container {
+    max-width: 800px;
+    margin: 0 auto;
+  }
+
+  .skills__text {
+    text-align: center;
+    margin-bottom: 3rem;
+    font-size: 1.1em;
+    line-height: 1.6;
+    color: var(--text-light);
+  }
+
+  .skills__grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    gap: 2rem;
+    margin-top: 2rem;
+  }
+
+  .skill__item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    padding: 1.5rem;
+    background: var(--card-bg);
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+
+  .skill__item:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+  }
+
+  .circular-progress {
+    position: relative;
+    width: 120px;
+    height: 120px;
+    margin-bottom: 1rem;
+  }
+
+  .circular-progress svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+  }
+
+  .progress-ring__circle {
+    stroke: var(--border-light);
+    stroke-width: 6;
+    fill: transparent;
+    r: 54;
+    cx: 60;
+    cy: 60;
+  }
+
+  .progress-ring__progress {
+    stroke-width: 6;
+    fill: transparent;
+    r: 54;
+    cx: 60;
+    cy: 60;
+    stroke-dasharray: 339.292;
+    stroke-dashoffset: 339.292;
+    transition: stroke-dashoffset 2s ease-in-out;
+    stroke-linecap: round;
+  }
+
+  .progress-ring__progress.arduino { stroke: url(#gradient-arduino); }
+  .progress-ring__progress.iot { stroke: url(#gradient-iot); }
+  .progress-ring__progress.matlab { stroke: url(#gradient-matlab); }
+  .progress-ring__progress.office { stroke: url(#gradient-office); }
+  .progress-ring__progress.problem { stroke: url(#gradient-problem); }
+  .progress-ring__progress.teamwork { stroke: url(#gradient-teamwork); }
+
+  .progress-text {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 1.5rem;
+    font-weight: bold;
+    color: var(--secondary-color);
+  }
+
+  .skill__icon {
+    font-size: 2rem;
+    margin-bottom: 0.5rem;
+    color: var(--secondary-color);
+  }
+
+  .skill__name {
+    font-weight: 600;
+    font-size: 1rem;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+
+  .skill__description {
+    font-size: 0.85rem;
+    color: var(--text-light);
+    line-height: 1.4;
+  }
+
+  /* Education Section Styling */
+  .education__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  
+  .education__data {
+    display: flex;
+    align-items: flex-start;
+    background: var(--card-bg);
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 0.6em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1.5em;
+    transition: background 0.4s, box-shadow 0.4s;
+    border: 1px solid var(--border-light);
+  
+  .education__names {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    min-width: 170px;
+  }
+  
+  .education__icon {
+    font-size: 2rem;
+    background: var(--card-bg);
+    border-radius: 50%;
+    padding: 0.45em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    margin-right: 0.3em;
+    transition: background 0.4s;
+  }
+  
+  .education__degree {
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+  
+  .education__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+  }
+  
+  .education__institute {
+    font-size: 1em;
+    color: var(--secondary-color);
+  }
+  
+  .education__year {
+    font-size: 0.98em;
+    color: #888;
+  }
+  
+  .education__remark {
+    font-size: 0.95em;
+    color: #43e97b;
+    font-style: italic;
+  }
+  
+  @media (max-width: 600px) {
+    .education__data { flex-direction: column; align-items: flex-start; }
+    .education__names { min-width: unset; }
+  }
+
+  /* Profile Highlights Section */
+  .profile__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  
+  .profile__data {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2em;
+    background: var(--card-bg);
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    margin-bottom: 0.6em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    transition: background 0.4s, box-shadow 0.4s;
+    border: 1px solid var(--border-light);
+  }
+  
+  .profile__icon-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    min-width: 120px;
+  }
+  
+  .profile__icon {
+    font-size: 2em;
+    background: var(--card-bg);
+    border-radius: 50%;
+    padding: 0.4em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    transition: background 0.4s;
+  }
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.4em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    transition: background 0.4s;
+  }
+  
+  .profile__label {
+    font-weight: bold;
+    font-size: 1.07em;
+  }
+  
+  .profile__details {
+    font-size: 1em;
+    color: #444;
+  }
+  
+  .profile__details ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+  
+  .profile__details li {
+    margin-bottom: 0.2em;
+  }
+  
+  .profile__social {
+    display: flex;
+    gap: 0.7em;
+    margin-top: 0.7em;
+  }
+  
+  .profile__social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4em;
+    height: 2.4em;
+    border-radius: 50%;
+    background: #fff;
+    color: #657ced;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    font-size: 1.3em;
+    transition: background 0.25s, color 0.25s, transform 0.18s, border-color 0.18s;
+    border: 2px solid transparent;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .profile__social-icon:hover {
+    background: linear-gradient(135deg, #657ced 60%, #43e97b 100%);
+    color: #fff;
+    border-color: #657ced;
+    transform: scale(1.11) rotate(-7deg);
+    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.10);
+  }
+  
+  @media (max-width: 600px) {
+    .profile__data {
+      flex-direction: column;
+      gap: 0.6em;
+      padding: 1em 0.7em;
+    }
+    .profile__icon-label {
+      min-width: 0;
+    }
+  }
+  </style>
+</head>
+
+<body>
+<!--===== HEADER =====-->
+<header class="l-header">
+  <nav class="nav bd-grid">
+    <div>
+      <a href="index.html" class="nav__logo">itanveer.tech</a>
+    </div>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link active-link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+        <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+  </nav>
+</header> 
+
+<main class="l-main">
+<!--===== ABOUT ME =====-->
+<section class="about section" id="about">
+  <h2 class="section-title scroll-animate">About Me</h2>
+  <div class="about__container bd-grid scroll-animate" style="align-items: flex-start;">
+    <!-- Profile Photo -->
+    <div class="about__img">
+      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(44,62,80,0.13);">
+    </div>
+    <div>
+      <!-- Brief Introduction -->
+      <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer</h2>
+      <p class="about__text" style="margin-bottom:1em;">
+        <b>Optimistic | Tech Explorer | EEE Student</b><br>
+        Hi! I'm an enthusiastic Electrical and Electronic Engineering student at Daffodil International University. I'm passionate about embedded systems, IoT, smart grid technologies, and leveraging innovation to solve real-world problems.
+      </p>
+      <p class="about__text">
+        Through this blog, I share my journey of learning and building projects with Arduino, ESP32, MATLAB Simulink, and other cutting-edge technologies. I believe in continuous learning, hands-on experimentation, and knowledge sharing within the tech community.
+      </p>
+      
+      <!-- Resume Download Button -->
+      <div class="resume-section">
+        <a href="https://drive.google.com/file/d/your-resume-file-id/view?usp=sharing" target="_blank" class="resume-button">
+          <i class="fas fa-download resume-icon"></i>
+          <span class="resume-text">Resume</span>
+          <div class="resume-glow"></div>
+        </a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== SKILLS =====-->
+<section class="skills section" id="skills">
+  <h2 class="section-title scroll-animate">Technical Skills</h2>
+  <div class="skills__container scroll-animate">          
+    <p class="skills__text">As an Electrical and Electronic Engineering student passionate about IT and innovation, I enjoy bridging hardware and software. I've worked on embedded systems using Arduino and ESP32, explored IoT solutions with sensors and cloud integration, and have a solid foundation in circuit design and simulation.</p>
+    
+    <!-- SVG Gradients for Progress Rings -->
+    <svg width="0" height="0">
+      <defs>
+        <linearGradient id="gradient-arduino" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#657ced"/>
+          <stop offset="100%" style="stop-color:#7873f5"/>
+        </linearGradient>
+        <linearGradient id="gradient-iot" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#43e97b"/>
+          <stop offset="100%" style="stop-color:#27ae60"/>
+        </linearGradient>
+        <linearGradient id="gradient-matlab" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#7873f5"/>
+          <stop offset="100%" style="stop-color:#9b59b6"/>
+        </linearGradient>
+        <linearGradient id="gradient-office" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#2B579A"/>
+          <stop offset="100%" style="stop-color:#3498db"/>
+        </linearGradient>
+        <linearGradient id="gradient-problem" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#f39c12"/>
+          <stop offset="100%" style="stop-color:#e67e22"/>
+        </linearGradient>
+        <linearGradient id="gradient-teamwork" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#e74c3c"/>
+          <stop offset="100%" style="stop-color:#c0392b"/>
+        </linearGradient>
+        <linearGradient id="gradient-education-current" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#7873f5"/>
+          <stop offset="100%" style="stop-color:#9b59b6"/>
+        </linearGradient>
+        <linearGradient id="gradient-education-complete" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#43e97b"/>
+          <stop offset="100%" style="stop-color:#27ae60"/>
+        </linearGradient>
+        <linearGradient id="gradient-specialization" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#657ced"/>
+          <stop offset="100%" style="stop-color:#7873f5"/>
+        </linearGradient>
+        <linearGradient id="gradient-tools" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#43e97b"/>
+          <stop offset="100%" style="stop-color:#27ae60"/>
+        </linearGradient>
+        <linearGradient id="gradient-focus" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#f39c12"/>
+          <stop offset="100%" style="stop-color:#e67e22"/>
+        </linearGradient>
+        <linearGradient id="gradient-values" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#e74c3c"/>
+          <stop offset="100%" style="stop-color:#c0392b"/>
+        </linearGradient>
+        <linearGradient id="gradient-project-arduino" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#657ced"/>
+          <stop offset="100%" style="stop-color:#7873f5"/>
+        </linearGradient>
+        <linearGradient id="gradient-project-iot" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#43e97b"/>
+          <stop offset="100%" style="stop-color:#27ae60"/>
+        </linearGradient>
+        <linearGradient id="gradient-project-grid" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#f39c12"/>
+          <stop offset="100%" style="stop-color:#e67e22"/>
+        </linearGradient>
+        <linearGradient id="gradient-project-protection" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#e74c3c"/>
+          <stop offset="100%" style="stop-color:#c0392b"/>
+        </linearGradient>
+        <linearGradient id="gradient-learning-ml" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#9b59b6"/>
+          <stop offset="100%" style="stop-color:#8e44ad"/>
+        </linearGradient>
+        <linearGradient id="gradient-learning-energy" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#27ae60"/>
+          <stop offset="100%" style="stop-color:#2ecc71"/>
+        </linearGradient>
+        <linearGradient id="gradient-learning-smart" x1="0%" y1="0%" x2="100%" y2="0%">
+          <stop offset="0%" style="stop-color:#3498db"/>
+          <stop offset="100%" style="stop-color:#2980b9"/>
+        </linearGradient>
+      </defs>
+    </svg>
+
+    <div class="skills__grid">
+      <div class="skill__item scroll-animate">
+        <div class="circular-progress">
+          <svg class="progress-ring">
+            <circle class="progress-ring__circle"></circle>
+            <circle class="progress-ring__progress arduino" data-percent="90"></circle>
+          </svg>
+          <div class="progress-text">0%</div>
+        </div>
+        <i class='bx bx-code-alt skill__icon' style="color:#657ced"></i>
+        <h3 class="skill__name">Arduino & ESP32</h3>
+        <p class="skill__description">Microcontroller programming, sensor interfacing, and embedded system development</p>
+      </div>
+
+      <div class="skill__item scroll-animate">
+        <div class="circular-progress">
+          <svg class="progress-ring">
+            <circle class="progress-ring__circle"></circle>
+            <circle class="progress-ring__progress iot" data-percent="85"></circle>
+          </svg>
+          <div class="progress-text">0%</div>
+        </div>
+        <i class='fas fa-microchip skill__icon' style="color:#43e97b"></i>
+        <h3 class="skill__name">Embedded Systems & IoT</h3>
+        <p class="skill__description">Internet of Things solutions, wireless communication, and cloud integration</p>
+      </div>
+
+      <div class="skill__item scroll-animate">
+        <div class="circular-progress">
+          <svg class="progress-ring">
+            <circle class="progress-ring__circle"></circle>
+            <circle class="progress-ring__progress matlab" data-percent="80"></circle>
+          </svg>
+          <div class="progress-text">0%</div>
+        </div>
+        <i class='fas fa-chart-line skill__icon' style="color:#7873f5"></i>
+        <h3 class="skill__name">MATLAB & Simulink</h3>
+        <p class="skill__description">System modeling, simulation, and power systems analysis</p>
+      </div>
+
+      <div class="skill__item scroll-animate">
+        <div class="circular-progress">
+          <svg class="progress-ring">
+            <circle class="progress-ring__circle"></circle>
+            <circle class="progress-ring__progress office" data-percent="95"></circle>
+          </svg>
+          <div class="progress-text">0%</div>
+        </div>
+        <i class="fa-solid fa-file-word skill__icon" style="color:#2B579A"></i>
+        <h3 class="skill__name">MS Office Suite</h3>
+        <p class="skill__description">Advanced document creation, data analysis, and professional presentations</p>
+      </div>
+
+      <div class="skill__item scroll-animate">
+        <div class="circular-progress">
+          <svg class="progress-ring">
+            <circle class="progress-ring__circle"></circle>
+            <circle class="progress-ring__progress problem" data-percent="90"></circle>
+          </svg>
+          <div class="progress-text">0%</div>
+        </div>
+        <i class='bx bx-brain skill__icon' style="color:#f39c12"></i>
+        <h3 class="skill__name">Problem Solving</h3>
+        <p class="skill__description">Analytical thinking, debugging, and creative solution development</p>
+      </div>
+
+      <div class="skill__item scroll-animate">
+        <div class="circular-progress">
+          <svg class="progress-ring">
+            <circle class="progress-ring__circle"></circle>
+            <circle class="progress-ring__progress teamwork" data-percent="85"></circle>
+          </svg>
+          <div class="progress-text">0%</div>
+        </div>
+        <i class='bx bx-group skill__icon' style="color:#e74c3c"></i>
+        <h3 class="skill__name">Teamwork & Collaboration</h3>
+        <p class="skill__description">Effective communication, project coordination, and collaborative development</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== EDUCATION SECTION =====-->
+<section class="education section" id="education">
+  <h2 class="section-title scroll-animate">Education</h2>
+  <div class="skills__container scroll-animate">
+    <div class="skills__grid">
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-graduation-cap info-card__icon" style="color:#7873f5"></i>
+        </div>
+        <h3 class="info-card__title">Bachelor of Science in EEE</h3>
+        <p class="info-card__description">Daffodil International University (2022 - Present)<br>Specializing in Power Systems, Embedded Systems & IoT</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-school info-card__icon" style="color:#43e97b"></i>
+        </div>
+        <h3 class="info-card__title">Higher Secondary Certificate</h3>
+        <p class="info-card__description">Science Group (Completed 2021)<br>Mathematics, Physics & Chemistry</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-book info-card__icon" style="color:#f39c12"></i>
+        </div>
+        <h3 class="info-card__title">Secondary School Certificate</h3>
+        <p class="info-card__description">Science Group (Completed 2017)<br>Foundation in Core Sciences</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== CERTIFICATES =====-->
+<section class="work section" id="certificates">
+  <h2 class="section-title scroll-animate">Certificates & Achievements</h2>
+  <div class="work__container bd-grid scroll-animate">
+    <a href="" class="work__img">
+      <img src="assets/img/work1.jpeg" alt="Arduino Programming Certificate">
+      <div class="work__overlay">
+        <h3>Arduino Programming</h3>
+        <p>Microcontroller Programming</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work2.jpg" alt="IoT Development Certificate">
+      <div class="work__overlay">
+        <h3>IoT Development</h3>
+        <p>Internet of Things</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work3.jpg" alt="MATLAB Simulink Certificate">
+      <div class="work__overlay">
+        <h3>MATLAB Simulink</h3>
+        <p>Simulation & Modeling</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work4.jpg" alt="Power Systems Certificate">
+      <div class="work__overlay">
+        <h3>Power Systems</h3>
+        <p>Electrical Engineering</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work5.jpg" alt="Web Development Certificate">
+      <div class="work__overlay">
+        <h3>Web Development</h3>
+        <p>Frontend Technologies</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work6.jpg" alt="Project Management Certificate">
+      <div class="work__overlay">
+        <h3>Project Management</h3>
+        <p>Leadership & Planning</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!--===== PROFILE HIGHLIGHTS =====-->
+<section class="profile section" id="highlights">
+  <h2 class="section-title scroll-animate">Profile Highlights</h2>
+  <div class="skills__container scroll-animate">
+    <div class="skills__grid">
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-laptop-code info-card__icon" style="color:#657ced"></i>
+        </div>
+        <h3 class="info-card__title">Specializations</h3>
+        <p class="info-card__description">Embedded Systems, IoT Solutions, Smart Grid & Power Systems</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-tools info-card__icon" style="color:#43e97b"></i>
+        </div>
+        <h3 class="info-card__title">Tools & Technologies</h3>
+        <p class="info-card__description">C/C++, Python, MATLAB, Simulink, Arduino IDE, Cloud Platforms</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-rocket info-card__icon" style="color:#f39c12"></i>
+        </div>
+        <h3 class="info-card__title">Current Focus</h3>
+        <p class="info-card__description">Advanced IoT architectures, ML integration with embedded systems</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-heart info-card__icon" style="color:#e74c3c"></i>
+        </div>
+        <h3 class="info-card__title">Core Values</h3>
+        <p class="info-card__description">Stay curious, keep building, share knowledge, empower innovators</p>
+      </div>
+    </div>
+  </div>
+</section>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== EXPERIENCE & PROJECTS =====-->
+<section class="experience section" id="experience">
+  <h2 class="section-title scroll-animate">Recent Projects & Experience</h2>
+  <div class="skills__container scroll-animate">
+    <div class="skills__grid">
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-microchip info-card__icon" style="color:#657ced"></i>
+        </div>
+        <h3 class="info-card__title">Arduino Digital Multimeter</h3>
+        <p class="info-card__description">High-precision multimeter with LCD display, auto-ranging, and data logging</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-wifi info-card__icon" style="color:#43e97b"></i>
+        </div>
+        <h3 class="info-card__title">ESP32 IoT Weather Station</h3>
+        <p class="info-card__description">Real-time weather monitoring with cloud integration and web dashboard</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-bolt info-card__icon" style="color:#f39c12"></i>
+        </div>
+        <h3 class="info-card__title">Smart Grid Simulation</h3>
+        <p class="info-card__description">MATLAB Simulink modeling for renewable energy integration and grid stability</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-shield-alt info-card__icon" style="color:#e74c3c"></i>
+        </div>
+        <h3 class="info-card__title">Distance Protection System</h3>
+        <p class="info-card__description">Advanced protection schemes for transmission lines with fault detection algorithms</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== LEARNING GOALS =====-->
+<section class="goals section" id="goals">
+  <h2 class="section-title scroll-animate">Current Learning Goals</h2>
+  <div class="skills__container scroll-animate">
+    <div class="skills__grid">
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-robot info-card__icon" style="color:#9b59b6"></i>
+        </div>
+        <h3 class="info-card__title">Machine Learning & AI</h3>
+        <p class="info-card__description">Integration of ML algorithms with embedded systems for predictive maintenance</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-leaf info-card__icon" style="color:#27ae60"></i>
+        </div>
+        <h3 class="info-card__title">Sustainable Energy Systems</h3>
+        <p class="info-card__description">Advanced renewable energy integration and smart grid cybersecurity</p>
+      </div>
+
+      <div class="info-card scroll-animate">
+        <div class="info-card__icon-wrapper">
+          <i class="fas fa-city info-card__icon" style="color:#3498db"></i>
+        </div>
+        <h3 class="info-card__title">Smart City Technologies</h3>
+        <p class="info-card__description">IoT-based solutions for traffic management and environmental monitoring</p>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!--===== FOOTER =====-->
+<footer class="footer">
+  <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+  <div class="footer__social">
+    <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+    <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+    <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+  </div>
+  <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+</footer>
+
+<script>
+// Scroll animation
+function onScrollAnimate() {
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', onScrollAnimate);
+window.addEventListener('DOMContentLoaded', onScrollAnimate);
+
+// Stagger animation for sections
+document.querySelectorAll('.education__data.scroll-animate').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.15) + 's';
+});
+document.querySelectorAll('.profile__data.scroll-animate').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.15) + 's';
+});
+</script>
+
+<!--===== SCROLL REVEAL =====-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--===== MAIN JS =====-->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,20 @@
+<!-- SVG Placeholder for blog2.jpg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="blogGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#7873f5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#9b59b6;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#blogGrad2)"/>
+  <rect x="150" y="100" width="300" height="200" rx="15" fill="rgba(255,255,255,0.2)"/>
+  <circle cx="220" cy="150" r="20" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="280" cy="150" r="20" fill="rgba(255,255,255,0.4)"/>
+  <circle cx="380" cy="150" r="20" fill="rgba(255,255,255,0.4)"/>
+  <rect x="180" y="190" width="240" height="4" rx="2" fill="rgba(255,255,255,0.8)"/>
+  <rect x="180" y="210" width="200" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <rect x="180" y="230" width="220" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <rect x="180" y="250" width="180" height="4" rx="2" fill="rgba(255,255,255,0.6)"/>
+  <text x="300" y="340" font-family="Arial, sans-serif" font-size="20" font-weight="bold" text-anchor="middle" fill="white">ESP32 IoT Weather Station</text>
+  <text x="300" y="365" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="rgba(255,255,255,0.8)">Real-time Weather Monitoring System</text>
+</svg>

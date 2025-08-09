@@ -1,0 +1,388 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>itanveer.tech | Tech Blog & Project Showcase</title>
+  <meta name="description" content="Welcome to Tanveer's Tech Hub — Exploring Embedded Systems, IoT, Smart Grid Innovations, and Arduino tutorials. Join the journey of an EEE student passionate about technology.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Arduino, ESP32, IoT, Smart Grid, Embedded Systems, MATLAB, Simulink, Tech Blog, Electrical Engineering">
+  <meta name="robots" content="index, follow">
+
+<!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="itanveer.tech - Tech Blog & Project Showcase">
+  <meta name="twitter:description" content="Welcome to Tanveer's Tech Hub — Exploring Embedded Systems, IoT, Smart Grid Innovations, and Arduino tutorials.">
+  <meta name="twitter:image" content="assets/img/about.png">
+
+  <!-- Favicon -->
+ <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+<link rel="icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Structured Data for Rich Results -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Person",
+    "name": "Kawsar Mahmud Tanveer Khan",
+    "url": "https://itanveer.tech",
+    "image": "assets/img/about.png",
+    "jobTitle": "EEE Student",
+    "alumniOf": {
+      "@type": "CollegeOrUniversity",
+      "name": "Daffodil International University"
+    },
+    "sameAs": [
+      "https://facebook.com/itzzveer",
+      "https://github.com/KMTanveer",
+      "https://linkedin.com/in/KawsarTanveer",
+      "https://instagram.com/itzzveer",
+      "https://x.com/itzzveer"
+    ]
+  }
+  </script>
+</head>
+
+    <body>
+        <!--===== HEADER =====-->
+        <header class="l-header">
+            <nav class="nav bd-grid">
+                <div>
+                    <a href="#" class="nav__logo">itanveer.tech</a>
+                </div>
+
+                <div class="nav__menu" id="nav-menu">
+                    <ul class="nav__list">
+                        <li class="nav__item"><a href="#home" class="nav__link active-link">Home</a></li>
+                        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                        <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                    </ul>
+                </div>
+
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
+                </div>
+            </nav>
+        </header>
+
+        <main class="l-main">
+            <!--===== HOME =====-->
+                        <!--===== HOME =====-->
+            <section class="home bd-grid" id="home">
+                <div class="home__data">
+                    <h1 class="home__title">Welcome to<br><span class="home__title-color">Tanveer's</span><br>Tech Hub</h1>
+                    <p class="home__subtitle">Exploring Embedded Systems, IoT, and Smart Grid Innovations</p>
+
+                    <a href="blog.html" class="button">Read Blog</a>
+                    <a href="projects.html" class="button button-outline">View Projects</a>
+                </div>
+
+                <div class="home__social">
+                    <a href="https://www.linkedin.com/in/kawsartanveer/" class="home__social-icon" title="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+                    <a href="https://github.com/KMTanVeer" class="home__social-icon" title="GitHub"><i class='bx bxl-github' ></i></a>
+                    <a href="https://www.instagram.com/itzzveer/" class="home__social-icon" title="Instagram"><i class='bx bxl-instagram'></i></a>
+                    <a href="https://itanveer.me" class="home__social-icon" title="Portfolio"><i class='bx bx-briefcase'></i></a>
+                </div>
+
+                <div class="home__img">
+                    <svg class="home__blob" viewBox="0 0 479 467" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+                        <mask id="mask0" mask-type="alpha">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                        </mask>
+                        <g mask="url(#mask0)">
+                            <path d="M9.19024 145.964C34.0253 76.5814 114.865 54.7299 184.111 29.4823C245.804 6.98884 311.86 -14.9503 370.735 14.143C431.207 44.026 467.948 107.508 477.191 174.311C485.897 237.229 454.931 294.377 416.506 344.954C373.74 401.245 326.068 462.801 255.442 466.189C179.416 469.835 111.552 422.137 65.1576 361.805C17.4835 299.81 -17.1617 219.583 9.19024 145.964Z"/>
+                            <image class="home__blob-img" x="50" y="60" href="assets/img/perfil.png"/>
+                        </g>
+                    </svg>
+                </div>
+            </section>
+
+            <!--===== RECENT POSTS =====-->
+            <section class="recent-posts section" id="recent-posts">
+                <h2 class="section-title">Latest Blog Posts</h2>
+                
+                <div class="blog-grid bd-grid">
+                    <article class="blog-card">
+                        <div class="blog-card__img">
+                            <img src="assets/img/blog1.jpg" alt="Arduino Multimeter Project" onerror="this.src='assets/img/work1.jpeg'">
+                        </div>
+                        <div class="blog-card__content">
+                            <span class="blog-card__category">Arduino Projects</span>
+                            <h3 class="blog-card__title">Building an Arduino-Based Digital Multimeter</h3>
+                            <p class="blog-card__description">Learn how to create a functional digital multimeter using Arduino, measuring voltage, current, and resistance with high accuracy.</p>
+                            <div class="blog-card__meta">
+                                <span class="blog-card__date">January 15, 2025</span>
+                                <a href="blog-arduino-multimeter.html" class="blog-card__link">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card__img">
+                            <img src="assets/img/blog2.jpg" alt="ESP32 IoT Project" onerror="this.src='assets/img/work2.jpg'">
+                        </div>
+                        <div class="blog-card__content">
+                            <span class="blog-card__category">IoT & ESP32</span>
+                            <h3 class="blog-card__title">ESP32 IoT Sensor Integration with Cloud</h3>
+                            <p class="blog-card__description">Complete guide to connecting ESP32 sensors to cloud platforms, enabling real-time monitoring and data visualization.</p>
+                            <div class="blog-card__meta">
+                                <span class="blog-card__date">January 10, 2025</span>
+                                <a href="blog-esp32-iot.html" class="blog-card__link">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <article class="blog-card">
+                        <div class="blog-card__img">
+                            <img src="assets/img/blog3.jpg" alt="Smart Grid Simulation" onerror="this.src='assets/img/work3.jpg'">
+                        </div>
+                        <div class="blog-card__content">
+                            <span class="blog-card__category">Smart Grid</span>
+                            <h3 class="blog-card__title">Smart Grid Simulation with MATLAB Simulink</h3>
+                            <p class="blog-card__description">Exploring smart grid technologies and simulating power distribution systems using MATLAB Simulink for efficient energy management.</p>
+                            <div class="blog-card__meta">
+                                <span class="blog-card__date">January 5, 2025</span>
+                                <a href="blog-smart-grid.html" class="blog-card__link">Read More →</a>
+                            </div>
+                        </div>
+                    </article>
+                </div>
+
+                <div class="blog-cta">
+                    <a href="blog.html" class="button">View All Posts</a>
+                </div>
+            </section>
+
+            <!--===== FEATURED PROJECTS =====-->
+            <section class="featured-projects section" id="featured-projects">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="projects-grid bd-grid">
+                    <div class="project-card">
+                        <div class="project-card__img">
+                            <img src="assets/img/project1.jpg" alt="Arduino Multimeter" onerror="this.src='assets/img/work1.jpeg'">
+                            <div class="project-card__overlay">
+                                <a href="project-arduino-multimeter.html" class="project-card__btn">View Project</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Arduino Digital Multimeter</h3>
+                            <p class="project-card__description">A precise digital multimeter built with Arduino, featuring voltage, current, and resistance measurements with LCD display.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">C++</span>
+                                <span class="tag">Electronics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-card__img">
+                            <img src="assets/img/project2.jpg" alt="Distance Protection System" onerror="this.src='assets/img/work2.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-distance-protection.html" class="project-card__btn">View Project</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Distance Protection with Simulink</h3>
+                            <p class="project-card__description">Advanced power system protection scheme implemented using MATLAB Simulink for transmission line fault detection.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Simulink</span>
+                                <span class="tag">Power Systems</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="project-card">
+                        <div class="project-card__img">
+                            <img src="assets/img/project3.jpg" alt="ESP32 IoT System" onerror="this.src='assets/img/work3.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-esp32-iot.html" class="project-card__btn">View Project</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">ESP32 IoT Sensor Network</h3>
+                            <p class="project-card__description">Comprehensive IoT solution using ESP32 for environmental monitoring with cloud integration and real-time data visualization.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">ESP32</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">Cloud</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="projects-cta">
+                    <a href="projects.html" class="button">View All Projects</a>
+                </div>
+            </section>
+
+            <!--===== QUICK LINKS =====-->
+            <section class="quick-links section" id="quick-links">
+                <h2 class="section-title">Explore More</h2>
+                
+                <div class="links-grid bd-grid">
+                    <div class="link-card">
+                        <i class='bx bx-briefcase link-card__icon'></i>
+                        <h3 class="link-card__title">Portfolio</h3>
+                        <p class="link-card__description">Visit my complete portfolio at itanveer.me</p>
+                        <a href="https://itanveer.me" class="link-card__btn" target="_blank">Visit Portfolio</a>
+                    </div>
+
+                    <div class="link-card">
+                        <i class='bx bxl-instagram link-card__icon'></i>
+                        <h3 class="link-card__title">Instagram</h3>
+                        <p class="link-card__description">Follow my tech journey and behind-the-scenes</p>
+                        <a href="https://www.instagram.com/itzzveer/" class="link-card__btn" target="_blank">Follow @itzzveer</a>
+                    </div>
+
+                    <div class="link-card">
+                        <i class='bx bx-book-open link-card__icon'></i>
+                        <h3 class="link-card__title">ResearchGate</h3>
+                        <p class="link-card__description">Academic papers and research publications</p>
+                        <a href="#" class="link-card__btn" target="_blank">View Research</a>
+                    </div>
+                </div>
+            </section>
+
+            <!--===== ABOUT =====-->
+            <section class="about section " id="about">
+                <h2 class="section-title">About</h2>
+
+                <div class="about__container bd-grid">
+                    <div class="about__img">
+                        <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan">
+                    </div>
+                    
+                    <div>
+                        <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer</h2>
+                        <p class="about__text"><b>an optimistic human being.</b> <br> a passionate Electrical and Electronic Engineering student at Daffodil International University.
+I specialize in embedded systems, IoT, and IT-related technologies, and I love solving real-world problems  especially in the fields of embedded systems, IoT, and IT. Always eager to grow, I actively seek out new learning opportunities and enjoy connecting with others who share the same enthusiasm. Beyond academics, I spend my time exploring emerging tech, networking, and building meaningful projects. Let’s build the future together!</p>           
+                    </div>                                   
+                </div>
+            </section>
+
+            <!-- SECTIONS MOVED TO ABOUT PAGE -->
+                <h2 class="section-title">Skills</h2>
+
+                <div class="skills__container bd-grid">          
+                    <div>
+                        <h2 class="skills__subtitle">   </h2>
+                        <p class="skills__text">As an Electrical and Electronic Engineering student passionate about IT and innovation, I enjoy bridging hardware and software. I’ve worked on embedded systems using Arduino and ESP32, explored IoT solutions with sensors and cloud integration, and have a solid foundation in circuit design and simulation. While I have basic skills in C/C++ and Python, I’m continuously improving through hands-on projects and learning. I'm also familiar with web design fundamentals and tools like MATLAB, Simulink, and Proteus. I value teamwork, clear communication, and a mindset of continuous growth.</p>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                               <i class="fa-solid fa-file-word skills__icon" style="color:#2B579A"></i>
+<span class="skills__name">MS Word</span>
+                            </div>
+                            <div class="skills__bar skills__html">
+
+                            </div>
+                            <div>
+                                <span class="skills__percentage">95%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                               <i class="fa-solid fa-file-powerpoint skills__icon" style="color:#D24726"></i>
+<span class="skills__name">MS PowerPoint</span>
+                            </div>
+                            <div class="skills__bar skills__css">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">85%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                               <i class='bx bx-brain skills__icon'></i>
+<span class="skills__name">Problem Solving</span>
+                            </div>
+                            <div class="skills__bar skills__js">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">85%</span>
+                            </div>
+                        </div>
+                        <div class="skills__data">
+                            <div class="skills__names">
+                                <i class='bx bx-group skills__icon'></i>
+<span class="skills__name">Teamwork & Collaboration</span>
+                            </div>
+                            <div class="skills__bar skills__ux">
+                                
+                            </div>
+                            <div>
+                                <span class="skills__percentage">85%</span>
+                            </div>
+                        </div>
+                    </div>
+                    
+                
+                </div>
+            </section>
+
+            <!--===== WORK =====-->
+            <section class="work section" id="work">
+                <h2 class="section-title">Certificates</h2>
+
+                <div class="work__container bd-grid">
+                    <a href="" class="work__img">
+                        <img src="assets/img/work1.jpeg" alt="itzzveer">
+                    </a>
+                    <a href="" class="work__img">
+                        <img src="assets/img/work2.jpg" alt="itzzveer">
+                    </a>
+                    <a href="" class="work__img">
+                        <img src="assets/img/work3.jpg" alt="itzzveer">
+                    </a>
+                    <a href="" class="work__img">
+                        <img src="assets/img/work4.jpg" alt="">
+                    </a>
+                    <a href="" class="work__img">
+                        <img src="assets/img/work5.jpg" alt="">
+                    </a>
+                    <a href="" class="work__img">
+                        <img src="assets/img/work6.jpg" alt="">
+                    </a>
+                </div>
+            </section>
+        </main>
+
+        <!--===== FOOTER =====-->
+        <footer class="footer">
+            <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+            <div class="footer__social">
+                <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+                <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+                <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+            </div>
+            <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+        </footer>
+
+
+        <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+    </body>
+</html>

@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | itanveer.tech - Tanveer's Tech Journey</title>
+  <meta name="description" content="Learn about Kawsar Mahmud Tanveer Khan - a passionate EEE student exploring embedded systems, IoT, and smart grid technologies through hands-on projects and continuous learning.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Tanveer Khan, EEE student, embedded systems, IoT enthusiast, tech blogger, Arduino projects">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/about.html">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Me | itanveer.tech">
+  <meta name="twitter:description" content="Learn about Tanveer's tech journey, passion for embedded systems, and commitment to sharing knowledge through blogging.">
+  <meta name="twitter:image" content="assets/img/about.png">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+  :root {
+    --bg-color: #fff;
+    --text-color: #222;
+    --secondary-color: #7873f5;
+    --link-color: #657ced;
+    --shadow: 0 3px 12px rgba(120,115,245,0.18);
+    --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
+  }
+  
+  body {
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  /* Scroll animation */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.8s cubic-bezier(.18,1.25,.90,1.13);
+  }
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .section-title,
+  .about__subtitle {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: var(--shadow);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  
+  .about__text, .about__container b, .about__container li, .about__container span {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: var(--text-color);
+    text-shadow: 0 2px 8px rgba(67,233,123,0.07);
+    font-size: 1.09em;
+  }
+  
+  .about__container ul {
+    padding-left: 1.2em;
+  }
+  
+  .about__container b {
+    color: var(--secondary-color);
+    font-weight: 700;
+  }
+  
+  .about__container li {
+    margin-bottom: 0.25em;
+  }
+  
+  a { color: var(--link-color); }
+
+  /* Education Section Styling */
+  .education__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  
+  .education__data {
+    display: flex;
+    align-items: flex-start;
+    background: #f7f7fc;
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(100,90,255,0.05);
+    margin-bottom: 0.6em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1.5em;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  
+  .education__names {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    min-width: 170px;
+  }
+  
+  .education__icon {
+    font-size: 2rem;
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.45em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    margin-right: 0.3em;
+    transition: background 0.4s;
+  }
+  
+  .education__degree {
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+  
+  .education__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+  }
+  
+  .education__institute {
+    font-size: 1em;
+    color: var(--secondary-color);
+  }
+  
+  .education__year {
+    font-size: 0.98em;
+    color: #888;
+  }
+  
+  .education__remark {
+    font-size: 0.95em;
+    color: #43e97b;
+    font-style: italic;
+  }
+  
+  @media (max-width: 600px) {
+    .education__data { flex-direction: column; align-items: flex-start; }
+    .education__names { min-width: unset; }
+  }
+
+  /* Profile Highlights Section */
+  .profile__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  
+  .profile__data {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2em;
+    background: #f7f7fc;
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(100,90,255,0.05);
+    margin-bottom: 0.6em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  
+  .profile__icon-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    min-width: 120px;
+  }
+  
+  .profile__icon {
+    font-size: 2em;
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.4em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    transition: background 0.4s;
+  }
+  
+  .profile__label {
+    font-weight: bold;
+    font-size: 1.07em;
+  }
+  
+  .profile__details {
+    font-size: 1em;
+    color: #444;
+  }
+  
+  .profile__details ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+  
+  .profile__details li {
+    margin-bottom: 0.2em;
+  }
+  
+  .profile__social {
+    display: flex;
+    gap: 0.7em;
+    margin-top: 0.7em;
+  }
+  
+  .profile__social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4em;
+    height: 2.4em;
+    border-radius: 50%;
+    background: #fff;
+    color: #657ced;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    font-size: 1.3em;
+    transition: background 0.25s, color 0.25s, transform 0.18s, border-color 0.18s;
+    border: 2px solid transparent;
+    text-decoration: none;
+    position: relative;
+  }
+  
+  .profile__social-icon:hover {
+    background: linear-gradient(135deg, #657ced 60%, #43e97b 100%);
+    color: #fff;
+    border-color: #657ced;
+    transform: scale(1.11) rotate(-7deg);
+    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.10);
+  }
+  
+  @media (max-width: 600px) {
+    .profile__data {
+      flex-direction: column;
+      gap: 0.6em;
+      padding: 1em 0.7em;
+    }
+    .profile__icon-label {
+      min-width: 0;
+    }
+  }
+  </style>
+</head>
+
+<body>
+<!--===== HEADER =====-->
+<header class="l-header">
+  <nav class="nav bd-grid">
+    <div>
+      <a href="index.html" class="nav__logo">itanveer.tech</a>
+    </div>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link active-link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+        <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+  </nav>
+</header> 
+
+<main class="l-main">
+<!--===== ABOUT ME =====-->
+<section class="about section" id="about">
+  <h2 class="section-title scroll-animate">About Me</h2>
+  <div class="about__container bd-grid scroll-animate" style="align-items: flex-start;">
+    <!-- Profile Photo -->
+    <div class="about__img">
+      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(44,62,80,0.13);">
+    </div>
+    <div>
+      <!-- Brief Introduction -->
+      <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer</h2>
+      <p class="about__text" style="margin-bottom:1em;">
+        <b>Optimistic | Tech Explorer | EEE Student</b><br>
+        Hi! I'm an enthusiastic Electrical and Electronic Engineering student at Daffodil International University. I'm passionate about embedded systems, IoT, smart grid technologies, and leveraging innovation to solve real-world problems.
+      </p>
+      <p class="about__text">
+        Through this blog, I share my journey of learning and building projects with Arduino, ESP32, MATLAB Simulink, and other cutting-edge technologies. I believe in continuous learning, hands-on experimentation, and knowledge sharing within the tech community.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!--===== SKILLS =====-->
+<section class="skills section" id="skills">
+  <h2 class="section-title scroll-animate">Technical Skills</h2>
+  <div class="skills__container bd-grid scroll-animate">          
+    <div>
+      <p class="skills__text">As an Electrical and Electronic Engineering student passionate about IT and innovation, I enjoy bridging hardware and software. I've worked on embedded systems using Arduino and ESP32, explored IoT solutions with sensors and cloud integration, and have a solid foundation in circuit design and simulation. While I have basic skills in C/C++ and Python, I'm continuously improving through hands-on projects and learning. I'm also familiar with web design fundamentals and tools like MATLAB, Simulink, and Proteus. I value teamwork, clear communication, and a mindset of continuous growth.</p>
+      
+      <div class="skills__data">
+        <div class="skills__names">
+          <i class='bx bx-code-alt skills__icon' style="color:#657ced"></i>
+          <span class="skills__name">Arduino & ESP32 Programming</span>
+        </div>
+        <div class="skills__bar skills__html"></div>
+        <div>
+          <span class="skills__percentage">90%</span>
+        </div>
+      </div>
+      
+      <div class="skills__data">
+        <div class="skills__names">
+          <i class='fas fa-microchip skills__icon' style="color:#43e97b"></i>
+          <span class="skills__name">Embedded Systems & IoT</span>
+        </div>
+        <div class="skills__bar skills__css"></div>
+        <div>
+          <span class="skills__percentage">85%</span>
+        </div>
+      </div>
+      
+      <div class="skills__data">
+        <div class="skills__names">
+          <i class='fas fa-chart-line skills__icon' style="color:#7873f5"></i>
+          <span class="skills__name">MATLAB & Simulink</span>
+        </div>
+        <div class="skills__bar skills__js"></div>
+        <div>
+          <span class="skills__percentage">80%</span>
+        </div>
+      </div>
+      
+      <div class="skills__data">
+        <div class="skills__names">
+          <i class="fa-solid fa-file-word skills__icon" style="color:#2B579A"></i>
+          <span class="skills__name">MS Office Suite</span>
+        </div>
+        <div class="skills__bar skills__html"></div>
+        <div>
+          <span class="skills__percentage">95%</span>
+        </div>
+      </div>
+      
+      <div class="skills__data">
+        <div class="skills__names">
+          <i class='bx bx-brain skills__icon' style="color:#f39c12"></i>
+          <span class="skills__name">Problem Solving</span>
+        </div>
+        <div class="skills__bar skills__js"></div>
+        <div>
+          <span class="skills__percentage">90%</span>
+        </div>
+      </div>
+      
+      <div class="skills__data">
+        <div class="skills__names">
+          <i class='bx bx-group skills__icon' style="color:#e74c3c"></i>
+          <span class="skills__name">Teamwork & Collaboration</span>
+        </div>
+        <div class="skills__bar skills__ux"></div>
+        <div>
+          <span class="skills__percentage">85%</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== EDUCATION SECTION =====-->
+<section class="education section" id="education">
+  <h2 class="section-title scroll-animate">Education</h2>
+  <div class="education__container scroll-animate">
+    <div class="education__data scroll-animate">
+      <div class="education__names">
+        <i class="fas fa-graduation-cap education__icon" style="color:#7873f5"></i>
+        <span class="education__degree">Bachelor of Science</span>
+      </div>
+      <div class="education__details">
+        <span class="education__institute">Electrical and Electronic Engineering</span>
+        <span class="education__year">Daffodil International University (2022 - Present)</span>
+        <span class="education__remark">Specializing in Power Systems, Embedded Systems & IoT</span>
+      </div>
+    </div>
+    
+    <div class="education__data scroll-animate">
+      <div class="education__names">
+        <i class="fas fa-school education__icon" style="color:#43e97b"></i>
+        <span class="education__degree">Higher Secondary Certificate</span>
+      </div>
+      <div class="education__details">
+        <span class="education__institute">Science Group</span>
+        <span class="education__year">Completed 2021</span>
+        <span class="education__remark">Foundation in Mathematics, Physics & Chemistry</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== CERTIFICATES =====-->
+<section class="work section" id="certificates">
+  <h2 class="section-title scroll-animate">Certificates & Achievements</h2>
+  <div class="work__container bd-grid scroll-animate">
+    <a href="" class="work__img">
+      <img src="assets/img/work1.jpeg" alt="Arduino Programming Certificate">
+      <div class="work__overlay">
+        <h3>Arduino Programming</h3>
+        <p>Microcontroller Programming</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work2.jpg" alt="IoT Development Certificate">
+      <div class="work__overlay">
+        <h3>IoT Development</h3>
+        <p>Internet of Things</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work3.jpg" alt="MATLAB Simulink Certificate">
+      <div class="work__overlay">
+        <h3>MATLAB Simulink</h3>
+        <p>Simulation & Modeling</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work4.jpg" alt="Power Systems Certificate">
+      <div class="work__overlay">
+        <h3>Power Systems</h3>
+        <p>Electrical Engineering</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work5.jpg" alt="Web Development Certificate">
+      <div class="work__overlay">
+        <h3>Web Development</h3>
+        <p>Frontend Technologies</p>
+      </div>
+    </a>
+    <a href="" class="work__img">
+      <img src="assets/img/work6.jpg" alt="Project Management Certificate">
+      <div class="work__overlay">
+        <h3>Project Management</h3>
+        <p>Leadership & Planning</p>
+      </div>
+    </a>
+  </div>
+</section>
+
+<!--===== PROFILE HIGHLIGHTS =====-->
+<section class="profile section" id="highlights">
+  <h2 class="section-title scroll-animate">Profile Highlights</h2>
+  <div class="profile__container scroll-animate">
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fas fa-laptop-code profile__icon" style="color:#657ced"></i>
+        <span class="profile__label"><b>Specializations</b></span>
+      </div>
+      <div class="profile__details">
+        <ul>
+          <li>Embedded Systems (Arduino, ESP32, Raspberry Pi)</li>
+          <li>Internet of Things (IoT) Solutions</li>
+          <li>Smart Grid & Renewable Energy Systems</li>
+          <li>MATLAB/Simulink Modeling & Simulation</li>
+          <li>Circuit Design & PCB Development</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fas fa-tools profile__icon" style="color:#43e97b"></i>
+        <span class="profile__label"><b>Tools & Technologies</b></span>
+      </div>
+      <div class="profile__details">
+        <ul>
+          <li>Programming: C/C++, Python, Arduino IDE</li>
+          <li>Simulation: MATLAB, Simulink, Proteus</li>
+          <li>Design: Altium Designer, KiCad, Fritzing</li>
+          <li>Cloud Platforms: ThingSpeak, Blynk, Firebase</li>
+          <li>Version Control: Git, GitHub</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fas fa-rocket profile__icon" style="color:#f39c12"></i>
+        <span class="profile__label"><b>Current Focus</b></span>
+      </div>
+      <div class="profile__details">
+        Exploring advanced IoT architectures, machine learning integration with embedded systems, and sustainable energy solutions for smart cities.
+      </div>
+    </div>
+    
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fas fa-heart profile__icon" style="color:#e74c3c"></i>
+        <span class="profile__label"><b>Values</b></span>
+      </div>
+      <div class="profile__details">
+        Always stay curious, keep building, and share knowledge to empower the next generation of innovators.
+      </div>
+    </div>
+    
+    <!-- Let's Connect -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-handshake profile__icon" style="color:#7873f5"></i>
+        <span class="profile__label"><b>Let's Connect!</b></span>
+      </div>
+      <div class="profile__details">
+        I'm always excited to connect with fellow tech enthusiasts, collaborate on projects, and share knowledge. Reach out through any of these platforms!
+        <div class="profile__social">
+          <a href="https://facebook.com/itzzVeer" class="profile__social-icon" target="_blank" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://x.com/itzzveer" class="profile__social-icon" target="_blank" title="Twitter/X">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://instagram.com/itzzveer" class="profile__social-icon" target="_blank" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/in/KawsarTanveer" class="profile__social-icon" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+          <a href="https://github.com/KMTanVeer" class="profile__social-icon" target="_blank" title="GitHub">
+            <i class="fab fa-github"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+</main>
+
+<!--===== FOOTER =====-->
+<footer class="footer">
+  <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+  <div class="footer__social">
+    <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+    <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+    <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+  </div>
+  <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+</footer>
+
+<script>
+// Scroll animation
+function onScrollAnimate() {
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', onScrollAnimate);
+window.addEventListener('DOMContentLoaded', onScrollAnimate);
+
+// Stagger animation for sections
+document.querySelectorAll('.education__data.scroll-animate').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.15) + 's';
+});
+document.querySelectorAll('.profile__data.scroll-animate').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.15) + 's';
+});
+</script>
+
+<!--===== SCROLL REVEAL =====-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--===== MAIN JS =====-->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

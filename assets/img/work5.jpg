@@ -1,0 +1,15 @@
+<!-- SVG Placeholder for work5.jpg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="400" height="300" viewBox="0 0 400 300">
+  <defs>
+    <linearGradient id="grad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#657ced;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#7873f5;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="400" height="300" fill="url(#grad2)"/>
+  <circle cx="200" cy="150" r="80" fill="rgba(255,255,255,0.2)"/>
+  <text x="200" y="120" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">Web Development</text>
+  <text x="200" y="140" font-family="Arial, sans-serif" font-size="14" text-anchor="middle" fill="white">Certificate</text>
+  <text x="200" y="180" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="rgba(255,255,255,0.8)">Frontend Technologies</text>
+  <text x="200" y="195" font-family="Arial, sans-serif" font-size="12" text-anchor="middle" fill="rgba(255,255,255,0.8)">HTML, CSS, JavaScript</text>
+</svg>

@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Arduino LCD Programming Complete Guide | itanveer.tech</title>
+  <meta name="description" content="Complete guide to Arduino LCD programming with 16x2 and 20x4 displays. Learn I2C connections, custom characters, scrolling text, and practical projects.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Arduino LCD, 16x2 LCD, I2C LCD, Arduino programming, LCD display, custom characters">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/blog-arduino-lcd.html">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== BLOG POST HEADER =====-->
+        <section class="blog-post-header section">
+            <div class="bd-grid">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> > <a href="blog.html">Blog</a> > <span>Arduino LCD Guide</span>
+                </div>
+                
+                <div class="blog-post-meta">
+                    <span class="blog-post-category">Arduino</span>
+                    <span class="blog-post-date">January 8, 2025</span>
+                    <span class="blog-post-read-time">12 min read</span>
+                </div>
+                
+                <h1 class="blog-post-title">Arduino LCD Programming Complete Guide</h1>
+                <p class="blog-post-subtitle">Master LCD displays with Arduino - from basic connections to advanced projects including I2C, custom characters, and practical applications</p>
+                
+                <div class="blog-post-author">
+                    <img src="assets/img/perfil.png" alt="Kawsar Mahmud Tanveer Khan" class="author-avatar">
+                    <div class="author-info">
+                        <span class="author-name">Kawsar Mahmud Tanveer Khan</span>
+                        <span class="author-title">Arduino Enthusiast & EEE Student</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== BLOG POST CONTENT =====-->
+        <section class="blog-post-content section">
+            <div class="bd-grid">
+                <div class="blog-post-wrapper">
+                    <article class="blog-article">
+                        <div class="featured-image">
+                            <img src="assets/img/arduino-lcd-featured.jpg" alt="Arduino LCD Display Setup" onerror="this.src='assets/img/work1.jpeg'">
+                            <p class="image-caption">Arduino Uno connected to 16x2 LCD display with I2C module</p>
+                        </div>
+
+                        <div class="article-content">
+                            <h2>Introduction</h2>
+                            <p>LCD (Liquid Crystal Display) screens are among the most popular output devices for Arduino projects. Whether you're building a temperature monitor, digital clock, or data logger, understanding how to control LCD displays is essential for any Arduino enthusiast.</p>
+
+                            <p>In this comprehensive guide, we'll cover:</p>
+                            <ul>
+                                <li>Basic LCD connections and wiring</li>
+                                <li>I2C LCD modules for simplified connections</li>
+                                <li>Programming fundamentals and library usage</li>
+                                <li>Creating custom characters and symbols</li>
+                                <li>Scrolling text and advanced display techniques</li>
+                                <li>Practical projects and applications</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <i class='bx bx-info-circle'></i>
+                                <div>
+                                    <h4>What You'll Need</h4>
+                                    <p>Arduino Uno/Nano, 16x2 LCD display, I2C LCD backpack (optional), jumper wires, breadboard, and potentiometer for contrast adjustment.</p>
+                                </div>
+                            </div>
+
+                            <h2>Understanding LCD Displays</h2>
+                            <h3>Common LCD Types</h3>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <strong>16x2 LCD</strong>
+                                    <span>2 rows, 16 characters each</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>20x4 LCD</strong>
+                                    <span>4 rows, 20 characters each</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>OLED Display</strong>
+                                    <span>Higher contrast, no backlight needed</span>
+                                </div>
+                            </div>
+
+                            <h3>LCD Pin Configuration</h3>
+                            <p>Standard HD44780-based LCDs have 16 pins:</p>
+
+                            <div class="results-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Pin</th>
+                                            <th>Name</th>
+                                            <th>Function</th>
+                                            <th>Arduino Connection</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr><td>1</td><td>VSS</td><td>Ground</td><td>GND</td></tr>
+                                        <tr><td>2</td><td>VDD</td><td>+5V Power</td><td>5V</td></tr>
+                                        <tr><td>3</td><td>V0</td><td>Contrast</td><td>Potentiometer</td></tr>
+                                        <tr><td>4</td><td>RS</td><td>Register Select</td><td>Digital Pin 12</td></tr>
+                                        <tr><td>5</td><td>Enable</td><td>Enable</td><td>Digital Pin 11</td></tr>
+                                        <tr><td>6</td><td>D0</td><td>Data Bit 0</td><td>Not Used</td></tr>
+                                        <tr><td>7</td><td>D1</td><td>Data Bit 1</td><td>Not Used</td></tr>
+                                        <tr><td>8</td><td>D2</td><td>Data Bit 2</td><td>Not Used</td></tr>
+                                        <tr><td>9</td><td>D3</td><td>Data Bit 3</td><td>Not Used</td></tr>
+                                        <tr><td>10</td><td>D4</td><td>Data Bit 4</td><td>Digital Pin 5</td></tr>
+                                        <tr><td>11</td><td>D5</td><td>Data Bit 5</td><td>Digital Pin 4</td></tr>
+                                        <tr><td>12</td><td>D6</td><td>Data Bit 6</td><td>Digital Pin 3</td></tr>
+                                        <tr><td>13</td><td>D7</td><td>Data Bit 7</td><td>Digital Pin 2</td></tr>
+                                        <tr><td>14</td><td>A</td><td>Backlight Anode</td><td>5V</td></tr>
+                                        <tr><td>15</td><td>K</td><td>Backlight Cathode</td><td>GND</td></tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h2>Basic LCD Connection</h2>
+                            <h3>Standard Parallel Connection</h3>
+                            <p>Connect the LCD directly to Arduino using parallel interface:</p>
+
+                            <pre><code class="language-arduino">// Include the LCD library
+#include &lt;LiquidCrystal.h&gt;
+
+// Initialize the library with the numbers of the interface pins
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+void setup() {
+  // Set up the LCD's number of columns and rows:
+  lcd.begin(16, 2);
+  
+  // Print a message to the LCD
+  lcd.print("Hello, World!");
+}
+
+void loop() {
+  // Set the cursor to column 0, line 1
+  // (note: line 1 is the second row, since counting begins with 0):
+  lcd.setCursor(0, 1);
+  
+  // Print the number of seconds since reset:
+  lcd.print(millis() / 1000);
+}</code></pre>
+
+                            <div class="warning-box">
+                                <i class='bx bx-error'></i>
+                                <div>
+                                    <h4>Connection Tips</h4>
+                                    <p>Use a 10kΩ potentiometer for contrast adjustment (pin 3). Incorrect contrast will make the display appear blank or show only blocks. Test different contrast levels if text isn't visible.</p>
+                                </div>
+                            </div>
+
+                            <h2>I2C LCD Module</h2>
+                            <p>I2C LCD modules significantly simplify connections by reducing the required pins from 6 to just 2 (SDA and SCL):</p>
+
+                            <h3>I2C Wiring</h3>
+                            <pre><code class="language-arduino">/*
+Arduino Uno I2C Pins:
+- SDA: A4
+- SCL: A5
+- VCC: 5V
+- GND: GND
+
+Arduino Nano/Pro Mini:
+- SDA: A4
+- SCL: A5
+
+Arduino Mega:
+- SDA: Pin 20
+- SCL: Pin 21
+*/</code></pre>
+
+                            <h3>I2C LCD Code</h3>
+                            <pre><code class="language-arduino">#include &lt;Wire.h&gt;
+#include &lt;LiquidCrystal_I2C.h&gt;
+
+// Set the LCD address to 0x27 for a 16 chars and 2 line display
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+void setup() {
+  // Initialize the LCD
+  lcd.init();
+  
+  // Turn on the blacklight
+  lcd.backlight();
+  
+  // Print a message
+  lcd.setCursor(0, 0);
+  lcd.print("I2C LCD Ready!");
+}
+
+void loop() {
+  // Display counter
+  lcd.setCursor(0, 1);
+  lcd.print("Count: ");
+  lcd.print(millis() / 1000);
+  
+  delay(100);
+}</code></pre>
+
+                            <h3>Finding I2C Address</h3>
+                            <p>If your LCD doesn't work, the I2C address might be different. Use this scanner:</p>
+
+                            <pre><code class="language-arduino">#include &lt;Wire.h&gt;
+
+void setup() {
+  Wire.begin();
+  Serial.begin(9600);
+  Serial.println("\nI2C Scanner");
+}
+
+void loop() {
+  byte error, address;
+  int nDevices;
+
+  Serial.println("Scanning...");
+
+  nDevices = 0;
+  for(address = 1; address < 127; address++) {
+    Wire.beginTransmission(address);
+    error = Wire.endTransmission();
+
+    if (error == 0) {
+      Serial.print("I2C device found at address 0x");
+      if (address < 16) 
+        Serial.print("0");
+      Serial.print(address, HEX);
+      Serial.println("  !");
+
+      nDevices++;
+    }
+  }
+  
+  if (nDevices == 0)
+    Serial.println("No I2C devices found\n");
+  else
+    Serial.println("done\n");
+
+  delay(5000);
+}</code></pre>
+
+                            <h2>Advanced LCD Programming</h2>
+                            <h3>Custom Characters</h3>
+                            <p>Create custom symbols and characters for your displays:</p>
+
+                            <pre><code class="language-arduino">#include &lt;LiquidCrystal.h&gt;
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+// Custom character arrays (5x8 pixels each)
+byte heart[8] = {
+  0b00000,
+  0b01010,
+  0b11111,
+  0b11111,
+  0b11111,
+  0b01110,
+  0b00100,
+  0b00000
+};
+
+byte thermometer[8] = {
+  0b00100,
+  0b01010,
+  0b01010,
+  0b01110,
+  0b11111,
+  0b11111,
+  0b01110,
+  0b00000
+};
+
+byte degree[8] = {
+  0b00110,
+  0b01001,
+  0b01001,
+  0b00110,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000
+};
+
+void setup() {
+  lcd.begin(16, 2);
+  
+  // Create custom characters
+  lcd.createChar(0, heart);
+  lcd.createChar(1, thermometer);
+  lcd.createChar(2, degree);
+  
+  // Display custom characters
+  lcd.setCursor(0, 0);
+  lcd.write(byte(0)); // Heart
+  lcd.print(" Arduino LCD");
+  
+  lcd.setCursor(0, 1);
+  lcd.write(byte(1)); // Thermometer
+  lcd.print(" 25");
+  lcd.write(byte(2)); // Degree symbol
+  lcd.print("C");
+}
+
+void loop() {
+  // Blink heart
+  lcd.setCursor(0, 0);
+  lcd.write(byte(0));
+  delay(500);
+  
+  lcd.setCursor(0, 0);
+  lcd.print(" ");
+  delay(500);
+}</code></pre>
+
+                            <h3>Scrolling Text</h3>
+                            <pre><code class="language-arduino">#include &lt;LiquidCrystal.h&gt;
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+String message = "Welcome to itanveer.tech - Your Arduino Learning Hub! ";
+int messageLength = message.length();
+
+void setup() {
+  lcd.begin(16, 2);
+  lcd.print("Scrolling Text:");
+}
+
+void loop() {
+  // Horizontal scrolling
+  for (int position = 0; position < messageLength; position++) {
+    lcd.setCursor(0, 1);
+    
+    // Clear the line
+    lcd.print("                ");
+    lcd.setCursor(0, 1);
+    
+    // Print substring
+    if (position + 16 <= messageLength) {
+      lcd.print(message.substring(position, position + 16));
+    } else {
+      // Handle text wrapping
+      String displayText = message.substring(position) + 
+                          message.substring(0, 16 - (messageLength - position));
+      lcd.print(displayText);
+    }
+    
+    delay(300);
+  }
+}</code></pre>
+
+                            <h2>Practical Projects</h2>
+                            <h3>1. Digital Clock with LCD</h3>
+                            <pre><code class="language-arduino">#include &lt;LiquidCrystal.h&gt;
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+unsigned long previousMillis = 0;
+unsigned long seconds = 0;
+unsigned long minutes = 0;
+unsigned long hours = 0;
+
+void setup() {
+  lcd.begin(16, 2);
+  lcd.setCursor(0, 0);
+  lcd.print("Digital Clock");
+}
+
+void loop() {
+  unsigned long currentMillis = millis();
+  
+  if (currentMillis - previousMillis >= 1000) {
+    previousMillis = currentMillis;
+    seconds++;
+    
+    if (seconds >= 60) {
+      seconds = 0;
+      minutes++;
+      
+      if (minutes >= 60) {
+        minutes = 0;
+        hours++;
+        
+        if (hours >= 24) {
+          hours = 0;
+        }
+      }
+    }
+    
+    // Display time
+    lcd.setCursor(0, 1);
+    
+    // Format with leading zeros
+    if (hours < 10) lcd.print("0");
+    lcd.print(hours);
+    lcd.print(":");
+    
+    if (minutes < 10) lcd.print("0");
+    lcd.print(minutes);
+    lcd.print(":");
+    
+    if (seconds < 10) lcd.print("0");
+    lcd.print(seconds);
+  }
+}</code></pre>
+
+                            <h3>2. Temperature Monitor</h3>
+                            <pre><code class="language-arduino">#include &lt;LiquidCrystal.h&gt;
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+const int tempSensorPin = A0;
+
+// Custom degree symbol
+byte degree[8] = {
+  0b00110,
+  0b01001,
+  0b01001,
+  0b00110,
+  0b00000,
+  0b00000,
+  0b00000,
+  0b00000
+};
+
+void setup() {
+  lcd.begin(16, 2);
+  lcd.createChar(0, degree);
+  
+  lcd.setCursor(0, 0);
+  lcd.print("Temp Monitor");
+}
+
+void loop() {
+  // Read temperature sensor (LM35)
+  int sensorValue = analogRead(tempSensorPin);
+  float voltage = sensorValue * (5.0 / 1023.0);
+  float temperatureC = voltage * 100; // LM35: 10mV/°C
+  float temperatureF = (temperatureC * 9.0 / 5.0) + 32.0;
+  
+  // Display temperature
+  lcd.setCursor(0, 1);
+  lcd.print("T: ");
+  lcd.print(temperatureC, 1);
+  lcd.write(byte(0)); // Degree symbol
+  lcd.print("C ");
+  lcd.print(temperatureF, 1);
+  lcd.write(byte(0)); // Degree symbol
+  lcd.print("F");
+  
+  delay(1000);
+}</code></pre>
+
+                            <h3>3. Data Logger Display</h3>
+                            <pre><code class="language-arduino">#include &lt;LiquidCrystal_I2C.h&gt;
+
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+const int sensorPin = A0;
+float sensorReadings[10]; // Store last 10 readings
+int readingIndex = 0;
+bool arrayFilled = false;
+
+void setup() {
+  lcd.init();
+  lcd.backlight();
+  
+  lcd.setCursor(0, 0);
+  lcd.print("Data Logger");
+  
+  // Initialize array
+  for (int i = 0; i < 10; i++) {
+    sensorReadings[i] = 0;
+  }
+}
+
+void loop() {
+  // Read sensor
+  float sensorValue = analogRead(sensorPin) * (5.0 / 1023.0);
+  
+  // Store reading
+  sensorReadings[readingIndex] = sensorValue;
+  readingIndex++;
+  
+  if (readingIndex >= 10) {
+    readingIndex = 0;
+    arrayFilled = true;
+  }
+  
+  // Calculate average
+  float average = calculateAverage();
+  
+  // Display current and average values
+  lcd.setCursor(0, 1);
+  lcd.print("Cur:");
+  lcd.print(sensorValue, 2);
+  lcd.print("V");
+  
+  lcd.setCursor(8, 1);
+  lcd.print("Avg:");
+  lcd.print(average, 2);
+  lcd.print("V");
+  
+  delay(1000);
+}
+
+float calculateAverage() {
+  float sum = 0;
+  int count = arrayFilled ? 10 : readingIndex;
+  
+  for (int i = 0; i < count; i++) {
+    sum += sensorReadings[i];
+  }
+  
+  return sum / count;
+}</code></pre>
+
+                            <div class="info-box">
+                                <i class='bx bx-lightbulb'></i>
+                                <div>
+                                    <h4>Pro Tips for LCD Projects</h4>
+                                    <ul>
+                                        <li>Use non-blocking delays for responsive interfaces</li>
+                                        <li>Clear specific areas instead of the entire display for better performance</li>
+                                        <li>Create a menu system with button navigation</li>
+                                        <li>Use EEPROM to store settings between power cycles</li>
+                                    </ul>
+                                </div>
+                            </div>
+
+                            <h2>Troubleshooting Common Issues</h2>
+                            <div class="results-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Problem</th>
+                                            <th>Possible Cause</th>
+                                            <th>Solution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>Blank display</td>
+                                            <td>Wrong contrast setting</td>
+                                            <td>Adjust contrast potentiometer</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Garbled text</td>
+                                            <td>Loose connections</td>
+                                            <td>Check all wiring connections</td>
+                                        </tr>
+                                        <tr>
+                                            <td>No backlight</td>
+                                            <td>Backlight pins not connected</td>
+                                            <td>Connect pins 15 (A) and 16 (K)</td>
+                                        </tr>
+                                        <tr>
+                                            <td>I2C not working</td>
+                                            <td>Wrong address</td>
+                                            <td>Use I2C scanner to find correct address</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h2>Advanced Features and Libraries</h2>
+                            <h3>Menu Systems</h3>
+                            <pre><code class="language-arduino">#include &lt;LiquidCrystal.h&gt;
+
+LiquidCrystal lcd(12, 11, 5, 4, 3, 2);
+
+const int buttonUp = 7;
+const int buttonDown = 8;
+const int buttonSelect = 9;
+
+int menuIndex = 0;
+const int menuItems = 4;
+String menu[] = {"1.Temperature", "2.Humidity", "3.Pressure", "4.Settings"};
+
+void setup() {
+  lcd.begin(16, 2);
+  pinMode(buttonUp, INPUT_PULLUP);
+  pinMode(buttonDown, INPUT_PULLUP);
+  pinMode(buttonSelect, INPUT_PULLUP);
+  
+  displayMenu();
+}
+
+void loop() {
+  if (digitalRead(buttonUp) == LOW) {
+    menuIndex = (menuIndex > 0) ? menuIndex - 1 : menuItems - 1;
+    displayMenu();
+    delay(200); // Simple debounce
+  }
+  
+  if (digitalRead(buttonDown) == LOW) {
+    menuIndex = (menuIndex < menuItems - 1) ? menuIndex + 1 : 0;
+    displayMenu();
+    delay(200);
+  }
+  
+  if (digitalRead(buttonSelect) == LOW) {
+    executeMenuItem(menuIndex);
+    delay(200);
+  }
+}
+
+void displayMenu() {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  lcd.print("Main Menu");
+  
+  lcd.setCursor(0, 1);
+  lcd.print(">");
+  lcd.print(menu[menuIndex]);
+}
+
+void executeMenuItem(int item) {
+  lcd.clear();
+  lcd.setCursor(0, 0);
+  
+  switch(item) {
+    case 0:
+      lcd.print("Temperature: 25C");
+      break;
+    case 1:
+      lcd.print("Humidity: 60%");
+      break;
+    case 2:
+      lcd.print("Pressure: 1013mb");
+      break;
+    case 3:
+      lcd.print("Settings Menu");
+      break;
+  }
+  
+  lcd.setCursor(0, 1);
+  lcd.print("Press any key...");
+  
+  // Wait for button press
+  while(digitalRead(buttonSelect) == HIGH && 
+        digitalRead(buttonUp) == HIGH && 
+        digitalRead(buttonDown) == HIGH) {
+    delay(50);
+  }
+  
+  delay(200); // Debounce
+  displayMenu();
+}</code></pre>
+
+                            <h2>Performance Optimization</h2>
+                            <h3>Efficient Display Updates</h3>
+                            <pre><code class="language-arduino">// Instead of clearing entire display frequently
+void inefficientUpdate() {
+  lcd.clear(); // Slow operation
+  lcd.setCursor(0, 0);
+  lcd.print("Value: ");
+  lcd.print(sensorValue);
+}
+
+// Use targeted updates
+void efficientUpdate() {
+  static float lastValue = -999; // Track previous value
+  
+  if (sensorValue != lastValue) {
+    lcd.setCursor(7, 0); // Position after "Value: "
+    lcd.print("     "); // Clear only the number area
+    lcd.setCursor(7, 0);
+    lcd.print(sensorValue);
+    lastValue = sensorValue;
+  }
+}</code></pre>
+
+                            <h2>Conclusion</h2>
+                            <p>LCD displays are versatile components that can enhance any Arduino project. Whether you choose parallel or I2C connection depends on your pin availability and project complexity. The examples in this guide provide a solid foundation for building more advanced LCD-based projects.</p>
+
+                            <p>Key takeaways:</p>
+                            <ul>
+                                <li>I2C modules simplify connections and save pins</li>
+                                <li>Custom characters add visual appeal to your projects</li>
+                                <li>Efficient programming prevents display flickering</li>
+                                <li>Menu systems create professional user interfaces</li>
+                            </ul>
+
+                            <div class="project-links">
+                                <a href="https://github.com/KMTanVeer/arduino-lcd-projects" class="project-link" target="_blank">
+                                    <i class='bx bxl-github'></i>
+                                    Download Code Examples
+                                </a>
+                                <a href="blog-arduino-multimeter.html" class="project-link">
+                                    <i class='bx bx-info-circle'></i>
+                                    Arduino Multimeter Project
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="blog-sidebar">
+                        <div class="sidebar-widget">
+                            <h3>Related Posts</h3>
+                            <div class="related-posts">
+                                <a href="blog-arduino-multimeter.html" class="related-post">
+                                    <img src="assets/img/arduino-multimeter.jpg" alt="Arduino Multimeter" onerror="this.src='assets/img/work2.jpg'">
+                                    <div>
+                                        <h4>Arduino Digital Multimeter</h4>
+                                        <span>January 3, 2025</span>
+                                    </div>
+                                </a>
+                                <a href="blog-esp32-iot.html" class="related-post">
+                                    <img src="assets/img/esp32-iot.jpg" alt="ESP32 IoT" onerror="this.src='assets/img/work3.jpg'">
+                                    <div>
+                                        <h4>ESP32 IoT Weather Station</h4>
+                                        <span>January 6, 2025</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <h3>Arduino Components</h3>
+                            <div class="tag-cloud">
+                                <span class="tag">16x2 LCD</span>
+                                <span class="tag">I2C</span>
+                                <span class="tag">Custom Characters</span>
+                                <span class="tag">Sensors</span>
+                                <span class="tag">Menu System</span>
+                                <span class="tag">Display</span>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <h3>Share This Guide</h3>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button twitter">
+                                    <i class='bx bxl-twitter'></i>
+                                </a>
+                                <a href="#" class="share-button facebook">
+                                    <i class='bx bxl-facebook'></i>
+                                </a>
+                                <a href="#" class="share-button linkedin">
+                                    <i class='bx bxl-linkedin'></i>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+    
+    <!--===== SYNTAX HIGHLIGHTING =====-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

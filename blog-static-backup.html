@@ -1,0 +1,642 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blog | itanveer.tech - Arduino & IoT Tutorials</title>
+  <meta name="description" content="Explore Arduino tutorials, IoT projects, and electrical engineering insights from Tanveer's tech journey.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Arduino tutorials, IoT projects, embedded systems, tech blog, ESP32">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/blog.html">
+  
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Blog | itanveer.tech">
+  <meta name="twitter:description" content="Arduino tutorials, IoT projects, and electrical engineering insights">
+  <meta name="twitter:image" content="assets/img/work1.jpeg">
+  
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  
+  <style>
+  :root {
+    --bg-color: #f8f9fb;
+    --card-bg: #ffffff;
+    --text-color: #2c3e50;
+    --text-light: #546e7a;
+    --secondary-color: #7873f5;
+    --link-color: #657ced;
+    --shadow: 0 3px 12px rgba(120,115,245,0.18);
+    --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
+    --border-light: #e8eaf6;
+  }
+  
+  body {
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+
+  /* Blog Hero Section */
+  .blog-hero {
+    background: var(--gradient);
+    color: white;
+    padding: 5rem 0 4rem;
+    text-align: center;
+  }
+
+  .blog-hero__title {
+    font-size: 3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    text-shadow: 0 4px 20px rgba(0,0,0,0.3);
+  }
+
+  .blog-hero__description {
+    font-size: 1.2rem;
+    max-width: 800px;
+    margin: 0 auto;
+    opacity: 0.9;
+    line-height: 1.6;
+  }
+
+  /* Blog Categories */
+  .blog-categories {
+    padding: 4rem 0;
+    background: white;
+  }
+
+  .categories-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .category-card {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    padding: 2rem;
+    text-align: center;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+  }
+
+  .category-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 15px 30px rgba(0,0,0,0.15);
+  }
+
+  /* Fixed Icon Centering */
+  .category-card__icon {
+    width: 4rem;
+    height: 4rem;
+    background: linear-gradient(135deg, var(--secondary-color), #657ced);
+    border-radius: 1rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 1rem;
+    color: white;
+    font-size: 1.8rem;
+    text-align: center;
+  }
+
+  .category-card__icon i {
+    line-height: 1;
+    display: block;
+  }
+
+  .category-card__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    color: var(--text-color);
+  }
+
+  .category-card__count {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+  }
+
+  .category-card__link {
+    color: var(--link-color);
+    text-decoration: none;
+    font-weight: 600;
+    transition: color 0.3s ease;
+  }
+
+  .category-card__link:hover {
+    color: var(--secondary-color);
+  }
+
+  /* Blog Posts Grid */
+  .blog-posts {
+    padding: 4rem 0;
+    background: var(--bg-color);
+  }
+
+  .blog-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    gap: 2rem;
+    margin-top: 3rem;
+  }
+
+  .blog-card {
+    background: var(--card-bg);
+    border-radius: 1rem;
+    overflow: hidden;
+    box-shadow: 0 8px 25px rgba(0,0,0,0.1);
+    transition: all 0.3s ease;
+    border: 1px solid var(--border-light);
+  }
+
+  .blog-card:hover {
+    transform: translateY(-8px);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.15);
+  }
+
+  .blog-card__image {
+    height: 200px;
+    overflow: hidden;
+    position: relative;
+  }
+
+  .blog-card__image img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.3s ease;
+  }
+
+  .blog-card:hover .blog-card__image img {
+    transform: scale(1.05);
+  }
+
+  .blog-card__category {
+    position: absolute;
+    top: 1rem;
+    left: 1rem;
+    background: var(--secondary-color);
+    color: white;
+    padding: 0.3rem 0.8rem;
+    border-radius: 20px;
+    font-size: 0.8rem;
+    font-weight: 600;
+  }
+
+  .blog-card__content {
+    padding: 1.5rem;
+  }
+
+  .blog-card__date {
+    color: var(--text-light);
+    font-size: 0.9rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .blog-card__title {
+    font-size: 1.3rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: var(--text-color);
+    line-height: 1.4;
+  }
+
+  .blog-card__title a {
+    color: inherit;
+    text-decoration: none;
+    transition: color 0.3s ease;
+  }
+
+  .blog-card__title a:hover {
+    color: var(--link-color);
+  }
+
+  .blog-card__excerpt {
+    color: var(--text-light);
+    line-height: 1.6;
+    margin-bottom: 1.5rem;
+  }
+
+  .blog-card__read-more {
+    color: var(--link-color);
+    font-weight: 600;
+    text-decoration: none;
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    transition: color 0.3s ease;
+  }
+
+  .blog-card__read-more:hover {
+    color: var(--secondary-color);
+  }
+
+  /* Newsletter Section - Fixed Background */
+  .newsletter {
+    background: var(--card-bg);
+    border-top: 1px solid var(--border-light);
+    padding: 4rem 0;
+  }
+
+  .newsletter__container {
+    max-width: 800px;
+    margin: 0 auto;
+    text-align: center;
+  }
+
+  .newsletter__title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+
+  .newsletter__description {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: var(--text-light);
+    margin-bottom: 2rem;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .newsletter__subscribe {
+    display: flex;
+    max-width: 500px;
+    margin: 0 auto;
+    gap: 1rem;
+    background: var(--bg-color);
+    padding: 0.5rem;
+    border-radius: 0.75rem;
+    border: 1px solid var(--border-light);
+  }
+
+  .newsletter__input {
+    flex: 1;
+    padding: 1rem 1.5rem;
+    border: none;
+    border-radius: 0.5rem;
+    font-size: 1rem;
+    background: transparent;
+    color: var(--text-color);
+  }
+
+  .newsletter__input:focus {
+    outline: none;
+  }
+
+  .newsletter__input::placeholder {
+    color: var(--text-light);
+  }
+
+  .newsletter__button {
+    padding: 1rem 2rem;
+    background: var(--gradient);
+    color: white;
+    border: none;
+    border-radius: 0.5rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    font-size: 1rem;
+  }
+
+  .newsletter__button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 10px 25px rgba(120,115,245,0.4);
+    background: linear-gradient(90deg, #5a47a3 30%, #5469d4 60%, #2ecc71 90%);
+    color: white;
+  }
+
+  /* Responsive Design */
+  @media screen and (max-width: 768px) {
+    .blog-hero__title {
+      font-size: 2rem;
+    }
+    
+    .categories-grid {
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    }
+    
+    .blog-grid {
+      grid-template-columns: 1fr;
+    }
+    
+    .newsletter__subscribe {
+      flex-direction: column;
+      gap: 1rem;
+    }
+    
+    .newsletter__title {
+      font-size: 2rem;
+    }
+  }
+
+  /* Scroll animation */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.8s cubic-bezier(.18,1.25,.90,1.13);
+  }
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  
+  .section-title {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    text-shadow: var(--shadow);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  </style>
+</head>
+
+<body>
+<!--===== HEADER =====-->
+<header class="l-header">
+  <nav class="nav bd-grid">
+    <div>
+      <a href="index.html" class="nav__logo">itanveer.tech</a>
+    </div>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
+        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+        <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+  </nav>
+</header>
+
+<main class="l-main">
+<!--===== BLOG HERO =====-->
+<section class="blog-hero section">
+  <div class="blog-hero__container bd-grid">
+    <div class="blog-hero__content">
+      <h1 class="blog-hero__title scroll-animate">Tech Blog & Tutorials</h1>
+      <p class="blog-hero__description scroll-animate">
+        Dive deep into Arduino programming, ESP32 IoT projects, MATLAB simulations, and electrical engineering concepts. 
+        Learn through hands-on tutorials and real-world project breakdowns.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!--===== BLOG CATEGORIES =====-->
+<section class="blog-categories section" id="categories">
+  <h2 class="section-title scroll-animate">Explore Categories</h2>
+  <div class="categories-grid bd-grid scroll-animate">
+    <div class="category-card">
+      <div class="category-card__icon">
+        <i class='bx bx-code-alt'></i>
+      </div>
+      <h3 class="category-card__title">Arduino Projects</h3>
+      <p class="category-card__count">12 posts</p>
+      <a href="#" class="category-card__link">Explore Arduino →</a>
+    </div>
+
+    <div class="category-card">
+      <div class="category-card__icon">
+        <i class='fas fa-microchip'></i>
+      </div>
+      <h3 class="category-card__title">ESP32 & IoT</h3>
+      <p class="category-card__count">8 posts</p>
+      <a href="#" class="category-card__link">Explore IoT →</a>
+    </div>
+
+    <div class="category-card">
+      <div class="category-card__icon">
+        <i class='fas fa-chart-line'></i>
+      </div>
+      <h3 class="category-card__title">MATLAB & Simulink</h3>
+      <p class="category-card__count">6 posts</p>
+      <a href="#" class="category-card__link">Explore MATLAB →</a>
+    </div>
+
+    <div class="category-card">
+      <div class="category-card__icon">
+        <i class='fas fa-bolt'></i>
+      </div>
+      <h3 class="category-card__title">Power Systems</h3>
+      <p class="category-card__count">5 posts</p>
+      <a href="#" class="category-card__link">Explore Power →</a>
+    </div>
+  </div>
+</section>
+
+<!--===== BLOG POSTS =====-->
+<section class="blog-posts section" id="blog-posts">
+  <h2 class="section-title scroll-animate">Latest Blog Posts</h2>
+  <div class="blog-grid bd-grid scroll-animate">
+    <!-- Blog Post 1 -->
+    <article class="blog-card">
+      <div class="blog-card__image">
+        <img src="assets/img/work1.jpeg" alt="Arduino Smart Home Automation">
+        <span class="blog-card__category">Arduino</span>
+      </div>
+      <div class="blog-card__content">
+        <time class="blog-card__date">December 15, 2024</time>
+        <h3 class="blog-card__title">
+          <a href="#">Complete Guide to Arduino Smart Home Automation</a>
+        </h3>
+        <p class="blog-card__excerpt">
+          Learn how to build a comprehensive smart home system using Arduino, sensors, and wireless modules. This tutorial covers everything from basic wiring to advanced automation scripts.
+        </p>
+        <a href="#" class="blog-card__read-more">
+          Read More <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
+    </article>
+
+    <!-- Blog Post 2 -->
+    <article class="blog-card">
+      <div class="blog-card__image">
+        <img src="assets/img/work2.jpg" alt="ESP32 IoT Weather Station">
+        <span class="blog-card__category">IoT</span>
+      </div>
+      <div class="blog-card__content">
+        <time class="blog-card__date">December 10, 2024</time>
+        <h3 class="blog-card__title">
+          <a href="#">Building an IoT Weather Station with ESP32</a>
+        </h3>
+        <p class="blog-card__excerpt">
+          Create a professional weather monitoring system that uploads data to the cloud. Features real-time monitoring, data logging, and mobile app integration.
+        </p>
+        <a href="#" class="blog-card__read-more">
+          Read More <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
+    </article>
+
+    <!-- Blog Post 3 -->
+    <article class="blog-card">
+      <div class="blog-card__image">
+        <img src="assets/img/work3.jpg" alt="MATLAB Power Systems Analysis">
+        <span class="blog-card__category">MATLAB</span>
+      </div>
+      <div class="blog-card__content">
+        <time class="blog-card__date">December 5, 2024</time>
+        <h3 class="blog-card__title">
+          <a href="#">Power Systems Analysis with MATLAB Simulink</a>
+        </h3>
+        <p class="blog-card__excerpt">
+          Master power system modeling and analysis using MATLAB Simulink. Learn to simulate complex electrical networks and analyze system stability.
+        </p>
+        <a href="#" class="blog-card__read-more">
+          Read More <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
+    </article>
+
+    <!-- Blog Post 4 -->
+    <article class="blog-card">
+      <div class="blog-card__image">
+        <img src="assets/img/work1.jpeg" alt="Smart Grid Technologies">
+        <span class="blog-card__category">Power Systems</span>
+      </div>
+      <div class="blog-card__content">
+        <time class="blog-card__date">November 28, 2024</time>
+        <h3 class="blog-card__title">
+          <a href="#">Introduction to Smart Grid Technologies</a>
+        </h3>
+        <p class="blog-card__excerpt">
+          Explore the fundamentals of smart grid systems, renewable energy integration, and the future of electrical power distribution networks.
+        </p>
+        <a href="#" class="blog-card__read-more">
+          Read More <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
+    </article>
+
+    <!-- Blog Post 5 -->
+    <article class="blog-card">
+      <div class="blog-card__image">
+        <img src="assets/img/work2.jpg" alt="Arduino Sensor Interfacing">
+        <span class="blog-card__category">Arduino</span>
+      </div>
+      <div class="blog-card__content">
+        <time class="blog-card__date">November 20, 2024</time>
+        <h3 class="blog-card__title">
+          <a href="#">Advanced Arduino Sensor Interfacing Techniques</a>
+        </h3>
+        <p class="blog-card__excerpt">
+          Learn professional techniques for interfacing various sensors with Arduino. Covers analog, digital, I2C, and SPI communication protocols.
+        </p>
+        <a href="#" class="blog-card__read-more">
+          Read More <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
+    </article>
+
+    <!-- Blog Post 6 -->
+    <article class="blog-card">
+      <div class="blog-card__image">
+        <img src="assets/img/work3.jpg" alt="IoT Security Best Practices">
+        <span class="blog-card__category">IoT</span>
+      </div>
+      <div class="blog-card__content">
+        <time class="blog-card__date">November 15, 2024</time>
+        <h3 class="blog-card__title">
+          <a href="#">IoT Security: Best Practices and Implementation</a>
+        </h3>
+        <p class="blog-card__excerpt">
+          Comprehensive guide to securing your IoT devices and networks. Learn about encryption, authentication, and secure communication protocols.
+        </p>
+        <a href="#" class="blog-card__read-more">
+          Read More <i class='bx bx-right-arrow-alt'></i>
+        </a>
+      </div>
+    </article>
+  </div>
+</section>
+
+<!--===== NEWSLETTER SIGNUP =====-->
+<section class="newsletter section">
+  <div class="newsletter__container bd-grid scroll-animate">
+    <div class="newsletter__content">
+      <h2 class="newsletter__title">Stay Updated</h2>
+      <p class="newsletter__description">
+        Get the latest Arduino tutorials, IoT project guides, and electrical engineering insights delivered to your inbox. Join our community of tech enthusiasts and never miss an update!
+      </p>
+    </div>
+    <div class="newsletter__form">
+      <form action="#" method="post" class="newsletter__subscribe">
+        <input type="email" placeholder="Enter your email address" class="newsletter__input" required>
+        <button type="submit" class="newsletter__button">Subscribe</button>
+      </form>
+    </div>
+  </div>
+</section>
+</main>
+
+<!--===== FOOTER =====-->
+<footer class="footer">
+  <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+  <div class="footer__social">
+    <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+    <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+    <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+  </div>
+  <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+</footer>
+
+<script>
+// Scroll animation
+function onScrollAnimate() {
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', onScrollAnimate);
+window.addEventListener('DOMContentLoaded', onScrollAnimate);
+
+// Stagger animation for category cards
+document.querySelectorAll('.category-card').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.1) + 's';
+});
+
+// Stagger animation for blog cards
+document.querySelectorAll('.blog-card').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.1) + 's';
+});
+</script>
+
+<!--===== SCROLL REVEAL =====-->
+<script src="https://unpkg.com/scrollreveal"></script>
+
+<!--===== MAIN JS =====-->
+<script src="assets/js/main.js"></script>
+
+</body>
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}</title>
+  
+  <meta name="description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="author" content="{{ site.author.name }}">
+  <meta name="keywords" content="{% if page.keywords %}{{ page.keywords }}{% else %}Arduino, ESP32, IoT, Smart Grid, Embedded Systems, MATLAB, Simulink, Tech Blog, Electrical Engineering{% endif %}">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="{{ page.url | absolute_url }}">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="{% if page.title %}{{ page.title }} | {% endif %}{{ site.title }}">
+  <meta name="twitter:description" content="{% if page.description %}{{ page.description }}{% else %}{{ site.description }}{% endif %}">
+  <meta name="twitter:image" content="{{ '/assets/img/about.png' | absolute_url }}">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+  <link rel="icon" href="{{ '/favicon.ico' | relative_url }}" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="{{ '/assets/css/styles.css' | relative_url }}">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Jekyll Feed -->
+  {% feed_meta %}
+  
+  <!-- Structured Data -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "{% if page.layout == 'post' %}BlogPosting{% else %}WebSite{% endif %}",
+    {% if page.layout == 'post' %}
+    "headline": "{{ page.title }}",
+    "description": "{{ page.description | default: page.excerpt | strip_html | truncate: 160 }}",
+    "author": {
+      "@type": "Person",
+      "name": "{{ site.author.name }}"
+    },
+    "datePublished": "{{ page.date | date_to_xmlschema }}",
+    "dateModified": "{{ page.date | date_to_xmlschema }}",
+    "image": "{{ page.image | default: '/assets/img/about.png' | absolute_url }}",
+    "url": "{{ page.url | absolute_url }}",
+    "mainEntityOfPage": "{{ page.url | absolute_url }}"
+    {% else %}
+    "name": "{{ site.title }}",
+    "description": "{{ site.description }}",
+    "url": "{{ site.url }}"
+    {% endif %}
+  }
+  </script>
+</head>
+
+<body>
+  <!--===== HEADER =====-->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <div>
+        <a href="{{ '/' | relative_url }}" class="nav__logo">itanveer.tech</a>
+      </div>
+
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          {% for nav_item in site.navigation %}
+          <li class="nav__item">
+            <a href="{{ nav_item.url | relative_url }}" class="nav__link{% if page.url == nav_item.url %} active-link{% endif %}">{{ nav_item.title }}</a>
+          </li>
+          {% endfor %}
+        </ul>
+      </div>
+
+      <div class="nav__toggle" id="nav-toggle">
+        <i class='bx bx-menu'></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="l-main">
+    {{ content }}
+  </main>
+
+  <!--===== FOOTER =====-->
+  <footer class="footer">
+    <p class="footer__title">{{ site.author.name }}</p>
+    <div class="footer__social">
+      <a href="{{ site.author.social.facebook }}" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+      <a href="{{ site.author.social.instagram }}" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+      <a href="{{ site.author.social.twitter }}" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+    </div>
+    <p class="footer__copy">&#169; {{ site.title }}. All rights reserved</p>
+  </footer>
+
+  <!--===== SCROLL REVEAL =====-->
+  <script src="https://unpkg.com/scrollreveal"></script>
+
+  <!--===== MAIN JS =====-->
+  <script src="{{ '/assets/js/main.js' | relative_url }}"></script>
+</body>
+</html>

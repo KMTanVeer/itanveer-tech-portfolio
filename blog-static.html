@@ -1,0 +1,574 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tech Blog - iTanveer</title>
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <style>
+        :root {
+            --first-color: #4070f4;
+            --first-color-second: #4070f4;
+            --first-color-alt: #3461db;
+            --first-color-lighter: #5e7cfa;
+            --title-color: #393939;
+            --text-color: #707070;
+            --text-color-light: #a6a6a6;
+            --input-color: #80809a;
+            --body-color: #fbfefd;
+            --container-color: #ffffff;
+            --scroll-bar-color: #c5c5c5;
+            --scroll-thumb-color: #a7a7a7;
+            --header-height: 3rem;
+            --big-font-size: 2rem;
+            --h1-font-size: 1.5rem;
+            --h2-font-size: 1.25rem;
+            --h3-font-size: 1.125rem;
+            --normal-font-size: .938rem;
+            --small-font-size: .813rem;
+            --smaller-font-size: .75rem;
+            --font-medium: 500;
+            --font-semi-bold: 600;
+            --mb-0-25: .25rem;
+            --mb-0-5: .5rem;
+            --mb-0-75: .75rem;
+            --mb-1: 1rem;
+            --mb-1-5: 1.5rem;
+            --mb-2: 2rem;
+            --mb-2-5: 2.5rem;
+            --mb-3: 3rem;
+            --z-tooltip: 10;
+            --z-fixed: 100;
+            --z-modal: 1000;
+        }
+
+        * {
+            box-sizing: border-box;
+            padding: 0;
+            margin: 0;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            margin: 0 0 var(--header-height) 0;
+            font-family: 'Poppins', sans-serif;
+            font-size: var(--normal-font-size);
+            background-color: var(--body-color);
+            color: var(--text-color);
+        }
+
+        h1, h2, h3, h4 {
+            color: var(--title-color);
+            font-weight: var(--font-semi-bold);
+        }
+
+        ul {
+            list-style: none;
+        }
+
+        a {
+            text-decoration: none;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+        }
+
+        /* Blog Hero Section */
+        .blog-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 4rem 0 2rem;
+            color: white;
+            text-align: center;
+        }
+
+        .blog-hero h1 {
+            font-size: 3rem;
+            color: white;
+            margin-bottom: 1rem;
+            font-weight: 700;
+        }
+
+        .blog-hero p {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        /* Container */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+        }
+
+        /* Category Filter Icons */
+        .category-filter {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            gap: 1rem;
+            padding: 2rem 0;
+            flex-wrap: wrap;
+        }
+
+        .filter-icon {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+            border: 2px solid #e9ecef;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            cursor: pointer;
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .filter-icon.active {
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            border-color: var(--first-color);
+            transform: scale(1.1);
+        }
+
+        .filter-icon i {
+            font-size: 1.5rem;
+            color: #6c757d;
+            transition: all 0.3s ease;
+        }
+
+        .filter-icon.active i {
+            color: white;
+        }
+
+        .filter-icon:hover {
+            transform: scale(1.05);
+            border-color: var(--first-color);
+        }
+
+        .filter-icon::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            width: 0;
+            height: 0;
+            background: rgba(64, 112, 244, 0.2);
+            border-radius: 50%;
+            transform: translate(-50%, -50%);
+            transition: all 0.4s ease;
+        }
+
+        .filter-icon:active::before {
+            width: 100px;
+            height: 100px;
+        }
+
+        /* Blog Grid */
+        .blog-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            padding: 2rem 0;
+        }
+
+        /* Enhanced Blog Cards */
+        .blog-card {
+            background: linear-gradient(135deg, #ffffff 0%, #fafbfc 100%);
+            border-radius: 1.25rem;
+            overflow: hidden;
+            box-shadow: 0 4px 24px rgba(0, 0, 0, 0.08);
+            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            border: 1px solid #e8ecef;
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .blog-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(64, 112, 244, 0.03), rgba(102, 126, 234, 0.03));
+            opacity: 0;
+            transition: opacity 0.3s ease;
+            pointer-events: none;
+        }
+
+        .blog-card:hover::before {
+            opacity: 1;
+        }
+
+        .blog-card.show,
+        .blog-card.animate-in {
+            opacity: 1;
+            transform: translateY(0) scale(1);
+        }
+
+        .blog-card.hidden {
+            opacity: 0;
+            transform: translateY(30px) scale(0.95);
+            pointer-events: none;
+        }
+
+        .blog-card:hover {
+            transform: translateY(-8px) scale(1.02);
+            box-shadow: 0 20px 45px rgba(64, 112, 244, 0.12);
+            border-color: #d1d9e6;
+        }
+
+        .blog-card__image {
+            height: 200px;
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 3rem;
+        }
+
+        .blog-card__content {
+            padding: 1.8rem;
+        }
+
+        .blog-card__date {
+            color: #6c757d;
+            font-size: 0.85rem;
+            font-weight: 500;
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-card__date::before {
+            content: '';
+            width: 4px;
+            height: 4px;
+            background: #4070f4;
+            border-radius: 50%;
+        }
+
+        .blog-card__title {
+            margin-bottom: 1rem;
+        }
+
+        .blog-card__title a {
+            color: #1a1a1a;
+            text-decoration: none;
+            font-size: 1.2rem;
+            font-weight: 700;
+            line-height: 1.4;
+            transition: all 0.3s ease;
+            background: linear-gradient(135deg, #1a1a1a, #1a1a1a);
+            background-size: 0% 2px;
+            background-repeat: no-repeat;
+            background-position: 0% 100%;
+        }
+
+        .blog-card__title a:hover {
+            color: #4070f4;
+            background-size: 100% 2px;
+            background-image: linear-gradient(135deg, #4070f4, #667eea);
+        }
+
+        .blog-card__excerpt {
+            color: #4a4a4a;
+            line-height: 1.7;
+            margin-bottom: 1.5rem;
+            font-size: 0.95rem;
+        }
+
+        .blog-card__meta {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding-top: 1.25rem;
+            border-top: 1px solid rgba(0, 0, 0, 0.08);
+            position: relative;
+        }
+
+        .blog-card__read-time {
+            color: #6c757d;
+            font-size: 0.8rem;
+            font-weight: 500;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-card__read-time::before {
+            content: '⏱';
+            font-size: 0.9rem;
+        }
+
+        .blog-card__link {
+            color: #4070f4;
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 1.5rem;
+            background: linear-gradient(135deg, rgba(64, 112, 244, 0.08), rgba(102, 126, 234, 0.08));
+            border: 1px solid rgba(64, 112, 244, 0.2);
+            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+
+        .blog-card__link:hover {
+            background: linear-gradient(135deg, #4070f4, #667eea);
+            color: white;
+            transform: translateX(3px);
+            border-color: #4070f4;
+            box-shadow: 0 4px 12px rgba(64, 112, 244, 0.3);
+        }
+
+        .blog-card__link::after {
+            content: '→';
+            transition: transform 0.3s ease;
+        }
+
+        .blog-card__link:hover::after {
+            transform: translateX(3px);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .blog-hero h1 {
+                font-size: 2rem;
+            }
+
+            .blog-hero p {
+                font-size: 1rem;
+            }
+
+            .blog-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+
+            .filter-icon {
+                width: 50px;
+                height: 50px;
+            }
+
+            .filter-icon i {
+                font-size: 1.2rem;
+            }
+
+            .container {
+                padding: 0 1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Blog Hero Section -->
+    <section class="blog-hero">
+        <div class="container">
+            <h1>Tech Blog</h1>
+            <p>Explore Arduino, ESP32, IoT projects, and electronics tutorials</p>
+        </div>
+    </section>
+
+    <!-- Category Filter Icons -->
+    <section class="category-filter">
+        <div class="container">
+            <div class="category-filter">
+                <div class="filter-icon active" data-filter="all" title="All Posts">
+                    <i class='bx bx-grid-alt'></i>
+                </div>
+                <div class="filter-icon" data-filter="arduino" title="Arduino">
+                    <i class='bx bx-chip'></i>
+                </div>
+                <div class="filter-icon" data-filter="esp32" title="ESP32">
+                    <i class='bx bx-wifi'></i>
+                </div>
+                <div class="filter-icon" data-filter="electronics" title="Electronics">
+                    <i class='bx bx-cog'></i>
+                </div>
+                <div class="filter-icon" data-filter="iot" title="IoT">
+                    <i class='bx bx-radio-circle-marked'></i>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Blog Posts Grid -->
+    <section class="blog-posts">
+        <div class="container">
+            <div class="blog-grid" id="blogGrid">
+                <!-- Blog Post 1 -->
+                <article class="blog-card show" data-category="arduino">
+                    <div class="blog-card__image">
+                        <i class='bx bx-chip'></i>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__date">August 9, 2025</div>
+                        <h2 class="blog-card__title">
+                            <a href="#post1">Arduino LED Matrix Display Project</a>
+                        </h2>
+                        <p class="blog-card__excerpt">
+                            Learn how to create stunning LED matrix displays with Arduino. Complete guide with code examples and circuit diagrams for your next project.
+                        </p>
+                        <div class="blog-card__meta">
+                            <span class="blog-card__read-time">5 min read</span>
+                            <a href="#post1" class="blog-card__link">Read More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 2 -->
+                <article class="blog-card show" data-category="esp32 iot">
+                    <div class="blog-card__image">
+                        <i class='bx bx-wifi'></i>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__date">August 8, 2025</div>
+                        <h2 class="blog-card__title">
+                            <a href="#post2">ESP32 WiFi Setup Quick Guide</a>
+                        </h2>
+                        <p class="blog-card__excerpt">
+                            Master ESP32 WiFi connectivity with this comprehensive guide. From basic setup to advanced configurations for IoT projects.
+                        </p>
+                        <div class="blog-card__meta">
+                            <span class="blog-card__read-time">7 min read</span>
+                            <a href="#post2" class="blog-card__link">Read More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 3 -->
+                <article class="blog-card show" data-category="arduino electronics">
+                    <div class="blog-card__image">
+                        <i class='bx bx-cog'></i>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__date">July 15, 2025</div>
+                        <h2 class="blog-card__title">
+                            <a href="#post3">Arduino Digital Multimeter</a>
+                        </h2>
+                        <p class="blog-card__excerpt">
+                            Build your own digital multimeter using Arduino. Measure voltage, current, and resistance with precision and display results on LCD.
+                        </p>
+                        <div class="blog-card__meta">
+                            <span class="blog-card__read-time">10 min read</span>
+                            <a href="#post3" class="blog-card__link">Read More</a>
+                        </div>
+                    </div>
+                </article>
+
+                <!-- Blog Post 4 -->
+                <article class="blog-card show" data-category="esp32 iot">
+                    <div class="blog-card__image">
+                        <i class='bx bx-radio-circle-marked'></i>
+                    </div>
+                    <div class="blog-card__content">
+                        <div class="blog-card__date">January 10, 2025</div>
+                        <h2 class="blog-card__title">
+                            <a href="#post4">ESP32 IoT Sensors Dashboard</a>
+                        </h2>
+                        <p class="blog-card__excerpt">
+                            Create a comprehensive IoT dashboard with ESP32 and multiple sensors. Real-time data monitoring and cloud integration.
+                        </p>
+                        <div class="blog-card__meta">
+                            <span class="blog-card__read-time">12 min read</span>
+                            <a href="#post4" class="blog-card__link">Read More</a>
+                        </div>
+                    </div>
+                </article>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Category filtering functionality
+        const filterIcons = document.querySelectorAll('.filter-icon');
+        const blogCards = document.querySelectorAll('.blog-card');
+
+        // Animate cards on load
+        window.addEventListener('load', () => {
+            blogCards.forEach((card, index) => {
+                setTimeout(() => {
+                    card.classList.add('animate-in');
+                }, index * 150);
+            });
+        });
+
+        // Category filtering
+        filterIcons.forEach(icon => {
+            icon.addEventListener('click', function() {
+                const filter = this.getAttribute('data-filter');
+                
+                // Update active state
+                filterIcons.forEach(i => i.classList.remove('active'));
+                this.classList.add('active');
+                
+                // Ripple effect
+                const ripple = document.createElement('div');
+                ripple.style.cssText = `
+                    position: absolute;
+                    border-radius: 50%;
+                    background: rgba(64, 112, 244, 0.3);
+                    transform: scale(0);
+                    animation: ripple 0.6s linear;
+                    pointer-events: none;
+                `;
+                
+                const rect = this.getBoundingClientRect();
+                const size = Math.max(rect.width, rect.height);
+                ripple.style.width = ripple.style.height = size + 'px';
+                ripple.style.left = '50%';
+                ripple.style.top = '50%';
+                ripple.style.transform = 'translate(-50%, -50%) scale(0)';
+                
+                this.appendChild(ripple);
+                
+                setTimeout(() => {
+                    ripple.remove();
+                }, 600);
+                
+                // Filter cards
+                blogCards.forEach((card, index) => {
+                    const categories = card.getAttribute('data-category');
+                    
+                    if (filter === 'all' || categories.includes(filter)) {
+                        setTimeout(() => {
+                            card.classList.remove('hidden');
+                            card.classList.add('show');
+                        }, index * 100);
+                    } else {
+                        card.classList.remove('show');
+                        card.classList.add('hidden');
+                    }
+                });
+            });
+        });
+
+        // Add ripple animation CSS
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes ripple {
+                to {
+                    transform: translate(-50%, -50%) scale(2);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(style);
+    </script>
+</body>
+</html>

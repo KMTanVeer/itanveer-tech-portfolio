@@ -1,0 +1,24 @@
+<!-- SVG Placeholder for project2.jpg -->
+<svg xmlns="http://www.w3.org/2000/svg" width="600" height="400" viewBox="0 0 600 400">
+  <defs>
+    <linearGradient id="projGrad2" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#3498db;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#2980b9;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  <rect width="600" height="400" fill="url(#projGrad2)"/>
+  <rect x="200" y="100" width="200" height="200" rx="15" fill="rgba(255,255,255,0.2)"/>
+  <rect x="220" y="120" width="160" height="80" rx="8" fill="rgba(255,255,255,0.3)"/>
+  <rect x="230" y="130" width="40" height="8" rx="4" fill="rgba(255,255,255,0.8)"/>
+  <rect x="280" y="130" width="50" height="8" rx="4" fill="rgba(255,255,255,0.8)"/>
+  <rect x="340" y="130" width="30" height="8" rx="4" fill="rgba(255,255,255,0.8)"/>
+  <rect x="230" y="150" width="60" height="6" rx="3" fill="rgba(255,255,255,0.6)"/>
+  <rect x="230" y="165" width="80" height="6" rx="3" fill="rgba(255,255,255,0.6)"/>
+  <rect x="230" y="180" width="70" height="6" rx="3" fill="rgba(255,255,255,0.6)"/>
+  <rect x="220" y="220" width="160" height="60" rx="8" fill="rgba(255,255,255,0.3)"/>
+  <circle cx="250" cy="250" r="15" fill="rgba(255,255,255,0.6)"/>
+  <circle cx="300" cy="250" r="15" fill="rgba(255,255,255,0.6)"/>
+  <circle cx="350" cy="250" r="15" fill="rgba(255,255,255,0.6)"/>
+  <text x="300" y="340" font-family="Arial, sans-serif" font-size="18" font-weight="bold" text-anchor="middle" fill="white">Arduino Digital Multimeter</text>
+  <text x="300" y="365" font-family="Arial, sans-serif" font-size="13" text-anchor="middle" fill="rgba(255,255,255,0.8)">High-Precision Measurement Tool</text>
+</svg>

@@ -1,0 +1,487 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects</title>
+  <meta name="description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Arduino projects, ESP32 IoT, Smart Grid projects, MATLAB Simulink, embedded systems, engineering projects">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/projects.html">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECTS HEADER =====-->
+        <section class="projects-header section reveal">
+            <div class="bd-grid">
+                <h1 class="projects-header__title">Projects</h1>
+                <p class="projects-header__subtitle">Detailed write-ups of my key engineering projects and experiments</p>
+            </div>
+        </section>
+
+        <!--===== PROJECT CATEGORIES =====-->
+        <section class="project-categories section reveal-scale">
+            <div class="bd-grid">
+                <h2 class="section-title">Project Categories</h2>
+                <div class="categories-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="arduino">Arduino</button>
+                    <button class="filter-btn" data-filter="iot">IoT & ESP32</button>
+                    <button class="filter-btn" data-filter="matlab">MATLAB/Simulink</button>
+                    <button class="filter-btn" data-filter="power">Power Systems</button>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FEATURED PROJECTS =====-->
+        <section class="featured-projects section reveal">
+            <div class="bd-grid">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="projects-grid">
+                    <!-- Arduino Multimeter -->
+                    <div class="project-card featured reveal-left" data-category="arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-multimeter.jpg" alt="Arduino Digital Multimeter" onerror="this.src='assets/img/work1.jpeg'">
+                            <div class="project-card__overlay">
+                                <a href="project-arduino-multimeter.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/arduino-multimeter" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Arduino Digital Multimeter</h3>
+                            <p class="project-card__description">A precision digital multimeter built using Arduino Uno, capable of measuring DC/AC voltage, current, and resistance with high accuracy. Features include LCD display, auto-ranging, and data logging capabilities.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Create a cost-effective, accurate digital measuring instrument
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> Arduino IDE, Proteus simulation, KiCad for PCB design
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> Achieving high precision, calibration, noise reduction
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Results:</strong> ±1% accuracy for voltage, ±2% for current measurements
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino Uno</span>
+                                <span class="tag">C++</span>
+                                <span class="tag">LCD Display</span>
+                                <span class="tag">ADC</span>
+                                <span class="tag">Instrumentation</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Distance Protection System -->
+                    <div class="project-card featured reveal-scale" data-category="matlab power">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-protection.jpg" alt="Distance Protection System" onerror="this.src='assets/img/work2.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-distance-protection.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/distance-protection" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Distance Protection with MATLAB Simulink</h3>
+                            <p class="project-card__description">Advanced power system protection scheme implemented in MATLAB Simulink for transmission line fault detection and isolation. Includes impedance calculation, fault classification, and trip signal generation.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Develop reliable transmission line protection system
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> MATLAB Simulink, Power Systems Toolbox, Scope analysis
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> Fault classification, setting coordination, CT/PT modeling
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Results:</strong> 98% fault detection accuracy, <100ms trip time
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Simulink</span>
+                                <span class="tag">Power Systems</span>
+                                <span class="tag">Protection Relays</span>
+                                <span class="tag">Fault Analysis</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- ESP32 IoT System -->
+                    <div class="project-card featured reveal-right" data-category="iot">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-esp32.jpg" alt="ESP32 IoT Sensor Network" onerror="this.src='assets/img/work3.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-esp32-iot.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/esp32-iot-sensors" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--ongoing">In Progress</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">ESP32 IoT Sensor Network</h3>
+                            <p class="project-card__description">Comprehensive IoT solution using ESP32 for environmental monitoring with multiple sensors, cloud integration via ThingSpeak/Firebase, and real-time data visualization dashboard.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Create scalable IoT monitoring system
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> Arduino IDE, ThingSpeak, Firebase, React dashboard
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> Power management, wireless reliability, data processing
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Next Steps:</strong> Mobile app development, machine learning integration
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">ESP32</span>
+                                <span class="tag">WiFi</span>
+                                <span class="tag">Sensors</span>
+                                <span class="tag">Cloud IoT</span>
+                                <span class="tag">Dashboard</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== OTHER PROJECTS =====-->
+        <section class="other-projects section reveal">
+            <div class="bd-grid">
+                <h2 class="section-title">Other Projects</h2>
+                
+                <div class="projects-grid">
+                    <!-- Smart Home Automation -->
+                    <div class="project-card reveal-left" data-category="iot arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-smart-home.jpg" alt="Smart Home Automation" onerror="this.src='assets/img/work1.jpeg'">
+                            <div class="project-card__overlay">
+                                <a href="project-smart-home.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Smart Home Automation System</h3>
+                            <p class="project-card__description">Arduino-based home automation with relay control, mobile app interface, and voice command integration.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">Bluetooth</span>
+                                <span class="tag">Relay Control</span>
+                                <span class="tag">Mobile App</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Temperature Monitoring -->
+                    <div class="project-card reveal-scale" data-category="arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-temp.jpg" alt="Temperature Monitoring" onerror="this.src='assets/img/work2.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-temperature.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Multi-Point Temperature Monitoring</h3>
+                            <p class="project-card__description">Industrial temperature monitoring system using DS18B20 sensors with data logging and alert system.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">DS18B20</span>
+                                <span class="tag">Data Logging</span>
+                                <span class="tag">Alerts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Power Quality Analyzer -->
+                    <div class="project-card reveal-right" data-category="matlab power">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-power-quality.jpg" alt="Power Quality Analyzer" onerror="this.src='assets/img/work3.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-power-quality.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--ongoing">In Progress</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Power Quality Analysis Tool</h3>
+                            <p class="project-card__description">MATLAB-based tool for analyzing power quality parameters including harmonics, voltage sags, and flicker.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">FFT Analysis</span>
+                                <span class="tag">Power Quality</span>
+                                <span class="tag">GUI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Station -->
+                    <div class="project-card reveal-left" data-category="iot">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-weather.jpg" alt="Weather Station" onerror="this.src='assets/img/work1.jpeg'">
+                            <div class="project-card__overlay">
+                                <a href="project-weather-station.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--planning">Planning</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">IoT Weather Station</h3>
+                            <p class="project-card__description">Comprehensive weather monitoring station with ESP32, multiple environmental sensors, and web dashboard.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">ESP32</span>
+                                <span class="tag">Weather Sensors</span>
+                                <span class="tag">Web Interface</span>
+                                <span class="tag">Data Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LED Matrix Display -->
+                    <div class="project-card reveal-scale" data-category="arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-led-matrix.jpg" alt="LED Matrix Display" onerror="this.src='assets/img/work2.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-led-matrix.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Programmable LED Matrix Display</h3>
+                            <p class="project-card__description">8x8 LED matrix display system with text scrolling, animations, and mobile app control interface.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">LED Matrix</span>
+                                <span class="tag">Animations</span>
+                                <span class="tag">Bluetooth</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Circuit Simulator -->
+                    <div class="project-card" data-category="matlab">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-simulator.jpg" alt="Circuit Simulator" onerror="this.src='assets/img/work3.jpg'">
+                            <div class="project-card__overlay">
+                                <a href="project-circuit-simulator.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--ongoing">In Progress</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Basic Circuit Simulator</h3>
+                            <p class="project-card__description">Educational circuit simulation tool built in MATLAB for analyzing basic electrical circuits and components.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Circuit Analysis</span>
+                                <span class="tag">Educational Tool</span>
+                                <span class="tag">GUI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT STATS =====-->
+        <section class="project-stats section reveal">
+            <div class="bd-grid">
+                <div class="stats-grid">
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="15">0+</div>
+                        <div class="stat-card__label">Completed Projects</div>
+                    </div>
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="5">0</div>
+                        <div class="stat-card__label">Ongoing Projects</div>
+                    </div>
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="8">0</div>
+                        <div class="stat-card__label">GitHub Repositories</div>
+                    </div>
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="500">0+</div>
+                        <div class="stat-card__label">Lines of Code</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/projects-filter.js"></script>
+
+    <!-- Scroll Reveal Animation Script -->
+    <script>
+        // Animated Counter Function
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100; // Adjust speed by changing divisor
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                // Format the display based on the target value
+                let displayValue = Math.floor(current);
+                if (target === 15) {
+                    element.textContent = displayValue + '+';
+                } else if (target === 500) {
+                    element.textContent = displayValue + '+';
+                } else {
+                    element.textContent = displayValue;
+                }
+            }, 30); // Update every 30ms for smooth animation
+        }
+
+        // Scroll Reveal Animation
+        function scrollReveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible && !element.classList.contains('active')) {
+                    element.classList.add('active');
+                    
+                    // Check if this is a stat card and animate counter
+                    if (element.classList.contains('stat-card')) {
+                        const counterElement = element.querySelector('.stat-card__number');
+                        const target = parseInt(counterElement.getAttribute('data-target'));
+                        
+                        // Start counter animation after a short delay
+                        setTimeout(() => {
+                            animateCounter(counterElement, target);
+                        }, 400); // Delay to let the scale animation start first
+                    }
+                }
+            });
+        }
+
+        // Initial scroll reveal check and scroll event listener
+        window.addEventListener('load', scrollReveal);
+        window.addEventListener('scroll', scrollReveal);
+    </script>
+
+    <style>
+        /* Scroll Reveal Animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+    </style>
+</body>
+</html>

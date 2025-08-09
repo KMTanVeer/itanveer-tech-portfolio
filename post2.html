@@ -1,0 +1,308 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ESP32 WiFi Setup Quick Guide - iTanveer Tech Blog</title>
+    <meta name="description" content="Master ESP32 WiFi connectivity with this comprehensive guide. From basic setup to advanced configurations for IoT projects.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        .blog-post {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .blog-post__header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post__title {
+            font-size: 2.5rem;
+            color: var(--title-color);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post__meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post__content {
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .blog-post__content h2 {
+            color: var(--title-color);
+            margin: 2rem 0 1rem;
+        }
+        
+        .blog-post__content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post__content code {
+            background: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .blog-post__content pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--first-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-blog:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="section bd-grid">
+            <a href="blog.html" class="back-to-blog">
+                <i class='bx bx-arrow-back'></i>
+                Back to Blog
+            </a>
+            
+            <article class="blog-post">
+                <div class="blog-post__header">
+                    <h1 class="blog-post__title">ESP32 WiFi Setup Quick Guide</h1>
+                    <div class="blog-post__meta">
+                        <span><i class='bx bx-calendar'></i> August 8, 2025</span>
+                        <span><i class='bx bx-time'></i> 7 min read</span>
+                        <span><i class='bx bx-tag'></i> ESP32, IoT</span>
+                    </div>
+                </div>
+                
+                <div class="blog-post__content">
+                    <p>The ESP32 is a powerful microcontroller with built-in WiFi and Bluetooth capabilities, making it perfect for IoT projects. In this guide, I'll show you how to set up WiFi connectivity on your ESP32 and explore various configuration options.</p>
+                    
+                    <h2>Prerequisites</h2>
+                    <ul>
+                        <li>ESP32 development board</li>
+                        <li>Arduino IDE with ESP32 board package</li>
+                        <li>USB cable for programming</li>
+                        <li>WiFi network credentials</li>
+                    </ul>
+                    
+                    <h2>Basic WiFi Connection</h2>
+                    <p>Let's start with a simple WiFi connection example:</p>
+                    
+                    <pre><code>#include &lt;WiFi.h&gt;
+
+const char* ssid = "YOUR_WIFI_NAME";
+const char* password = "YOUR_WIFI_PASSWORD";
+
+void setup() {
+  Serial.begin(115200);
+  delay(1000);
+  
+  Serial.println("Connecting to WiFi...");
+  WiFi.begin(ssid, password);
+  
+  while (WiFi.status() != WL_CONNECTED) {
+    delay(1000);
+    Serial.print(".");
+  }
+  
+  Serial.println();
+  Serial.println("WiFi connected!");
+  Serial.print("IP address: ");
+  Serial.println(WiFi.localIP());
+}
+
+void loop() {
+  // Your main code here
+}</code></pre>
+                    
+                    <h2>Advanced WiFi Configuration</h2>
+                    <p>For more robust applications, consider these advanced features:</p>
+                    
+                    <h3>1. Connection Status Monitoring</h3>
+                    <pre><code>void checkWiFiConnection() {
+  if (WiFi.status() != WL_CONNECTED) {
+    Serial.println("WiFi connection lost. Reconnecting...");
+    WiFi.begin(ssid, password);
+    
+    int attempts = 0;
+    while (WiFi.status() != WL_CONNECTED && attempts < 20) {
+      delay(500);
+      Serial.print(".");
+      attempts++;
+    }
+    
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.println("\nReconnected to WiFi");
+    } else {
+      Serial.println("\nFailed to reconnect");
+    }
+  }
+}</code></pre>
+                    
+                    <h3>2. Multiple Network Support</h3>
+                    <pre><code>struct WiFiNetwork {
+  const char* ssid;
+  const char* password;
+};
+
+WiFiNetwork networks[] = {
+  {"Home_WiFi", "home_password"},
+  {"Office_WiFi", "office_password"},
+  {"Mobile_Hotspot", "mobile_password"}
+};
+
+void connectToAvailableNetwork() {
+  int numNetworks = sizeof(networks) / sizeof(networks[0]);
+  
+  for (int i = 0; i < numNetworks; i++) {
+    Serial.print("Trying network: ");
+    Serial.println(networks[i].ssid);
+    
+    WiFi.begin(networks[i].ssid, networks[i].password);
+    
+    int attempts = 0;
+    while (WiFi.status() != WL_CONNECTED && attempts < 10) {
+      delay(1000);
+      attempts++;
+    }
+    
+    if (WiFi.status() == WL_CONNECTED) {
+      Serial.println("Connected successfully!");
+      return;
+    }
+  }
+  
+  Serial.println("Failed to connect to any network");
+}</code></pre>
+                    
+                    <h2>WiFi Modes</h2>
+                    <p>The ESP32 supports different WiFi modes:</p>
+                    
+                    <h3>Station Mode (STA)</h3>
+                    <p>Connects to an existing WiFi network:</p>
+                    <pre><code>WiFi.mode(WIFI_STA);
+WiFi.begin(ssid, password);</code></pre>
+                    
+                    <h3>Access Point Mode (AP)</h3>
+                    <p>Creates its own WiFi network:</p>
+                    <pre><code>WiFi.mode(WIFI_AP);
+WiFi.softAP("ESP32_Hotspot", "password123");</code></pre>
+                    
+                    <h3>Dual Mode (AP + STA)</h3>
+                    <p>Acts as both client and access point:</p>
+                    <pre><code>WiFi.mode(WIFI_AP_STA);
+WiFi.begin(ssid, password);
+WiFi.softAP("ESP32_Hotspot", "password123");</code></pre>
+                    
+                    <h2>Useful WiFi Functions</h2>
+                    <ul>
+                        <li><code>WiFi.localIP()</code> - Get assigned IP address</li>
+                        <li><code>WiFi.RSSI()</code> - Get signal strength</li>
+                        <li><code>WiFi.macAddress()</code> - Get MAC address</li>
+                        <li><code>WiFi.disconnect()</code> - Disconnect from network</li>
+                        <li><code>WiFi.scanNetworks()</code> - Scan for available networks</li>
+                    </ul>
+                    
+                    <h2>Troubleshooting</h2>
+                    <p>Common issues and solutions:</p>
+                    <ul>
+                        <li><strong>Connection fails:</strong> Check SSID and password spelling</li>
+                        <li><strong>Weak signal:</strong> Move closer to router or use external antenna</li>
+                        <li><strong>Frequent disconnections:</strong> Implement auto-reconnect logic</li>
+                        <li><strong>Slow connection:</strong> Check for interference on 2.4GHz band</li>
+                    </ul>
+                    
+                    <h2>Best Practices</h2>
+                    <ul>
+                        <li>Always check connection status before transmitting data</li>
+                        <li>Use WiFiManager library for dynamic configuration</li>
+                        <li>Implement connection timeout and retry logic</li>
+                        <li>Store credentials securely (consider EEPROM or SPIFFS)</li>
+                        <li>Monitor power consumption in battery-powered projects</li>
+                    </ul>
+                    
+                    <h2>Next Steps</h2>
+                    <p>Now that you have WiFi connectivity, you can explore:</p>
+                    <ul>
+                        <li>HTTP client and server implementations</li>
+                        <li>MQTT for IoT messaging</li>
+                        <li>OTA (Over-The-Air) updates</li>
+                        <li>WebSocket communication</li>
+                        <li>Integration with cloud services</li>
+                    </ul>
+                    
+                    <p>WiFi connectivity opens up endless possibilities for your ESP32 projects. Happy coding!</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

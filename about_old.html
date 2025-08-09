@@ -1,0 +1,587 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Me | itanveer.tech - Tanveer's Tech Journey</title>
+  <meta name="description" content="Learn about Kawsar Mahmud Tanveer Khan - a passionate EEE student exploring embedded systems, IoT, and smart grid technologies through hands-on projects and continuous learning.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Tanveer Khan, EEE student, embedded systems, IoT enthusiast, tech blogger, Arduino projects">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/about.html">
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="About Me | itanveer.tech">
+  <meta name="twitter:description" content="Learn about Tanveer's tech journey, passion for embedded systems, and commitment to sharing knowledge through blogging.">
+  <meta name="twitter:image" content="assets/img/about.png">
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  <link rel="icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <style>
+  :root {
+    --bg-color: #fff;
+    --text-color: #222;
+    --secondary-color: #7873f5;
+    --link-color: #657ced;
+    --shadow: 0 3px 12px rgba(120,115,245,0.18);
+    --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
+  }
+  body {
+    background: var(--bg-color);
+    color: var(--text-color);
+  }
+  body[data-theme="dark"] {
+    --bg-color: #18191a;
+    --text-color: #f1f1f1;
+    --secondary-color: #43e97b;
+    --link-color: #43e97b;
+    --shadow: 0 3px 12px rgba(67,233,123,0.10);
+    --gradient: linear-gradient(90deg,#43e97b 10%, #657ced 60%, #7f53ac 90%);
+  }
+  /* Scroll animation */
+  .scroll-animate {
+    opacity: 0;
+    transform: translateY(30px) scale(0.97);
+    transition: all 0.8s cubic-bezier(.18,1.25,.90,1.13);
+  }
+  .scroll-animate.visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+  .section-title,
+  .about__subtitle {
+    background: var(--gradient);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    text-shadow: var(--shadow);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+  }
+  .about__text, .about__container b, .about__container li, .about__container span {
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    color: var(--text-color);
+    text-shadow: 0 2px 8px rgba(67,233,123,0.07);
+    font-size: 1.09em;
+  }
+  .about__container ul {
+    padding-left: 1.2em;
+  }
+  .about__container b {
+    color: var(--secondary-color);
+    font-weight: 700;
+  }
+  .about__container li {
+    margin-bottom: 0.25em;
+  }
+  a { color: var(--link-color); }
+
+  /* Header/Nav adjustments for dark toggle button placement */
+  .l-header {
+    width: 100%;
+    background: transparent;
+    z-index: 100;
+  }
+  .nav.bd-grid {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: nowrap;
+    position: relative;
+  }
+  .nav__logo {
+    font-size: 1.4em;
+    font-weight: bold;
+    letter-spacing: 1px;
+    color: var(--secondary-color);
+    text-decoration: none;
+    transition: color 0.2s;
+  }
+  .nav__menu {
+    flex: 1 1 auto;
+  }
+
+  /* Dark mode toggle button: in nav, round, floating */
+  #dark-mode-toggle {
+    order: 3;
+    margin-left: 0.7em;
+    margin-right: 0.5em;
+    width: 2.6em;
+    height: 2.6em;
+    border-radius: 50%;
+    background: #fff;
+    color: #555;
+    border: none;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 2px 8px rgba(120,115,245,0.09);
+    font-size: 1.3em;
+    cursor: pointer;
+    transition: background 0.23s, color 0.23s, box-shadow 0.23s, transform 0.18s;
+    outline: none;
+    position: relative;
+    z-index: 10;
+  }
+  #dark-mode-toggle:hover {
+    background: #f5f5fd;
+    color: var(--secondary-color);
+    transform: scale(1.07) rotate(-7deg);
+    box-shadow: 0 6px 20px rgba(120, 115, 245, .17), 0 3px 16px rgba(67,233,123,0.08);
+  }
+  body[data-theme="dark"] #dark-mode-toggle {
+    background: #23243a;
+    color: #43e97b;
+  }
+  body[data-theme="dark"] #dark-mode-toggle:hover {
+    background: #18191a;
+    color: #fff;
+    box-shadow: 0 6px 20px rgba(67,233,123,.14), 0 3px 16px rgba(120,115,245,0.09);
+  }
+  .nav__toggle {
+    order: 4;
+  }
+
+  @media (max-width: 900px) {
+    .nav.bd-grid {
+      flex-wrap: wrap;
+      padding-left: 0.4em;
+      padding-right: 0.4em;
+    }
+    #dark-mode-toggle {
+      width: 2.3em;
+      height: 2.3em;
+      font-size: 1.15em;
+      margin-left: 0.45em;
+      margin-right: 0.2em;
+    }
+  }
+  @media (max-width: 600px) {
+    .nav__logo {
+      font-size: 1.15em;
+    }
+    #dark-mode-toggle {
+      width: 2.1em;
+      height: 2.1em;
+      font-size: 1em;
+      margin-left: 0.29em;
+      margin-right: 0.13em;
+    }
+  }
+
+
+  /* Education Section Styling */
+  .education__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  .education__data {
+    display: flex;
+    align-items: flex-start;
+    background: #f7f7fc;
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(100,90,255,0.05);
+    margin-bottom: 0.6em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 1.5em;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  body[data-theme="dark"] .education__data {
+    background: #23243a;
+    box-shadow: 0 2px 8px rgba(67,233,123,0.05);
+  }
+  .education__names {
+    display: flex;
+    align-items: center;
+    gap: 0.8em;
+    min-width: 170px;
+  }
+  .education__icon {
+    font-size: 2rem;
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.45em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    margin-right: 0.3em;
+    transition: background 0.4s;
+  }
+  body[data-theme="dark"] .education__icon {
+    background: #18191a;
+  }
+  .education__degree {
+    font-weight: bold;
+    font-size: 1.15em;
+  }
+  .education__details {
+    display: flex;
+    flex-direction: column;
+    gap: 0.3em;
+  }
+  .education__institute {
+    font-size: 1em;
+    color: var(--secondary-color);
+  }
+  .education__year {
+    font-size: 0.98em;
+    color: #888;
+  }
+  .education__remark {
+    font-size: 0.95em;
+    color: #43e97b;
+    font-style: italic;
+  }
+  @media (max-width: 600px) {
+    .education__data { flex-direction: column; align-items: flex-start; }
+    .education__names { min-width: unset; }
+  }
+
+  /* Profile Highlights Section - match education style */
+  .profile__container {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2em;
+  }
+  .profile__data {
+    display: flex;
+    align-items: flex-start;
+    gap: 1.2em;
+    background: #f7f7fc;
+    padding: 1em 1.5em;
+    border-radius: 1em;
+    box-shadow: 0 2px 8px rgba(100,90,255,0.05);
+    margin-bottom: 0.6em;
+    flex-wrap: wrap;
+    flex-direction: row;
+    transition: background 0.4s, box-shadow 0.4s;
+  }
+  body[data-theme="dark"] .profile__data {
+    background: #23243a;
+    box-shadow: 0 2px 8px rgba(67,233,123,0.05);
+  }
+  .profile__icon-label {
+    display: flex;
+    align-items: center;
+    gap: 0.6em;
+    min-width: 120px;
+  }
+  .profile__icon {
+    font-size: 2em;
+    background: #fff;
+    border-radius: 50%;
+    padding: 0.4em;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    transition: background 0.4s;
+  }
+  body[data-theme="dark"] .profile__icon {
+    background: #18191a;
+  }
+  .profile__label {
+    font-weight: bold;
+    font-size: 1.07em;
+  }
+  .profile__details {
+    font-size: 1em;
+    color: #444;
+  }
+  body[data-theme="dark"] .profile__details {
+    color: #f1f1f1;
+  }
+  .profile__details ul {
+    margin: 0;
+    padding-left: 1.2em;
+  }
+  .profile__details li {
+    margin-bottom: 0.2em;
+  }
+  .profile__social {
+    display: flex;
+    gap: 0.7em;
+    margin-top: 0.7em;
+  }
+  .profile__social-icon {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 2.4em;
+    height: 2.4em;
+    border-radius: 50%;
+    background: #fff;
+    color: #657ced;
+    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    font-size: 1.3em;
+    transition: background 0.25s, color 0.25s, transform 0.18s, border-color 0.18s;
+    border: 2px solid transparent;
+    text-decoration: none;
+    position: relative;
+  }
+  .profile__social-icon:hover {
+    background: linear-gradient(135deg, #657ced 60%, #43e97b 100%);
+    color: #fff;
+    border-color: #657ced;
+    transform: scale(1.11) rotate(-7deg);
+    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.10);
+  }
+  body[data-theme="dark"] .profile__social-icon {
+    background: #18191a;
+    color: #43e97b;
+    border-color: #23243a;
+  }
+  body[data-theme="dark"] .profile__social-icon:hover {
+    background: linear-gradient(135deg, #43e97b 0%, #7f53ac 100%);
+    color: #fff;
+    border-color: #43e97b;
+  }
+  @media (max-width: 600px) {
+    .profile__data {
+      flex-direction: column;
+      gap: 0.6em;
+      padding: 1em 0.7em;
+    }
+    .profile__icon-label {
+      min-width: 0;
+    }
+  }
+  </style>
+</head>
+<body>
+
+<!--===== HEADER =====-->
+<header class="l-header">
+  <nav class="nav bd-grid">
+    <div>
+      <a href="index.html" class="nav__logo">itanveer.tech</a>
+    </div>
+    <div class="nav__menu" id="nav-menu">
+      <ul class="nav__list">
+        <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+        <li class="nav__item"><a href="about.html" class="nav__link active-link">About</a></li>
+        <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+        <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+        <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+        <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+      </ul>
+    </div>
+    <!-- Dark Mode Button just before hamburger -->
+    <button id="dark-mode-toggle" title="Toggle dark mode">🌙</button>
+    <div class="nav__toggle" id="nav-toggle">
+      <i class='bx bx-menu'></i>
+    </div>
+  </nav>
+</header> 
+
+<section class="about section" id="about">
+  <h2 class="section-title scroll-animate">About Me</h2>
+  <div class="about__container bd-grid scroll-animate" style="align-items: flex-start;">
+    <!-- Profile Photo -->
+    <div class="about__img">
+      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(44,62,80,0.13);">
+    </div>
+    <div>
+      <!-- Brief Introduction -->
+      <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer</h2>
+      <p class="about__text" style="margin-bottom:1em;">
+        <b>Optimistic | Tech Explorer | EEE Student</b><br>
+        Hi! I’m an enthusiastic Electrical and Electronic Engineering student at Daffodil International University. I’m passionate about Networking, Communication, and leveraging technology to solve real-world problems.
+      </p>
+    </div>
+  </div>
+</section>
+<!--===== EDUCATION SECTION =====-->
+<section class="education section" id="education">
+  <h2 class="section-title scroll-animate">Education</h2>
+  <div class="education__container bd-grid">
+    <div class="education__data scroll-animate">
+      <div class="education__names">
+        <i class="fa-solid fa-user-graduate education__icon" style="color:#657ced"></i>
+        <span class="education__degree">B.Sc. in EEE</span>
+      </div>
+      <div class="education__details">
+        <span class="education__institute"><b>Daffodil International University</b></span>
+        <span class="education__year">2022 – Present</span>
+        <span class="education__remark">Major in Electronics</span>
+      </div>
+    </div>
+    <div class="education__data scroll-animate">
+      <div class="education__names">
+        <i class="fa-solid fa-building-columns education__icon" style="color:#43e97b"></i>
+        <span class="education__degree">HSC</span>
+      </div>
+      <div class="education__details">
+        <span class="education__institute"><b>BAF Shaheen College Dhaka</b></span>
+        <span class="education__year">2017 – 2019</span>
+        <span class="education__remark">Science</span>
+      </div>
+    </div>
+    <div class="education__data scroll-animate">
+      <div class="education__names">
+        <i class="fa-solid fa-school education__icon" style="color:#ff6ec4"></i>
+        <span class="education__degree">SSC</span>
+      </div>
+      <div class="education__details">
+        <span class="education__institute"><b>Dulai High School, Pabna</b></span>
+        <span class="education__year">2015 – 2017</span>
+        <span class="education__remark">Science</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!--===== PROFILE HIGHLIGHTS =====-->
+<section class="profile-highlights section" id="profile-highlights">
+  <h2 class="section-title scroll-animate">Profile Highlights</h2>
+  <div class="profile__container bd-grid">
+    <!-- Key Skills -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-screwdriver-wrench profile__icon" style="color:#657ced"></i>
+        <span class="profile__label"><b>Key Skills</b></span>
+      </div>
+      <div class="profile__details">
+        Networking, Embedded Systems, IoT, Programming (Basic), Problem Solving, Teamwork
+      </div>
+    </div>
+    <!-- Passions -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-fire profile__icon" style="color:#ff9153"></i>
+        <span class="profile__label"><b>Passions</b></span>
+      </div>
+      <div class="profile__details">
+        Building smart devices, exploring new tech, sharing knowledge
+      </div>
+    </div>
+    <!-- Achievements -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-trophy profile__icon" style="color:#ffd700"></i>
+        <span class="profile__label"><b>Achievements</b></span>
+      </div>
+      <ul class="profile__details">
+        <li>Demonstrated strong academic and technical skills through hands-on projects in embedded systems, network simulation, and smart grid security, including a thesis on cyber-physical threat detection in smart grid communication networks.</li>
+      </ul>
+    </div>
+    <!-- Highlight -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-lightbulb profile__icon" style="color:#43e97b"></i>
+        <span class="profile__label"><b>Highlight</b></span>
+      </div>
+      <div class="profile__details">
+        <li>Embedded Systems Projects with Arduino & ESP32</li>
+
+<li>Simulation Skills in GNS3, MATLAB & Simulink</li>
+
+<li>Standalone Solar Power System Design for Rural Bangladesh</li>
+      </div>
+    </div>
+    <!-- Hobbies -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-music profile__icon" style="color:#b47cff"></i>
+        <span class="profile__label"><b>Hobbies</b></span>
+      </div>
+      <div class="profile__details">
+        Riding bike, football, traveling, learning new things
+      </div>
+    </div>
+    <!-- Values -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-seedling profile__icon" style="color:#43e97b"></i>
+        <span class="profile__label"><b>Values</b></span>
+      </div>
+      <div class="profile__details">
+        Always stay curious and keep building
+      </div>
+    </div>
+    <!-- Let’s Connect with Social Icons -->
+    <div class="profile__data scroll-animate">
+      <div class="profile__icon-label">
+        <i class="fa-solid fa-handshake profile__icon" style="color:#7873f5"></i>
+        <span class="profile__label"><b>Let’s Connect!</b></span>
+      </div>
+      <div class="profile__details">
+        Learn more about <a href="#education" style="color:var(--link-color);text-decoration:underline;">Kawsar Mahmud Tanveer Khan</a> below.
+        <div class="profile__social">
+          <a href="https://facebook.com/itzzVeer" class="profile__social-icon" target="_blank" title="Facebook">
+            <i class="fab fa-facebook-f"></i>
+          </a>
+          <a href="https://x.com/itzzveer" class="profile__social-icon" target="_blank" title="Twitter/X">
+            <i class="fab fa-x-twitter"></i>
+          </a>
+          <a href="https://instagram.com/itzzveer" class="profile__social-icon" target="_blank" title="Instagram">
+            <i class="fab fa-instagram"></i>
+          </a>
+          <a href="https://linkedin.com/in/KawsarTanveer" class="profile__social-icon" target="_blank" title="LinkedIn">
+            <i class="fab fa-linkedin-in"></i>
+          </a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!--===== FOOTER =====-->
+<footer class="footer">
+  <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+  <p class="footer__copy">&#169; itzzveer. All rights reserved</p>
+</footer>
+
+<script>
+// Scroll animation
+function onScrollAnimate() {
+  document.querySelectorAll('.scroll-animate').forEach(el => {
+    const rect = el.getBoundingClientRect();
+    if (rect.top < window.innerHeight - 60) {
+      el.classList.add('visible');
+    }
+  });
+}
+window.addEventListener('scroll', onScrollAnimate);
+window.addEventListener('DOMContentLoaded', onScrollAnimate);
+
+// Stagger animation for education and profile highlights
+document.querySelectorAll('.education__data.scroll-animate').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.15) + 's';
+});
+document.querySelectorAll('.profile__data.scroll-animate').forEach((el, idx) => {
+  el.style.transitionDelay = (idx * 0.15) + 's'; // same as education
+});
+
+// Dark mode toggle
+const toggle = document.getElementById('dark-mode-toggle');
+function setTheme(isDark) {
+  if(isDark){
+    document.body.setAttribute('data-theme', 'dark');
+    toggle.textContent = '☀️';
+  }else{
+    document.body.removeAttribute('data-theme');
+    toggle.textContent = '🌙';
+  }
+  localStorage.setItem('theme', isDark ? 'dark' : 'light');
+}
+toggle.addEventListener('click', function() {
+  setTheme(document.body.getAttribute('data-theme') !== 'dark');
+});
+// On load: persist theme
+const isDark = localStorage.getItem('theme') === 'dark';
+setTheme(isDark);
+</script>
+
+   <!--===== SCROLL REVEAL =====-->
+        <script src="https://unpkg.com/scrollreveal"></script>
+
+        <!--===== MAIN JS =====-->
+        <script src="assets/js/main.js"></script>
+</body>
+</html>

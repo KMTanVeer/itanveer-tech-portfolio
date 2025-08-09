@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arduino LED Matrix Display Project - iTanveer Tech Blog</title>
+    <meta name="description" content="Learn how to create stunning LED matrix displays with Arduino. Complete guide with code examples and circuit diagrams.">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        .blog-post {
+            max-width: 800px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background: white;
+            border-radius: 1rem;
+            box-shadow: 0 4px 20px rgba(0,0,0,0.1);
+        }
+        
+        .blog-post__header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post__title {
+            font-size: 2.5rem;
+            color: var(--title-color);
+            margin-bottom: 1rem;
+        }
+        
+        .blog-post__meta {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+        }
+        
+        .blog-post__content {
+            line-height: 1.8;
+            color: var(--text-color);
+        }
+        
+        .blog-post__content h2 {
+            color: var(--title-color);
+            margin: 2rem 0 1rem;
+        }
+        
+        .blog-post__content p {
+            margin-bottom: 1.5rem;
+        }
+        
+        .blog-post__content code {
+            background: #f8f9fa;
+            padding: 0.2rem 0.4rem;
+            border-radius: 0.25rem;
+            font-family: 'Courier New', monospace;
+        }
+        
+        .blog-post__content pre {
+            background: #2d3748;
+            color: #e2e8f0;
+            padding: 1.5rem;
+            border-radius: 0.5rem;
+            overflow-x: auto;
+            margin: 1.5rem 0;
+        }
+        
+        .back-to-blog {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            color: var(--first-color);
+            text-decoration: none;
+            margin-bottom: 2rem;
+            font-weight: 500;
+            transition: all 0.3s ease;
+        }
+        
+        .back-to-blog:hover {
+            transform: translateX(-5px);
+        }
+    </style>
+</head>
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <section class="section bd-grid">
+            <a href="blog.html" class="back-to-blog">
+                <i class='bx bx-arrow-back'></i>
+                Back to Blog
+            </a>
+            
+            <article class="blog-post">
+                <div class="blog-post__header">
+                    <h1 class="blog-post__title">Arduino LED Matrix Display Project</h1>
+                    <div class="blog-post__meta">
+                        <span><i class='bx bx-calendar'></i> August 9, 2025</span>
+                        <span><i class='bx bx-time'></i> 5 min read</span>
+                        <span><i class='bx bx-tag'></i> Arduino</span>
+                    </div>
+                </div>
+                
+                <div class="blog-post__content">
+                    <p>LED matrix displays are one of the most exciting projects you can build with Arduino. They allow you to create stunning visual effects, scrolling text, animations, and even simple games. In this comprehensive guide, I'll walk you through everything you need to know to create your own LED matrix display.</p>
+                    
+                    <h2>Components Required</h2>
+                    <ul>
+                        <li>Arduino Uno or Nano</li>
+                        <li>8x8 LED Matrix (MAX7219 based)</li>
+                        <li>Jumper wires</li>
+                        <li>Breadboard</li>
+                        <li>5V Power supply</li>
+                    </ul>
+                    
+                    <h2>Circuit Diagram</h2>
+                    <p>Connect the LED matrix to your Arduino using the following pin configuration:</p>
+                    <ul>
+                        <li>VCC → 5V</li>
+                        <li>GND → GND</li>
+                        <li>DIN → Digital Pin 12</li>
+                        <li>CS → Digital Pin 10</li>
+                        <li>CLK → Digital Pin 11</li>
+                    </ul>
+                    
+                    <h2>Arduino Code</h2>
+                    <p>Here's the complete code to get you started:</p>
+                    
+                    <pre><code>#include &lt;LedControl.h&gt;
+
+// Pin connections
+const int dataPin = 12;
+const int clockPin = 11;
+const int csPin = 10;
+
+LedControl lc = LedControl(dataPin, clockPin, csPin, 1);
+
+void setup() {
+  // Wake up the MAX7219
+  lc.shutdown(0, false);
+  // Set brightness (0-15)
+  lc.setIntensity(0, 8);
+  // Clear the display
+  lc.clearDisplay(0);
+}
+
+void loop() {
+  // Display a smiley face
+  byte smiley[8] = {
+    B00111100,
+    B01000010,
+    B10100101,
+    B10000001,
+    B10100101,
+    B10011001,
+    B01000010,
+    B00111100
+  };
+  
+  displayPattern(smiley);
+  delay(1000);
+  
+  // Clear and repeat
+  lc.clearDisplay(0);
+  delay(500);
+}
+
+void displayPattern(byte pattern[8]) {
+  for (int i = 0; i < 8; i++) {
+    lc.setRow(0, i, pattern[i]);
+  }
+}</code></pre>
+                    
+                    <h2>How It Works</h2>
+                    <p>The MAX7219 IC makes controlling LED matrices incredibly easy. It handles all the multiplexing and current limiting, so you only need to send it the data for each row. The LedControl library simplifies this process even further.</p>
+                    
+                    <h2>Advanced Features</h2>
+                    <p>Once you have the basic setup working, you can explore advanced features like:</p>
+                    <ul>
+                        <li>Scrolling text displays</li>
+                        <li>Animation sequences</li>
+                        <li>Multiple matrix chaining</li>
+                        <li>Sensor integration</li>
+                        <li>Wireless control via ESP32</li>
+                    </ul>
+                    
+                    <h2>Troubleshooting</h2>
+                    <p>Common issues and solutions:</p>
+                    <ul>
+                        <li><strong>Display not lighting up:</strong> Check power connections and wiring</li>
+                        <li><strong>Dim display:</strong> Adjust brightness using setIntensity()</li>
+                        <li><strong>Erratic behavior:</strong> Ensure proper ground connections</li>
+                    </ul>
+                    
+                    <h2>Conclusion</h2>
+                    <p>LED matrix displays open up endless possibilities for creative projects. Start with this basic setup and gradually add more features as you become comfortable with the hardware and code. Happy making!</p>
+                </div>
+            </article>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+</body>
+</html>

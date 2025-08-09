@@ -530,12 +530,18 @@ img {
   background: transparent;
   border: 2px solid var(--first-color);
   color: var(--first-color);
-  margin-left: 1rem;
 }
 
 .button-outline:hover {
   background: var(--first-color);
   color: #fff;
+}
+
+.home__buttons {
+  display: flex;
+  gap: 1rem;
+  flex-wrap: wrap;
+  margin-top: var(--mb-5);
 }
 
 .blog-grid,
@@ -936,6 +942,15 @@ img {
   
   .categories-grid {
     grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  }
+  
+  .home__buttons {
+    gap: 1.2rem;
+  }
+  
+  .button {
+    padding: 0.9rem 2rem;
+    font-size: 0.95rem;
   }
 }
 
@@ -2353,6 +2368,19 @@ pre code {
   
   .contact__container {
     padding: 1rem;
+  }
+  
+  .home__buttons {
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+  }
+  
+  .button {
+    width: 100%;
+    max-width: 280px;
+    text-align: center;
+    padding: 1rem 2rem;
   }
 }
 

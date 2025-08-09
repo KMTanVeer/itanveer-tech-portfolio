@@ -952,6 +952,15 @@ img {
     padding: 0.8rem 1.8rem;
     font-size: 0.9rem;
   }
+  
+  .home__title {
+    margin-bottom: 1.5rem;
+  }
+  
+  .home {
+    padding: 3rem 0 4rem;
+    row-gap: 4rem;
+  }
 }
 
 /*===== PROJECTS PAGE STYLES =====*/
@@ -2383,6 +2392,19 @@ pre code {
     text-align: center;
     padding: 0.7rem 1.5rem;
     font-size: 0.9rem;
+  }
+  
+  .home__title {
+    margin-bottom: 1rem;
+  }
+  
+  .home__subtitle {
+    margin-bottom: 1.5rem;
+  }
+  
+  .home {
+    padding: 2rem 0 3rem;
+    row-gap: 3rem;
   }
 }
 

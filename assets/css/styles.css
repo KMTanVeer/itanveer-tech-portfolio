@@ -1100,7 +1100,7 @@ img {
 
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: var(--mb-6);
 }
@@ -1248,7 +1248,7 @@ img {
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
   gap: 2rem;
   margin-bottom: var(--mb-6);
 }
@@ -1490,8 +1490,10 @@ img {
 
 .social-links {
   display: flex;
+  flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
+  justify-content: center;
 }
 
 .social-link {
@@ -1629,6 +1631,14 @@ img {
   
   .social-links {
     justify-content: center;
+    max-width: 280px;
+    margin: 2rem auto 0;
+  }
+  
+  .social-link {
+    width: 45px;
+    height: 45px;
+    font-size: 1.1rem;
   }
 }
 
@@ -2317,6 +2327,32 @@ pre code {
   .skills__grid {
     grid-template-columns: 1fr;
     gap: 1rem;
+  }
+  
+  .social-links {
+    max-width: 250px;
+    gap: 0.8rem;
+  }
+  
+  .social-link {
+    width: 40px;
+    height: 40px;
+    font-size: 1rem;
+  }
+  
+  .resources-grid,
+  .tools-grid {
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+  }
+  
+  .resource-card,
+  .tool-category {
+    padding: 1.5rem;
+  }
+  
+  .contact__container {
+    padding: 1rem;
   }
 }
 

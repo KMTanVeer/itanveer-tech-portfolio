@@ -50,15 +50,15 @@
 
     <main class="l-main">
         <!--===== RESOURCES HEADER =====-->
-        <section class="resources-header section reveal">
+        <section class="resources-header reveal">
             <div class="bd-grid">
-                <h1 class="resources-header__title">Learning Resources</h1>
-                <p class="resources-header__subtitle">Curated materials, tutorials, and references for EEE students and tech enthusiasts</p>
+                <h1 class="resources-header__title reveal-scale">Learning Resources</h1>
+                <p class="resources-header__subtitle reveal-fade-in">Curated materials, tutorials, and references for EEE students and tech enthusiasts</p>
             </div>
         </section>
 
         <!--===== ARDUINO RESOURCES =====-->
-        <section class="resource-category section reveal-left">
+        <section class="resource-category section-compact reveal-left">
             <div class="bd-grid">
                 <h2 class="section-title">Arduino & Embedded Systems</h2>
                 
@@ -390,26 +390,65 @@
     <script>
         // Scroll Reveal Animation
         function scrollReveal() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade-in');
             
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
                 const elementTop = element.getBoundingClientRect().top;
                 const elementVisible = 150;
                 
-                if (elementTop < windowHeight - elementVisible) {
+                if (elementTop < windowHeight - elementVisible && !element.classList.contains('active')) {
                     element.classList.add('active');
                 }
             });
         }
 
         // Initial scroll reveal check and scroll event listener
-        window.addEventListener('load', scrollReveal);
+        window.addEventListener('load', () => {
+            scrollReveal();
+            // Trigger header animations on load
+            setTimeout(() => {
+                document.querySelector('.resources-header__title').classList.add('active');
+            }, 200);
+        });
         window.addEventListener('scroll', scrollReveal);
     </script>
 
     <style>
-        /* Scroll Reveal Animations */
+        /* Compact section spacing for better flow */
+        .section-compact {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        /* Enhanced resources header with proper spacing */
+        .resources-header {
+            padding: 6rem 0 3rem !important; /* More space from navbar, balanced bottom */
+            text-align: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+        
+        .resources-header__title {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .resources-header__title.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        .resources-header__subtitle {
+            font-size: 1.2rem;
+            opacity: 0.9;
+        }
+        
+        /* Smooth reveal animations */
         .reveal {
             opacity: 0;
             transform: translateY(60px);
@@ -453,6 +492,34 @@
             opacity: 1;
             transform: scale(1);
         }
+        
+        .reveal-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; /* Delay for staggered effect */
+        }
+
+        .reveal-fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .resources-header {
+                padding: 5rem 0 2.5rem !important;
+            }
+            
+            .resources-header__title {
+                font-size: 2rem;
+            }
+            
+            .section-compact {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
     </style>
 </body>
 </html>

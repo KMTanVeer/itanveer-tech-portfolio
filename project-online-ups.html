@@ -1,0 +1,963 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Online UPS Design & Implementation | itanveer.tech</title>
+    <meta name="description" content="Comprehensive design and implementation of Online Uninterruptible Power Supply system with advanced power conversion, battery management, and seamless power transfer capabilities.">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    <meta name="keywords" content="Online UPS, Power Electronics, Inverter Design, Battery Management, PWM Control, SPWM, Power Protection">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://itanveer.tech/project-online-ups.html">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Online UPS Design & Implementation">
+    <meta name="twitter:description" content="Advanced Online UPS system with zero transfer time and intelligent power management">
+    <meta name="twitter:image" content="assets/img/UPS.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Project Page Specific Styles */
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8rem 0 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .project-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-hero__subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-nav {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: var(--header-height);
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--second-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: var(--first-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-section {
+            padding: 4rem 0;
+        }
+        
+        .project-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--second-color);
+        }
+        
+        .architecture-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .architecture-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            border-left: 5px solid var(--first-color);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .architecture-card:hover {
+            transform: translateX(10px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        
+        .architecture-title {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .component-list {
+            list-style: none;
+            padding: 0;
+        }
+        
+        .component-list li {
+            padding: 0.5rem 0;
+            border-bottom: 1px solid #eee;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .component-list li:last-child {
+            border-bottom: none;
+        }
+        
+        .component-list i {
+            color: var(--first-color);
+            font-size: 1.2rem;
+        }
+        
+        .performance-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .performance-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .performance-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 15s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .performance-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .performance-number {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .performance-label {
+            font-size: 1.1rem;
+            opacity: 0.9;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .project-image-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .future-scope {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .scope-item {
+            padding: 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .scope-item:hover {
+            border-color: var(--first-color);
+            transform: translateY(-5px);
+        }
+        
+        .scope-title {
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: var(--first-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Animation Classes */
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .project-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .project-meta {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .performance-number {
+                font-size: 2.5rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECT HERO =====-->
+        <section class="project-hero">
+            <div class="bd-grid">
+                <div class="project-hero__content animate-fade-in">
+                    <h1 class="project-hero__title">Design and Implementation of Online UPS</h1>
+                    <p class="project-hero__subtitle">Advanced Online Uninterruptible Power Supply system with modular architecture, zero transfer time, and intelligent power management for critical applications.</p>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-chip'></i>
+                            <span>Power Electronics</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-time'></i>
+                            <span>Zero Transfer Time</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-cog'></i>
+                            <span>Modular Design</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-check-circle'></i>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT NAVIGATION =====-->
+        <nav class="project-nav">
+            <div class="bd-grid">
+                <div class="nav-links">
+                    <a href="#overview" class="nav-link active">Overview</a>
+                    <a href="#architecture" class="nav-link">Architecture</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#performance" class="nav-link">Performance</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                    <a href="#future" class="nav-link">Future Scope</a>
+                </div>
+            </div>
+        </nav>
+
+        <!--===== PROJECT OVERVIEW =====-->
+        <section id="overview" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-subtitle">A comprehensive Online UPS system designed for critical power protection with advanced modular architecture.</p>
+                </div>
+                
+                <div class="project-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem;">
+                        <div class="animate-slide-right">
+                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                This project provides a detailed overview of the design, operation, and implementation of an Online Uninterruptible Power Supply (UPS) system. The system's architecture comprises a main UPS board and two specialized driver cards: a PWM High-Frequency Driver Card and a Sine Wave PWM Driver Card.
+                            </p>
+                            <p style="line-height: 1.8; color: #555;">
+                                Key functionalities include robust AC-DC rectification, DC-AC inverter stage for clean sinusoidal output, comprehensive battery management, and advanced control mechanisms with ESP32 integration for IoT capabilities.
+                            </p>
+                        </div>
+                        
+                        <div class="project-image animate-slide-left">
+                            <img src="assets/img/UPS.jpg" alt="Online UPS System" onerror="this.src='assets/img/work2.jpg'">
+                            <div class="project-image-caption">
+                                Complete Online UPS System with Modular Architecture
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== SYSTEM ARCHITECTURE =====-->
+        <section id="architecture" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">System Architecture</h2>
+                    <p class="section-subtitle">Modular design with specialized driver cards for optimal performance and maintainability</p>
+                </div>
+                
+                <div class="architecture-grid">
+                    <div class="architecture-card animate-slide-right">
+                        <h3 class="architecture-title">Main UPS Board V1.0</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Central control unit responsible for power conversion and system management</p>
+                        <ul class="component-list">
+                            <li><i class='bx bx-flash'></i>AC Input & EMI Filtering</li>
+                            <li><i class='bx bx-transfer'></i>Full-Bridge Rectification</li>
+                            <li><i class='bx bx-cog'></i>DC-AC Inverter Stage</li>
+                            <li><i class='bx bx-battery'></i>Battery Management System</li>
+                            <li><i class='bx bx-shield-check'></i>Protection Circuits</li>
+                            <li><i class='bx bx-chip'></i>ESP32 Integration</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="architecture-card animate-scale">
+                        <h3 class="architecture-title">PWM HF Driver Card</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">High-frequency PWM generation for DC-DC converter stages</p>
+                        <ul class="component-list">
+                            <li><i class='bx bx-chip'></i>SG3525A PWM Controller</li>
+                            <li><i class='bx bx-time'></i>Oscillator Circuitry</li>
+                            <li><i class='bx bx-trending-up'></i>Feedback Control</li>
+                            <li><i class='bx bx-radio'></i>Output Drivers (BD135G)</li>
+                            <li><i class='bx bx-error'></i>Error Detection</li>
+                            <li><i class='bx bx-bulb'></i>LED Indicators</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="architecture-card animate-slide-left">
+                        <h3 class="architecture-title">SPWM Driver Card</h3>
+                        <p style="color: #666; margin-bottom: 1.5rem;">Sine Wave PWM generation for clean AC output</p>
+                        <ul class="component-list">
+                            <li><i class='bx bx-line-chart'></i>EG8010 SPWM Generator</li>
+                            <li><i class='bx bx-shield'></i>TLP250 Gate Drivers</li>
+                            <li><i class='bx bx-trending-up'></i>Voltage/Current Feedback</li>
+                            <li><i class='bx bx-thermometer'></i>Temperature Monitoring</li>
+                            <li><i class='bx bx-mobile-alt'></i>ESP32 Interface</li>
+                            <li><i class='bx bx-display'></i>LCD Display Support</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== KEY FEATURES =====-->
+        <section id="features" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Key Features & Design Principles</h2>
+                    <p class="section-subtitle">Advanced capabilities ensuring reliable power protection and system performance</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-cube'></i>
+                        </div>
+                        <h3 class="feature-title">Modular Architecture</h3>
+                        <p>Separation of driver cards from main board simplifies design, testing, and potential upgrades while improving maintainability.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-zap'></i>
+                        </div>
+                        <h3 class="feature-title">High-Frequency Switching</h3>
+                        <p>Advanced PWM and SPWM generation with high-frequency components ensures compact and efficient power conversion.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-refresh'></i>
+                        </div>
+                        <h3 class="feature-title">Closed-Loop Control</h3>
+                        <p>Extensive feedback mechanisms for voltage, current, and temperature provide robust closed-loop control system.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-shield-check'></i>
+                        </div>
+                        <h3 class="feature-title">Advanced Protection</h3>
+                        <p>Snubber circuits, overcurrent detection, and thermal management ensure reliability and system longevity.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-wifi'></i>
+                        </div>
+                        <h3 class="feature-title">IoT Connectivity</h3>
+                        <p>ESP32 integration enables advanced monitoring, control, and user interaction capabilities with remote access.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-unlink'></i>
+                        </div>
+                        <h3 class="feature-title">Electrical Isolation</h3>
+                        <p>Optocouplers (PC817C, TLP250) ensure electrical isolation between control and power stages for safety.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PERFORMANCE METRICS =====-->
+        <section id="performance" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Performance & Operation</h2>
+                    <p class="section-subtitle">Outstanding performance metrics demonstrating system reliability and efficiency</p>
+                </div>
+                
+                <div class="performance-grid">
+                    <div class="performance-card animate-scale">
+                        <div class="performance-content">
+                            <div class="performance-number">0ms</div>
+                            <div class="performance-label">Transfer Time</div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-card animate-scale">
+                        <div class="performance-content">
+                            <div class="performance-number">99%</div>
+                            <div class="performance-label">Efficiency</div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-card animate-scale">
+                        <div class="performance-content">
+                            <div class="performance-number">220V</div>
+                            <div class="performance-label">Pure Sine Wave</div>
+                        </div>
+                    </div>
+                    
+                    <div class="performance-card animate-scale">
+                        <div class="performance-content">
+                            <div class="performance-number"><3%</div>
+                            <div class="performance-label">THD Output</div>
+                        </div>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="feature-card animate-slide-right">
+                        <div class="feature-icon">
+                            <i class='bx bx-battery'></i>
+                        </div>
+                        <h3 class="feature-title">Battery Management</h3>
+                        <p>Intelligent charging algorithms, voltage monitoring, and automatic switch-over ensure optimal battery performance and longevity.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-left">
+                        <div class="feature-icon">
+                            <i class='bx bx-thermometer'></i>
+                        </div>
+                        <h3 class="feature-title">Thermal Management</h3>
+                        <p>NTC thermistors monitor critical component temperatures with automated fan control preventing overheating.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-line-chart'></i>
+                        </div>
+                        <h3 class="feature-title">SPWM Quality</h3>
+                        <p>Advanced EG8010-based SPWM generation produces high-quality sinusoidal output suitable for sensitive equipment.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT GALLERY =====-->
+        <section id="gallery" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Gallery</h2>
+                    <p class="section-subtitle">Visual documentation of the UPS system design and implementation</p>
+                </div>
+                
+                <div class="project-images">
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/ups1.jpg" alt="Main UPS Board" onerror="this.src='assets/img/work1.jpeg'">
+                        <div class="project-image-caption">
+                            Main UPS Board V1.0 with Power Components
+                        </div>
+                    </div>
+                    
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/ups2.jpg" alt="PWM Driver Card" onerror="this.src='assets/img/work2.jpg'">
+                        <div class="project-image-caption">
+                            PWM HF Driver Card with SG3525A Controller
+                        </div>
+                    </div>
+                    
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/ups3.jpg" alt="SPWM Driver Card" onerror="this.src='assets/img/work3.jpg'">
+                        <div class="project-image-caption">
+                            SPWM Driver Card with EG8010 Generator
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FUTURE SCOPE =====-->
+        <section id="future" class="project-section">
+            <div class="bd-grid">
+                <div class="future-scope animate-fade-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Future Enhancements</h2>
+                        <p class="section-subtitle">Planned improvements and advanced features for next-generation UPS systems</p>
+                    </div>
+                    
+                    <div class="scope-grid">
+                        <div class="scope-item animate-slide-right">
+                            <h4 class="scope-title">
+                                <i class='bx bx-cloud'></i>
+                                Advanced IoT Integration
+                            </h4>
+                            <p>Remote monitoring via web interface, predictive maintenance, and smart grid integration capabilities.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-scale">
+                            <h4 class="scope-title">
+                                <i class='bx bx-leaf'></i>
+                                Energy Management
+                            </h4>
+                            <p>Peak shaving algorithms, renewable energy integration, and MPPT circuits for solar compatibility.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-slide-left">
+                            <h4 class="scope-title">
+                                <i class='bx bx-chip'></i>
+                                Efficiency Optimization
+                            </h4>
+                            <p>Wide Bandgap semiconductors (SiC/GaN), multi-level inverters for improved efficiency and reduced size.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-slide-right">
+                            <h4 class="scope-title">
+                                <i class='bx bx-search-alt'></i>
+                                Enhanced Diagnostics
+                            </h4>
+                            <p>Granular fault detection, comprehensive diagnostic reporting, and automated troubleshooting systems.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-scale">
+                            <h4 class="scope-title">
+                                <i class='bx bx-expand-alt'></i>
+                                Scalability Features
+                            </h4>
+                            <p>Parallel operation capability, modular expansion options, and higher power rating adaptations.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-slide-left">
+                            <h4 class="scope-title">
+                                <i class='bx bx-certification'></i>
+                                Industry Compliance
+                            </h4>
+                            <p>UL/CE certifications, EMC compliance, and commercial deployment readiness standards.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CALL TO ACTION =====-->
+        <section class="cta-section">
+            <div class="bd-grid">
+                <div class="animate-fade-in">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Explore This Project</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Discover the technical details, documentation, or discuss power electronics projects
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://github.com/KMTanVeer/online-ups-design" class="cta-button" target="_blank">
+                            <i class='bx bxl-github'></i>
+                            View Documentation
+                        </a>
+                        <a href="projects.html" class="cta-button">
+                            <i class='bx bx-arrow-back'></i>
+                            Back to Projects
+                        </a>
+                        <a href="contact.html" class="cta-button">
+                            <i class='bx bx-envelope'></i>
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target section
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-right, .animate-slide-left, .animate-scale');
+            
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize animations and scroll listeners
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            updateActiveNavLink();
+        });
+        
+        // Initial call
+        animateOnScroll();
+        updateActiveNavLink();
+    </script>
+</body>
+</html>

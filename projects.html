@@ -50,15 +50,15 @@
 
     <main class="l-main">
         <!--===== PROJECTS HEADER =====-->
-        <section class="projects-header section reveal">
+        <section class="projects-header reveal">
             <div class="bd-grid">
-                <h1 class="projects-header__title">Projects</h1>
-                <p class="projects-header__subtitle">Detailed write-ups of my key engineering projects and experiments</p>
+                <h1 class="projects-header__title reveal-scale">Projects</h1>
+                <p class="projects-header__subtitle reveal-fade-in">Detailed write-ups of my key engineering projects and experiments</p>
             </div>
         </section>
 
         <!--===== PROJECT CATEGORIES =====-->
-        <section class="project-categories section reveal-scale">
+        <section class="project-categories section-compact reveal-scale">
             <div class="bd-grid">
                 <h2 class="section-title">Project Categories</h2>
                 <div class="categories-filter">
@@ -72,85 +72,85 @@
         </section>
 
         <!--===== FEATURED PROJECTS =====-->
-        <section class="featured-projects section reveal">
+        <section class="featured-projects section-compact reveal">
             <div class="bd-grid">
                 <h2 class="section-title">Featured Projects</h2>
                 
                 <div class="projects-grid">
-                    <!-- Arduino Multimeter -->
-                    <div class="project-card featured reveal-left" data-category="arduino">
+                    <!-- Design and Implementation of Online UPS -->
+                    <div class="project-card featured reveal-left" data-category="power electronics">
                         <div class="project-card__img">
-                            <img src="assets/img/project-multimeter.jpg" alt="Arduino Digital Multimeter" onerror="this.src='assets/img/work1.jpeg'">
+                            <img src="assets/img/UPS.jpg" alt="Online UPS Design" onerror="this.src='assets/img/work1.jpeg'">
                             <div class="project-card__overlay">
-                                <a href="project-arduino-multimeter.html" class="project-card__btn">View Details</a>
-                                <a href="https://github.com/KMTanVeer/arduino-multimeter" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                                <a href="project-online-ups.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/online-ups-design" class="project-card__btn project-card__btn--secondary">GitHub</a>
                             </div>
                             <div class="project-status project-status--completed">Completed</div>
                         </div>
                         <div class="project-card__content">
-                            <h3 class="project-card__title">Arduino Digital Multimeter</h3>
-                            <p class="project-card__description">A precision digital multimeter built using Arduino Uno, capable of measuring DC/AC voltage, current, and resistance with high accuracy. Features include LCD display, auto-ranging, and data logging capabilities.</p>
+                            <h3 class="project-card__title">Design and Implementation of Online UPS</h3>
+                            <p class="project-card__description">Comprehensive design and implementation of an online uninterruptible power supply system with advanced power conversion, battery management, and seamless power transfer capabilities for critical applications.</p>
                             
                             <div class="project-details">
                                 <div class="project-detail">
-                                    <strong>Goal:</strong> Create a cost-effective, accurate digital measuring instrument
+                                    <strong>Goal:</strong> Develop reliable online UPS system for critical power protection
                                 </div>
                                 <div class="project-detail">
-                                    <strong>Tools Used:</strong> Arduino IDE, Proteus simulation, KiCad for PCB design
+                                    <strong>Tools Used:</strong> Power electronics, Battery management, Control systems, MATLAB simulation
                                 </div>
                                 <div class="project-detail">
-                                    <strong>Challenges:</strong> Achieving high precision, calibration, noise reduction
+                                    <strong>Challenges:</strong> Power conversion efficiency, seamless transfer, battery optimization
                                 </div>
                                 <div class="project-detail">
-                                    <strong>Results:</strong> ±1% accuracy for voltage, ±2% for current measurements
+                                    <strong>Results:</strong> Zero transfer time, high efficiency, reliable power protection
                                 </div>
                             </div>
 
                             <div class="project-card__tags">
-                                <span class="tag">Arduino Uno</span>
-                                <span class="tag">C++</span>
-                                <span class="tag">LCD Display</span>
-                                <span class="tag">ADC</span>
-                                <span class="tag">Instrumentation</span>
+                                <span class="tag">Power Electronics</span>
+                                <span class="tag">UPS Design</span>
+                                <span class="tag">Battery Management</span>
+                                <span class="tag">Inverter Control</span>
+                                <span class="tag">Protection Systems</span>
                             </div>
                         </div>
                     </div>
 
-                    <!-- Distance Protection System -->
-                    <div class="project-card featured reveal-scale" data-category="matlab power">
+                    <!-- MPPT Solar Charge Controller -->
+                    <div class="project-card featured reveal-scale" data-category="iot power">
                         <div class="project-card__img">
-                            <img src="assets/img/project-protection.jpg" alt="Distance Protection System" onerror="this.src='assets/img/work2.jpg'">
+                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller" onerror="this.src='assets/img/work2.jpg'">
                             <div class="project-card__overlay">
-                                <a href="project-distance-protection.html" class="project-card__btn">View Details</a>
-                                <a href="https://github.com/KMTanVeer/distance-protection" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                                <a href="project-mppt-solar.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/mppt-solar-controller" class="project-card__btn project-card__btn--secondary">GitHub</a>
                             </div>
                             <div class="project-status project-status--completed">Completed</div>
                         </div>
                         <div class="project-card__content">
-                            <h3 class="project-card__title">Distance Protection with MATLAB Simulink</h3>
-                            <p class="project-card__description">Advanced power system protection scheme implemented in MATLAB Simulink for transmission line fault detection and isolation. Includes impedance calculation, fault classification, and trip signal generation.</p>
+                            <h3 class="project-card__title">Maximum Power Point Tracking Solar Charge Controller</h3>
+                            <p class="project-card__description">ESP32-based intelligent solar charge controller with MPPT algorithm achieving 98% efficiency. Features remote monitoring via Blynk app, precise current/voltage measurement, and automated solar panel protection system.</p>
                             
                             <div class="project-details">
                                 <div class="project-detail">
-                                    <strong>Goal:</strong> Develop reliable transmission line protection system
+                                    <strong>Goal:</strong> Maximize solar charging efficiency with intelligent MPPT control
                                 </div>
                                 <div class="project-detail">
-                                    <strong>Tools Used:</strong> MATLAB Simulink, Power Systems Toolbox, Scope analysis
+                                    <strong>Tools Used:</strong> ESP32, ASC712-30A sensor, ADS1015 ADC, Blynk app, Arduino IDE
                                 </div>
                                 <div class="project-detail">
-                                    <strong>Challenges:</strong> Fault classification, setting coordination, CT/PT modeling
+                                    <strong>Challenges:</strong> MPPT algorithm tuning, noise reduction, wireless connectivity stability
                                 </div>
                                 <div class="project-detail">
-                                    <strong>Results:</strong> 98% fault detection accuracy, <100ms trip time
+                                    <strong>Results:</strong> 98% charging efficiency, real-time remote monitoring, automatic protection
                                 </div>
                             </div>
 
                             <div class="project-card__tags">
-                                <span class="tag">MATLAB</span>
-                                <span class="tag">Simulink</span>
-                                <span class="tag">Power Systems</span>
-                                <span class="tag">Protection Relays</span>
-                                <span class="tag">Fault Analysis</span>
+                                <span class="tag">ESP32</span>
+                                <span class="tag">Solar MPPT</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">Blynk App</span>
+                                <span class="tag">Power Electronics</span>
                             </div>
                         </div>
                     </div>
@@ -408,7 +408,7 @@
 
         // Scroll Reveal Animation
         function scrollReveal() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade-in');
             
             reveals.forEach(element => {
                 const windowHeight = window.innerHeight;
@@ -433,12 +433,29 @@
         }
 
         // Initial scroll reveal check and scroll event listener
-        window.addEventListener('load', scrollReveal);
+        window.addEventListener('load', () => {
+            scrollReveal();
+            // Trigger header animations on load
+            setTimeout(() => {
+                document.querySelector('.projects-header__title').classList.add('active');
+            }, 200);
+        });
         window.addEventListener('scroll', scrollReveal);
     </script>
 
     <style>
-        /* Scroll Reveal Animations */
+        /* Compact section spacing for better flow */
+        .section-compact {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        /* Enhanced projects header with proper spacing */
+        .projects-header {
+            padding: 6rem 0 3rem !important; /* More space from navbar, balanced bottom */
+        }
+        
+        /* Smooth reveal animations */
         .reveal {
             opacity: 0;
             transform: translateY(60px);
@@ -481,6 +498,41 @@
         .reveal-scale.active {
             opacity: 1;
             transform: scale(1);
+        }
+        
+        .reveal-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; /* Delay for staggered effect */
+        }
+
+        .reveal-fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Header title animation enhancement */
+        .projects-header__title {
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .projects-header__title.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .projects-header {
+                padding: 5rem 0 2.5rem !important;
+            }
+            
+            .section-compact {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
         }
     </style>
 </body>

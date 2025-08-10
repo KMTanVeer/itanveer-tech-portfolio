@@ -1,0 +1,1151 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MPPT Solar Charge Controller | itanveer.tech</title>
+    <meta name="description" content="ESP32-based Maximum Power Point Tracking solar charge controller with 98% efficiency, remote monitoring via Blynk app, and intelligent protection systems.">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    <meta name="keywords" content="ESP32, Solar MPPT, Charge Controller, IoT, Blynk, Renewable Energy, Power Electronics">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://itanveer.tech/project-mppt-solar.html">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="MPPT Solar Charge Controller Project">
+    <meta name="twitter:description" content="ESP32-based intelligent solar charge controller with 98% efficiency">
+    <meta name="twitter:image" content="assets/img/charge-controller-main.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Project Page Specific Styles */
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8rem 0 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .project-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-hero__subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-nav {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 1rem 0;
+            position: sticky;
+            top: var(--header-height);
+            z-index: 100;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 2rem;
+            flex-wrap: wrap;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--second-color);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: var(--first-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-section {
+            padding: 4rem 0;
+        }
+        
+        .project-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--second-color);
+        }
+        
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .hardware-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--first-color);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .hardware-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+        
+        .hardware-name {
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hardware-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .specs-table {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-top: 2rem;
+        }
+        
+        .specs-table table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        
+        .specs-table th {
+            background: var(--first-color);
+            color: white;
+            padding: 1rem;
+            text-align: left;
+            font-weight: 600;
+        }
+        
+        .specs-table td {
+            padding: 1rem;
+            border-bottom: 1px solid #eee;
+            transition: background 0.3s ease;
+        }
+        
+        .specs-table tr:hover td {
+            background: #f8f9fa;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .project-image-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, #667eea, #764ba2);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .achievement-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .achievement-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .team-section {
+            background: white;
+            padding: 3rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .team-member {
+            text-align: center;
+            padding: 1rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .team-member:hover {
+            background: #f8f9fa;
+            transform: translateY(-5px);
+        }
+        
+        .team-name {
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: var(--first-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Animation Classes */
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .project-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .project-meta {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                gap: 1rem;
+            }
+            
+            .nav-link {
+                padding: 0.6rem 1rem;
+                font-size: 0.9rem;
+            }
+            
+            .achievement-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECT HERO =====-->
+        <section class="project-hero">
+            <div class="bd-grid">
+                <div class="project-hero__content animate-fade-in">
+                    <h1 class="project-hero__title">Maximum Power Point Tracking Solar Charge Controller</h1>
+                    <p class="project-hero__subtitle">ESP32-based intelligent solar charge controller achieving up to 98% efficiency with remote monitoring capabilities and advanced protection systems.</p>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-chip'></i>
+                            <span>ESP32 Based</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-trending-up'></i>
+                            <span>98% Efficiency</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-mobile-alt'></i>
+                            <span>Blynk App Control</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-check-circle'></i>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT NAVIGATION =====-->
+        <nav class="project-nav">
+            <div class="bd-grid">
+                <div class="nav-links">
+                    <a href="#overview" class="nav-link active">Overview</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#hardware" class="nav-link">Hardware</a>
+                    <a href="#results" class="nav-link">Results</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                    <a href="#team" class="nav-link">Team</a>
+                </div>
+            </div>
+        </nav>
+
+        <!--===== PROJECT OVERVIEW =====-->
+        <section id="overview" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-subtitle">An intelligent solar charge controller that maximizes energy harvesting through advanced MPPT algorithms and IoT connectivity.</p>
+                </div>
+                
+                <div class="project-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem;">
+                        <div class="animate-slide-right">
+                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                This project focuses on designing and implementing a Maximum Power Point Tracking (MPPT) solar charge controller using the ESP32 microcontroller. The system integrates advanced sensing capabilities through ASC712-30A current sensor and ADS1015 ADC for precise measurements.
+                            </p>
+                            <p style="line-height: 1.8; color: #555;">
+                                A Blynk app provides wireless telemetry for remote monitoring and control. The controller includes automated protection systems and achieves up to 98% efficiency in optimal conditions, making it ideal for sustainable energy applications.
+                            </p>
+                        </div>
+                        
+                        <div class="project-image animate-slide-left">
+                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller" onerror="this.src='assets/img/work2.jpg'">
+                            <div class="project-image-caption">
+                                ESP32-based MPPT Solar Charge Controller with LCD Display
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== KEY FEATURES =====-->
+        <section id="features" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Key Features & Objectives</h2>
+                    <p class="section-subtitle">Advanced capabilities designed for maximum efficiency and user convenience</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-trending-up'></i>
+                        </div>
+                        <h3 class="feature-title">MPPT Algorithm</h3>
+                        <p>Robust algorithm implementation ensuring maximum energy harvesting with up to 98% efficiency in optimal conditions.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-current-location'></i>
+                        </div>
+                        <h3 class="feature-title">Precise Current Sensing</h3>
+                        <p>ASC712-30A sensor integration for accurate solar panel input current measurement and monitoring.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-line-chart'></i>
+                        </div>
+                        <h3 class="feature-title">Voltage Monitoring</h3>
+                        <p>High-precision voltage measurement using voltage dividers and ADS1015 12-bit ADC for accurate readings.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-shield-check'></i>
+                        </div>
+                        <h3 class="feature-title">Protection System</h3>
+                        <p>Automated 12V relay protection system to safeguard solar panels during non-operational hours.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-mobile-alt'></i>
+                        </div>
+                        <h3 class="feature-title">Wireless Telemetry</h3>
+                        <p>Real-time monitoring and control through Blynk app integration with ESP32 wireless connectivity.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-test-tube'></i>
+                        </div>
+                        <h3 class="feature-title">Performance Testing</h3>
+                        <p>Comprehensive testing under various environmental conditions for optimal performance tuning.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== HARDWARE DESIGN =====-->
+        <section id="hardware" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Hardware Design & Components</h2>
+                    <p class="section-subtitle">Carefully selected components for optimal performance and reliability</p>
+                </div>
+                
+                <div class="hardware-grid">
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">ESP32 Microcontroller</div>
+                        <div class="hardware-desc">Main control unit with WiFi capabilities for MPPT algorithm execution and wireless communication</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">ASC712-30A Current Sensor</div>
+                        <div class="hardware-desc">High-precision current measurement sensor for monitoring solar panel input current</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">ADS1015 12-bit ADC</div>
+                        <div class="hardware-desc">High-resolution analog-to-digital converter for accurate voltage and current measurements</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">IRFP3206 MOSFETs</div>
+                        <div class="hardware-desc">High-power switching transistors for efficient power control and regulation</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">12V Relay (30A)</div>
+                        <div class="hardware-desc">Automated protection system for solar panel isolation during non-operational periods</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">1602 LCD Display</div>
+                        <div class="hardware-desc">Real-time display of system parameters with I²C interface for easy monitoring</div>
+                    </div>
+                </div>
+                
+                <div class="specs-table animate-fade-in">
+                    <div style="text-align: center; margin-bottom: 2rem;">
+                        <a href="#circuit-diagram" class="cta-button" style="display: inline-flex; align-items: center; gap: 0.5rem; padding: 1rem 2rem; background: linear-gradient(135deg, var(--first-color), #667eea); color: white; text-decoration: none; border-radius: 30px; transition: all 0.3s ease; box-shadow: 0 4px 15px rgba(0,0,0,0.2);">
+                            <i class='bx bx-show'></i>
+                            See Circuit Diagram
+                        </a>
+                    </div>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Sl No.</th>
+                                <th>Component</th>
+                                <th>Qty</th>
+                                <th>Specifications</th>
+                                <th>Purpose</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>1</td>
+                                <td>ESP32 Module</td>
+                                <td>1</td>
+                                <td>Dual-core, WiFi/Bluetooth</td>
+                                <td>Main Controller & Wireless Communication</td>
+                            </tr>
+                            <tr>
+                                <td>2</td>
+                                <td>ADS1015 12-bit ADC</td>
+                                <td>1</td>
+                                <td>12-bit Resolution, I²C Interface</td>
+                                <td>Precision Voltage/Current Measurement</td>
+                            </tr>
+                            <tr>
+                                <td>3</td>
+                                <td>Buck Converter LM2596</td>
+                                <td>2</td>
+                                <td>Adjustable Output, 3A Current</td>
+                                <td>Voltage Regulation</td>
+                            </tr>
+                            <tr>
+                                <td>4</td>
+                                <td>IRFP3206 N-MOSFET</td>
+                                <td>2</td>
+                                <td>60V, 57A, Low RDS(on)</td>
+                                <td>Main Power Switching</td>
+                            </tr>
+                            <tr>
+                                <td>5</td>
+                                <td>STPS3045C Schottky Diode</td>
+                                <td>1</td>
+                                <td>45V, 30A, Low Forward Drop</td>
+                                <td>Reverse Current Protection</td>
+                            </tr>
+                            <tr>
+                                <td>6</td>
+                                <td>12V Relay 30A</td>
+                                <td>1</td>
+                                <td>30A Contact Rating, SPDT</td>
+                                <td>Solar Panel Protection</td>
+                            </tr>
+                            <tr>
+                                <td>7</td>
+                                <td>ACS712-20A Current Sensor</td>
+                                <td>1</td>
+                                <td>Hall Effect, ±20A Range</td>
+                                <td>Current Measurement & Monitoring</td>
+                            </tr>
+                            <tr>
+                                <td>8</td>
+                                <td>PC817 Optocoupler</td>
+                                <td>2</td>
+                                <td>CTR 50-600%, 5kV Isolation</td>
+                                <td>Signal Isolation</td>
+                            </tr>
+                            <tr>
+                                <td>9</td>
+                                <td>IR2104 MOSFET Driver</td>
+                                <td>1</td>
+                                <td>Half Bridge, 200mA Output</td>
+                                <td>MOSFET Gate Drive</td>
+                            </tr>
+                            <tr>
+                                <td>10</td>
+                                <td>Push Button</td>
+                                <td>4</td>
+                                <td>Momentary, SPST</td>
+                                <td>User Interface Control</td>
+                            </tr>
+                            <tr>
+                                <td>11</td>
+                                <td>7805 5V Regulator</td>
+                                <td>1</td>
+                                <td>Fixed 5V Output, 1A</td>
+                                <td>5V Power Supply</td>
+                            </tr>
+                            <tr>
+                                <td>12</td>
+                                <td>7815 15V Regulator</td>
+                                <td>1</td>
+                                <td>Fixed 15V Output, 1A</td>
+                                <td>Gate Drive Power Supply</td>
+                            </tr>
+                            <tr>
+                                <td>13</td>
+                                <td>10000µF 25V Capacitor</td>
+                                <td>1</td>
+                                <td>Electrolytic, Low ESR</td>
+                                <td>Main Power Filtering</td>
+                            </tr>
+                            <tr>
+                                <td>14</td>
+                                <td>470µF 50V Capacitor</td>
+                                <td>2</td>
+                                <td>Electrolytic, High Ripple</td>
+                                <td>Power Supply Smoothing</td>
+                            </tr>
+                            <tr>
+                                <td>15</td>
+                                <td>2200µF 50V Capacitor</td>
+                                <td>1</td>
+                                <td>Electrolytic, Low ESR</td>
+                                <td>Energy Storage</td>
+                            </tr>
+                            <tr>
+                                <td>16</td>
+                                <td>104 100nF Capacitor</td>
+                                <td>8</td>
+                                <td>Ceramic, X7R Dielectric</td>
+                                <td>Decoupling & Filtering</td>
+                            </tr>
+                            <tr>
+                                <td>17</td>
+                                <td>474 470nF Capacitor</td>
+                                <td>1</td>
+                                <td>Ceramic, Non-Polar</td>
+                                <td>Signal Filtering</td>
+                            </tr>
+                            <tr>
+                                <td>18</td>
+                                <td>100µF 16V Capacitor</td>
+                                <td>1</td>
+                                <td>Electrolytic, Low Profile</td>
+                                <td>Local Power Filtering</td>
+                            </tr>
+                            <tr>
+                                <td>19</td>
+                                <td>10µF 50V Capacitor</td>
+                                <td>1</td>
+                                <td>Electrolytic, General Purpose</td>
+                                <td>Voltage Smoothing</td>
+                            </tr>
+                            <tr>
+                                <td>20</td>
+                                <td>AO4446 N-MOSFET</td>
+                                <td>1</td>
+                                <td>30V, 15A, SOT-8 Package</td>
+                                <td>Auxiliary Switching</td>
+                            </tr>
+                            <tr>
+                                <td>21</td>
+                                <td>Heat Sink</td>
+                                <td>1</td>
+                                <td>TO-220 Package Compatible</td>
+                                <td>Thermal Management</td>
+                            </tr>
+                            <tr>
+                                <td>22</td>
+                                <td>Thermal Pad</td>
+                                <td>1</td>
+                                <td>Silicone Based, High K</td>
+                                <td>Heat Transfer Interface</td>
+                            </tr>
+                            <tr>
+                                <td>23</td>
+                                <td>Vero Board</td>
+                                <td>2</td>
+                                <td>FR4 Material, Copper Clad</td>
+                                <td>Circuit Construction</td>
+                            </tr>
+                            <tr>
+                                <td>24</td>
+                                <td>25µH Inductor</td>
+                                <td>1</td>
+                                <td>Ferrite Core, High Current</td>
+                                <td>Energy Storage & Filtering</td>
+                            </tr>
+                            <tr>
+                                <td>25</td>
+                                <td>1N5419 Schottky Diode</td>
+                                <td>3</td>
+                                <td>40V, 1A, Fast Recovery</td>
+                                <td>Flyback Protection</td>
+                            </tr>
+                            <tr>
+                                <td>26</td>
+                                <td>1N4007 Diode</td>
+                                <td>2</td>
+                                <td>1000V, 1A, Silicon</td>
+                                <td>Rectification & Protection</td>
+                            </tr>
+                            <tr>
+                                <td>27</td>
+                                <td>103 10K NTC</td>
+                                <td>1</td>
+                                <td>Negative Temp Coefficient</td>
+                                <td>Temperature Sensing</td>
+                            </tr>
+                            <tr>
+                                <td>28</td>
+                                <td>1K Resistor</td>
+                                <td>2</td>
+                                <td>1/4W, 5% Tolerance</td>
+                                <td>Current Limiting</td>
+                            </tr>
+                            <tr>
+                                <td>29</td>
+                                <td>10K Resistor</td>
+                                <td>12</td>
+                                <td>1/4W, 5% Tolerance</td>
+                                <td>Pull-up & Voltage Divider</td>
+                            </tr>
+                            <tr>
+                                <td>30</td>
+                                <td>100Ω Resistor</td>
+                                <td>3</td>
+                                <td>1/4W, 5% Tolerance</td>
+                                <td>Gate Resistance</td>
+                            </tr>
+                            <tr>
+                                <td>31</td>
+                                <td>100K Resistor</td>
+                                <td>4</td>
+                                <td>1/4W, 5% Tolerance</td>
+                                <td>High Impedance Biasing</td>
+                            </tr>
+                            <tr>
+                                <td>32</td>
+                                <td>5.1K Resistor</td>
+                                <td>2</td>
+                                <td>1/4W, 5% Tolerance</td>
+                                <td>Voltage Reference</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <div style="text-align: center; margin-top: 1rem; padding: 1rem; background: #f8f9fa; border-radius: 10px;">
+                        <strong>Total Project Cost: ৳2,181.17 BDT</strong>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== RESULTS & ACHIEVEMENTS =====-->
+        <section id="results" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Results & Achievements</h2>
+                    <p class="section-subtitle">Outstanding performance metrics demonstrating project success</p>
+                </div>
+                
+                <div class="achievement-card animate-scale">
+                    <div class="achievement-content">
+                        <div class="achievement-number">98%</div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Maximum Efficiency Achieved</h3>
+                        <p>Our MPPT algorithm successfully achieved close to 98% charging efficiency under favorable environmental conditions, significantly outperforming traditional charge controllers.</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="feature-card animate-slide-right">
+                        <div class="feature-icon">
+                            <i class='bx bx-check-circle'></i>
+                        </div>
+                        <h3 class="feature-title">Real-time Monitoring</h3>
+                        <p>Successfully implemented wireless connectivity with Blynk app for remote system monitoring and control capabilities.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-left">
+                        <div class="feature-icon">
+                            <i class='bx bx-shield-alt-2'></i>
+                        </div>
+                        <h3 class="feature-title">Automatic Protection</h3>
+                        <p>Reliable solar panel protection system using 12V relay, preventing damage during non-operational hours and adverse conditions.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-cog'></i>
+                        </div>
+                        <h3 class="feature-title">Stable Performance</h3>
+                        <p>Consistent performance across varying environmental conditions with minimal noise interference and reliable operation.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT GALLERY =====-->
+        <section id="gallery" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Gallery</h2>
+                    <p class="section-subtitle">Visual documentation of the development process and final implementation</p>
+                </div>
+                
+                <div class="project-images">
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/charge-controller-main.jpg" alt="MPPT Controller Setup" onerror="this.src='assets/img/work2.jpg'">
+                        <div class="project-image-caption">
+                            Complete MPPT Solar Charge Controller Setup
+                        </div>
+                    </div>
+                    
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/controller-blynk.jpg" alt="Blynk App Interface" onerror="this.src='assets/img/work3.jpg'">
+                        <div class="project-image-caption">
+                            Blynk App Interface for Remote Monitoring
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== TEAM SECTION =====-->
+        <section id="team" class="project-section">
+            <div class="bd-grid">
+                <div class="team-section animate-fade-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Project Team</h2>
+                        <p class="section-subtitle">Dedicated team members who contributed to this project's success</p>
+                    </div>
+                    
+                    <div class="team-grid">
+                        <div class="team-member animate-slide-right">
+                            <div class="team-name">Kawsar Mahmud Tanveer</div>
+                        </div>
+                        
+                        <div class="team-member animate-scale">
+                            <div class="team-name">Md. Mahmudul Hasan</div>
+                        </div>
+                        
+                        <div class="team-member animate-slide-left">
+                            <div class="team-name">Md. Habibullah Belali</div>
+                        </div>
+                        
+                        <div class="team-member animate-slide-right">
+                            <div class="team-name">Rafat Anam Ibne Hossain Tuhin</div>
+                        </div>
+                        
+                        <div class="team-member animate-scale">
+                            <div class="team-name">Md. Ibrahim Ali Mahfuj</div>
+                        </div>
+                    </div>
+                    
+                    <div style="margin-top: 2rem; text-align: center; color: #666;">
+                        <p><strong>Supervised by:</strong> Md. Sohel Rana<br>
+                        <em>Senior Lecturer, Department of Electrical & Electronic Engineering<br>
+                        Daffodil International University</em></p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CALL TO ACTION =====-->
+        <section class="cta-section">
+            <div class="bd-grid">
+                <div class="animate-fade-in">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Interested in This Project?</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Explore the code, documentation, or get in touch to discuss similar projects
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://github.com/KMTanVeer/mppt-solar-controller" class="cta-button" target="_blank">
+                            <i class='bx bxl-github'></i>
+                            View on GitHub
+                        </a>
+                        <a href="projects.html" class="cta-button">
+                            <i class='bx bx-arrow-back'></i>
+                            Back to Projects
+                        </a>
+                        <a href="contact.html" class="cta-button">
+                            <i class='bx bx-envelope'></i>
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target section
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-right, .animate-slide-left, .animate-scale');
+            
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Initialize animations and scroll listeners
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            updateActiveNavLink();
+        });
+        
+        // Initial call
+        animateOnScroll();
+        updateActiveNavLink();
+    </script>
+</body>
+</html>

@@ -49,15 +49,15 @@
 
   <main class="l-main">
     <!--===== CONTACT HEADER =====-->
-    <section class="contact-header section reveal">
+    <section class="contact-header reveal">
       <div class="bd-grid">
-        <h1 class="contact-header__title">Get In Touch</h1>
-        <p class="contact-header__subtitle">Let's collaborate, discuss projects, or share ideas about technology and innovation</p>
+        <h1 class="contact-header__title reveal-scale">Get In Touch</h1>
+        <p class="contact-header__subtitle reveal-fade-in">Let's collaborate, discuss projects, or share ideas about technology and innovation</p>
       </div>
     </section>
 
     <!--===== CONTACT FORM =====-->
-    <section class="contact section reveal-scale" id="contact">
+    <section class="contact section-compact reveal-scale" id="contact">
       <div class="bd-grid">
         <div class="contact-content">
           <div class="contact-info reveal-left">
@@ -194,26 +194,65 @@
   <script>
     // Scroll Reveal Animation
     function scrollReveal() {
-      const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+      const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade-in');
       
       reveals.forEach(element => {
         const windowHeight = window.innerHeight;
         const elementTop = element.getBoundingClientRect().top;
         const elementVisible = 150;
         
-        if (elementTop < windowHeight - elementVisible) {
+        if (elementTop < windowHeight - elementVisible && !element.classList.contains('active')) {
           element.classList.add('active');
         }
       });
     }
 
     // Initial scroll reveal check and scroll event listener
-    window.addEventListener('load', scrollReveal);
+    window.addEventListener('load', () => {
+      scrollReveal();
+      // Trigger header animations on load
+      setTimeout(() => {
+        document.querySelector('.contact-header__title').classList.add('active');
+      }, 200);
+    });
     window.addEventListener('scroll', scrollReveal);
   </script>
 
   <style>
-    /* Scroll Reveal Animations */
+    /* Compact section spacing for better flow */
+    .section-compact {
+      padding-top: 1.5rem;
+      padding-bottom: 1.5rem;
+    }
+    
+    /* Enhanced contact header with proper spacing */
+    .contact-header {
+      padding: 6rem 0 3rem !important; /* More space from navbar, balanced bottom */
+      text-align: center;
+      background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+      color: white;
+    }
+    
+    .contact-header__title {
+      font-size: 3rem;
+      font-weight: 700;
+      margin-bottom: 1rem;
+      transform: translateY(30px);
+      opacity: 0;
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+    }
+    
+    .contact-header__title.active {
+      transform: translateY(0);
+      opacity: 1;
+    }
+    
+    .contact-header__subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+    }
+    
+    /* Smooth reveal animations */
     .reveal {
       opacity: 0;
       transform: translateY(60px);
@@ -257,6 +296,34 @@
       opacity: 1;
       transform: scale(1);
     }
+    
+    .reveal-fade-in {
+      opacity: 0;
+      transform: translateY(20px);
+      transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; /* Delay for staggered effect */
+    }
+
+    .reveal-fade-in.active {
+      opacity: 1;
+      transform: translateY(0);
+    }
+    
+    /* Responsive adjustments */
+    @media screen and (max-width: 768px) {
+      .contact-header {
+        padding: 5rem 0 2.5rem !important;
+      }
+      
+      .contact-header__title {
+        font-size: 2rem;
+      }
+      
+      .section-compact {
+        padding-top: 1rem;
+        padding-bottom: 1rem;
+      }
+    }
+  </style>
   </style>
 </body>
 </html>

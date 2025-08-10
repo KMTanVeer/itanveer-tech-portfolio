@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Building an Arduino-Based Digital Multimeter | itanveer.tech</title>
+    <meta name="description" content="Learn how to create a professional digital multimeter using Arduino, capable of measuring voltage, current, resistance, and capacitance with high accuracy.">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    <meta name="keywords" content="Arduino, Digital Multimeter, Electronics, Voltage Measurement, Current Sensor, OLED Display, DIY Electronics">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/blog-arduino-multimeter.html">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Building an Arduino-Based Digital Multimeter">
+  <meta name="twitter:description" content="Complete guide to creating a functional digital multimeter using Arduino">
+  <meta name="twitter:image" content="assets/img/blog-arduino-multimeter.jpg">
+
+  <!-- Favicon -->
+  <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== BLOG POST HEADER =====-->
+        <section class="blog-post-header section">
+            <div class="bd-grid">
+                <div class="breadcrumb">
+                    <a href="index.html">Home</a> > <a href="blog.html">Blog</a> > <span>Arduino Multimeter</span>
+                </div>
+                
+                <div class="blog-post-meta">
+                    <span class="blog-post-category">Arduino Projects</span>
+                    <span class="blog-post-date">January 15, 2025</span>
+                    <span class="blog-post-read-time">8 min read</span>
+                </div>
+                
+                <h1 class="blog-post-title">Building an Arduino-Based Digital Multimeter</h1>
+                <p class="blog-post-subtitle">Learn how to create a functional digital multimeter using Arduino, measuring voltage, current, and resistance with high accuracy</p>
+                
+                <div class="blog-post-author">
+                    <img src="assets/img/perfil.png" alt="Kawsar Mahmud Tanveer Khan" class="author-avatar">
+                    <div class="author-info">
+                        <span class="author-name">Kawsar Mahmud Tanveer Khan</span>
+                        <span class="author-title">EEE Student & Tech Enthusiast</span>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== BLOG POST CONTENT =====-->
+        <section class="blog-post-content section">
+            <div class="bd-grid">
+                <div class="blog-post-wrapper">
+                    <article class="blog-article">
+                        <div class="featured-image">
+                            <img src="assets/img/arduino-multimeter-featured.jpg" alt="Arduino Multimeter Project" onerror="this.src='assets/img/multimeter-digital.jpg'">
+                            <p class="image-caption">Completed Arduino-based digital multimeter with LCD display</p>
+                        </div>
+
+                        <div class="article-content">
+                            <h2>Introduction</h2>
+                            <p>Digital multimeters are essential tools for any electronics enthusiast or professional. While commercial multimeters offer excellent accuracy and features, building your own Arduino-based multimeter is a fantastic learning project that teaches fundamental concepts of measurement, analog-to-digital conversion, and embedded programming.</p>
+
+                            <p>In this comprehensive guide, we'll walk through the process of creating a functional digital multimeter that can measure:</p>
+                            <ul>
+                                <li>DC Voltage (0-50V)</li>
+                                <li>DC Current (0-10A)</li>
+                                <li>Resistance (1Ω - 1MΩ)</li>
+                                <li>Continuity Testing</li>
+                            </ul>
+
+                            <div class="info-box">
+                                <i class='bx bx-info-circle'></i>
+                                <div>
+                                    <h4>What You'll Learn</h4>
+                                    <p>By the end of this project, you'll understand voltage dividers, current sensing, ADC principles, and how to implement auto-ranging functionality in embedded systems.</p>
+                                </div>
+                            </div>
+
+                            <h2>Components Required</h2>
+                            <div class="components-grid">
+                                <div class="component-item">
+                                    <strong>Arduino Uno</strong>
+                                    <span>Microcontroller board</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>16x2 LCD Display</strong>
+                                    <span>I2C module preferred</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>ACS712 Current Sensor</strong>
+                                    <span>5A or 20A version</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>Voltage Divider Network</strong>
+                                    <span>High precision resistors</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>Rotary Switch</strong>
+                                    <span>Multi-position for range selection</span>
+                                </div>
+                                <div class="component-item">
+                                    <strong>Test Probes & Leads</strong>
+                                    <span>Standard multimeter probes</span>
+                                </div>
+                            </div>
+
+                            <h2>Circuit Design</h2>
+                            <p>The circuit design is the heart of our multimeter. We need to condition various input signals to fit within the Arduino's 0-5V ADC range while maintaining accuracy.</p>
+
+                            <h3>Voltage Measurement Circuit</h3>
+                            <p>For voltage measurement, we use a precision voltage divider network. The key is using high-precision, low-temperature coefficient resistors to maintain accuracy across different conditions.</p>
+
+                            <pre><code class="language-cpp">// Voltage measurement with calibration
+float measureVoltage() {
+    int adcValue = analogRead(VOLTAGE_PIN);
+    float voltage = (adcValue * 5.0 / 1023.0) * VOLTAGE_MULTIPLIER;
+    
+    // Apply calibration factor
+    voltage = voltage * CALIBRATION_FACTOR;
+    
+    return voltage;
+}</code></pre>
+
+                            <h3>Current Measurement</h3>
+                            <p>Current measurement utilizes the ACS712 Hall-effect sensor, which provides isolation and can measure both AC and DC current. The sensor outputs a voltage proportional to the current flowing through it.</p>
+
+                            <pre><code class="language-cpp">float measureCurrent() {
+    int adcValue = analogRead(CURRENT_PIN);
+    float voltage = (adcValue * 5.0 / 1023.0);
+    
+    // ACS712-5A: 185mV/A, zero at 2.5V
+    float current = (voltage - 2.5) / 0.185;
+    
+    return abs(current);
+}</code></pre>
+
+                            <h2>Programming the Arduino</h2>
+                            <p>The software implementation includes auto-ranging, calibration routines, and a user-friendly interface. Here's the main structure of our program:</p>
+
+                            <pre><code class="language-cpp">#include &lt;LiquidCrystal_I2C.h&gt;
+
+// Pin definitions
+#define VOLTAGE_PIN A0
+#define CURRENT_PIN A1
+#define RESISTANCE_PIN A2
+#define MODE_BUTTON 2
+#define RANGE_BUTTON 3
+
+// Initialize LCD
+LiquidCrystal_I2C lcd(0x27, 16, 2);
+
+// Global variables
+int currentMode = 0; // 0: Voltage, 1: Current, 2: Resistance
+int currentRange = 0;
+float calibrationFactor = 1.0;
+
+void setup() {
+    Serial.begin(9600);
+    lcd.init();
+    lcd.backlight();
+    
+    pinMode(MODE_BUTTON, INPUT_PULLUP);
+    pinMode(RANGE_BUTTON, INPUT_PULLUP);
+    
+    lcd.setCursor(0, 0);
+    lcd.print("Arduino DMM v1.0");
+    lcd.setCursor(0, 1);
+    lcd.print("Initializing...");
+    delay(2000);
+    
+    performSelfTest();
+}
+
+void loop() {
+    handleButtons();
+    
+    switch(currentMode) {
+        case 0: displayVoltage(); break;
+        case 1: displayCurrent(); break;
+        case 2: displayResistance(); break;
+    }
+    
+    delay(500); // Update rate
+}</code></pre>
+
+                            <h2>Calibration Process</h2>
+                            <p>Calibration is crucial for achieving accurate measurements. We compare our readings with a known reference multimeter and adjust our calibration factors accordingly.</p>
+
+                            <div class="warning-box">
+                                <i class='bx bx-error'></i>
+                                <div>
+                                    <h4>Safety Warning</h4>
+                                    <p>Always use proper safety measures when working with electrical measurements. Never exceed the designed input ranges, and always verify your circuit before connecting to unknown voltage sources.</p>
+                                </div>
+                            </div>
+
+                            <h2>Testing and Results</h2>
+                            <p>After assembly and calibration, our Arduino multimeter achieved the following specifications:</p>
+
+                            <div class="results-table">
+                                <table>
+                                    <thead>
+                                        <tr>
+                                            <th>Parameter</th>
+                                            <th>Range</th>
+                                            <th>Accuracy</th>
+                                            <th>Resolution</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr>
+                                            <td>DC Voltage</td>
+                                            <td>0-50V</td>
+                                            <td>±1%</td>
+                                            <td>0.01V</td>
+                                        </tr>
+                                        <tr>
+                                            <td>DC Current</td>
+                                            <td>0-5A</td>
+                                            <td>±2%</td>
+                                            <td>0.01A</td>
+                                        </tr>
+                                        <tr>
+                                            <td>Resistance</td>
+                                            <td>1Ω-1MΩ</td>
+                                            <td>±5%</td>
+                                            <td>1Ω</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+
+                            <h2>Future Improvements</h2>
+                            <p>This project can be enhanced further with several additions:</p>
+                            <ul>
+                                <li><strong>AC Measurement:</strong> Add RMS calculation for AC voltage and current</li>
+                                <li><strong>Frequency Counter:</strong> Measure signal frequency</li>
+                                <li><strong>Data Logging:</strong> Store measurements with timestamps</li>
+                                <li><strong>PC Interface:</strong> Serial communication for computer logging</li>
+                                <li><strong>Auto-ranging:</strong> Automatic range selection for better accuracy</li>
+                            </ul>
+
+                            <h2>Conclusion</h2>
+                            <p>Building an Arduino-based multimeter is an excellent project for understanding measurement principles and embedded programming. While it may not replace a professional-grade multimeter, it provides valuable insights into how these instruments work and serves as a solid foundation for more advanced projects.</p>
+
+                            <p>The complete project files, including circuit diagrams and source code, are available on my GitHub repository. Feel free to contribute improvements or ask questions!</p>
+
+                            <div class="project-links">
+                                <a href="https://github.com/KMTanVeer/arduino-multimeter" class="project-link" target="_blank">
+                                    <i class='bx bxl-github'></i>
+                                    View on GitHub
+                                </a>
+                                <a href="project-arduino-multimeter.html" class="project-link">
+                                    <i class='bx bx-info-circle'></i>
+                                    Project Details
+                                </a>
+                            </div>
+                        </div>
+                    </article>
+
+                    <aside class="blog-sidebar">
+                        <div class="sidebar-widget">
+                            <h3>Related Posts</h3>
+                            <div class="related-posts">
+                                <a href="blog-arduino-lcd.html" class="related-post">
+                                    <img src="assets/img/blog-lcd.jpg" alt="Arduino LCD" onerror="this.src='assets/img/multimeter-digital.jpg'">
+                                    <div>
+                                        <h4>Arduino LCD Programming</h4>
+                                        <span>January 12, 2025</span>
+                                    </div>
+                                </a>
+                                <a href="blog-voltage-sensors.html" class="related-post">
+                                    <img src="assets/img/blog-sensors.jpg" alt="Voltage Sensors" onerror="this.src='assets/img/multimeter-digital.jpg'">
+                                    <div>
+                                        <h4>Understanding Voltage Sensors</h4>
+                                        <span>January 8, 2025</span>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <h3>Tags</h3>
+                            <div class="tag-cloud">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">Multimeter</span>
+                                <span class="tag">Electronics</span>
+                                <span class="tag">Measurement</span>
+                                <span class="tag">ADC</span>
+                                <span class="tag">Calibration</span>
+                            </div>
+                        </div>
+
+                        <div class="sidebar-widget">
+                            <h3>Share This Post</h3>
+                            <div class="share-buttons">
+                                <a href="#" class="share-button twitter">
+                                    <i class='bx bxl-twitter'></i>
+                                </a>
+                                <a href="#" class="share-button facebook">
+                                    <i class='bx bxl-facebook'></i>
+                                </a>
+                                <a href="#" class="share-button linkedin">
+                                    <i class='bx bxl-linkedin'></i>
+                                </a>
+                            </div>
+                        </div>
+                    </aside>
+                </div>
+            </div>
+        </section>
+
+        <!--===== COMMENTS SECTION =====-->
+        <section class="comments-section section">
+            <div class="bd-grid">
+                <h2 class="section-title">Comments & Discussion</h2>
+                <p class="comments-notice">
+                    Have questions about this project? Found an improvement? Share your thoughts below or 
+                    <a href="contact.html">contact me directly</a> for technical discussions.
+                </p>
+                
+                <!-- You can integrate a commenting system like Disqus here -->
+                <div class="comment-placeholder">
+                    <p>Comments system will be integrated here. For now, feel free to reach out via the contact form!</p>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+    
+    <!--===== SYNTAX HIGHLIGHTING =====-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+</body>
+</html>

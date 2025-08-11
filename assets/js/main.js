@@ -6,11 +6,23 @@ const showMenu = (toggleId, navId) =>{
 
     if(toggle && nav){
         toggle.addEventListener('click', ()=>{
+            const isOpen = nav.classList.contains('show')
             nav.classList.toggle('show')
             // Add hamburger animation
             toggle.classList.toggle('active')
             // Add body class for backdrop effect on mobile
             body.classList.toggle('menu-open')
+            
+            // Update ARIA attributes for accessibility
+            toggle.setAttribute('aria-expanded', !isOpen)
+        })
+        
+        // Handle keyboard navigation
+        toggle.addEventListener('keydown', (e) => {
+            if(e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault()
+                toggle.click()
+            }
         })
     }
 }

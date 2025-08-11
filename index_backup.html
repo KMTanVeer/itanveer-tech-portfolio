@@ -20,10 +20,8 @@
   <meta name="twitter:image" content="assets/img/about.png">
 
   <!-- Favicon -->
-  <link rel="shortcut icon" href="favicon.png" type="image/png">
-  <link rel="icon" href="favicon.png" type="image/png">
-  <link rel="apple-touch-icon" href="favicon.png">
-  <meta name="msapplication-TileImage" content="favicon.png">
+ <link rel="shortcut icon" href="favicon.png" type="image/png">
+<link rel="icon" href="favicon.png" type="image/png">
 
 
   <!-- Preload critical resources -->
@@ -83,15 +81,16 @@
                     </ul>
                 </div>
 
-                <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-                    <i class='bx bx-menu' aria-hidden="true"></i>
+                <div class="nav__toggle" id="nav-toggle">
+                    <i class='bx bx-menu'></i>
                 </div>
             </nav>
         </header>
 
-        <main class="l-main" role="main">
+        <main class="l-main">
             <!--===== HOME =====-->
-            <section class="home bd-grid" id="home" aria-labelledby="home-title">
+                        <!--===== HOME =====-->
+            <section class="home bd-grid" id="home">
                 <div class="home__data">
                     <h1 class="home__title">Welcome to<br><span class="home__title-color">Tanveer's</span><br>Tech Hub</h1>
                     <p class="home__subtitle">Exploring Embedded Systems, IoT, and Smart Grid Innovations</p>
@@ -127,7 +126,7 @@
                 <div class="blog-grid bd-grid">
                     <article class="blog-card">
                         <div class="blog-card__img">
-                            <img src="assets/img/multimeter-digital.jpg" alt="Arduino digital multimeter project showing LCD display and circuit components" loading="lazy">
+                            <img src="assets/img/blog1.jpg" alt="Arduino Multimeter Project" onerror="this.src='assets/img/work1.jpeg'">
                         </div>
                         <div class="blog-card__content">
                             <span class="blog-card__category">Arduino Projects</span>
@@ -135,14 +134,14 @@
                             <p class="blog-card__description">Learn how to create a functional digital multimeter using Arduino, measuring voltage, current, and resistance with high accuracy.</p>
                             <div class="blog-card__meta">
                                 <span class="blog-card__date">January 15, 2025</span>
-                                <a href="blog-arduino-multimeter.html" class="blog-card__link" aria-label="Read full article about Arduino multimeter project">Read More →</a>
+                                <a href="blog-arduino-multimeter.html" class="blog-card__link">Read More →</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="blog-card">
                         <div class="blog-card__img">
-                            <img src="assets/img/esp32.jpg" alt="ESP32 development board with sensors for IoT project integration" loading="lazy">
+                            <img src="assets/img/blog2.jpg" alt="ESP32 IoT Project" onerror="this.src='assets/img/work2.jpg'">
                         </div>
                         <div class="blog-card__content">
                             <span class="blog-card__category">IoT & ESP32</span>
@@ -150,14 +149,14 @@
                             <p class="blog-card__description">Complete guide to connecting ESP32 sensors to cloud platforms, enabling real-time monitoring and data visualization.</p>
                             <div class="blog-card__meta">
                                 <span class="blog-card__date">January 10, 2025</span>
-                                <a href="blog-esp32-iot.html" class="blog-card__link" aria-label="Read full article about ESP32 IoT integration">Read More →</a>
+                                <a href="blog-esp32-iot.html" class="blog-card__link">Read More →</a>
                             </div>
                         </div>
                     </article>
 
                     <article class="blog-card">
                         <div class="blog-card__img">
-                            <img src="assets/img/smartgrid.jpg" alt="Smart grid simulation interface in MATLAB Simulink showing power distribution network" loading="lazy">
+                            <img src="assets/img/blog3.jpg" alt="Smart Grid Simulation" onerror="this.src='assets/img/work3.jpg'">
                         </div>
                         <div class="blog-card__content">
                             <span class="blog-card__category">Smart Grid</span>
@@ -165,14 +164,14 @@
                             <p class="blog-card__description">Exploring smart grid technologies and simulating power distribution systems using MATLAB Simulink for efficient energy management.</p>
                             <div class="blog-card__meta">
                                 <span class="blog-card__date">January 5, 2025</span>
-                                <a href="blog-smart-grid.html" class="blog-card__link" aria-label="Read full article about smart grid simulation">Read More →</a>
+                                <a href="blog-smart-grid.html" class="blog-card__link">Read More →</a>
                             </div>
                         </div>
                     </article>
                 </div>
 
                 <div class="blog-cta">
-                    <a href="blog.html" class="button" aria-label="View all blog posts and tutorials">View All Posts</a>
+                    <a href="blog.html" class="button">View All Posts</a>
                 </div>
             </section>
 
@@ -183,9 +182,9 @@
                 <div class="projects-grid bd-grid">
                     <div class="project-card">
                         <div class="project-card__img">
-                            <img src="assets/img/multimeter-digital.jpg" alt="Arduino digital multimeter with LCD display and measurement circuits" loading="lazy">
+                            <img src="assets/img/project1.jpg" alt="Arduino Multimeter" onerror="this.src='assets/img/work1.jpeg'">
                             <div class="project-card__overlay">
-                                <a href="blog-arduino-multimeter.html" class="project-card__btn">View Project</a>
+                                <a href="project-arduino-multimeter.html" class="project-card__btn">View Project</a>
                                 <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
                             </div>
                         </div>
@@ -202,45 +201,45 @@
 
                     <div class="project-card">
                         <div class="project-card__img">
-                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT solar charge controller with advanced power tracking system" loading="lazy">
+                            <img src="assets/img/project2.jpg" alt="Distance Protection System" onerror="this.src='assets/img/work2.jpg'">
                             <div class="project-card__overlay">
-                                <a href="project-mppt-solar.html" class="project-card__btn">View Project</a>
+                                <a href="project-distance-protection.html" class="project-card__btn">View Project</a>
                                 <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
                             </div>
                         </div>
                         <div class="project-card__content">
-                            <h3 class="project-card__title">MPPT Solar Charge Controller</h3>
-                            <p class="project-card__description">Advanced Maximum Power Point Tracking solar charge controller with microcontroller-based control system.</p>
+                            <h3 class="project-card__title">Distance Protection with Simulink</h3>
+                            <p class="project-card__description">Advanced power system protection scheme implemented using MATLAB Simulink for transmission line fault detection.</p>
                             <div class="project-card__tags">
-                                <span class="tag">Solar</span>
-                                <span class="tag">MPPT</span>
-                                <span class="tag">Power Electronics</span>
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Simulink</span>
+                                <span class="tag">Power Systems</span>
                             </div>
                         </div>
                     </div>
 
                     <div class="project-card">
                         <div class="project-card__img">
-                            <img src="assets/img/UPS.jpg" alt="Online UPS system with advanced power backup and monitoring capabilities" loading="lazy">
+                            <img src="assets/img/project3.jpg" alt="ESP32 IoT System" onerror="this.src='assets/img/work3.jpg'">
                             <div class="project-card__overlay">
-                                <a href="project-online-ups.html" class="project-card__btn">View Project</a>
+                                <a href="project-esp32-iot.html" class="project-card__btn">View Project</a>
                                 <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
                             </div>
                         </div>
                         <div class="project-card__content">
-                            <h3 class="project-card__title">Online UPS System</h3>
-                            <p class="project-card__description">Advanced online UPS system with seamless power backup, battery monitoring, and intelligent load management.</p>
+                            <h3 class="project-card__title">ESP32 IoT Sensor Network</h3>
+                            <p class="project-card__description">Comprehensive IoT solution using ESP32 for environmental monitoring with cloud integration and real-time data visualization.</p>
                             <div class="project-card__tags">
-                                <span class="tag">Power Systems</span>
-                                <span class="tag">UPS</span>
-                                <span class="tag">Electronics</span>
+                                <span class="tag">ESP32</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">Cloud</span>
                             </div>
                         </div>
                     </div>
                 </div>
 
                 <div class="projects-cta">
-                    <a href="projects.html" class="button" aria-label="View all engineering projects and detailed documentation">View All Projects</a>
+                    <a href="projects.html" class="button">View All Projects</a>
                 </div>
             </section>
 

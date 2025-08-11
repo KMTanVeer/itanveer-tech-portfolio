@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sitemap | itanveer.tech</title>
+    <meta name="description" content="Complete sitemap of itanveer.tech - Find all pages, projects, and blog posts in one organized place.">
+    <meta name="keywords" content="sitemap, navigation, itanveer, portfolio, projects, blog">
+    <meta name="author" content="IT Tanveer">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    
+    <style>
+        .sitemap-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 2rem;
+            font-family: var(--body-font);
+        }
+        
+        .sitemap-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .sitemap-title {
+            font-size: 3rem;
+            color: var(--first-color);
+            margin-bottom: 1rem;
+            font-weight: 900;
+        }
+        
+        .sitemap-subtitle {
+            font-size: 1.2rem;
+            color: var(--text-color);
+            max-width: 600px;
+            margin: 0 auto;
+            line-height: 1.6;
+        }
+        
+        .sitemap-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .sitemap-section {
+            background: rgba(255, 255, 255, 0.1);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 2rem;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .sitemap-section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
+        }
+        
+        .section-header {
+            display: flex;
+            align-items: center;
+            gap: 1rem;
+            margin-bottom: 1.5rem;
+            padding-bottom: 1rem;
+            border-bottom: 2px solid var(--first-color);
+        }
+        
+        .section-icon {
+            font-size: 2rem;
+            color: var(--first-color);
+        }
+        
+        .section-title {
+            font-size: 1.5rem;
+            color: var(--title-color);
+            font-weight: 700;
+            margin: 0;
+        }
+        
+        .section-links {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .section-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .section-links a {
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+            color: var(--text-color);
+            text-decoration: none;
+            padding: 0.5rem;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+        }
+        
+        .section-links a:hover {
+            background: var(--first-color);
+            color: white;
+            transform: translateX(10px);
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .section-links i {
+            font-size: 1.1rem;
+            width: 20px;
+            text-align: center;
+        }
+        
+        .priority-high { border-left: 4px solid #4CAF50; }
+        .priority-medium { border-left: 4px solid #FF9800; }
+        .priority-low { border-left: 4px solid #9E9E9E; }
+        
+        .update-info {
+            background: linear-gradient(135deg, var(--first-color), var(--first-color-alt));
+            color: white;
+            padding: 1rem;
+            border-radius: 10px;
+            margin-bottom: 2rem;
+            text-align: center;
+        }
+        
+        .back-nav {
+            position: fixed;
+            top: 2rem;
+            left: 2rem;
+            z-index: 1000;
+        }
+        
+        .back-btn {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: var(--first-color);
+            color: white;
+            padding: 0.8rem 1.2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 600;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3);
+        }
+        
+        .back-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 25px rgba(102, 126, 234, 0.4);
+        }
+        
+        .stats-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+            gap: 1rem;
+            margin: 2rem 0;
+        }
+        
+        .stat-card {
+            background: var(--first-color);
+            color: white;
+            padding: 1rem;
+            border-radius: 15px;
+            text-align: center;
+        }
+        
+        .stat-number {
+            font-size: 2rem;
+            font-weight: 900;
+            display: block;
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            opacity: 0.9;
+        }
+        
+        /* Mobile responsive */
+        @media screen and (max-width: 768px) {
+            .sitemap-container {
+                padding: 1rem;
+            }
+            
+            .sitemap-title {
+                font-size: 2rem;
+            }
+            
+            .sitemap-grid {
+                grid-template-columns: 1fr;
+                gap: 1.5rem;
+            }
+            
+            .back-nav {
+                position: static;
+                margin-bottom: 2rem;
+            }
+            
+            .stats-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Navigation -->
+    <div class="back-nav">
+        <a href="/" class="back-btn">
+            <i class='bx bx-arrow-back'></i>
+            Home
+        </a>
+    </div>
+
+    <div class="sitemap-container">
+        <!-- Header -->
+        <div class="sitemap-header">
+            <h1 class="sitemap-title">🗺️ Site Map</h1>
+            <p class="sitemap-subtitle">
+                Navigate through all pages, projects, and content on itanveer.tech. 
+                Find everything you're looking for in one organized place.
+            </p>
+            
+            <div class="stats-grid">
+                <div class="stat-card">
+                    <span class="stat-number">15+</span>
+                    <span class="stat-label">Total Pages</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">8+</span>
+                    <span class="stat-label">Blog Posts</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">3+</span>
+                    <span class="stat-label">Projects</span>
+                </div>
+                <div class="stat-card">
+                    <span class="stat-number">100%</span>
+                    <span class="stat-label">Mobile Ready</span>
+                </div>
+            </div>
+        </div>
+        
+        <div class="update-info">
+            <i class='bx bx-info-circle'></i>
+            <strong>Last Updated:</strong> August 11, 2025 | All pages are optimized and mobile-friendly
+        </div>
+
+        <!-- Sitemap Grid -->
+        <div class="sitemap-grid">
+            <!-- Main Pages -->
+            <div class="sitemap-section priority-high">
+                <div class="section-header">
+                    <i class='bx bx-home section-icon'></i>
+                    <h2 class="section-title">Main Pages</h2>
+                </div>
+                <ul class="section-links">
+                    <li>
+                        <a href="/">
+                            <i class='bx bx-home'></i>
+                            Homepage
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/about.html">
+                            <i class='bx bx-user'></i>
+                            About Me
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/projects.html">
+                            <i class='bx bx-code-alt'></i>
+                            Projects Portfolio
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/blog.html">
+                            <i class='bx bx-book-open'></i>
+                            Blog & Tutorials
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/contact.html">
+                            <i class='bx bx-mail-send'></i>
+                            Contact & Connect
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/resources.html">
+                            <i class='bx bx-collection'></i>
+                            Resources & Tools
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Engineering Projects -->
+            <div class="sitemap-section priority-medium">
+                <div class="section-header">
+                    <i class='bx bx-chip section-icon'></i>
+                    <h2 class="section-title">Engineering Projects</h2>
+                </div>
+                <ul class="section-links">
+                    <li>
+                        <a href="/project-fiber-optic-can.html">
+                            <i class='bx bx-network-chart'></i>
+                            Fiber Optic CAN Communication
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/project-mppt-solar.html">
+                            <i class='bx bx-sun'></i>
+                            MPPT Solar Charge Controller
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/project-online-ups.html">
+                            <i class='bx bx-battery'></i>
+                            Online UPS System
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Technical Blog Posts -->
+            <div class="sitemap-section priority-medium">
+                <div class="section-header">
+                    <i class='bx bx-edit section-icon'></i>
+                    <h2 class="section-title">Technical Articles</h2>
+                </div>
+                <ul class="section-links">
+                    <li>
+                        <a href="/blog-esp32-iot.html">
+                            <i class='bx bx-wifi'></i>
+                            ESP32 IoT Sensors Guide
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/blog-arduino-lcd.html">
+                            <i class='bx bx-tv'></i>
+                            Arduino LED Matrix Display
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/blog-arduino-multimeter.html">
+                            <i class='bx bx-pulse'></i>
+                            Arduino Digital Multimeter
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/blog-smart-grid.html">
+                            <i class='bx bx-grid-alt'></i>
+                            Smart Grid Technology
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Additional Content -->
+            <div class="sitemap-section priority-low">
+                <div class="section-header">
+                    <i class='bx bx-file section-icon'></i>
+                    <h2 class="section-title">Additional Content</h2>
+                </div>
+                <ul class="section-links">
+                    <li>
+                        <a href="/post1.html">
+                            <i class='bx bx-news'></i>
+                            Featured Article #1
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/post2.html">
+                            <i class='bx bx-news'></i>
+                            Featured Article #2
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/post3.html">
+                            <i class='bx bx-news'></i>
+                            Featured Article #3
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/404.html">
+                            <i class='bx bx-error'></i>
+                            404 Error Page
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Site Information -->
+            <div class="sitemap-section priority-low">
+                <div class="section-header">
+                    <i class='bx bx-info-circle section-icon'></i>
+                    <h2 class="section-title">Site Information</h2>
+                </div>
+                <ul class="section-links">
+                    <li>
+                        <a href="/sitemap.xml">
+                            <i class='bx bx-sitemap'></i>
+                            XML Sitemap
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/sitemap-page.html">
+                            <i class='bx bx-map'></i>
+                            HTML Sitemap (This Page)
+                        </a>
+                    </li>
+                    <li>
+                        <a href="https://github.com/KMTanVeer/itanveer-tech-portfolio" target="_blank">
+                            <i class='bx bx-git-branch'></i>
+                            Source Code
+                        </a>
+                    </li>
+                </ul>
+            </div>
+
+            <!-- Quick Stats -->
+            <div class="sitemap-section priority-medium">
+                <div class="section-header">
+                    <i class='bx bx-bar-chart section-icon'></i>
+                    <h2 class="section-title">Site Features</h2>
+                </div>
+                <ul class="section-links">
+                    <li style="cursor: default; pointer-events: none;">
+                        <i class='bx bx-mobile-alt'></i>
+                        Fully Mobile Responsive
+                    </li>
+                    <li style="cursor: default; pointer-events: none;">
+                        <i class='bx bx-rocket'></i>
+                        Optimized Performance
+                    </li>
+                    <li style="cursor: default; pointer-events: none;">
+                        <i class='bx bx-accessibility'></i>
+                        Accessibility Compliant
+                    </li>
+                    <li style="cursor: default; pointer-events: none;">
+                        <i class='bx bx-search'></i>
+                        SEO Optimized
+                    </li>
+                    <li style="cursor: default; pointer-events: none;">
+                        <i class='bx bx-shield-check'></i>
+                        GitHub Pages Hosted
+                    </li>
+                </ul>
+            </div>
+        </div>
+
+        <!-- Footer -->
+        <div style="text-align: center; margin-top: 3rem; padding-top: 2rem; border-top: 1px solid rgba(255, 255, 255, 0.2);">
+            <p style="color: var(--text-color); margin: 0;">
+                <i class='bx bx-world'></i>
+                <strong>itanveer.tech</strong> | Complete portfolio and technical blog
+            </p>
+            <p style="color: var(--text-color); font-size: 0.9rem; margin: 0.5rem 0 0;">
+                Built with ❤️ using modern web technologies
+            </p>
+        </div>
+    </div>
+
+    <!-- Add some interactivity -->
+    <script>
+        // Add smooth scrolling and animations
+        document.querySelectorAll('.section-links a').forEach(link => {
+            link.addEventListener('mouseenter', function() {
+                this.style.transform = 'translateX(10px) scale(1.02)';
+            });
+            
+            link.addEventListener('mouseleave', function() {
+                this.style.transform = 'translateX(0) scale(1)';
+            });
+        });
+
+        // Add floating animation to sections
+        document.querySelectorAll('.sitemap-section').forEach((section, index) => {
+            section.style.animationDelay = (index * 0.1) + 's';
+            section.style.animation = 'fadeInUp 0.6s ease-out forwards';
+        });
+
+        // CSS for fade in animation
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeInUp {
+                from {
+                    opacity: 0;
+                    transform: translateY(30px);
+                }
+                to {
+                    opacity: 1;
+                    transform: translateY(0);
+                }
+            }
+            
+            .sitemap-section {
+                opacity: 0;
+            }
+        `;
+        document.head.appendChild(style);
+
+        // Update stats with real-time animation
+        function animateNumbers() {
+            document.querySelectorAll('.stat-number').forEach(stat => {
+                const finalNumber = stat.textContent;
+                const isPercentage = finalNumber.includes('%');
+                const number = parseInt(finalNumber);
+                let current = 0;
+                const increment = number / 30;
+                
+                const timer = setInterval(() => {
+                    current += increment;
+                    if (current >= number) {
+                        stat.textContent = finalNumber;
+                        clearInterval(timer);
+                    } else {
+                        stat.textContent = Math.floor(current) + (isPercentage ? '%' : '+');
+                    }
+                }, 50);
+            });
+        }
+
+        // Start number animation when page loads
+        window.addEventListener('load', () => {
+            setTimeout(animateNumbers, 500);
+        });
+    </script>
+</body>
+</html>

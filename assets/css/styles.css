@@ -1,5 +1,6 @@
 /*===== GOOGLE FONTS =====*/
 @import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap");
 /*===== VARIABLES CSS =====*/
 :root {
   --header-height: 3rem;
@@ -112,8 +113,26 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: #fff;
+  background-color: rgba(255, 255, 255, 0.95);
+  backdrop-filter: blur(20px);
+  -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.1);
+  transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Enhanced header on scroll */
+.l-header.scroll-header {
+  background-color: rgba(255, 255, 255, 0.98);
+  backdrop-filter: blur(30px);
+  -webkit-backdrop-filter: blur(30px);
+  box-shadow: 0 4px 20px rgba(146, 161, 176, 0.25);
+  border-bottom: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.l-header.scroll-header .nav__logo {
+  transform: scale(0.9);
+  animation-duration: 3s;
 }
 
 /*===== NAV =====*/
@@ -155,8 +174,131 @@ img {
   top: 2rem;
   background-color: var(--first-color);
 }
+
+/* ===== FUTURISTIC LOGO DESIGN ===== */
 .nav__logo {
-  color: var(--second-color);
+  position: relative;
+  font-family: 'Orbitron', 'Poppins', monospace;
+  font-weight: 700;
+  font-size: 1.5rem;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%);
+  background-size: 300% 300%;
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-decoration: none;
+  letter-spacing: 2px;
+  transition: all 0.4s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  animation: gradientShift 4s ease-in-out infinite, pulseGlow 6s ease-in-out infinite 2s;
+  overflow: hidden;
+  padding: 8px 16px;
+  border: 1px solid transparent;
+  border-radius: 8px;
+  background-image: linear-gradient(135deg, #667eea 0%, #764ba2 25%, #f093fb 50%, #4facfe 75%, #00f2fe 100%),
+                    linear-gradient(135deg, rgba(102, 126, 234, 0.1) 0%, rgba(118, 75, 162, 0.1) 25%, rgba(240, 147, 251, 0.1) 50%, rgba(79, 172, 254, 0.1) 75%, rgba(0, 242, 254, 0.1) 100%);
+  background-origin: border-box;
+  background-clip: text, border-box;
+}
+
+.nav__logo::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.8), transparent);
+  transition: left 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  border-radius: 8px;
+}
+
+.nav__logo::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 50%;
+  width: 0;
+  height: 2px;
+  background: linear-gradient(90deg, #667eea, #764ba2, #f093fb, #4facfe, #00f2fe);
+  border-radius: 1px;
+  transform: translateX(-50%);
+  transition: width 0.6s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  box-shadow: 0 0 10px rgba(102, 126, 234, 0.5);
+}
+
+.nav__logo:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: drop-shadow(0 8px 16px rgba(102, 126, 234, 0.3));
+  animation-duration: 2s;
+}
+
+.nav__logo:hover::before {
+  left: 100%;
+}
+
+.nav__logo:hover::after {
+  width: 100%;
+  box-shadow: 0 0 20px rgba(102, 126, 234, 0.8), 0 0 40px rgba(102, 126, 234, 0.4);
+}
+
+/* Responsive logo sizing */
+@media screen and (max-width: 768px) {
+  .nav__logo {
+    font-size: 1.2rem;
+    letter-spacing: 1px;
+  }
+}
+
+@media screen and (min-width: 1024px) {
+  .nav__logo {
+    font-size: 1.6rem;
+    letter-spacing: 3px;
+  }
+}
+
+/* Gradient animation keyframes */
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  25% {
+    background-position: 100% 50%;
+  }
+  50% {
+    background-position: 100% 100%;
+  }
+  75% {
+    background-position: 0% 100%;
+  }
+  100% {
+    background-position: 0% 50%;
+  }
+}
+
+/* Futuristic pulse glow effect */
+@keyframes pulseGlow {
+  0%, 100% {
+    filter: drop-shadow(0 0 5px rgba(102, 126, 234, 0.3));
+  }
+  50% {
+    filter: drop-shadow(0 0 20px rgba(102, 126, 234, 0.8)) drop-shadow(0 0 30px rgba(118, 75, 162, 0.5));
+  }
+}
+
+/* Add periodic glow pulse */
+.nav__logo {
+  animation: gradientShift 4s ease-in-out infinite, pulseGlow 6s ease-in-out infinite 2s;
+}
+
+.nav__logo:hover {
+  transform: translateY(-3px) scale(1.08);
+  filter: drop-shadow(0 10px 20px rgba(102, 126, 234, 0.4)) 
+          drop-shadow(0 0 15px rgba(118, 75, 162, 0.5))
+          drop-shadow(0 0 25px rgba(240, 147, 251, 0.3));
+  animation-duration: 2s;
+  text-shadow: 0 0 15px rgba(102, 126, 234, 0.6),
+               0 0 25px rgba(118, 75, 162, 0.4),
+               0 0 35px rgba(240, 147, 251, 0.2);
 }
 .nav__toggle {
   color: var(--second-color);

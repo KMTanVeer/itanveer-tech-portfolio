@@ -119,6 +119,8 @@ img {
   box-shadow: 0 1px 4px rgba(146, 161, 176, 0.15);
   border-bottom: 1px solid rgba(102, 126, 234, 0.1);
   transition: all 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  overflow: visible; /* Allow mobile menu to extend outside header */
+  box-sizing: border-box;
 }
 
 /* Enhanced header on scroll */
@@ -143,6 +145,8 @@ img {
   align-items: center;
   font-weight: var(--font-semi);
   position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
 }
 
 @media screen and (max-width: 767px) {
@@ -505,6 +509,56 @@ img {
   
   .nav__toggle {
     display: none;
+  }
+}
+
+/* ===== NAVBAR WIDTH FIX FOR CONTACT & RESOURCES ===== */
+@media screen and (max-width: 991px) {
+  .nav.bd-grid {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    max-width: calc(100vw - 1rem);
+  }
+  
+  .nav {
+    padding: 0 0.5rem;
+    overflow: visible; /* Ensure mobile menu can extend outside */
+  }
+  
+  .nav__toggle {
+    position: relative;
+    right: 0;
+    margin-right: 0;
+  }
+
+  /* Ensure mobile menu is not affected by container constraints */
+  .nav__menu {
+    max-width: none !important;
+    margin: 0 !important;
+  }
+}
+
+@media screen and (max-width: 767px) {
+  .nav.bd-grid {
+    margin-left: 0.25rem;
+    margin-right: 0.25rem;
+    max-width: calc(100vw - 0.5rem);
+  }
+  
+  .nav {
+    padding: 0 0.25rem;
+    overflow: visible; /* Ensure mobile menu can extend outside */
+  }
+
+  /* Ensure mobile menu positioning remains intact */
+  .nav__menu {
+    max-width: none !important;
+    margin: 0 !important;
+    right: -100% !important; /* Restore original positioning */
+  }
+
+  .nav__menu.show {
+    right: 0 !important; /* Restore original show positioning */
   }
 }
 

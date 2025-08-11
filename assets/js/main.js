@@ -1,11 +1,16 @@
 /*===== MENU SHOW =====*/ 
 const showMenu = (toggleId, navId) =>{
     const toggle = document.getElementById(toggleId),
-    nav = document.getElementById(navId)
+    nav = document.getElementById(navId),
+    body = document.body
 
     if(toggle && nav){
         toggle.addEventListener('click', ()=>{
             nav.classList.toggle('show')
+            // Add hamburger animation
+            toggle.classList.toggle('active')
+            // Add body class for backdrop effect on mobile
+            body.classList.toggle('menu-open')
         })
     }
 }
@@ -13,11 +18,17 @@ showMenu('nav-toggle','nav-menu')
 
 /*==================== REMOVE MENU MOBILE ====================*/
 const navLink = document.querySelectorAll('.nav__link')
+const navToggle = document.getElementById('nav-toggle')
 
 function linkAction(){
     const navMenu = document.getElementById('nav-menu')
+    const body = document.body
     // When we click on each nav__link, we remove the show-menu class
     navMenu.classList.remove('show')
+    // Also remove the active class from hamburger
+    if(navToggle) navToggle.classList.remove('active')
+    // Remove backdrop effect
+    body.classList.remove('menu-open')
 }
 navLink.forEach(n => n.addEventListener('click', linkAction))
 

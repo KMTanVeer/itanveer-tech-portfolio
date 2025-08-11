@@ -1401,6 +1401,18 @@ img {
   background: #0066cc;
 }
 
+.download-card__unavailable {
+  background: #f8f9fa;
+  color: #6c757d;
+  padding: 0.5rem 1rem;
+  border-radius: 6px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  border: 2px solid #dee2e6;
+  text-align: center;
+  cursor: default;
+}
+
 .resources-note {
   background: #fff3cd;
   border: 1px solid #ffeaa7;

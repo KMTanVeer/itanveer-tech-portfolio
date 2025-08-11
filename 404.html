@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>404 - Page Not Found | itanveer.tech</title>
+    <meta name="description" content="Oops! The page you're looking for doesn't exist. Let's get you back on track at itanveer.tech">
+    <meta name="robots" content="noindex, nofollow">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="/favicon.ico">
+    <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+    <link rel="shortcut icon" href="/favicon.ico">
+    
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    
+    <style>
+        .error-page {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 50%, #4facfe 100%);
+            padding: 2rem;
+            text-align: center;
+        }
+        
+        .error-container {
+            max-width: 600px;
+            background: rgba(255, 255, 255, 0.95);
+            backdrop-filter: blur(20px);
+            border-radius: 20px;
+            padding: 3rem 2rem;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+        
+        .error-number {
+            font-size: 8rem;
+            font-weight: 900;
+            color: var(--first-color);
+            margin: 0;
+            line-height: 1;
+            animation: bounce 2s infinite, glow 3s ease-in-out infinite alternate;
+            font-family: 'Orbitron', monospace;
+            text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+        }
+        
+        .error-title {
+            font-size: 2rem;
+            color: var(--title-color);
+            margin: 1rem 0 0.5rem;
+            font-weight: 700;
+        }
+        
+        .error-subtitle {
+            font-size: 1.1rem;
+            color: var(--text-color);
+            margin-bottom: 2rem;
+            line-height: 1.5;
+        }
+        
+        .robot-animation {
+            font-size: 4rem;
+            margin: 1rem 0;
+            animation: robot-dance 2s ease-in-out infinite;
+            display: inline-block;
+        }
+        
+        .search-animation {
+            font-size: 2rem;
+            margin-left: 10px;
+            animation: search-spin 1.5s linear infinite;
+            display: inline-block;
+            color: var(--first-color);
+        }
+        
+        .error-buttons {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1rem;
+            justify-content: center;
+            margin-top: 2rem;
+        }
+        
+        .error-btn {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: linear-gradient(135deg, #ff6b6b 0%, #ff8e8e 100%);
+            color: #ffffff;
+            padding: 1rem 2rem;
+            border-radius: 50px;
+            text-decoration: none;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 8px 25px rgba(255, 107, 107, 0.4);
+            text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+            border: 3px solid #ffffff;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .error-btn::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+            transition: left 0.5s;
+        }
+        
+        .error-btn:hover::before {
+            left: 100%;
+        }
+        
+        .error-btn:hover {
+            transform: translateY(-3px) scale(1.05);
+            box-shadow: 0 15px 35px rgba(255, 107, 107, 0.6);
+            background: linear-gradient(135deg, #ff8e8e 0%, #ffb3b3 100%);
+            color: #ffffff;
+        }
+        
+        .error-btn--secondary {
+            background: linear-gradient(135deg, #4ecdc4 0%, #44b3ab 100%);
+            border: 3px solid #ffffff;
+            color: #ffffff;
+            box-shadow: 0 8px 25px rgba(78, 205, 196, 0.4);
+        }
+        
+        .error-btn--secondary:hover {
+            background: linear-gradient(135deg, #5fd4cb 0%, #52c4bb 100%);
+            box-shadow: 0 15px 35px rgba(78, 205, 196, 0.6);
+            color: #ffffff;
+            transform: translateY(-3px) scale(1.05);
+        }
+        
+        .cartoon-guide {
+            position: absolute;
+            top: -60px;
+            right: -20px;
+            font-size: 3rem;
+            animation: point-home 2s ease-in-out infinite;
+            z-index: 10;
+        }
+        
+        .fun-facts {
+            margin-top: 2rem;
+            padding: 1rem;
+            background: rgba(102, 126, 234, 0.1);
+            border-radius: 10px;
+            border-left: 4px solid var(--first-color);
+        }
+        
+        .fun-facts h4 {
+            color: var(--first-color);
+            margin: 0 0 0.5rem;
+            font-size: 1rem;
+        }
+        
+        .fun-facts p {
+            color: var(--text-color);
+            margin: 0;
+            font-size: 0.9rem;
+            font-style: italic;
+        }
+        
+        /* Animations */
+        @keyframes bounce {
+            0%, 20%, 53%, 80%, 100% {
+                transform: translate3d(0,0,0);
+            }
+            40%, 43% {
+                transform: translate3d(0, -15px, 0);
+            }
+            70% {
+                transform: translate3d(0, -7px, 0);
+            }
+            90% {
+                transform: translate3d(0, -2px, 0);
+            }
+        }
+        
+        @keyframes glow {
+            0% {
+                text-shadow: 0 0 30px rgba(102, 126, 234, 0.3);
+            }
+            100% {
+                text-shadow: 0 0 50px rgba(102, 126, 234, 0.6), 0 0 70px rgba(118, 75, 162, 0.4);
+            }
+        }
+        
+        @keyframes robot-dance {
+            0%, 100% { transform: rotate(0deg) scale(1); }
+            25% { transform: rotate(-10deg) scale(1.1); }
+            75% { transform: rotate(10deg) scale(0.9); }
+        }
+        
+        @keyframes search-spin {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        @keyframes point-home {
+            0%, 100% { 
+                transform: translateX(0px) rotate(0deg); 
+            }
+            25% { 
+                transform: translateX(-10px) rotate(-15deg); 
+            }
+            50% { 
+                transform: translateX(-15px) rotate(-20deg) scale(1.1); 
+            }
+            75% { 
+                transform: translateX(-5px) rotate(-10deg); 
+            }
+        }
+        
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+        }
+        
+        .guide-container {
+            position: relative;
+            display: inline-block;
+        }
+        
+        .floating {
+            animation: float 3s ease-in-out infinite;
+        }
+        @media screen and (max-width: 768px) {
+            .error-number {
+                font-size: 6rem;
+            }
+            
+            .error-title {
+                font-size: 1.5rem;
+            }
+            
+            .error-container {
+                padding: 2rem 1.5rem;
+                margin: 1rem;
+            }
+            
+            .error-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
+            
+            .error-btn {
+                width: 100%;
+                max-width: 250px;
+                justify-content: center;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="error-page">
+        <div class="error-container floating">
+            <div class="robot-animation">🤖</div>
+            <h1 class="error-number">404</h1>
+            <h2 class="error-title">Oops! Page Not Found</h2>
+            <p class="error-subtitle">
+                Looks like this page decided to take a coffee break! ☕<br>
+                Even my robots are searching for it <i class='bx bx-search-alt search-animation'></i>
+            </p>
+            
+            <div class="error-buttons">
+                <div class="guide-container">
+                    <a href="/" class="error-btn">
+                        <i class='bx bx-home'></i>
+                        Back to Home
+                    </a>
+                    <div class="cartoon-guide">👈</div>
+                </div>
+                <a href="/blog.html" class="error-btn error-btn--secondary">
+                    <i class='bx bx-book-open'></i>
+                    Read Blog
+                </a>
+                <a href="/projects.html" class="error-btn error-btn--secondary">
+                    <i class='bx bx-code-alt'></i>
+                    View Projects
+                </a>
+            </div>
+            
+            <div class="fun-facts">
+                <h4>🎯 Fun Fact:</h4>
+                <p>The first 404 error was discovered at CERN in 1992. Now you've found another one at itanveer.tech in 2025! 🚀</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Add some interactive JavaScript -->
+    <script>
+        // Add some fun interactions
+        document.querySelector('.robot-animation').addEventListener('click', function() {
+            this.style.transform = 'rotate(360deg) scale(1.2)';
+            this.style.transition = 'transform 0.5s ease';
+            setTimeout(() => {
+                this.style.transform = '';
+            }, 500);
+        });
+
+        // Random fun facts
+        const funFacts = [
+            "The first 404 error was discovered at CERN in 1992. Now you've found another one at itanveer.tech in 2025! 🚀",
+            "404 errors are named after Room 404 at CERN where the first web server was located. Pretty cool, right? 🌐",
+            "Fun fact: You're one of the few people brave enough to explore the unknown corners of itanveer.tech! 🗺️",
+            "Did you know? This 404 page has more animations than some entire websites! 🎨",
+            "404 pages are like digital treasure chests - you never know what creative surprises you'll find! 💎"
+        ];
+
+        // Change fun fact every 10 seconds
+        let factIndex = 0;
+        setInterval(() => {
+            factIndex = (factIndex + 1) % funFacts.length;
+            document.querySelector('.fun-facts p').textContent = funFacts[factIndex];
+        }, 10000);
+
+        // Add floating animation to buttons on hover
+        document.querySelectorAll('.error-btn').forEach(btn => {
+            btn.addEventListener('mouseenter', function() {
+                this.style.animation = 'float 0.5s ease-in-out infinite';
+            });
+            btn.addEventListener('mouseleave', function() {
+                this.style.animation = '';
+            });
+        });
+
+        // Add some sparkle effect
+        function createSparkle() {
+            const sparkle = document.createElement('div');
+            sparkle.innerHTML = '✨';
+            sparkle.style.position = 'fixed';
+            sparkle.style.left = Math.random() * 100 + 'vw';
+            sparkle.style.top = Math.random() * 100 + 'vh';
+            sparkle.style.fontSize = Math.random() * 20 + 10 + 'px';
+            sparkle.style.animation = 'float 2s ease-in-out forwards';
+            sparkle.style.pointerEvents = 'none';
+            sparkle.style.zIndex = '1000';
+            document.body.appendChild(sparkle);
+            
+            setTimeout(() => {
+                sparkle.remove();
+            }, 2000);
+        }
+
+        // Create sparkles occasionally
+        setInterval(createSparkle, 3000);
+    </script>
+</body>
+</html>

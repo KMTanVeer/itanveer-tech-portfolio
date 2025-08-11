@@ -86,26 +86,50 @@
         .project-nav {
             background: white;
             box-shadow: 0 2px 20px rgba(0,0,0,0.1);
-            padding: 1rem 0;
+            padding: 0.8rem 0;
             position: sticky;
-            top: var(--header-height);
-            z-index: 100;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .project-nav.scrolled {
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 0;
         }
         
         .nav-links {
             display: flex;
             justify-content: center;
-            gap: 2rem;
-            flex-wrap: wrap;
+            gap: 1.5rem;
+            flex-wrap: nowrap;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .project-nav.scrolled .nav-links {
+            gap: 1rem;
         }
         
         .nav-link {
             text-decoration: none;
             color: var(--second-color);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
             transition: all 0.3s ease;
             font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .project-nav.scrolled .nav-link {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
         }
         
         .nav-link:hover, .nav-link.active {
@@ -456,12 +480,27 @@
             }
             
             .nav-links {
-                gap: 1rem;
+                gap: 0.8rem;
+                justify-content: flex-start;
+                padding: 0 1rem;
+            }
+            
+            .project-nav.scrolled .nav-links {
+                gap: 0.5rem;
             }
             
             .nav-link {
-                padding: 0.6rem 1rem;
-                font-size: 0.9rem;
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .project-nav.scrolled .nav-link {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            .project-title {
+                display: none !important;
             }
             
             .achievement-number {
@@ -530,6 +569,9 @@
         <nav class="project-nav">
             <div class="bd-grid">
                 <div class="nav-links">
+                    <div class="project-title" style="display: none; font-weight: 600; color: var(--second-color); margin-right: 1.5rem; align-self: center; font-size: 0.9rem; flex-shrink: 0;">
+                        MPPT Solar Controller
+                    </div>
                     <a href="#overview" class="nav-link active">Overview</a>
                     <a href="#features" class="nav-link">Features</a>
                     <a href="#hardware" class="nav-link">Hardware</a>
@@ -561,7 +603,7 @@
                         </div>
                         
                         <div class="project-image animate-slide-left">
-                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller" onerror="this.src='assets/img/work2.jpg'">
+                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller">
                             <div class="project-image-caption">
                                 ESP32-based MPPT Solar Charge Controller with LCD Display
                             </div>
@@ -976,14 +1018,14 @@
                 
                 <div class="project-images">
                     <div class="project-image animate-scale">
-                        <img src="assets/img/charge-controller-main.jpg" alt="MPPT Controller Setup" onerror="this.src='assets/img/work2.jpg'">
+                        <img src="assets/img/charge-controller-main.jpg" alt="MPPT Controller Setup">
                         <div class="project-image-caption">
                             Complete MPPT Solar Charge Controller Setup
                         </div>
                     </div>
                     
                     <div class="project-image animate-scale">
-                        <img src="assets/img/controller-blynk.jpg" alt="Blynk App Interface" onerror="this.src='assets/img/work3.jpg'">
+                        <img src="assets/img/controller-blynk.jpg" alt="Blynk App Interface">
                         <div class="project-image-caption">
                             Blynk App Interface for Remote Monitoring
                         </div>
@@ -1136,11 +1178,49 @@
             });
         }
 
+        // Handle navbar hiding and project nav enhancement
+        function handleNavbarScroll() {
+            const header = document.querySelector('.l-header');
+            const projectNav = document.querySelector('.project-nav');
+            const projectTitle = document.querySelector('.project-title');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Hide main navbar
+                if (header) {
+                    header.style.transform = 'translateY(-100%)';
+                    header.style.transition = 'transform 0.3s ease';
+                }
+                // Enhance project nav
+                if (projectNav) {
+                    projectNav.classList.add('scrolled');
+                }
+                // Show project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'block';
+                }
+            } else {
+                // Show main navbar
+                if (header) {
+                    header.style.transform = 'translateY(0)';
+                }
+                // Normal project nav
+                if (projectNav) {
+                    projectNav.classList.remove('scrolled');
+                }
+                // Hide project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'none';
+                }
+            }
+        }
+
         // Initialize animations and scroll listeners
         window.addEventListener('load', animateOnScroll);
         window.addEventListener('scroll', () => {
             animateOnScroll();
             updateActiveNavLink();
+            handleNavbarScroll();
         });
         
         // Initial call

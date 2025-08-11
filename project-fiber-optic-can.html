@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fiber Optic Community Area Networks | itanveer.tech</title>
+    <meta name="description" content="Advanced research project on implementing fiber optic infrastructure for Community Area Networks (CANs) to enhance high-speed internet connectivity and reduce latency in residential areas.">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    <meta name="keywords" content="Fiber Optic Networks, Community Area Networks, CAN, Network Topology, High-Speed Internet, DWDM, Network Optimization">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://itanveer.tech/project-fiber-optic-can.html">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Fiber Optic Community Area Networks Research">
+    <meta name="twitter:description" content="Advanced research on fiber optic infrastructure for high-speed community connectivity">
+    <meta name="twitter:image" content="assets/img/can.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="https://itanveer.tech/favicon.ico" type="image/x-icon">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Project Page Specific Styles */
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 8rem 0 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .project-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-hero__subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-nav {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .project-nav.scrolled {
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: nowrap;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .project-nav.scrolled .nav-links {
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--second-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .project-nav.scrolled .nav-link {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: var(--first-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-section {
+            padding: 4rem 0;
+        }
+        
+        .project-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .research-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .research-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .research-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .research-card:hover::before {
+            left: 100%;
+        }
+        
+        .research-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .research-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .research-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--second-color);
+        }
+        
+        .progress-bar {
+            width: 100%;
+            height: 8px;
+            background: #e9ecef;
+            border-radius: 10px;
+            overflow: hidden;
+            margin: 1rem 0;
+        }
+        
+        .progress-fill {
+            height: 100%;
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            border-radius: 10px;
+            transition: width 2s ease;
+            position: relative;
+        }
+        
+        .progress-fill::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
+            animation: shimmer 2s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 3rem auto;
+        }
+        
+        .timeline::before {
+            content: '';
+            position: absolute;
+            left: 50%;
+            top: 0;
+            bottom: 0;
+            width: 3px;
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            transform: translateX(-50%);
+        }
+        
+        .timeline-item {
+            position: relative;
+            width: 50%;
+            padding: 2rem;
+            margin-bottom: 2rem;
+        }
+        
+        .timeline-item:nth-child(odd) {
+            left: 0;
+            text-align: right;
+        }
+        
+        .timeline-item:nth-child(even) {
+            left: 50%;
+            text-align: left;
+        }
+        
+        .timeline-content {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            position: relative;
+        }
+        
+        .timeline-content::before {
+            content: '';
+            position: absolute;
+            top: 50%;
+            width: 20px;
+            height: 20px;
+            background: var(--first-color);
+            border-radius: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .timeline-item:nth-child(odd) .timeline-content::before {
+            right: -10px;
+        }
+        
+        .timeline-item:nth-child(even) .timeline-content::before {
+            left: -10px;
+        }
+        
+        .timeline-date {
+            color: var(--first-color);
+            font-weight: 600;
+            margin-bottom: 0.5rem;
+        }
+        
+        .timeline-title {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .future-scope {
+            background: white;
+            padding: 3rem;
+            border-radius: 20px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-top: 3rem;
+        }
+        
+        .scope-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 2rem;
+        }
+        
+        .scope-item {
+            padding: 1.5rem;
+            border: 2px solid #e9ecef;
+            border-radius: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .scope-item:hover {
+            border-color: var(--first-color);
+            transform: translateY(-5px);
+        }
+        
+        .scope-title {
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: var(--first-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Animation Classes */
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Team Section Styles */
+        .team-member {
+            margin-bottom: 2rem;
+        }
+        
+        .member-card {
+            background: white;
+            border-radius: 20px;
+            padding: 2rem;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+        }
+        
+        .member-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            transition: left 0.6s ease;
+        }
+        
+        .member-card:hover::before {
+            left: 100%;
+        }
+        
+        .member-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 50px rgba(0,0,0,0.2);
+        }
+        
+        .member-avatar {
+            position: relative;
+            width: 120px;
+            height: 120px;
+            margin: 0 auto 1.5rem;
+            border-radius: 50%;
+            overflow: hidden;
+            border: 4px solid #f8f9fa;
+            transition: all 0.3s ease;
+        }
+        
+        .member-avatar img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.3s ease;
+        }
+        
+        .member-avatar:hover img {
+            transform: scale(1.1);
+        }
+        
+        .member-overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            opacity: 0;
+            transition: all 0.3s ease;
+        }
+        
+        .member-avatar:hover .member-overlay {
+            opacity: 0.9;
+        }
+        
+        .member-social {
+            display: flex;
+            gap: 1rem;
+        }
+        
+        .member-social a {
+            color: white;
+            font-size: 1.2rem;
+            width: 40px;
+            height: 40px;
+            background: rgba(255,255,255,0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .member-social a:hover {
+            background: rgba(255,255,255,0.3);
+            transform: translateY(-2px);
+        }
+        
+        .member-info {
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+        }
+        
+        .member-name {
+            font-size: 1.4rem;
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+            line-height: 1.3;
+        }
+        
+        .member-role {
+            color: var(--first-color);
+            font-weight: 500;
+            margin-bottom: 1rem;
+            font-size: 1rem;
+        }
+        
+        .member-bio {
+            color: #666;
+            line-height: 1.6;
+            margin-bottom: 1.5rem;
+            flex-grow: 1;
+        }
+        
+        .member-expertise {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            justify-content: center;
+        }
+        
+        .expertise-tag {
+            background: linear-gradient(135deg, var(--first-color), #667eea);
+            color: white;
+            padding: 0.4rem 1rem;
+            border-radius: 15px;
+            font-size: 0.8rem;
+            font-weight: 500;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .project-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .project-meta {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                justify-content: flex-start;
+                padding: 0 1rem;
+            }
+            
+            .project-nav.scrolled .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .project-nav.scrolled .nav-link {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            .project-title {
+                display: none !important;
+            }
+            
+            .timeline::before {
+                left: 30px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                left: 0 !important;
+                text-align: left;
+                padding-left: 70px;
+            }
+            
+            .timeline-content::before {
+                left: -45px !important;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECT HERO =====-->
+        <section class="project-hero">
+            <div class="bd-grid">
+                <div class="project-hero__content animate-fade-in">
+                    <h1 class="project-hero__title">Fiber Optic in Community Area Networks</h1>
+                    <p class="project-hero__subtitle">Advanced research project investigating the implementation of fiber optic infrastructure for Community Area Networks (CANs) to revolutionize high-speed internet connectivity in residential communities across Bangladesh.</p>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-network-chart'></i>
+                            <span>Network Research</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-time'></i>
+                            <span>Research Phase</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-trending-up'></i>
+                            <span>High Impact</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-cog'></i>
+                            <span>In Progress</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT NAVIGATION =====-->
+        <nav class="project-nav">
+            <div class="bd-grid">
+                <div class="nav-links">
+                    <div class="project-title" style="display: none; font-weight: 600; color: var(--second-color); margin-right: 1.5rem; align-self: center; font-size: 0.9rem; flex-shrink: 0;">
+                        Fiber Optic CAN
+                    </div>
+                    <a href="#overview" class="nav-link active">Overview</a>
+                    <a href="#research" class="nav-link">Research</a>
+                    <a href="#progress" class="nav-link">Progress</a>
+                    <a href="#team" class="nav-link">Team</a>
+                    <a href="#timeline" class="nav-link">Timeline</a>
+                    <a href="#future" class="nav-link">Future</a>
+                </div>
+            </div>
+        </nav>
+
+        <!--===== PROJECT OVERVIEW =====-->
+        <section id="overview" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-subtitle">Investigating fiber optic solutions for next-generation community networking infrastructure</p>
+                </div>
+                
+                <div class="project-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem;">
+                        <div class="animate-slide-right">
+                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                This research project focuses on the design and implementation of fiber optic infrastructure for Community Area Networks (CANs). The study aims to address the growing demand for high-speed internet connectivity in residential communities while ensuring cost-effectiveness and scalability.
+                            </p>
+                            <p style="line-height: 1.8; color: #555;">
+                                The project involves comprehensive analysis of network topologies, fiber optic transmission systems, Dense Wavelength Division Multiplexing (DWDM), and optimization strategies for community-scale deployment. Current focus includes literature review, topology modeling, and cost-benefit analysis.
+                            </p>
+                        </div>
+                        
+                        <div class="project-image animate-slide-left">
+                            <img src="assets/img/can.jpg" alt="Fiber Optic CAN Infrastructure" style="width: 100%; border-radius: 15px; box-shadow: 0 10px 40px rgba(0,0,0,0.1);">
+                            <div style="text-align: center; margin-top: 1rem; font-size: 0.9rem; color: #666;">
+                                Fiber Optic Community Network Infrastructure
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== RESEARCH AREAS =====-->
+        <section id="research" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Research Areas</h2>
+                    <p class="section-subtitle">Key focus areas driving the fiber optic CAN research and development</p>
+                </div>
+                
+                <div class="research-grid">
+                    <div class="research-card animate-scale">
+                        <div class="research-icon">
+                            <i class='bx bx-network-chart'></i>
+                        </div>
+                        <h3 class="research-title">Network Topology Design</h3>
+                        <p>Optimizing network architecture for efficient fiber optic distribution in community settings with star, ring, and mesh topologies.</p>
+                    </div>
+                    
+                    <div class="research-card animate-scale">
+                        <div class="research-icon">
+                            <i class='bx bx-radio'></i>
+                        </div>
+                        <h3 class="research-title">Fiber Optic Transmission</h3>
+                        <p>Advanced study of single-mode and multi-mode fiber characteristics, signal propagation, and loss minimization techniques.</p>
+                    </div>
+                    
+                    <div class="research-card animate-scale">
+                        <div class="research-icon">
+                            <i class='bx bx-chip'></i>
+                        </div>
+                        <h3 class="research-title">DWDM Systems</h3>
+                        <p>Dense Wavelength Division Multiplexing implementation for maximum bandwidth utilization and multiple service provisioning.</p>
+                    </div>
+                    
+                    <div class="research-card animate-scale">
+                        <div class="research-icon">
+                            <i class='bx bx-line-chart'></i>
+                        </div>
+                        <h3 class="research-title">Performance Optimization</h3>
+                        <p>Network performance analysis, latency reduction strategies, and bandwidth efficiency improvements for community applications.</p>
+                    </div>
+                    
+                    <div class="research-card animate-scale">
+                        <div class="research-icon">
+                            <i class='bx bx-dollar'></i>
+                        </div>
+                        <h3 class="research-title">Cost-Benefit Analysis</h3>
+                        <p>Economic feasibility study comparing fiber optic implementation costs with long-term benefits for community development.</p>
+                    </div>
+                    
+                    <div class="research-card animate-scale">
+                        <div class="research-icon">
+                            <i class='bx bx-shield'></i>
+                        </div>
+                        <h3 class="research-title">Network Security</h3>
+                        <p>Implementing robust security protocols and encryption methods to protect community network infrastructure and user data.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CURRENT PROGRESS =====-->
+        <section id="progress" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Current Progress</h2>
+                    <p class="section-subtitle">Research milestones and development status across different project phases</p>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="research-card animate-slide-right">
+                        <h3 class="research-title">Literature Review</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 85%;" data-target="85"></div>
+                        </div>
+                        <p style="margin-bottom: 1rem;"><strong>85% Complete</strong></p>
+                        <p>Comprehensive review of existing fiber optic CAN implementations, research papers, and industry standards completed.</p>
+                    </div>
+                    
+                    <div class="research-card animate-scale">
+                        <h3 class="research-title">Network Modeling</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 60%;" data-target="60"></div>
+                        </div>
+                        <p style="margin-bottom: 1rem;"><strong>60% Complete</strong></p>
+                        <p>Mathematical modeling of network topologies and preliminary simulation setup in progress using network modeling tools.</p>
+                    </div>
+                    
+                    <div class="research-card animate-slide-left">
+                        <h3 class="research-title">Cost Analysis</h3>
+                        <div class="progress-bar">
+                            <div class="progress-fill" style="width: 40%;" data-target="40"></div>
+                        </div>
+                        <p style="margin-bottom: 1rem;"><strong>40% Complete</strong></p>
+                        <p>Initial cost estimation framework developed, currently gathering detailed pricing data for Bangladesh market analysis.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== RESEARCH TEAM =====-->
+        <section id="team" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Research Team</h2>
+                    <p class="section-subtitle">Dedicated researchers working on fiber optic CAN implementation and optimization</p>
+                </div>
+                
+                <div class="team-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 2.5rem; margin-top: 3rem;">
+                    <div class="team-member animate-scale">
+                        <div class="member-card">
+                            <div class="member-avatar">
+                                <img src="assets/img/perfil.png" alt="Kawsar Mahmud Tanveer Khan">
+                                <div class="member-overlay">
+                                    <div class="member-social">
+                                        <a href="https://www.linkedin.com/in/kawsartanveer/" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                                        <a href="https://github.com/KMTanVeer" target="_blank"><i class='bx bxl-github'></i></a>
+                                        <a href="mailto:tanveer@itanveer.tech"><i class='bx bx-envelope'></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Kawsar Mahmud Tanveer Khan</h3>
+                                <p class="member-role">Lead Researcher & Project Coordinator</p>
+                                <p class="member-bio">Network architecture design, fiber optic systems analysis, and research coordination. Specializing in community network infrastructure and optimization strategies.</p>
+                                <div class="member-expertise">
+                                    <span class="expertise-tag">Network Design</span>
+                                    <span class="expertise-tag">Fiber Optics</span>
+                                    <span class="expertise-tag">Research Leadership</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member animate-scale">
+                        <div class="member-card">
+                            <div class="member-avatar">
+                                <img src="assets/img/team-member-2.jpg" alt="Nobab Bin Shahanur">
+                                <div class="member-overlay">
+                                    <div class="member-social">
+                                        <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                                        <a href="#" target="_blank"><i class='bx bxl-github'></i></a>
+                                        <a href="mailto:nobab@example.com"><i class='bx bx-envelope'></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Nobab Bin Shahanur</h3>
+                                <p class="member-role">Network Systems Analyst</p>
+                                <p class="member-bio">DWDM systems implementation, network performance analysis, and optimization algorithms. Focus on maximizing bandwidth efficiency in community networks.</p>
+                                <div class="member-expertise">
+                                    <span class="expertise-tag">DWDM Systems</span>
+                                    <span class="expertise-tag">Performance Analysis</span>
+                                    <span class="expertise-tag">Optimization</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="team-member animate-scale">
+                        <div class="member-card">
+                            <div class="member-avatar">
+                                <img src="assets/img/team-member-3.jpg" alt="Nazmul Islam Bahar">
+                                <div class="member-overlay">
+                                    <div class="member-social">
+                                        <a href="#" target="_blank"><i class='bx bxl-linkedin'></i></a>
+                                        <a href="#" target="_blank"><i class='bx bxl-github'></i></a>
+                                        <a href="mailto:nazmul@example.com"><i class='bx bx-envelope'></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="member-info">
+                                <h3 class="member-name">Nazmul Islam Bahar</h3>
+                                <p class="member-role">Cost Analysis & Implementation Specialist</p>
+                                <p class="member-bio">Economic feasibility analysis, market research, and implementation strategies. Expertise in cost-benefit analysis for Bangladesh telecommunications market.</p>
+                                <div class="member-expertise">
+                                    <span class="expertise-tag">Cost Analysis</span>
+                                    <span class="expertise-tag">Market Research</span>
+                                    <span class="expertise-tag">Implementation</span>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT TIMELINE =====-->
+        <section id="timeline" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Timeline</h2>
+                    <p class="section-subtitle">Research phases and key milestones from July to December 2025</p>
+                </div>
+                
+                <div class="timeline">
+                    <div class="timeline-item animate-slide-right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">July 2025</div>
+                            <h3 class="timeline-title">Project Initiation</h3>
+                            <p>Research topic selection, supervisor consultation, and initial literature survey began.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate-slide-left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">August 2025</div>
+                            <h3 class="timeline-title">Literature Review</h3>
+                            <p>Comprehensive study of existing fiber optic CAN technologies, standards, and implementation case studies.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate-slide-right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">September 2025</div>
+                            <h3 class="timeline-title">Network Design Phase</h3>
+                            <p>Topology modeling, theoretical framework development, and simulation tool selection in progress.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate-slide-left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">October 2025</div>
+                            <h3 class="timeline-title">Simulation & Analysis</h3>
+                            <p>Network performance simulation, optimization algorithms testing, and preliminary results analysis.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate-slide-right">
+                        <div class="timeline-content">
+                            <div class="timeline-date">November 2025</div>
+                            <h3 class="timeline-title">Cost-Benefit Study</h3>
+                            <p>Economic feasibility analysis, market research for Bangladesh context, and financial projections.</p>
+                        </div>
+                    </div>
+                    
+                    <div class="timeline-item animate-slide-left">
+                        <div class="timeline-content">
+                            <div class="timeline-date">December 2025</div>
+                            <h3 class="timeline-title">Final Report</h3>
+                            <p>Research documentation, presentation preparation, and project completion with actionable recommendations.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FUTURE SCOPE =====-->
+        <section id="future" class="project-section">
+            <div class="bd-grid">
+                <div class="future-scope animate-fade-in">
+                    <div class="section-header">
+                        <h2 class="section-title">Future Scope & Applications</h2>
+                        <p class="section-subtitle">Potential extensions and real-world implementation opportunities</p>
+                    </div>
+                    
+                    <div class="scope-grid">
+                        <div class="scope-item animate-slide-right">
+                            <h4 class="scope-title">
+                                <i class='bx bx-building-house'></i>
+                                Smart Community Integration
+                            </h4>
+                            <p>Integration with IoT devices, smart homes, and community management systems for comprehensive digital infrastructure.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-scale">
+                            <h4 class="scope-title">
+                                <i class='bx bx-world'></i>
+                                National Implementation
+                            </h4>
+                            <p>Scalable model for nationwide fiber optic CAN deployment across Bangladesh's residential communities.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-slide-left">
+                            <h4 class="scope-title">
+                                <i class='bx bx-chip'></i>
+                                5G Integration
+                            </h4>
+                            <p>Fiber optic backhaul support for 5G small cells and enhanced mobile connectivity in community areas.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-slide-right">
+                            <h4 class="scope-title">
+                                <i class='bx bx-health'></i>
+                                Telemedicine Support
+                            </h4>
+                            <p>High-speed connectivity enabling remote healthcare services, telemedicine, and emergency medical consultations.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-scale">
+                            <h4 class="scope-title">
+                                <i class='bx bx-graduation'></i>
+                                Educational Applications
+                            </h4>
+                            <p>Support for online education, virtual classrooms, and digital learning platforms in residential communities.</p>
+                        </div>
+                        
+                        <div class="scope-item animate-slide-left">
+                            <h4 class="scope-title">
+                                <i class='bx bx-briefcase'></i>
+                                Economic Development
+                            </h4>
+                            <p>Enabling work-from-home opportunities, digital entrepreneurship, and community-based business development.</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CALL TO ACTION =====-->
+        <section class="cta-section">
+            <div class="bd-grid">
+                <div class="animate-fade-in">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Explore This Research</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Follow the progress of this cutting-edge research project and connect for collaboration opportunities
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://github.com/KMTanVeer/fiber-optic-can" class="cta-button" target="_blank">
+                            <i class='bx bxl-github'></i>
+                            Research Repository
+                        </a>
+                        <a href="projects.html" class="cta-button">
+                            <i class='bx bx-arrow-back'></i>
+                            Back to Projects
+                        </a>
+                        <a href="contact.html" class="cta-button">
+                            <i class='bx bx-envelope'></i>
+                            Discuss Research
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target section
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-right, .animate-slide-left, .animate-scale');
+            
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Animate progress bars
+        function animateProgressBars() {
+            const progressBars = document.querySelectorAll('.progress-fill');
+            
+            progressBars.forEach(bar => {
+                const rect = bar.getBoundingClientRect();
+                if (rect.top < window.innerHeight - 100 && !bar.classList.contains('animated')) {
+                    const target = parseInt(bar.getAttribute('data-target'));
+                    bar.style.width = '0%';
+                    
+                    setTimeout(() => {
+                        bar.style.width = target + '%';
+                        bar.classList.add('animated');
+                    }, 500);
+                }
+            });
+        }
+
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Handle navbar hiding and project nav enhancement
+        function handleNavbarScroll() {
+            const header = document.querySelector('.l-header');
+            const projectNav = document.querySelector('.project-nav');
+            const projectTitle = document.querySelector('.project-title');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Hide main navbar
+                if (header) {
+                    header.style.transform = 'translateY(-100%)';
+                    header.style.transition = 'transform 0.3s ease';
+                }
+                // Enhance project nav
+                if (projectNav) {
+                    projectNav.classList.add('scrolled');
+                }
+                // Show project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'block';
+                }
+            } else {
+                // Show main navbar
+                if (header) {
+                    header.style.transform = 'translateY(0)';
+                }
+                // Normal project nav
+                if (projectNav) {
+                    projectNav.classList.remove('scrolled');
+                }
+                // Hide project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'none';
+                }
+            }
+        }
+
+        // Initialize animations and scroll listeners
+        window.addEventListener('load', () => {
+            animateOnScroll();
+            animateProgressBars();
+        });
+        
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            animateProgressBars();
+            updateActiveNavLink();
+            handleNavbarScroll();
+        });
+        
+        // Initial call
+        animateOnScroll();
+        updateActiveNavLink();
+    </script>
+</body>
+</html>

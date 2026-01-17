@@ -923,6 +923,9 @@ img {
   .home__img {
     width: 450px;
   }
+  .projects-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
 }
 
 

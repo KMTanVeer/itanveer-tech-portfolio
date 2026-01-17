@@ -1,0 +1,1275 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Helmet with Crash Detection | itanveer.tech</title>
+    <meta name="description" content="ESP32-based Smart Helmet with automatic crash detection using MPU6050 sensor and emergency communication via SIM800L GSM module with GPS location tracking.">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    <meta name="keywords" content="ESP32, Smart Helmet, MPU6050, Crash Detection, GPS, SIM800L, GSM, Safety, IoT">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://itanveer.tech/project-smart-helmet.html">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Helmet with Crash Detection Project">
+    <meta name="twitter:description" content="ESP32-based intelligent helmet with automatic accident detection and emergency communication">
+    <meta name="twitter:image" content="assets/img/smart-helmet-main.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Project Page Specific Styles */
+        .project-hero {
+            background: linear-gradient(135deg, #f093fb 0%, #f5576c 100%);
+            padding: 8rem 0 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .project-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-hero__subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .project-nav {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .project-nav.scrolled {
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: nowrap;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .project-nav.scrolled .nav-links {
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--second-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .project-nav.scrolled .nav-link {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: var(--first-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-section {
+            padding: 4rem 0;
+        }
+        
+        .project-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, var(--first-color), #f093fb);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--second-color);
+        }
+        
+        .hardware-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .hardware-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid var(--first-color);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .hardware-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+        
+        .hardware-name {
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .hardware-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .component-showcase {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .component-item {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .component-item:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .component-image {
+            width: 100%;
+            height: 200px;
+            object-fit: contain;
+            padding: 1.5rem;
+            background: #f8f9fa;
+        }
+        
+        .component-info {
+            padding: 1.5rem;
+            text-align: center;
+        }
+        
+        .component-name {
+            font-size: 1.2rem;
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .component-desc {
+            color: #666;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .project-image-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .challenge-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-bottom: 1.5rem;
+            border-left: 4px solid #f5576c;
+            transition: all 0.3s ease;
+        }
+        
+        .challenge-card:hover {
+            transform: translateX(5px);
+            box-shadow: 0 8px 35px rgba(0,0,0,0.15);
+        }
+        
+        .challenge-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .challenge-icon {
+            width: 40px;
+            height: 40px;
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.2rem;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, #f093fb, #f5576c);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .achievement-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .achievement-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, var(--first-color), #f093fb);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: var(--first-color);
+            transform: translateY(-2px);
+        }
+        
+        /* Animation Classes */
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .project-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .project-meta {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                justify-content: flex-start;
+                padding: 0 1rem;
+            }
+            
+            .project-nav.scrolled .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .project-nav.scrolled .nav-link {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            .project-title {
+                display: none !important;
+            }
+            
+            .achievement-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECT HERO =====-->
+        <section class="project-hero">
+            <div class="bd-grid">
+                <div class="project-hero__content animate-fade-in">
+                    <h1 class="project-hero__title">Smart Helmet with Sensor-Based Crash Detection</h1>
+                    <p class="project-hero__subtitle">ESP32-based intelligent safety helmet with automatic accident detection using MPU6050 sensor and emergency communication via SIM800L GSM module with real-time GPS location tracking.</p>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-chip'></i>
+                            <span>ESP32 Based</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-shield-check'></i>
+                            <span>Crash Detection</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-map'></i>
+                            <span>GPS Tracking</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-message-rounded-dots'></i>
+                            <span>Emergency SMS</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-check-circle'></i>
+                            <span>Completed</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT NAVIGATION =====-->
+        <nav class="project-nav">
+            <div class="bd-grid">
+                <div class="nav-links">
+                    <div class="project-title" style="display: none; font-weight: 600; color: var(--second-color); margin-right: 1.5rem; align-self: center; font-size: 0.9rem; flex-shrink: 0;">
+                        Smart Helmet
+                    </div>
+                    <a href="#overview" class="nav-link active">Overview</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#components" class="nav-link">Components</a>
+                    <a href="#methodology" class="nav-link">Methodology</a>
+                    <a href="#results" class="nav-link">Results</a>
+                    <a href="#challenges" class="nav-link">Challenges</a>
+                    <a href="#gallery" class="nav-link">Gallery</a>
+                </div>
+            </div>
+        </nav>
+
+        <!--===== PROJECT OVERVIEW =====-->
+        <section id="overview" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-subtitle">An intelligent safety system designed to automatically detect motorcycle accidents and send emergency alerts with GPS coordinates.</p>
+                </div>
+                
+                <div class="project-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem;">
+                        <div class="animate-slide-right">
+                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                The Smart Helmet project addresses the critical need for rapid emergency response in motorcycle accidents. Using an ESP32 microcontroller integrated with MPU6050 accelerometer and gyroscope sensors, the system continuously monitors rider motion patterns to detect potential crashes.
+                            </p>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                Upon detecting abnormal acceleration (≥2.2g) or angular velocity (≥190°/s), the system triggers a 10-second warning period allowing manual cancellation to prevent false alarms. If not cancelled, it automatically sends emergency SMS with Google Maps location link via SIM800L GSM module, using GPS coordinates from the NEO-8M module.
+                            </p>
+                            <p style="line-height: 1.8; color: #555;">
+                                The system features an OLED display for status monitoring, battery power management with TP4056 charging, and audible alerts through a passive buzzer, making it a comprehensive safety solution for motorcycle riders.
+                            </p>
+                        </div>
+                        
+                        <div class="project-image animate-slide-left">
+                            <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet with Crash Detection">
+                            <div class="project-image-caption">
+                                Smart Helmet System with Integrated Safety Features
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== KEY FEATURES =====-->
+        <section id="features" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Key Features & Objectives</h2>
+                    <p class="section-subtitle">Advanced safety features designed to protect riders and enable rapid emergency response</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-refresh'></i>
+                        </div>
+                        <h3 class="feature-title">Real-Time Motion Monitoring</h3>
+                        <p>Continuous monitoring of rider movement using MPU6050 6-axis sensor for accurate detection of abnormal motion patterns.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-alarm-exclamation'></i>
+                        </div>
+                        <h3 class="feature-title">Intelligent Crash Detection</h3>
+                        <p>Dual-threshold detection system using acceleration (≥2.2g) and angular velocity (≥190°/s) for reliable accident identification.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-user-check'></i>
+                        </div>
+                        <h3 class="feature-title">False Alarm Prevention</h3>
+                        <p>10-second warning period with manual cancellation button to prevent false emergency alerts during normal riding conditions.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-map-pin'></i>
+                        </div>
+                        <h3 class="feature-title">GPS Location Tracking</h3>
+                        <p>Precise location tracking with u-blox NEO-8M GPS module for accurate emergency coordinates sharing.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-message-rounded-detail'></i>
+                        </div>
+                        <h3 class="feature-title">Emergency Communication</h3>
+                        <p>Automatic SMS dispatch via SIM800L GSM module with Google Maps link to emergency contacts upon crash detection.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-battery-charging'></i>
+                        </div>
+                        <h3 class="feature-title">Power Management</h3>
+                        <p>Li-Po battery powered system with TP4056 charging module for reliable operation and convenient recharging.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-bell'></i>
+                        </div>
+                        <h3 class="feature-title">Audio Alerts</h3>
+                        <p>Passive buzzer provides 10-second warning tone followed by 3-second beep pattern for clear audible notifications.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-desktop'></i>
+                        </div>
+                        <h3 class="feature-title">Status Display</h3>
+                        <p>OLED display shows real-time system status, sensor readings, and operational information for user awareness.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== COMPONENTS SECTION =====-->
+        <section id="components" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Hardware Components</h2>
+                    <p class="section-subtitle">Carefully selected components working together for optimal safety performance</p>
+                </div>
+                
+                <div class="hardware-grid">
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">ESP32 Microcontroller</div>
+                        <div class="hardware-desc">Main control unit with dual-core processor for sensor data processing and communication management</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">MPU6050 Sensor</div>
+                        <div class="hardware-desc">6-axis accelerometer and gyroscope for precise motion detection and crash identification</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">NEO-8M GPS Module</div>
+                        <div class="hardware-desc">u-blox GPS receiver for accurate real-time location tracking and coordinate acquisition</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">SIM800L GSM Module</div>
+                        <div class="hardware-desc">GSM/GPRS communication module for sending emergency SMS with location data</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">Passive Buzzer</div>
+                        <div class="hardware-desc">Audio alert system for warning signals and crash notification feedback</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">Push Button</div>
+                        <div class="hardware-desc">Manual cancellation interface to prevent false alarm emergency alerts</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">Li-Po Battery</div>
+                        <div class="hardware-desc">Rechargeable lithium polymer battery providing portable power for system operation</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-left">
+                        <div class="hardware-name">TP4056 Charging Module</div>
+                        <div class="hardware-desc">Li-Po battery charging controller with protection features for safe battery management</div>
+                    </div>
+                    
+                    <div class="hardware-item animate-slide-right">
+                        <div class="hardware-name">OLED Display</div>
+                        <div class="hardware-desc">Visual interface displaying system status, sensor readings, and operational information</div>
+                    </div>
+                </div>
+                
+                <div class="component-showcase">
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/128fd37010b5bdb35815b22e84355ce8.jpg_720x720q80.jpg" alt="ESP32 Module" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">ESP32 Development Board</div>
+                            <div class="component-desc">Powerful microcontroller with WiFi/Bluetooth capabilities</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/MPU6050 Module.jpg" alt="MPU6050 Sensor" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">MPU6050 Sensor Module</div>
+                            <div class="component-desc">6-axis accelerometer and gyroscope sensor</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/GPS-Module-GY-NEO-8M-V2.jpg" alt="NEO-8M GPS" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">NEO-8M GPS Module</div>
+                            <div class="component-desc">u-blox high-precision GPS receiver</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/sim800l-gsm-gprs-module.png" alt="SIM800L Module" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">SIM800L GSM Module</div>
+                            <div class="component-desc">Compact GSM/GPRS communication module</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/Passive-Buzzer.jpg" alt="Passive Buzzer" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">Passive Buzzer</div>
+                            <div class="component-desc">Audio alert component for warnings</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/mini-pushbutton-switch-500x500_png_92.jpg" alt="Push Button" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">Push Button Switch</div>
+                            <div class="component-desc">Manual control interface</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/lipo-1000-102535_zl.jpg" alt="Li-Po Battery" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">Li-Po Battery</div>
+                            <div class="component-desc">Rechargeable power source</div>
+                        </div>
+                    </div>
+                    
+                    <div class="component-item animate-scale">
+                        <img src="assets/smqrt-helmet/com-03-081-cp-new-1.jpg" alt="TP4056 Module" class="component-image">
+                        <div class="component-info">
+                            <div class="component-name">TP4056 Charging Module</div>
+                            <div class="component-desc">Battery charging controller</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== METHODOLOGY =====-->
+        <section id="methodology" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">System Design & Methodology</h2>
+                    <p class="section-subtitle">Intelligent workflow combining sensor fusion and communication protocols</p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="feature-card animate-fade-in" style="text-align: left; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; color: var(--second-color); margin-bottom: 1.5rem; text-align: center;">
+                            <i class='bx bx-git-branch' style="color: var(--first-color);"></i> System Operation Flow
+                        </h3>
+                        
+                        <div style="line-height: 2; color: #555;">
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">1. Initialization Phase:</strong><br>
+                                The system boots up, initializes all sensors (MPU6050, NEO-8M GPS, SIM800L), configures the OLED display, and establishes baseline motion parameters. The ESP32 validates all module connections and enters active monitoring mode.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">2. Continuous Monitoring:</strong><br>
+                                The MPU6050 sensor continuously samples acceleration and gyroscope data at high frequency. The ESP32 processes these readings in real-time, filtering noise and calculating resultant motion vectors to detect anomalies.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">3. Crash Detection Logic:</strong><br>
+                                When acceleration exceeds 2.2g OR angular velocity surpasses 190°/s, the system recognizes a potential crash event. This dual-threshold approach ensures detection of both high-impact collisions and sudden rotational movements typical of accidents.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">4. Warning Period:</strong><br>
+                                Upon detection, a 10-second countdown begins with continuous buzzer warnings. The OLED displays a cancellation prompt. During this period, the rider can press the push button to cancel the alert if it's a false alarm (e.g., dropping the helmet, sudden braking).
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">5. GPS Acquisition:</strong><br>
+                                Simultaneously with the warning period, the NEO-8M GPS module captures current coordinates (latitude and longitude). The system waits for GPS lock to ensure accurate location data before proceeding.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">6. Emergency Alert Transmission:</strong><br>
+                                If not cancelled within 10 seconds, the system activates the SIM800L module. It formats an emergency SMS containing the accident notification and Google Maps link with GPS coordinates, then transmits it to pre-configured emergency contacts.
+                            </p>
+                            
+                            <p>
+                                <strong style="color: var(--second-color);">7. Confirmation & Reset:</strong><br>
+                                After successful SMS transmission, the buzzer emits a 3-second beep pattern for confirmation. The OLED displays transmission status. The system then resets to monitoring mode, ready to detect any subsequent incidents.
+                            </p>
+                        </div>
+                    </div>
+                    
+                    <div class="feature-card animate-fade-in" style="text-align: left; background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));">
+                        <h3 style="font-size: 1.3rem; color: var(--second-color); margin-bottom: 1rem;">
+                            <i class='bx bx-info-circle' style="color: var(--first-color);"></i> Key Design Considerations
+                        </h3>
+                        <ul style="line-height: 2; color: #555; padding-left: 1.5rem;">
+                            <li><strong>Threshold Calibration:</strong> Acceleration and angular velocity thresholds were determined through extensive testing to balance sensitivity and false alarm prevention.</li>
+                            <li><strong>Power Efficiency:</strong> ESP32 sleep modes and optimized sampling rates extend battery life while maintaining responsive detection.</li>
+                            <li><strong>GSM Reliability:</strong> SIM800L configured with automatic network registration and SMS retry logic for reliable communication even in areas with weak signal.</li>
+                            <li><strong>User Interface:</strong> Clear visual and audio feedback ensures the rider understands system status and can respond appropriately during warning periods.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== RESULTS & ACHIEVEMENTS =====-->
+        <section id="results" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Results & Discussion</h2>
+                    <p class="section-subtitle">Demonstrating effective crash detection and emergency response capabilities</p>
+                </div>
+                
+                <div class="achievement-card animate-scale">
+                    <div class="achievement-content">
+                        <div class="achievement-number">
+                            <i class='bx bx-check-shield' style="font-size: 5rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Successful Implementation</h3>
+                        <p>The Smart Helmet successfully detected simulated accidents while maintaining low false alarm rates, demonstrating reliable GPS tracking and effective emergency communication through the GSM module.</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="feature-card animate-slide-right">
+                        <div class="feature-icon">
+                            <i class='bx bx-target-lock'></i>
+                        </div>
+                        <h3 class="feature-title">Accurate Detection</h3>
+                        <p>Successfully identified crash scenarios using dual-threshold detection (≥2.2g acceleration, ≥190°/s angular velocity) while minimizing false positives from normal riding activities.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-left">
+                        <div class="feature-icon">
+                            <i class='bx bx-error-alt'></i>
+                        </div>
+                        <h3 class="feature-title">False Alarm Mitigation</h3>
+                        <p>10-second warning period with manual cancellation effectively reduced unnecessary emergency alerts during normal helmet handling and sudden but safe maneuvers.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-current-location'></i>
+                        </div>
+                        <h3 class="feature-title">GPS Accuracy</h3>
+                        <p>NEO-8M module provided reliable location tracking with sufficient accuracy for emergency response, successfully generating shareable Google Maps links.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-right">
+                        <div class="feature-icon">
+                            <i class='bx bx-send'></i>
+                        </div>
+                        <h3 class="feature-title">Communication Reliability</h3>
+                        <p>SIM800L GSM module demonstrated consistent SMS delivery in various network conditions, ensuring emergency contacts received timely accident notifications.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-left">
+                        <div class="feature-icon">
+                            <i class='bx bx-battery-full'></i>
+                        </div>
+                        <h3 class="feature-title">Power Management</h3>
+                        <p>Li-Po battery with TP4056 charging provided adequate operational time for typical riding sessions with convenient USB recharging capability.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-user-voice'></i>
+                        </div>
+                        <h3 class="feature-title">User Experience</h3>
+                        <p>Clear audio alerts and OLED status display provided intuitive feedback, enabling riders to understand system operation and respond appropriately to warnings.</p>
+                    </div>
+                </div>
+                
+                <div class="feature-card animate-fade-in" style="margin-top: 3rem; text-align: left;">
+                    <h3 style="font-size: 1.5rem; color: var(--second-color); margin-bottom: 1.5rem; text-align: center;">
+                        <i class='bx bx-bar-chart-alt-2' style="color: var(--first-color);"></i> Performance Analysis
+                    </h3>
+                    <div style="line-height: 1.8; color: #555;">
+                        <p style="margin-bottom: 1rem;">
+                            Through rigorous testing under various conditions, the Smart Helmet demonstrated robust performance in its core objectives:
+                        </p>
+                        <ul style="padding-left: 2rem; margin-bottom: 1rem;">
+                            <li><strong>Crash Detection Accuracy:</strong> High sensitivity to genuine accident scenarios while filtering routine vibrations and movements.</li>
+                            <li><strong>Response Time:</strong> Complete detection-to-transmission cycle averaging 15-20 seconds including the 10-second warning period.</li>
+                            <li><strong>GPS Lock Time:</strong> Location acquisition typically within 30-60 seconds under clear sky conditions.</li>
+                            <li><strong>SMS Delivery:</strong> Consistent message transmission across different network providers with minimal delays.</li>
+                        </ul>
+                        <p>
+                            The system successfully bridges the gap between accident occurrence and emergency response initiation, potentially reducing critical response times that are vital for accident victim survival rates.
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CHALLENGES =====-->
+        <section id="challenges" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Challenges Faced & Solutions</h2>
+                    <p class="section-subtitle">Overcoming technical hurdles during development and implementation</p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="challenge-card animate-slide-right">
+                        <div class="challenge-title">
+                            <div class="challenge-icon">
+                                <i class='bx bx-error'></i>
+                            </div>
+                            False Alarm Management
+                        </div>
+                        <p style="color: #666; line-height: 1.8;">
+                            Initial testing revealed high false alarm rates from routine activities like helmet removal, setting it down, or aggressive but safe riding maneuvers. <strong>Solution:</strong> Implemented dual-threshold detection algorithm with carefully calibrated values and added 10-second manual cancellation window, significantly reducing false positives while maintaining detection sensitivity.
+                        </p>
+                    </div>
+                    
+                    <div class="challenge-card animate-slide-left">
+                        <div class="challenge-title">
+                            <div class="challenge-icon">
+                                <i class='bx bx-battery-low'></i>
+                            </div>
+                            Power Consumption Optimization
+                        </div>
+                        <p style="color: #666; line-height: 1.8;">
+                            Continuous operation of GPS, GSM, and sensors resulted in rapid battery depletion, limiting practical usability. <strong>Solution:</strong> Implemented intelligent power management with GPS module operating in periodic mode, ESP32 utilizing light sleep between sensor readings, and GSM module activated only during alert transmission, extending operational time significantly.
+                        </p>
+                    </div>
+                    
+                    <div class="challenge-card animate-slide-right">
+                        <div class="challenge-title">
+                            <div class="challenge-icon">
+                                <i class='bx bx-wifi-off'></i>
+                            </div>
+                            GSM Connectivity in Remote Areas
+                        </div>
+                        <p style="color: #666; line-height: 1.8;">
+                            Weak cellular network coverage in remote locations caused message transmission failures, compromising the emergency response system. <strong>Solution:</strong> Added automatic SMS retry logic with network strength monitoring, message queuing for delayed transmission, and visual/audio feedback indicating connection status, ensuring message delivery even in marginal coverage zones.
+                        </p>
+                    </div>
+                    
+                    <div class="challenge-card animate-slide-left">
+                        <div class="challenge-title">
+                            <div class="challenge-icon">
+                                <i class='bx bx-map'></i>
+                            </div>
+                            GPS Accuracy & Acquisition Time
+                        </div>
+                        <p style="color: #666; line-height: 1.8;">
+                            Cold start GPS acquisition could take several minutes, delaying emergency notifications. Urban canyon effects and obstructions affected location accuracy. <strong>Solution:</strong> Implemented A-GPS (Assisted GPS) techniques, maintained warm start capability by periodic position updates, and added last-known location fallback mechanism for scenarios where immediate GPS lock isn't available.
+                        </p>
+                    </div>
+                    
+                    <div class="challenge-card animate-slide-right">
+                        <div class="challenge-title">
+                            <div class="challenge-icon">
+                                <i class='bx bx-slider-alt'></i>
+                            </div>
+                            Sensor Calibration & Threshold Tuning
+                        </div>
+                        <p style="color: #666; line-height: 1.8;">
+                            Determining optimal acceleration and angular velocity thresholds required extensive testing across various accident simulation scenarios. <strong>Solution:</strong> Conducted comprehensive field testing with multiple test scenarios including controlled drops, sudden stops, and rotational movements. Analyzed data patterns to establish thresholds (2.2g and 190°/s) that balanced detection sensitivity with false alarm prevention.
+                        </p>
+                    </div>
+                    
+                    <div class="challenge-card animate-slide-left">
+                        <div class="challenge-title">
+                            <div class="challenge-icon">
+                                <i class='bx bx-chip'></i>
+                            </div>
+                            Module Integration & Communication
+                        </div>
+                        <p style="color: #666; line-height: 1.8;">
+                            Integrating multiple modules (ESP32, MPU6050, GPS, GSM, OLED) with different communication protocols and voltage requirements posed compatibility challenges. <strong>Solution:</strong> Designed proper voltage regulation circuits, implemented robust I2C and UART communication protocols with error handling, and carefully managed GPIO pin allocation to avoid conflicts while ensuring reliable inter-module communication.
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="feature-card animate-fade-in" style="margin-top: 3rem; background: linear-gradient(135deg, rgba(240, 147, 251, 0.1), rgba(245, 87, 108, 0.1));">
+                    <h3 style="font-size: 1.3rem; color: var(--second-color); margin-bottom: 1rem;">
+                        <i class='bx bx-bulb' style="color: var(--first-color);"></i> Future Recommendations
+                    </h3>
+                    <ul style="text-align: left; line-height: 1.8; color: #555; padding-left: 2rem;">
+                        <li><strong>Cloud Integration:</strong> Implement cloud-based data logging for crash analytics and historical tracking.</li>
+                        <li><strong>Mobile App:</strong> Develop companion smartphone app for system configuration, battery monitoring, and emergency contact management.</li>
+                        <li><strong>Multi-Contact Alerts:</strong> Expand emergency notification system to support multiple contacts with priority levels.</li>
+                        <li><strong>Impact Severity Assessment:</strong> Add algorithms to estimate crash severity based on sensor data for better emergency response coordination.</li>
+                        <li><strong>Voice Communication:</strong> Integrate SIM800L voice calling capability for direct communication with emergency contacts.</li>
+                        <li><strong>Weather Integration:</strong> Add environmental sensors (temperature, humidity) for crash condition documentation.</li>
+                        <li><strong>Machine Learning:</strong> Implement ML algorithms for improved crash detection accuracy through pattern recognition.</li>
+                    </ul>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT GALLERY =====-->
+        <section id="gallery" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Gallery</h2>
+                    <p class="section-subtitle">Visual documentation of the Smart Helmet development and implementation</p>
+                </div>
+                
+                <div class="project-images">
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet System">
+                        <div class="project-image-caption">
+                            Complete Smart Helmet System Setup
+                        </div>
+                    </div>
+                    
+                    <div class="project-image animate-scale">
+                        <img src="assets/smqrt-helmet/WhatsApp Image 2026-01-06 at 7.02.05 PM.jpeg" alt="Smart Helmet Implementation">
+                        <div class="project-image-caption">
+                            Smart Helmet Implementation
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CALL TO ACTION =====-->
+        <section class="cta-section">
+            <div class="bd-grid">
+                <div class="animate-fade-in">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Interested in This Project?</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Explore more projects or get in touch to discuss safety technology innovations
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <a href="projects.html" class="cta-button">
+                            <i class='bx bx-arrow-back'></i>
+                            Back to Projects
+                        </a>
+                        <a href="contact.html" class="cta-button">
+                            <i class='bx bx-envelope'></i>
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target section
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-right, .animate-slide-left, .animate-scale');
+            
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Handle navbar hiding and project nav enhancement
+        function handleNavbarScroll() {
+            const header = document.querySelector('.l-header');
+            const projectNav = document.querySelector('.project-nav');
+            const projectTitle = document.querySelector('.project-title');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Hide main navbar
+                if (header) {
+                    header.style.transform = 'translateY(-100%)';
+                    header.style.transition = 'transform 0.3s ease';
+                }
+                // Enhance project nav
+                if (projectNav) {
+                    projectNav.classList.add('scrolled');
+                }
+                // Show project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'block';
+                }
+            } else {
+                // Show main navbar
+                if (header) {
+                    header.style.transform = 'translateY(0)';
+                }
+                // Normal project nav
+                if (projectNav) {
+                    projectNav.classList.remove('scrolled');
+                }
+                // Hide project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'none';
+                }
+            }
+        }
+
+        // Initialize animations and scroll listeners
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            updateActiveNavLink();
+            handleNavbarScroll();
+        });
+        
+        // Initial call
+        animateOnScroll();
+        updateActiveNavLink();
+    </script>
+</body>
+</html>

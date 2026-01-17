@@ -130,6 +130,14 @@
     50% { opacity: 0.8; }
   }
   
+  /* Disable animations for users who prefer reduced motion */
+  @media (prefers-reduced-motion: reduce) {
+    [data-theme="dark"] body::before {
+      animation: none;
+      opacity: 0.5;
+    }
+  }
+  
   [data-theme="dark"] .l-header,
   [data-theme="dark"] .l-main,
   [data-theme="dark"] footer {

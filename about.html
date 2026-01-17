@@ -40,6 +40,9 @@
     --secondary-color: #7873f5;
     --link-color: #657ced;
     --shadow: 0 3px 12px rgba(120,115,245,0.18);
+    --shadow-hover: 0 8px 30px rgba(120,115,245,0.2);
+    --button-shadow: 0 4px 15px rgba(101, 124, 237, 0.3);
+    --button-shadow-hover: 0 6px 20px rgba(101, 124, 237, 0.4);
     --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
     --border-light: #e8eaf6;
   }
@@ -53,6 +56,9 @@
     --secondary-color: #9d8df1;
     --link-color: #8b7fe6;
     --shadow: 0 3px 12px rgba(157,141,241,0.25);
+    --shadow-hover: 0 8px 30px rgba(157,141,241,0.3);
+    --button-shadow: 0 4px 15px rgba(157, 141, 241, 0.35);
+    --button-shadow-hover: 0 6px 20px rgba(157, 141, 241, 0.45);
     --border-light: #2d3561;
   }
   
@@ -143,11 +149,11 @@
 
   .skill__item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow-hover);
   }
   
   [data-theme="dark"] .skill__item:hover {
-    box-shadow: 0 8px 30px rgba(157,141,241,0.15);
+    box-shadow: var(--shadow-hover);
   }
 
   .circular-progress {
@@ -372,8 +378,8 @@
     height: 2.4em;
     border-radius: 50%;
     background: var(--card-bg);
-    color: #657ced;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    color: var(--secondary-color);
+    box-shadow: var(--shadow);
     font-size: 1.3em;
     transition: background 0.25s, color 0.25s, transform 0.18s, border-color 0.18s;
     border: 2px solid transparent;
@@ -384,9 +390,9 @@
   .profile__social-icon:hover {
     background: linear-gradient(135deg, #657ced 60%, #43e97b 100%);
     color: #fff;
-    border-color: #657ced;
+    border-color: var(--secondary-color);
     transform: scale(1.11) rotate(-7deg);
-    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.10);
+    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.15);
   }
   
   @media (max-width: 600px) {
@@ -423,11 +429,11 @@
   
   .theme-toggle:hover {
     transform: scale(1.1) rotate(20deg);
-    box-shadow: 0 4px 20px rgba(120,115,245,0.3);
+    box-shadow: var(--shadow-hover);
   }
   
   [data-theme="dark"] .theme-toggle:hover {
-    box-shadow: 0 4px 20px rgba(157,141,241,0.4);
+    box-shadow: var(--shadow-hover);
   }
   
   .theme-toggle .sun-icon,
@@ -465,11 +471,11 @@
   
   .info-card:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow-hover);
   }
   
   [data-theme="dark"] .info-card:hover {
-    box-shadow: 0 8px 30px rgba(157,141,241,0.15);
+    box-shadow: var(--shadow-hover);
   }
   
   .info-card__icon-wrapper {
@@ -519,12 +525,12 @@
     transition: all 0.3s ease;
     position: relative;
     overflow: hidden;
-    box-shadow: 0 4px 15px rgba(101, 124, 237, 0.3);
+    box-shadow: var(--button-shadow);
   }
   
   .resume-button:hover {
     transform: translateY(-3px);
-    box-shadow: 0 6px 20px rgba(101, 124, 237, 0.4);
+    box-shadow: var(--button-shadow-hover);
   }
   
   .resume-icon {

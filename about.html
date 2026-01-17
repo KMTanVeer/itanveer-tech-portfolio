@@ -57,32 +57,84 @@
   
   /* Dark mode variables */
   [data-theme="dark"] {
-    --bg-color: #1a1a2e;
-    --card-bg: #16213e;
-    --text-color: #e4e4e4;
-    --text-light: #b8b8b8;
-    --secondary-color: #9d8df1;
-    --link-color: #8b7fe6;
-    --shadow: 0 3px 12px rgba(157,141,241,0.25);
-    --shadow-hover: 0 8px 30px rgba(157,141,241,0.3);
-    --button-shadow: 0 4px 15px rgba(157, 141, 241, 0.35);
-    --button-shadow-hover: 0 6px 20px rgba(157, 141, 241, 0.45);
-    --border-light: #2d3561;
+    --bg-color: #0a0a0a;
+    --card-bg: #1a1a1a;
+    --text-color: #f5f5f5;
+    --text-light: #d0d0d0;
+    --secondary-color: #b8a9ff;
+    --link-color: #a89dff;
+    --shadow: 0 3px 12px rgba(157,141,241,0.4);
+    --shadow-hover: 0 8px 30px rgba(157,141,241,0.5);
+    --button-shadow: 0 4px 15px rgba(157, 141, 241, 0.5);
+    --button-shadow-hover: 0 6px 20px rgba(157, 141, 241, 0.6);
+    --border-light: #333333;
     /* Adjusted bright colors for dark mode */
-    --color-blue: #42A5F5;
-    --color-green: #66BB6A;
-    --color-orange: #FFA726;
-    --color-red: #EF5350;
-    --color-purple: #AB47BC;
-    --color-teal: #26A69A;
-    --color-pink: #EC407A;
-    --color-yellow: #FFCA28;
+    --color-blue: #5dbef7;
+    --color-green: #7fda84;
+    --color-orange: #ffb84d;
+    --color-red: #ff6b6b;
+    --color-purple: #c96dd8;
+    --color-teal: #4dd4c4;
+    --color-pink: #ff6b9d;
+    --color-yellow: #ffd95a;
   }
   
   body {
     background: var(--bg-color);
     color: var(--text-color);
     transition: background 0.3s ease, color 0.3s ease;
+    position: relative;
+  }
+  
+  /* Starry galaxy background for dark mode */
+  [data-theme="dark"] body::before {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(2px 2px at 20% 30%, white, transparent),
+      radial-gradient(2px 2px at 60% 70%, white, transparent),
+      radial-gradient(1px 1px at 50% 50%, white, transparent),
+      radial-gradient(1px 1px at 80% 10%, white, transparent),
+      radial-gradient(2px 2px at 90% 60%, white, transparent),
+      radial-gradient(1px 1px at 33% 80%, white, transparent),
+      radial-gradient(1px 1px at 15% 90%, white, transparent);
+    background-size: 200% 200%;
+    background-position: 0% 0%, 40% 40%, 50% 50%, 80% 10%, 90% 60%, 33% 80%, 15% 90%;
+    opacity: 0.5;
+    animation: twinkle 3s ease-in-out infinite;
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  [data-theme="dark"] body::after {
+    content: '';
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: 
+      radial-gradient(ellipse at center, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
+      radial-gradient(ellipse at 80% 20%, rgba(75, 0, 130, 0.1) 0%, transparent 50%),
+      radial-gradient(ellipse at 20% 80%, rgba(25, 25, 112, 0.1) 0%, transparent 50%);
+    pointer-events: none;
+    z-index: 0;
+  }
+  
+  @keyframes twinkle {
+    0%, 100% { opacity: 0.5; }
+    50% { opacity: 0.8; }
+  }
+  
+  [data-theme="dark"] .l-header,
+  [data-theme="dark"] .l-main,
+  [data-theme="dark"] footer {
+    position: relative;
+    z-index: 1;
   }
 
   /* Scroll animation */
@@ -170,6 +222,17 @@
     grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+  }
+  
+  /* Education cards in one row on PC view */
+  .education .skills__grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  
+  @media (max-width: 1024px) {
+    .education .skills__grid {
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    }
   }
 
   /* Education Section Styling */
@@ -824,8 +887,7 @@
         <h3 class="info-card__title">B.Sc. in Electrical & Electronic Engineering</h3>
         <p class="info-card__description">
           <strong>Daffodil International University, Dhaka</strong><br>
-          2022 - 2025<br>
-          <strong style="color: var(--color-green);">CGPA: 3.20/4.00</strong>
+          2022 - 2025
         </p>
       </div>
 
@@ -837,8 +899,7 @@
         <p class="info-card__description">
           <strong>BAF Shaheen College Dhaka</strong><br>
           2017 - 2019<br>
-          Science Group<br>
-          <strong style="color: var(--color-green);">GPA: 4.17/5.00</strong>
+          Science Group
         </p>
       </div>
 
@@ -850,8 +911,7 @@
         <p class="info-card__description">
           <strong>Dulai High School</strong><br>
           2015 - 2017<br>
-          Science Group<br>
-          <strong style="color: var(--color-green);">GPA: 5.00/5.00</strong>
+          Science Group
         </p>
       </div>
     </div>

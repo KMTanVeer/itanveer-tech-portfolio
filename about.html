@@ -43,8 +43,16 @@
     --shadow-hover: 0 8px 30px rgba(120,115,245,0.2);
     --button-shadow: 0 4px 15px rgba(101, 124, 237, 0.3);
     --button-shadow-hover: 0 6px 20px rgba(101, 124, 237, 0.4);
-    --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
     --border-light: #e8eaf6;
+    /* Bright solid colors for dynamic design */
+    --color-blue: #2196F3;
+    --color-green: #4CAF50;
+    --color-orange: #FF9800;
+    --color-red: #F44336;
+    --color-purple: #9C27B0;
+    --color-teal: #009688;
+    --color-pink: #E91E63;
+    --color-yellow: #FFC107;
   }
   
   /* Dark mode variables */
@@ -60,6 +68,15 @@
     --button-shadow: 0 4px 15px rgba(157, 141, 241, 0.35);
     --button-shadow-hover: 0 6px 20px rgba(157, 141, 241, 0.45);
     --border-light: #2d3561;
+    /* Adjusted bright colors for dark mode */
+    --color-blue: #42A5F5;
+    --color-green: #66BB6A;
+    --color-orange: #FFA726;
+    --color-red: #EF5350;
+    --color-purple: #AB47BC;
+    --color-teal: #26A69A;
+    --color-pink: #EC407A;
+    --color-yellow: #FFCA28;
   }
   
   body {
@@ -79,13 +96,34 @@
     transform: translateY(0) scale(1);
   }
   
-  .section-title,
+  .section-title {
+    color: var(--text-color);
+    font-family: 'Segoe UI', 'Arial', sans-serif;
+    font-weight: 700;
+    letter-spacing: 1px;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 10px;
+  }
+  
+  .section-title::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 60%;
+    height: 4px;
+    background: var(--color-blue);
+    animation: slideRight 2s ease-in-out infinite;
+  }
+  
+  @keyframes slideRight {
+    0%, 100% { width: 60%; }
+    50% { width: 90%; }
+  }
+  
   .about__subtitle {
-    background: var(--gradient);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-    background-clip: text;
-    text-shadow: var(--shadow);
+    color: var(--color-purple);
     font-family: 'Segoe UI', 'Arial', sans-serif;
     font-weight: 700;
     letter-spacing: 1px;
@@ -113,15 +151,15 @@
   
   a { color: var(--link-color); }
 
-  /* CIRCULAR SKILLS SECTION */
+  /* Skills Container Styling */
   .skills__container {
-    max-width: 800px;
+    max-width: 900px;
     margin: 0 auto;
   }
 
   .skills__text {
     text-align: center;
-    margin-bottom: 3rem;
+    margin-bottom: 2rem;
     font-size: 1.1em;
     line-height: 1.6;
     color: var(--text-light);
@@ -129,97 +167,9 @@
 
   .skills__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
-  }
-
-  .skill__item {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    padding: 1.5rem;
-    background: var(--card-bg);
-    border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    border: 1px solid var(--border-light);
-  }
-
-  .skill__item:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
-  }
-
-  .circular-progress {
-    position: relative;
-    width: 120px;
-    height: 120px;
-    margin-bottom: 1rem;
-  }
-
-  .circular-progress svg {
-    width: 100%;
-    height: 100%;
-    transform: rotate(-90deg);
-  }
-
-  .progress-ring__circle {
-    stroke: var(--border-light);
-    stroke-width: 6;
-    fill: transparent;
-    r: 54;
-    cx: 60;
-    cy: 60;
-  }
-
-  .progress-ring__progress {
-    stroke-width: 6;
-    fill: transparent;
-    r: 54;
-    cx: 60;
-    cy: 60;
-    stroke-dasharray: 339.292;
-    stroke-dashoffset: 339.292;
-    transition: stroke-dashoffset 2s ease-in-out;
-    stroke-linecap: round;
-  }
-
-  .progress-ring__progress.arduino { stroke: url(#gradient-arduino); }
-  .progress-ring__progress.iot { stroke: url(#gradient-iot); }
-  .progress-ring__progress.matlab { stroke: url(#gradient-matlab); }
-  .progress-ring__progress.office { stroke: url(#gradient-office); }
-  .progress-ring__progress.problem { stroke: url(#gradient-problem); }
-  .progress-ring__progress.teamwork { stroke: url(#gradient-teamwork); }
-
-  .progress-text {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    font-size: 1.5rem;
-    font-weight: bold;
-    color: var(--secondary-color);
-  }
-
-  .skill__icon {
-    font-size: 2rem;
-    margin-bottom: 0.5rem;
-    color: var(--secondary-color);
-  }
-
-  .skill__name {
-    font-weight: 600;
-    font-size: 1rem;
-    color: var(--text-color);
-    margin-bottom: 0.5rem;
-  }
-
-  .skill__description {
-    font-size: 0.85rem;
-    color: var(--text-light);
-    line-height: 1.4;
   }
 
   /* Education Section Styling */
@@ -456,15 +406,41 @@
     padding: 2rem;
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
-    border: 1px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
+    border: 3px solid transparent;
     text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .info-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    transition: left 0.5s ease;
+  }
+  
+  .info-card:hover::before {
+    left: 100%;
   }
   
   .info-card:hover {
-    transform: translateY(-5px);
+    transform: translateY(-8px) scale(1.02);
     box-shadow: var(--shadow-hover);
   }
+  
+  .info-card.color-blue { border-color: var(--color-blue); }
+  .info-card.color-green { border-color: var(--color-green); }
+  .info-card.color-orange { border-color: var(--color-orange); }
+  .info-card.color-red { border-color: var(--color-red); }
+  .info-card.color-purple { border-color: var(--color-purple); }
+  .info-card.color-teal { border-color: var(--color-teal); }
+  .info-card.color-pink { border-color: var(--color-pink); }
+  .info-card.color-yellow { border-color: var(--color-yellow); }
   
   .info-card__icon-wrapper {
     display: flex;
@@ -528,6 +504,175 @@
   .resume-text {
     font-size: 1rem;
   }
+  
+  /* Project Card Styles - ATS Friendly */
+  .project-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 0.5rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border-left: 5px solid var(--color-blue);
+    margin-bottom: 1.5rem;
+    position: relative;
+  }
+  
+  .project-card:hover {
+    transform: translateX(10px);
+    box-shadow: 0 8px 30px rgba(0,0,0,0.15);
+  }
+  
+  .project-card.square {
+    border-radius: 0;
+  }
+  
+  .project-card h3 {
+    color: var(--text-color);
+    font-weight: 700;
+    margin-bottom: 0.5rem;
+    font-size: 1.3rem;
+  }
+  
+  .project-card .tech-stack {
+    color: var(--color-orange);
+    font-weight: 600;
+    font-size: 0.9rem;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  .project-card ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+  
+  .project-card li {
+    padding-left: 1.5rem;
+    margin-bottom: 0.8rem;
+    position: relative;
+    line-height: 1.6;
+    color: var(--text-light);
+  }
+  
+  .project-card li::before {
+    content: '▸';
+    position: absolute;
+    left: 0;
+    color: var(--color-green);
+    font-weight: bold;
+    font-size: 1.2rem;
+  }
+  
+  /* Training Card Styles */
+  .training-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: all 0.3s ease;
+    border: 3px solid var(--color-teal);
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .training-card::after {
+    content: '';
+    position: absolute;
+    top: -50%;
+    right: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle, rgba(0,150,136,0.1) 0%, transparent 70%);
+    animation: pulse 3s ease-in-out infinite;
+  }
+  
+  @keyframes pulse {
+    0%, 100% { transform: scale(1); opacity: 0.5; }
+    50% { transform: scale(1.1); opacity: 0.8; }
+  }
+  
+  .training-card h3 {
+    color: var(--color-teal);
+    font-weight: 700;
+    font-size: 1.4rem;
+    margin-bottom: 0.5rem;
+  }
+  
+  .training-card .training-duration {
+    color: var(--text-light);
+    font-weight: 600;
+    margin-bottom: 1rem;
+    display: block;
+  }
+  
+  /* Skill Badge Styles */
+  .skill-badge {
+    display: inline-block;
+    padding: 0.4rem 1rem;
+    margin: 0.3rem;
+    background: var(--color-blue);
+    color: white;
+    border-radius: 20px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    transition: all 0.3s ease;
+    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+  }
+  
+  .skill-badge:hover {
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.5);
+  }
+  
+  .skill-badge.automation { background: var(--color-orange); }
+  .skill-badge.embedded { background: var(--color-green); }
+  .skill-badge.power { background: var(--color-red); }
+  .skill-badge.simulation { background: var(--color-purple); }
+  .skill-badge.software { background: var(--color-teal); }
+  .skill-badge.deployment { background: var(--color-pink); }
+  
+  /* Contact Info Styles - ATS Friendly */
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.5rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.6rem 1.2rem;
+    background: var(--card-bg);
+    border-radius: 25px;
+    border: 2px solid var(--color-blue);
+    transition: all 0.3s ease;
+  }
+  
+  .contact-item:hover {
+    transform: scale(1.05);
+    border-color: var(--color-green);
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+  }
+  
+  .contact-item i {
+    color: var(--color-blue);
+    font-size: 1.2rem;
+  }
+  
+  .contact-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+  }
+  
+  .contact-item:hover i,
+  .contact-item:hover a {
+    color: var(--color-green);
+  }
   </style>
 </head>
 
@@ -564,21 +709,37 @@
       <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 2px 16px rgba(44,62,80,0.13);">
     </div>
     <div>
-      <!-- Brief Introduction -->
-      <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer Khan</h2>
+      <!-- Contact Information - ATS Friendly -->
+      <div class="contact-info">
+        <div class="contact-item">
+          <i class="fas fa-map-marker-alt"></i>
+          <span>Aminpur, Sujanagar, Pabna</span>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-phone"></i>
+          <a href="tel:+8801758161680">+880 1758161680</a>
+        </div>
+        <div class="contact-item">
+          <i class="fas fa-envelope"></i>
+          <a href="mailto:tanveerk.eee@gmail.com">tanveerk.eee@gmail.com</a>
+        </div>
+        <div class="contact-item">
+          <i class="fab fa-linkedin"></i>
+          <a href="https://www.linkedin.com/in/kawsartanveer/" target="_blank">LinkedIn Profile</a>
+        </div>
+      </div>
+      
+      <!-- Professional Summary -->
+      <h2 class="about__subtitle">Professional Summary</h2>
       <p class="about__text" style="margin-bottom:1em;">
-        <b>Passionate Engineer | Tech Innovator | Problem Solver</b><br>
-        Hello! I'm Kawsar Mahmud Tanveer Khan, currently pursuing my Bachelor of Science in Electrical and Electronic Engineering (EEE) at Daffodil International University. With a deep passion for embedded systems, IoT solutions, and smart grid technologies, I strive to bridge the gap between theoretical knowledge and practical innovation.
-      </p>
-      <p class="about__text">
-        My journey in technology is driven by curiosity and a commitment to continuous learning. Through hands-on projects with Arduino, ESP32, MATLAB Simulink, and other cutting-edge technologies, I transform ideas into reality. This portfolio showcases my learning experiences, technical projects, and insights that I share with the tech community to inspire and learn together.
+        Electrical and Electronic Engineering undergraduate with hands-on experience in <b style="color: var(--color-blue);">embedded systems</b>, <b style="color: var(--color-green);">PLC automation</b>, and <b style="color: var(--color-orange);">sensor-based safety projects</b>. Skilled in simulation, system optimization, and industrial automation, with practical training exposure and a strong interest in <b style="color: var(--color-purple);">IoT</b> and <b style="color: var(--color-teal);">intelligent control systems</b>.
       </p>
       
       <!-- Resume Download Button -->
       <div class="resume-section">
         <a href="https://drive.google.com/file/d/1qz9YCGFrYxRw_Cgm8IwzKWtPnxtAhYH4/view?usp=drive_link" target="_blank" class="resume-button">
           <i class="fas fa-download resume-icon"></i>
-          <span class="resume-text">Resume</span>
+          <span class="resume-text">Download Resume</span>
           <div class="resume-glow"></div>
         </a>
       </div>
@@ -590,167 +751,62 @@
 <section class="skills section" id="skills">
   <h2 class="section-title scroll-animate">Technical Skills</h2>
   <div class="skills__container scroll-animate">          
-    <p class="skills__text">As an Electrical and Electronic Engineering student passionate about IT and innovation, I enjoy bridging hardware and software. I've worked on embedded systems using Arduino and ESP32, explored IoT solutions with sensors and cloud integration, and have a solid foundation in circuit design and simulation.</p>
+    <p class="skills__text">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
     
-    <!-- SVG Gradients for Progress Rings -->
-    <svg width="0" height="0">
-      <defs>
-        <linearGradient id="gradient-arduino" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#657ced"/>
-          <stop offset="100%" style="stop-color:#7873f5"/>
-        </linearGradient>
-        <linearGradient id="gradient-iot" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#43e97b"/>
-          <stop offset="100%" style="stop-color:#27ae60"/>
-        </linearGradient>
-        <linearGradient id="gradient-matlab" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#7873f5"/>
-          <stop offset="100%" style="stop-color:#9b59b6"/>
-        </linearGradient>
-        <linearGradient id="gradient-office" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#2B579A"/>
-          <stop offset="100%" style="stop-color:#3498db"/>
-        </linearGradient>
-        <linearGradient id="gradient-problem" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#f39c12"/>
-          <stop offset="100%" style="stop-color:#e67e22"/>
-        </linearGradient>
-        <linearGradient id="gradient-teamwork" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#e74c3c"/>
-          <stop offset="100%" style="stop-color:#c0392b"/>
-        </linearGradient>
-        <linearGradient id="gradient-education-current" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#7873f5"/>
-          <stop offset="100%" style="stop-color:#9b59b6"/>
-        </linearGradient>
-        <linearGradient id="gradient-education-complete" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#43e97b"/>
-          <stop offset="100%" style="stop-color:#27ae60"/>
-        </linearGradient>
-        <linearGradient id="gradient-specialization" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#657ced"/>
-          <stop offset="100%" style="stop-color:#7873f5"/>
-        </linearGradient>
-        <linearGradient id="gradient-tools" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#43e97b"/>
-          <stop offset="100%" style="stop-color:#27ae60"/>
-        </linearGradient>
-        <linearGradient id="gradient-focus" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#f39c12"/>
-          <stop offset="100%" style="stop-color:#e67e22"/>
-        </linearGradient>
-        <linearGradient id="gradient-values" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#e74c3c"/>
-          <stop offset="100%" style="stop-color:#c0392b"/>
-        </linearGradient>
-        <linearGradient id="gradient-project-arduino" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#657ced"/>
-          <stop offset="100%" style="stop-color:#7873f5"/>
-        </linearGradient>
-        <linearGradient id="gradient-project-iot" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#43e97b"/>
-          <stop offset="100%" style="stop-color:#27ae60"/>
-        </linearGradient>
-        <linearGradient id="gradient-project-grid" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#f39c12"/>
-          <stop offset="100%" style="stop-color:#e67e22"/>
-        </linearGradient>
-        <linearGradient id="gradient-project-protection" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#e74c3c"/>
-          <stop offset="100%" style="stop-color:#c0392b"/>
-        </linearGradient>
-        <linearGradient id="gradient-learning-ml" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#9b59b6"/>
-          <stop offset="100%" style="stop-color:#8e44ad"/>
-        </linearGradient>
-        <linearGradient id="gradient-learning-energy" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#27ae60"/>
-          <stop offset="100%" style="stop-color:#2ecc71"/>
-        </linearGradient>
-        <linearGradient id="gradient-learning-smart" x1="0%" y1="0%" x2="100%" y2="0%">
-          <stop offset="0%" style="stop-color:#3498db"/>
-          <stop offset="100%" style="stop-color:#2980b9"/>
-        </linearGradient>
-      </defs>
-    </svg>
-
-    <div class="skills__grid">
-      <div class="skill__item scroll-animate">
-        <div class="circular-progress">
-          <svg class="progress-ring">
-            <circle class="progress-ring__circle"></circle>
-            <circle class="progress-ring__progress arduino" data-percent="90"></circle>
-          </svg>
-          <div class="progress-text">0%</div>
+    <div style="max-width: 900px; margin: 2rem auto; text-align: center;">
+      <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--color-orange); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Control & Automation</h3>
+        <div>
+          <span class="skill-badge automation">PLC</span>
+          <span class="skill-badge automation">Mechatronics</span>
+          <span class="skill-badge automation">Industrial Automation</span>
+          <span class="skill-badge automation">HMI</span>
         </div>
-        <i class='bx bx-code-alt skill__icon' style="color:#657ced"></i>
-        <h3 class="skill__name">Arduino & ESP32</h3>
-        <p class="skill__description">Microcontroller programming, sensor interfacing, and embedded system development</p>
       </div>
-
-      <div class="skill__item scroll-animate">
-        <div class="circular-progress">
-          <svg class="progress-ring">
-            <circle class="progress-ring__circle"></circle>
-            <circle class="progress-ring__progress iot" data-percent="85"></circle>
-          </svg>
-          <div class="progress-text">0%</div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--color-green); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Embedded & Programming</h3>
+        <div>
+          <span class="skill-badge embedded">C++</span>
+          <span class="skill-badge embedded">ESP32</span>
+          <span class="skill-badge embedded">Arduino</span>
+          <span class="skill-badge embedded">Python</span>
         </div>
-        <i class='fas fa-microchip skill__icon' style="color:#43e97b"></i>
-        <h3 class="skill__name">Embedded Systems & IoT</h3>
-        <p class="skill__description">Internet of Things solutions, wireless communication, and cloud integration</p>
       </div>
-
-      <div class="skill__item scroll-animate">
-        <div class="circular-progress">
-          <svg class="progress-ring">
-            <circle class="progress-ring__circle"></circle>
-            <circle class="progress-ring__progress matlab" data-percent="80"></circle>
-          </svg>
-          <div class="progress-text">0%</div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--color-red); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Power & Control</h3>
+        <div>
+          <span class="skill-badge power">Power Electronics</span>
+          <span class="skill-badge power">UPS</span>
+          <span class="skill-badge power">MPPT</span>
         </div>
-        <i class='fas fa-chart-line skill__icon' style="color:#7873f5"></i>
-        <h3 class="skill__name">MATLAB & Simulink</h3>
-        <p class="skill__description">System modeling, simulation, and power systems analysis</p>
       </div>
-
-      <div class="skill__item scroll-animate">
-        <div class="circular-progress">
-          <svg class="progress-ring">
-            <circle class="progress-ring__circle"></circle>
-            <circle class="progress-ring__progress office" data-percent="95"></circle>
-          </svg>
-          <div class="progress-text">0%</div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--color-purple); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Simulation & Design Tools</h3>
+        <div>
+          <span class="skill-badge simulation">MATLAB/Simulink</span>
+          <span class="skill-badge simulation">Cadence Virtuoso</span>
+          <span class="skill-badge simulation">Proteus</span>
         </div>
-        <i class="fa-solid fa-file-word skill__icon" style="color:#2B579A"></i>
-        <h3 class="skill__name">MS Office Suite</h3>
-        <p class="skill__description">Advanced document creation, data analysis, and professional presentations</p>
       </div>
-
-      <div class="skill__item scroll-animate">
-        <div class="circular-progress">
-          <svg class="progress-ring">
-            <circle class="progress-ring__circle"></circle>
-            <circle class="progress-ring__progress problem" data-percent="90"></circle>
-          </svg>
-          <div class="progress-text">0%</div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--color-teal); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Software & Programming</h3>
+        <div>
+          <span class="skill-badge software">Flask</span>
+          <span class="skill-badge software">PyCharm</span>
+          <span class="skill-badge software">Jupyter Notebook</span>
         </div>
-        <i class='bx bx-brain skill__icon' style="color:#f39c12"></i>
-        <h3 class="skill__name">Problem Solving</h3>
-        <p class="skill__description">Analytical thinking, debugging, and creative solution development</p>
       </div>
-
-      <div class="skill__item scroll-animate">
-        <div class="circular-progress">
-          <svg class="progress-ring">
-            <circle class="progress-ring__circle"></circle>
-            <circle class="progress-ring__progress teamwork" data-percent="85"></circle>
-          </svg>
-          <div class="progress-text">0%</div>
+      
+      <div style="margin-bottom: 2rem;">
+        <h3 style="color: var(--color-pink); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Deployment & Tools</h3>
+        <div>
+          <span class="skill-badge deployment">Render</span>
+          <span class="skill-badge deployment">Git/GitHub</span>
         </div>
-        <i class='bx bx-group skill__icon' style="color:#e74c3c"></i>
-        <h3 class="skill__name">Teamwork & Collaboration</h3>
-        <p class="skill__description">Effective communication, project coordination, and collaborative development</p>
       </div>
     </div>
   </div>
@@ -761,146 +817,148 @@
   <h2 class="section-title scroll-animate">Education</h2>
   <div class="skills__container scroll-animate">
     <div class="skills__grid">
-      <div class="info-card scroll-animate">
+      <div class="info-card scroll-animate color-purple">
         <div class="info-card__icon-wrapper">
-          <i class="fas fa-graduation-cap info-card__icon" style="color:#7873f5"></i>
+          <i class="fas fa-graduation-cap info-card__icon" style="color: var(--color-purple)"></i>
         </div>
         <h3 class="info-card__title">B.Sc. in Electrical & Electronic Engineering</h3>
-        <p class="info-card__description">Daffodil International University<br>2022 - Present<br>Focus: Power Systems, Embedded Systems, IoT & Smart Grid Technologies</p>
+        <p class="info-card__description">
+          <strong>Daffodil International University, Dhaka</strong><br>
+          2022 - 2025<br>
+          <strong style="color: var(--color-green);">CGPA: 3.20/4.00</strong>
+        </p>
       </div>
 
-      <div class="info-card scroll-animate">
+      <div class="info-card scroll-animate color-green">
         <div class="info-card__icon-wrapper">
-          <i class="fas fa-school info-card__icon" style="color:#43e97b"></i>
+          <i class="fas fa-school info-card__icon" style="color: var(--color-green)"></i>
         </div>
         <h3 class="info-card__title">Higher Secondary Certificate (HSC)</h3>
-        <p class="info-card__description">BAF Shaheen College, Dhaka<br>2019<br>Group: Science</p>
+        <p class="info-card__description">
+          <strong>BAF Shaheen College Dhaka</strong><br>
+          2017 - 2019<br>
+          Science Group<br>
+          <strong style="color: var(--color-green);">GPA: 4.17/5.00</strong>
+        </p>
       </div>
 
-      <div class="info-card scroll-animate">
+      <div class="info-card scroll-animate color-orange">
         <div class="info-card__icon-wrapper">
-          <i class="fas fa-book info-card__icon" style="color:#f39c12"></i>
+          <i class="fas fa-book info-card__icon" style="color: var(--color-orange)"></i>
         </div>
         <h3 class="info-card__title">Secondary School Certificate (SSC)</h3>
-        <p class="info-card__description">Dulai High School, Pabna<br>2017<br>Group: Science</p>
+        <p class="info-card__description">
+          <strong>Dulai High School</strong><br>
+          2015 - 2017<br>
+          Science Group<br>
+          <strong style="color: var(--color-green);">GPA: 5.00/5.00</strong>
+        </p>
       </div>
     </div>
   </div>
 </section>
 
-<!--===== PROFILE HIGHLIGHTS =====-->
-<section class="profile section" id="highlights">
-  <h2 class="section-title scroll-animate">Profile Highlights</h2>
+<!--===== CAPSTONE PROJECT =====-->
+<section class="profile section" id="capstone">
+  <h2 class="section-title scroll-animate">Capstone Project</h2>
   <div class="skills__container scroll-animate">
-    <div class="skills__grid">
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-laptop-code info-card__icon" style="color:#657ced"></i>
-        </div>
-        <h3 class="info-card__title">Core Specializations</h3>
-        <p class="info-card__description">Embedded Systems Design • IoT Solutions Architecture • Smart Grid Technologies • Power Systems Analysis • Renewable Energy Integration</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-tools info-card__icon" style="color:#43e97b"></i>
-        </div>
-        <h3 class="info-card__title">Technical Expertise</h3>
-        <p class="info-card__description">C/C++ • Python • MATLAB & Simulink • Arduino IDE • ESP32 Programming • Circuit Design • PCB Development • Cloud Integration • Data Analysis</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-rocket info-card__icon" style="color:#f39c12"></i>
-        </div>
-        <h3 class="info-card__title">Research Interests</h3>
-        <p class="info-card__description">Machine Learning for Predictive Maintenance • Advanced IoT Architectures • Smart City Infrastructure • Sustainable Energy Systems • Industrial Automation</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-heart info-card__icon" style="color:#e74c3c"></i>
-        </div>
-        <h3 class="info-card__title">Professional Values</h3>
-        <p class="info-card__description">Innovation Through Learning • Practical Problem Solving • Knowledge Sharing • Collaborative Development • Continuous Improvement</p>
-      </div>
-    </div>
-  </div>
-</section>
-          </a>
-        </div>
-      </div>
+    <div class="project-card scroll-animate" style="border-left-color: var(--color-blue);">
+      <h3><i class="fas fa-helmet-safety" style="color: var(--color-blue); margin-right: 10px;"></i>Smart Helmet with Sensor-Based Crash Detection & Emergency Alert System</h3>
+      <span class="tech-stack">Technologies: ESP32, MPU6050 (Accelerometer & Gyroscope), GPS, GSM, Embedded Systems</span>
+      <ul>
+        <li>Designed and implemented a smart helmet system to detect accidents by monitoring acceleration and angular velocity thresholds.</li>
+        <li>Developed ESP32-based sensor fusion algorithm integrating accelerometer and gyroscope data.</li>
+        <li>Integrated GPS and GSM modules to automatically send emergency location alerts, enhancing rider safety.</li>
+        <li>Reduced false alarms through threshold tuning and implemented user-controlled cancellation mechanism.</li>
+        <li>Conducted rigorous testing under real riding conditions and sudden impact scenarios to validate system reliability.</li>
+      </ul>
     </div>
   </div>
 </section>
 
-<!--===== EXPERIENCE & PROJECTS =====-->
-<section class="experience section" id="experience">
-  <h2 class="section-title scroll-animate">Recent Projects & Experience</h2>
+<!--===== ACADEMIC PROJECTS =====-->
+<section class="experience section" id="academic-projects">
+  <h2 class="section-title scroll-animate">Academic Projects</h2>
   <div class="skills__container scroll-animate">
-    <div class="skills__grid">
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-microchip info-card__icon" style="color:#657ced"></i>
-        </div>
-        <h3 class="info-card__title">Arduino Digital Multimeter</h3>
-        <p class="info-card__description">High-precision multimeter with LCD display, auto-ranging, and data logging</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-wifi info-card__icon" style="color:#43e97b"></i>
-        </div>
-        <h3 class="info-card__title">ESP32 IoT Weather Station</h3>
-        <p class="info-card__description">Real-time weather monitoring with cloud integration and web dashboard</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-bolt info-card__icon" style="color:#f39c12"></i>
-        </div>
-        <h3 class="info-card__title">Smart Grid Simulation</h3>
-        <p class="info-card__description">MATLAB Simulink modeling for renewable energy integration and grid stability</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-shield-alt info-card__icon" style="color:#e74c3c"></i>
-        </div>
-        <h3 class="info-card__title">Distance Protection System</h3>
-        <p class="info-card__description">Advanced protection schemes for transmission lines with fault detection algorithms</p>
-      </div>
+    
+    <div class="project-card scroll-animate square" style="border-left-color: var(--color-purple);">
+      <h3><i class="fas fa-microchip" style="color: var(--color-purple); margin-right: 10px;"></i>4-Bit CMOS Full Adder Using 14nm Technology</h3>
+      <span class="tech-stack">Technologies: Cadence Virtuoso, CMOS Design, VLSI</span>
+      <ul>
+        <li>Designed and verified CMOS full adder using Cadence Virtuoso.</li>
+        <li>Achieved DRC/LVS clean layout and functional XOR/AND/OR logic.</li>
+        <li>Performed layout optimization and verification using Cadence Virtuoso.</li>
+      </ul>
     </div>
+    
+    <div class="project-card scroll-animate" style="border-left-color: var(--color-red);">
+      <h3><i class="fas fa-battery-full" style="color: var(--color-red); margin-right: 10px;"></i>Online Uninterruptible Power Supply (UPS) System</h3>
+      <span class="tech-stack">Technologies: Power Electronics, AC-DC-AC Conversion, PFC</span>
+      <ul>
+        <li>Designed a double-conversion AC-DC-AC UPS ensuring uninterrupted power with minimal switching delay.</li>
+        <li>Integrated a high-efficiency rectifier and PFC stage achieving 30% improved power conversion.</li>
+      </ul>
+    </div>
+    
+    <div class="project-card scroll-animate square" style="border-left-color: var(--color-yellow);">
+      <h3><i class="fas fa-solar-panel" style="color: var(--color-yellow); margin-right: 10px;"></i>Maximum Power Point Tracking (MPPT) Solar Charge Controller</h3>
+      <span class="tech-stack">Technologies: MPPT Algorithms, Renewable Energy, Control Systems</span>
+      <ul>
+        <li>Designed a solar charge controller utilizing MPPT algorithms for maximum photovoltaic energy extraction.</li>
+        <li>Applied control systems principles to optimize energy yield for renewable integration.</li>
+      </ul>
+    </div>
+    
+    <div class="project-card scroll-animate" style="border-left-color: var(--color-teal);">
+      <h3><i class="fas fa-book-reader" style="color: var(--color-teal); margin-right: 10px;"></i>Machine Learning-Based Book Recommendation System</h3>
+      <span class="tech-stack">Technologies: Python, Flask, Machine Learning, Content-Based Filtering</span>
+      <ul>
+        <li>Developed a personalized ML-inspired recommendation system using content-based filtering.</li>
+        <li>Implemented preprocessing, vectorization, and similarity algorithms using Jupyter Notebook.</li>
+        <li>Built and deployed the web app with Flask & PyCharm, hosted on Render.</li>
+        <li><a href="#" target="_blank" style="color: var(--color-teal); font-weight: 600;">Live Demo</a></li>
+      </ul>
+    </div>
+    
   </div>
 </section>
 
-<!--===== LEARNING GOALS =====-->
-<section class="goals section" id="goals">
-  <h2 class="section-title scroll-animate">Current Learning Goals</h2>
+<!--===== INDUSTRIAL TRAINING =====-->
+<section class="goals section" id="training">
+  <h2 class="section-title scroll-animate">Industrial Training</h2>
   <div class="skills__container scroll-animate">
-    <div class="skills__grid">
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-robot info-card__icon" style="color:#9b59b6"></i>
-        </div>
-        <h3 class="info-card__title">AI & Machine Learning</h3>
-        <p class="info-card__description">Integrating machine learning algorithms with embedded systems for intelligent automation and predictive maintenance applications</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-leaf info-card__icon" style="color:#27ae60"></i>
-        </div>
-        <h3 class="info-card__title">Renewable Energy Systems</h3>
-        <p class="info-card__description">Advanced solar and wind energy systems with MPPT optimization and grid integration for sustainable power solutions</p>
-      </div>
-
-      <div class="info-card scroll-animate">
-        <div class="info-card__icon-wrapper">
-          <i class="fas fa-city info-card__icon" style="color:#3498db"></i>
-        </div>
-        <h3 class="info-card__title">Smart City Infrastructure</h3>
-        <p class="info-card__description">IoT-enabled urban solutions for intelligent transportation, energy management, and public safety systems</p>
+    <div class="training-card scroll-animate">
+      <h3><i class="fas fa-industry" style="margin-right: 10px;"></i>Bangladesh Industrial Technical Assistance Center (BITAC)</h3>
+      <h4 style="color: var(--text-color); font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem;">Tool & Technology Institute (TTI)</h4>
+      <span class="training-duration"><strong>Mechatronics & PLC Training</strong> | 88 Hours | January 2025 – February 2025</span>
+      
+      <div style="text-align: left; margin-top: 1.5rem;">
+        <ul style="list-style: none; padding: 0;">
+          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light); line-height: 1.6;">
+            <span style="position: absolute; left: 0; color: var(--color-teal); font-weight: bold;">▸</span>
+            Gained hands-on experience in PLC programming, industrial control systems, and mechatronics.
+          </li>
+          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light); line-height: 1.6;">
+            <span style="position: absolute; left: 0; color: var(--color-teal); font-weight: bold;">▸</span>
+            Implemented motor starter circuits including DOL, Star-Delta, and Forward/Reverse.
+          </li>
+          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light); line-height: 1.6;">
+            <span style="position: absolute; left: 0; color: var(--color-teal); font-weight: bold;">▸</span>
+            Developed PLC applications using timers, counters, and traffic light control logic.
+          </li>
+          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light); line-height: 1.6;">
+            <span style="position: absolute; left: 0; color: var(--color-teal); font-weight: bold;">▸</span>
+            Worked with pneumatic and electro-pneumatic systems and sequential control.
+          </li>
+          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light); line-height: 1.6;">
+            <span style="position: absolute; left: 0; color: var(--color-teal); font-weight: bold;">▸</span>
+            Configured Variable Frequency Drives (VFDs) for motor speed control with open/closed-loop feedback.
+          </li>
+          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-light); line-height: 1.6;">
+            <span style="position: absolute; left: 0; color: var(--color-teal); font-weight: bold;">▸</span>
+            Designed HMI-based monitoring and control systems for industrial automation.
+          </li>
+        </ul>
       </div>
     </div>
   </div>

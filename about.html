@@ -40,13 +40,32 @@
     --secondary-color: #7873f5;
     --link-color: #657ced;
     --shadow: 0 3px 12px rgba(120,115,245,0.18);
+    --shadow-hover: 0 8px 30px rgba(120,115,245,0.2);
+    --button-shadow: 0 4px 15px rgba(101, 124, 237, 0.3);
+    --button-shadow-hover: 0 6px 20px rgba(101, 124, 237, 0.4);
     --gradient: linear-gradient(90deg,#7f53ac 30%, #657ced 60%, #43e97b 90%);
     --border-light: #e8eaf6;
+  }
+  
+  /* Dark mode variables */
+  [data-theme="dark"] {
+    --bg-color: #1a1a2e;
+    --card-bg: #16213e;
+    --text-color: #e4e4e4;
+    --text-light: #b8b8b8;
+    --secondary-color: #9d8df1;
+    --link-color: #8b7fe6;
+    --shadow: 0 3px 12px rgba(157,141,241,0.25);
+    --shadow-hover: 0 8px 30px rgba(157,141,241,0.3);
+    --button-shadow: 0 4px 15px rgba(157, 141, 241, 0.35);
+    --button-shadow-hover: 0 6px 20px rgba(157, 141, 241, 0.45);
+    --border-light: #2d3561;
   }
   
   body {
     background: var(--bg-color);
     color: var(--text-color);
+    transition: background 0.3s ease, color 0.3s ease;
   }
 
   /* Scroll animation */
@@ -124,12 +143,13 @@
     background: var(--card-bg);
     border-radius: 1rem;
     box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border: 1px solid var(--border-light);
   }
 
   .skill__item:hover {
     transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.12);
+    box-shadow: var(--shadow-hover);
   }
 
   .circular-progress {
@@ -222,6 +242,11 @@
     gap: 1.5em;
     transition: background 0.4s, box-shadow 0.4s;
     border: 1px solid var(--border-light);
+  }
+  
+  [data-theme="dark"] .education__data {
+    box-shadow: 0 4px 20px rgba(157,141,241,0.1);
+  }
   
   .education__names {
     display: flex;
@@ -232,7 +257,7 @@
   
   .education__icon {
     font-size: 2rem;
-    background: var(--card-bg);
+    background: var(--bg-color);
     border-radius: 50%;
     padding: 0.45em;
     box-shadow: 0 2px 8px rgba(44,62,80,0.09);
@@ -243,6 +268,7 @@
   .education__degree {
     font-weight: bold;
     font-size: 1.15em;
+    color: var(--text-color);
   }
   
   .education__details {
@@ -258,7 +284,7 @@
   
   .education__year {
     font-size: 0.98em;
-    color: #888;
+    color: var(--text-light);
   }
   
   .education__remark {
@@ -294,6 +320,10 @@
     border: 1px solid var(--border-light);
   }
   
+  [data-theme="dark"] .profile__data {
+    box-shadow: 0 4px 20px rgba(157,141,241,0.1);
+  }
+  
   .profile__icon-label {
     display: flex;
     align-items: center;
@@ -303,13 +333,7 @@
   
   .profile__icon {
     font-size: 2em;
-    background: var(--card-bg);
-    border-radius: 50%;
-    padding: 0.4em;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
-    transition: background 0.4s;
-  }
-    background: #fff;
+    background: var(--bg-color);
     border-radius: 50%;
     padding: 0.4em;
     box-shadow: 0 2px 8px rgba(44,62,80,0.09);
@@ -319,11 +343,12 @@
   .profile__label {
     font-weight: bold;
     font-size: 1.07em;
+    color: var(--text-color);
   }
   
   .profile__details {
     font-size: 1em;
-    color: #444;
+    color: var(--text-light);
   }
   
   .profile__details ul {
@@ -348,9 +373,9 @@
     width: 2.4em;
     height: 2.4em;
     border-radius: 50%;
-    background: #fff;
-    color: #657ced;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    background: var(--card-bg);
+    color: var(--secondary-color);
+    box-shadow: var(--shadow);
     font-size: 1.3em;
     transition: background 0.25s, color 0.25s, transform 0.18s, border-color 0.18s;
     border: 2px solid transparent;
@@ -361,9 +386,9 @@
   .profile__social-icon:hover {
     background: linear-gradient(135deg, #657ced 60%, #43e97b 100%);
     color: #fff;
-    border-color: #657ced;
+    border-color: var(--secondary-color);
     transform: scale(1.11) rotate(-7deg);
-    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.10);
+    box-shadow: 0 4px 16px rgba(67, 233, 123, 0.15);
   }
   
   @media (max-width: 600px) {
@@ -375,6 +400,133 @@
     .profile__icon-label {
       min-width: 0;
     }
+  }
+  
+  /* Theme Toggle Button */
+  .theme-toggle {
+    position: fixed;
+    bottom: 2rem;
+    right: 2rem;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: var(--card-bg);
+    border: 2px solid var(--border-light);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    color: var(--secondary-color);
+    transition: all 0.3s ease;
+    z-index: 999;
+  }
+  
+  .theme-toggle:hover {
+    transform: scale(1.1) rotate(20deg);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .theme-toggle .sun-icon,
+  .theme-toggle .moon-icon {
+    position: absolute;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-toggle .sun-icon {
+    opacity: 1;
+  }
+  
+  .theme-toggle .moon-icon {
+    opacity: 0;
+  }
+  
+  [data-theme="dark"] .theme-toggle .sun-icon {
+    opacity: 0;
+  }
+  
+  [data-theme="dark"] .theme-toggle .moon-icon {
+    opacity: 1;
+  }
+  
+  /* Info Card Styles for Dark Mode */
+  .info-card {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease;
+    border: 1px solid var(--border-light);
+    text-align: center;
+  }
+  
+  .info-card:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  .info-card__icon-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 60px;
+    height: 60px;
+    margin: 0 auto 1rem;
+    border-radius: 50%;
+    background: var(--bg-color);
+    transition: background 0.3s ease;
+  }
+  
+  .info-card__icon {
+    font-size: 2rem;
+  }
+  
+  .info-card__title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: var(--text-color);
+    margin-bottom: 0.5rem;
+  }
+  
+  .info-card__description {
+    font-size: 1rem;
+    color: var(--text-light);
+    line-height: 1.6;
+  }
+  
+  /* Resume Button Styles */
+  .resume-section {
+    margin-top: 2rem;
+  }
+  
+  .resume-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.8rem 2rem;
+    background: linear-gradient(135deg, #657ced 0%, #7873f5 100%);
+    color: white;
+    border-radius: 50px;
+    font-weight: 600;
+    text-decoration: none;
+    transition: all 0.3s ease;
+    position: relative;
+    overflow: hidden;
+    box-shadow: var(--button-shadow);
+  }
+  
+  .resume-button:hover {
+    transform: translateY(-3px);
+    box-shadow: var(--button-shadow-hover);
+  }
+  
+  .resume-icon {
+    font-size: 1.2rem;
+  }
+  
+  .resume-text {
+    font-size: 1rem;
   }
   </style>
 </head>
@@ -413,18 +565,18 @@
     </div>
     <div>
       <!-- Brief Introduction -->
-      <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer</h2>
+      <h2 class="about__subtitle">I'm Kawsar Mahmud Tanveer Khan</h2>
       <p class="about__text" style="margin-bottom:1em;">
-        <b>Optimistic | Tech Explorer | EEE Student</b><br>
-        Hi! I'm an enthusiastic Electrical and Electronic Engineering student at Daffodil International University. I'm passionate about embedded systems, IoT, smart grid technologies, and leveraging innovation to solve real-world problems.
+        <b>Passionate Engineer | Tech Innovator | Problem Solver</b><br>
+        Hello! I'm Kawsar Mahmud Tanveer Khan, currently pursuing my Bachelor of Science in Electrical and Electronic Engineering (EEE) at Daffodil International University. With a deep passion for embedded systems, IoT solutions, and smart grid technologies, I strive to bridge the gap between theoretical knowledge and practical innovation.
       </p>
       <p class="about__text">
-        Through this blog, I share my journey of learning and building projects with Arduino, ESP32, MATLAB Simulink, and other cutting-edge technologies. I believe in continuous learning, hands-on experimentation, and knowledge sharing within the tech community.
+        My journey in technology is driven by curiosity and a commitment to continuous learning. Through hands-on projects with Arduino, ESP32, MATLAB Simulink, and other cutting-edge technologies, I transform ideas into reality. This portfolio showcases my learning experiences, technical projects, and insights that I share with the tech community to inspire and learn together.
       </p>
       
       <!-- Resume Download Button -->
       <div class="resume-section">
-        <a href="https://drive.google.com/file/d/your-resume-file-id/view?usp=sharing" target="_blank" class="resume-button">
+        <a href="https://drive.google.com/file/d/1qz9YCGFrYxRw_Cgm8IwzKWtPnxtAhYH4/view?usp=drive_link" target="_blank" class="resume-button">
           <i class="fas fa-download resume-icon"></i>
           <span class="resume-text">Resume</span>
           <div class="resume-glow"></div>
@@ -613,24 +765,24 @@
         <div class="info-card__icon-wrapper">
           <i class="fas fa-graduation-cap info-card__icon" style="color:#7873f5"></i>
         </div>
-        <h3 class="info-card__title">Bachelor of Science in EEE</h3>
-        <p class="info-card__description">Daffodil International University (2022 - Present)<br>Specializing in Power Systems, Embedded Systems & IoT</p>
+        <h3 class="info-card__title">B.Sc. in Electrical & Electronic Engineering</h3>
+        <p class="info-card__description">Daffodil International University<br>2022 - Present<br>Focus: Power Systems, Embedded Systems, IoT & Smart Grid Technologies</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-school info-card__icon" style="color:#43e97b"></i>
         </div>
-        <h3 class="info-card__title">Higher Secondary Certificate</h3>
-        <p class="info-card__description">BAF Shaheen College Dhaka (2019)<br>Science</p>
+        <h3 class="info-card__title">Higher Secondary Certificate (HSC)</h3>
+        <p class="info-card__description">BAF Shaheen College, Dhaka<br>2019<br>Group: Science</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-book info-card__icon" style="color:#f39c12"></i>
         </div>
-        <h3 class="info-card__title">Secondary School Certificate</h3>
-        <p class="info-card__description">Dulai High School (2017)<br>Pabna</p>
+        <h3 class="info-card__title">Secondary School Certificate (SSC)</h3>
+        <p class="info-card__description">Dulai High School, Pabna<br>2017<br>Group: Science</p>
       </div>
     </div>
   </div>
@@ -645,32 +797,32 @@
         <div class="info-card__icon-wrapper">
           <i class="fas fa-laptop-code info-card__icon" style="color:#657ced"></i>
         </div>
-        <h3 class="info-card__title">Specializations</h3>
-        <p class="info-card__description">Embedded Systems, IoT Solutions, Smart Grid & Power Systems</p>
+        <h3 class="info-card__title">Core Specializations</h3>
+        <p class="info-card__description">Embedded Systems Design • IoT Solutions Architecture • Smart Grid Technologies • Power Systems Analysis • Renewable Energy Integration</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-tools info-card__icon" style="color:#43e97b"></i>
         </div>
-        <h3 class="info-card__title">Tools & Technologies</h3>
-        <p class="info-card__description">C/C++, Python, MATLAB, Simulink, Arduino IDE, Cloud Platforms</p>
+        <h3 class="info-card__title">Technical Expertise</h3>
+        <p class="info-card__description">C/C++ • Python • MATLAB & Simulink • Arduino IDE • ESP32 Programming • Circuit Design • PCB Development • Cloud Integration • Data Analysis</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-rocket info-card__icon" style="color:#f39c12"></i>
         </div>
-        <h3 class="info-card__title">Current Focus</h3>
-        <p class="info-card__description">Advanced IoT architectures, ML integration with embedded systems</p>
+        <h3 class="info-card__title">Research Interests</h3>
+        <p class="info-card__description">Machine Learning for Predictive Maintenance • Advanced IoT Architectures • Smart City Infrastructure • Sustainable Energy Systems • Industrial Automation</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-heart info-card__icon" style="color:#e74c3c"></i>
         </div>
-        <h3 class="info-card__title">Core Values</h3>
-        <p class="info-card__description">Stay curious, keep building, share knowledge, empower innovators</p>
+        <h3 class="info-card__title">Professional Values</h3>
+        <p class="info-card__description">Innovation Through Learning • Practical Problem Solving • Knowledge Sharing • Collaborative Development • Continuous Improvement</p>
       </div>
     </div>
   </div>
@@ -731,24 +883,24 @@
         <div class="info-card__icon-wrapper">
           <i class="fas fa-robot info-card__icon" style="color:#9b59b6"></i>
         </div>
-        <h3 class="info-card__title">Machine Learning & AI</h3>
-        <p class="info-card__description">Integration of ML algorithms with embedded systems for predictive maintenance</p>
+        <h3 class="info-card__title">AI & Machine Learning</h3>
+        <p class="info-card__description">Integrating machine learning algorithms with embedded systems for intelligent automation and predictive maintenance applications</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-leaf info-card__icon" style="color:#27ae60"></i>
         </div>
-        <h3 class="info-card__title">Sustainable Energy Systems</h3>
-        <p class="info-card__description"></p>
+        <h3 class="info-card__title">Renewable Energy Systems</h3>
+        <p class="info-card__description">Advanced solar and wind energy systems with MPPT optimization and grid integration for sustainable power solutions</p>
       </div>
 
       <div class="info-card scroll-animate">
         <div class="info-card__icon-wrapper">
           <i class="fas fa-city info-card__icon" style="color:#3498db"></i>
         </div>
-        <h3 class="info-card__title">Smart City Technologies</h3>
-        <p class="info-card__description"></p>
+        <h3 class="info-card__title">Smart City Infrastructure</h3>
+        <p class="info-card__description">IoT-enabled urban solutions for intelligent transportation, energy management, and public safety systems</p>
       </div>
     </div>
   </div>
@@ -766,7 +918,29 @@
   <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
 </footer>
 
+<!-- Theme Toggle Button -->
+<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
+  <i class="fas fa-sun sun-icon"></i>
+  <i class="fas fa-moon moon-icon"></i>
+</button>
+
 <script>
+// Theme Toggle Functionality
+const themeToggle = document.getElementById('theme-toggle');
+const htmlElement = document.documentElement;
+
+// Check for saved theme preference or default to light mode
+const currentTheme = localStorage.getItem('theme') || 'light';
+htmlElement.setAttribute('data-theme', currentTheme);
+
+themeToggle.addEventListener('click', () => {
+  const theme = htmlElement.getAttribute('data-theme');
+  const newTheme = theme === 'light' ? 'dark' : 'light';
+  
+  htmlElement.setAttribute('data-theme', newTheme);
+  localStorage.setItem('theme', newTheme);
+});
+
 // Scroll animation
 function onScrollAnimate() {
   document.querySelectorAll('.scroll-animate').forEach(el => {

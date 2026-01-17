@@ -1,0 +1,1167 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Smart Book Recommendation System | itanveer.tech</title>
+    <meta name="description" content="An intelligent machine learning-based book recommendation system using collaborative and content-based filtering algorithms, deployed live on Render cloud platform.">
+    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+    <meta name="keywords" content="Machine Learning, Book Recommendation, Flask, Python, Collaborative Filtering, Content-Based Filtering, Scikit-learn, Web Application">
+    <meta name="robots" content="index, follow">
+
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://itanveer.tech/project-book-recommender.html">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Smart Book Recommendation System Project">
+    <meta name="twitter:description" content="Intelligent ML-based book recommendation system with live web deployment">
+    <meta name="twitter:image" content="assets/img/project2.jpg">
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="favicon.png" type="image/png">
+    <link rel="icon" href="favicon.png" type="image/png">
+
+    <!-- CSS -->
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+    
+    <style>
+        /* Project Page Specific Styles */
+        .project-hero {
+            background: linear-gradient(135deg, #667eea 0%, #06beb6 100%);
+            padding: 8rem 0 4rem;
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .project-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
+            opacity: 0.1;
+        }
+        
+        .project-hero__content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .project-hero__title {
+            font-size: 3.5rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            line-height: 1.2;
+        }
+        
+        .project-hero__subtitle {
+            font-size: 1.3rem;
+            opacity: 0.9;
+            margin-bottom: 2rem;
+            max-width: 800px;
+        }
+        
+        .project-meta {
+            display: flex;
+            gap: 2rem;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .meta-item {
+            display: flex;
+            align-items: center;
+            gap: 0.5rem;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 0.8rem 1.5rem;
+            border-radius: 25px;
+            backdrop-filter: blur(10px);
+        }
+        
+        .demo-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.8rem;
+            padding: 1rem 2.5rem;
+            background: white;
+            color: #06beb6;
+            text-decoration: none;
+            border-radius: 30px;
+            font-weight: 600;
+            font-size: 1.1rem;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.2);
+            margin-top: 1.5rem;
+        }
+        
+        .demo-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 8px 35px rgba(0,0,0,0.3);
+            color: #667eea;
+        }
+        
+        .project-nav {
+            background: white;
+            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            padding: 0.8rem 0;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+            border-bottom: 1px solid #e9ecef;
+        }
+        
+        .project-nav.scrolled {
+            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
+            backdrop-filter: blur(10px);
+            background: rgba(255, 255, 255, 0.95);
+            padding: 0.6rem 0;
+        }
+        
+        .nav-links {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            flex-wrap: nowrap;
+            align-items: center;
+            overflow-x: auto;
+            white-space: nowrap;
+        }
+        
+        .project-nav.scrolled .nav-links {
+            gap: 1rem;
+        }
+        
+        .nav-link {
+            text-decoration: none;
+            color: var(--second-color);
+            padding: 0.6rem 1.2rem;
+            border-radius: 20px;
+            transition: all 0.3s ease;
+            font-weight: 500;
+            font-size: 0.9rem;
+            white-space: nowrap;
+            flex-shrink: 0;
+        }
+        
+        .project-nav.scrolled .nav-link {
+            padding: 0.5rem 0.8rem;
+            font-size: 0.8rem;
+        }
+        
+        .nav-link:hover, .nav-link.active {
+            background: var(--first-color);
+            color: white;
+            transform: translateY(-2px);
+        }
+        
+        .project-section {
+            padding: 4rem 0;
+        }
+        
+        .project-section:nth-child(even) {
+            background: #f8f9fa;
+        }
+        
+        .section-header {
+            text-align: center;
+            margin-bottom: 3rem;
+        }
+        
+        .section-title {
+            font-size: 2.5rem;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+        }
+        
+        .section-subtitle {
+            font-size: 1.1rem;
+            color: #666;
+            max-width: 600px;
+            margin: 0 auto;
+        }
+        
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .feature-card {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            text-align: center;
+            transition: all 0.3s ease;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .feature-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: -100%;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            transition: left 0.5s ease;
+        }
+        
+        .feature-card:hover::before {
+            left: 100%;
+        }
+        
+        .feature-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+        }
+        
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: linear-gradient(135deg, #667eea, #06beb6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 1.5rem;
+            font-size: 2rem;
+            color: white;
+        }
+        
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 600;
+            margin-bottom: 1rem;
+            color: var(--second-color);
+        }
+        
+        .tech-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 1.5rem;
+            margin-top: 2rem;
+        }
+        
+        .tech-item {
+            background: white;
+            padding: 1.5rem;
+            border-radius: 10px;
+            border-left: 4px solid #06beb6;
+            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .tech-item:hover {
+            transform: translateX(5px);
+            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+        }
+        
+        .tech-name {
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 0.5rem;
+        }
+        
+        .tech-desc {
+            color: #666;
+            font-size: 0.9rem;
+        }
+        
+        .algorithm-card {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 15px;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+            border-top: 4px solid #06beb6;
+            transition: all 0.3s ease;
+        }
+        
+        .algorithm-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.15);
+        }
+        
+        .algorithm-title {
+            font-size: 1.5rem;
+            font-weight: 600;
+            color: var(--second-color);
+            margin-bottom: 1rem;
+            display: flex;
+            align-items: center;
+            gap: 0.8rem;
+        }
+        
+        .algorithm-icon {
+            width: 50px;
+            height: 50px;
+            background: linear-gradient(135deg, #667eea, #06beb6);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: white;
+            font-size: 1.5rem;
+        }
+        
+        .project-images {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            margin-top: 3rem;
+        }
+        
+        .project-image {
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            transition: all 0.3s ease;
+        }
+        
+        .project-image:hover {
+            transform: scale(1.05);
+            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+        }
+        
+        .project-image img {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
+        }
+        
+        .project-image-caption {
+            padding: 1rem;
+            background: white;
+            font-size: 0.9rem;
+            color: #666;
+            text-align: center;
+        }
+        
+        .achievement-card {
+            background: linear-gradient(135deg, #667eea, #06beb6);
+            color: white;
+            padding: 3rem;
+            border-radius: 20px;
+            text-align: center;
+            margin: 3rem 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .achievement-card::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.1) 0%, transparent 70%);
+            animation: rotate 20s linear infinite;
+        }
+        
+        @keyframes rotate {
+            0% { transform: rotate(0deg); }
+            100% { transform: rotate(360deg); }
+        }
+        
+        .achievement-content {
+            position: relative;
+            z-index: 2;
+        }
+        
+        .achievement-number {
+            font-size: 4rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+        }
+        
+        .live-demo-section {
+            background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(6, 190, 182, 0.1));
+            padding: 4rem 2rem;
+            border-radius: 20px;
+            margin: 3rem 0;
+            text-align: center;
+        }
+        
+        .cta-section {
+            background: linear-gradient(135deg, #667eea, #06beb6);
+            color: white;
+            padding: 4rem 0;
+            text-align: center;
+        }
+        
+        .cta-buttons {
+            display: flex;
+            gap: 1rem;
+            justify-content: center;
+            flex-wrap: wrap;
+            margin-top: 2rem;
+        }
+        
+        .cta-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 1rem 2rem;
+            background: rgba(255,255,255,0.2);
+            color: white;
+            text-decoration: none;
+            border-radius: 30px;
+            border: 2px solid rgba(255,255,255,0.3);
+            transition: all 0.3s ease;
+            backdrop-filter: blur(10px);
+        }
+        
+        .cta-button:hover {
+            background: white;
+            color: #06beb6;
+            transform: translateY(-2px);
+        }
+        
+        /* Animation Classes */
+        .animate-fade-in {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-fade-in.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .animate-slide-right {
+            opacity: 0;
+            transform: translateX(-30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-slide-left {
+            opacity: 0;
+            transform: translateX(30px);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-slide-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .animate-scale {
+            opacity: 0;
+            transform: scale(0.8);
+            transition: all 0.8s ease;
+        }
+        
+        .animate-scale.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        /* Mobile Responsiveness */
+        @media screen and (max-width: 768px) {
+            .project-hero__title {
+                font-size: 2.5rem;
+            }
+            
+            .project-meta {
+                justify-content: center;
+            }
+            
+            .nav-links {
+                gap: 0.8rem;
+                justify-content: flex-start;
+                padding: 0 1rem;
+            }
+            
+            .project-nav.scrolled .nav-links {
+                gap: 0.5rem;
+            }
+            
+            .nav-link {
+                padding: 0.5rem 0.8rem;
+                font-size: 0.85rem;
+            }
+            
+            .project-nav.scrolled .nav-link {
+                padding: 0.4rem 0.6rem;
+                font-size: 0.75rem;
+            }
+            
+            .project-title {
+                display: none !important;
+            }
+            
+            .achievement-number {
+                font-size: 3rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECT HERO =====-->
+        <section class="project-hero">
+            <div class="bd-grid">
+                <div class="project-hero__content animate-fade-in">
+                    <h1 class="project-hero__title">Smart Book Recommendation System</h1>
+                    <p class="project-hero__subtitle">An intelligent machine learning-based book recommendation system that suggests books based on user preferences and reading history, deployed live on Render cloud platform.</p>
+                    
+                    <div class="project-meta">
+                        <div class="meta-item">
+                            <i class='bx bx-brain'></i>
+                            <span>Machine Learning</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bxl-flask'></i>
+                            <span>Flask Web App</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-cloud'></i>
+                            <span>Live Deployment</span>
+                        </div>
+                        <div class="meta-item">
+                            <i class='bx bx-check-circle'></i>
+                            <span>Production Ready</span>
+                        </div>
+                    </div>
+                    
+                    <a href="https://bookrecommender-s80k.onrender.com/" target="_blank" class="demo-button">
+                        <i class='bx bx-rocket'></i>
+                        Try Live Demo
+                    </a>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT NAVIGATION =====-->
+        <nav class="project-nav">
+            <div class="bd-grid">
+                <div class="nav-links">
+                    <div class="project-title" style="display: none; font-weight: 600; color: var(--second-color); margin-right: 1.5rem; align-self: center; font-size: 0.9rem; flex-shrink: 0;">
+                        Book Recommender System
+                    </div>
+                    <a href="#overview" class="nav-link active">Overview</a>
+                    <a href="#features" class="nav-link">Features</a>
+                    <a href="#technology" class="nav-link">Technology</a>
+                    <a href="#architecture" class="nav-link">Architecture</a>
+                    <a href="#algorithms" class="nav-link">Algorithms</a>
+                    <a href="#results" class="nav-link">Results</a>
+                    <a href="#live-demo" class="nav-link">Live Demo</a>
+                    <a href="#future" class="nav-link">Future Work</a>
+                </div>
+            </div>
+        </nav>
+
+        <!--===== PROJECT OVERVIEW =====-->
+        <section id="overview" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Project Overview</h2>
+                    <p class="section-subtitle">A comprehensive machine learning solution for personalized book recommendations with live web deployment</p>
+                </div>
+                
+                <div class="project-content">
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem;">
+                        <div class="animate-slide-right">
+                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                The Smart Book Recommendation System is an intelligent machine learning application designed to help readers discover books tailored to their preferences. By leveraging both collaborative filtering and content-based filtering techniques, the system analyzes user reading patterns and book characteristics to generate accurate, personalized recommendations.
+                            </p>
+                            <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
+                                Built with Python and Flask, the system features a user-friendly web interface that allows users to search for books, view recommendations based on similar titles, and explore popular books. The application employs advanced algorithms including collaborative filtering for user behavior analysis and content-based filtering using book metadata such as authors, genres, and descriptions.
+                            </p>
+                            <p style="line-height: 1.8; color: #555;">
+                                Successfully deployed on Render cloud platform, the system demonstrates production-ready machine learning implementation with responsive design, real-time prediction capabilities, and efficient algorithm performance. The project showcases practical application of data science, web development, and cloud deployment skills.
+                            </p>
+                        </div>
+                        
+                        <div class="project-image animate-slide-left">
+                            <img src="assets/img/project2.jpg" alt="Smart Book Recommendation System">
+                            <div class="project-image-caption">
+                                Smart Book Recommendation System Interface
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== KEY FEATURES =====-->
+        <section id="features" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Key Features & Capabilities</h2>
+                    <p class="section-subtitle">Intelligent features powered by advanced machine learning algorithms</p>
+                </div>
+                
+                <div class="features-grid">
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-group'></i>
+                        </div>
+                        <h3 class="feature-title">Collaborative Filtering</h3>
+                        <p>User-based and item-based collaborative filtering algorithms analyze reading patterns and user similarities to generate personalized recommendations.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-file-find'></i>
+                        </div>
+                        <h3 class="feature-title">Content-Based Filtering</h3>
+                        <p>Analyzes book metadata including authors, genres, descriptions, and tags to recommend similar books based on content characteristics.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-shuffle'></i>
+                        </div>
+                        <h3 class="feature-title">Hybrid Approach</h3>
+                        <p>Combines collaborative and content-based filtering methods to overcome individual algorithm limitations and improve recommendation accuracy.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-search-alt'></i>
+                        </div>
+                        <h3 class="feature-title">Interactive Search</h3>
+                        <p>Real-time book search functionality with autocomplete suggestions, allowing users to quickly find books and receive instant recommendations.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-star'></i>
+                        </div>
+                        <h3 class="feature-title">Rating Prediction</h3>
+                        <p>Predicts user ratings for books they haven't read yet, helping prioritize recommendations based on expected user satisfaction.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-trending-up'></i>
+                        </div>
+                        <h3 class="feature-title">Popular Books Showcase</h3>
+                        <p>Displays trending and highly-rated books based on community ratings and reading patterns, helping users discover popular titles.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-desktop'></i>
+                        </div>
+                        <h3 class="feature-title">User-Friendly Interface</h3>
+                        <p>Clean, intuitive web interface built with Flask, featuring responsive design that works seamlessly across desktop and mobile devices.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-time-five'></i>
+                        </div>
+                        <h3 class="feature-title">Real-Time Suggestions</h3>
+                        <p>Instant recommendation generation using optimized algorithms and efficient data structures for fast response times.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== TECHNOLOGY STACK =====-->
+        <section id="technology" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Technology Stack</h2>
+                    <p class="section-subtitle">Modern technologies and frameworks powering the recommendation system</p>
+                </div>
+                
+                <div class="tech-grid">
+                    <div class="tech-item animate-slide-right">
+                        <div class="tech-name">Python 3.x</div>
+                        <div class="tech-desc">Core programming language for backend logic, data processing, and machine learning implementation</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-left">
+                        <div class="tech-name">Flask Framework</div>
+                        <div class="tech-desc">Lightweight web framework for building the REST API and serving the web application</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-right">
+                        <div class="tech-name">Scikit-learn</div>
+                        <div class="tech-desc">Machine learning library for implementing recommendation algorithms and model training</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-left">
+                        <div class="tech-name">Pandas</div>
+                        <div class="tech-desc">Data manipulation and analysis library for processing book datasets and user ratings</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-right">
+                        <div class="tech-name">NumPy</div>
+                        <div class="tech-desc">Numerical computing library for efficient array operations and mathematical computations</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-left">
+                        <div class="tech-name">HTML/CSS/JavaScript</div>
+                        <div class="tech-desc">Frontend technologies for creating responsive and interactive user interface</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-right">
+                        <div class="tech-name">Render Cloud Platform</div>
+                        <div class="tech-desc">Cloud hosting platform for deploying and serving the live web application</div>
+                    </div>
+                    
+                    <div class="tech-item animate-slide-left">
+                        <div class="tech-name">Git & GitHub</div>
+                        <div class="tech-desc">Version control system and repository hosting for code management and collaboration</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== SYSTEM ARCHITECTURE =====-->
+        <section id="architecture" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">System Architecture</h2>
+                    <p class="section-subtitle">Modular design ensuring scalability and maintainability</p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="feature-card animate-fade-in" style="text-align: left; margin-bottom: 2rem;">
+                        <h3 style="font-size: 1.5rem; color: var(--second-color); margin-bottom: 1.5rem; text-align: center;">
+                            <i class='bx bx-git-branch' style="color: #06beb6;"></i> Application Architecture
+                        </h3>
+                        
+                        <div style="line-height: 2; color: #555;">
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">1. Data Layer:</strong><br>
+                                The foundation consists of book datasets containing metadata (titles, authors, genres, descriptions, publication years) and user rating data. Data is preprocessed and cleaned using Pandas, with feature engineering applied to extract meaningful attributes for recommendation algorithms.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">2. Model Layer:</strong><br>
+                                Machine learning models are trained using Scikit-learn, including collaborative filtering models (user-user and item-item similarity matrices), content-based filtering models (TF-IDF vectorization of book descriptions), and hybrid models combining both approaches. Models are serialized and stored for efficient loading during inference.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">3. Application Layer:</strong><br>
+                                Flask web framework handles HTTP requests, routes user queries to appropriate recommendation functions, and manages session data. The layer implements RESTful API endpoints for book search, recommendation retrieval, and popular book queries, with efficient caching mechanisms for improved performance.
+                            </p>
+                            
+                            <p style="margin-bottom: 1.5rem;">
+                                <strong style="color: var(--second-color);">4. Presentation Layer:</strong><br>
+                                Responsive web interface built with HTML, CSS, and JavaScript provides intuitive user interaction. Features include dynamic search with autocomplete, recommendation cards with book covers and metadata, rating displays, and smooth navigation between different views.
+                            </p>
+                            
+                            <p>
+                                <strong style="color: var(--second-color);">5. Deployment Layer:</strong><br>
+                                Application is containerized and deployed on Render cloud platform with automatic scaling, continuous deployment from GitHub repository, environment variable management, and HTTPS security. Health checks and monitoring ensure high availability and reliability.
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== MACHINE LEARNING ALGORITHMS =====-->
+        <section id="algorithms" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Machine Learning Algorithms</h2>
+                    <p class="section-subtitle">Sophisticated algorithms driving intelligent recommendations</p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="algorithm-card animate-slide-right">
+                        <div class="algorithm-title">
+                            <div class="algorithm-icon">
+                                <i class='bx bx-group'></i>
+                            </div>
+                            Collaborative Filtering
+                        </div>
+                        <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                            Collaborative filtering identifies patterns in user behavior by analyzing ratings and interactions. The system implements both user-based and item-based approaches to leverage collective intelligence from the user community.
+                        </p>
+                        <ul style="color: #666; line-height: 1.8; padding-left: 2rem;">
+                            <li><strong>User-Based CF:</strong> Finds users with similar reading preferences and recommends books that similar users enjoyed. Uses cosine similarity or Pearson correlation to measure user similarity.</li>
+                            <li><strong>Item-Based CF:</strong> Identifies books similar to those a user has already rated highly. Computes item-item similarity matrix for efficient recommendation generation.</li>
+                            <li><strong>Matrix Factorization:</strong> Employs techniques like SVD (Singular Value Decomposition) to uncover latent factors representing user preferences and book characteristics.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="algorithm-card animate-slide-left">
+                        <div class="algorithm-title">
+                            <div class="algorithm-icon">
+                                <i class='bx bx-file-find'></i>
+                            </div>
+                            Content-Based Filtering
+                        </div>
+                        <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                            Content-based filtering analyzes intrinsic book attributes to recommend items with similar characteristics. This approach is particularly effective for new users (cold start problem) and provides explainable recommendations.
+                        </p>
+                        <ul style="color: #666; line-height: 1.8; padding-left: 2rem;">
+                            <li><strong>TF-IDF Vectorization:</strong> Transforms book descriptions and genres into numerical vectors, capturing the importance of words across the corpus.</li>
+                            <li><strong>Cosine Similarity:</strong> Measures similarity between book vectors to identify content-similar recommendations.</li>
+                            <li><strong>Feature Engineering:</strong> Extracts and combines features from authors, publication years, page counts, and categorical genres to enrich book representations.</li>
+                        </ul>
+                    </div>
+                    
+                    <div class="algorithm-card animate-slide-right">
+                        <div class="algorithm-title">
+                            <div class="algorithm-icon">
+                                <i class='bx bx-shuffle'></i>
+                            </div>
+                            Hybrid Recommendation System
+                        </div>
+                        <p style="color: #666; line-height: 1.8; margin-bottom: 1rem;">
+                            The hybrid approach combines collaborative and content-based methods to leverage their complementary strengths while mitigating individual weaknesses, resulting in more robust and accurate recommendations.
+                        </p>
+                        <ul style="color: #666; line-height: 1.8; padding-left: 2rem;">
+                            <li><strong>Weighted Hybrid:</strong> Combines recommendation scores from both methods using weighted averaging based on confidence levels and data availability.</li>
+                            <li><strong>Switching Hybrid:</strong> Dynamically selects the most appropriate algorithm based on context, such as using content-based for new users and collaborative for established users.</li>
+                            <li><strong>Ensemble Methods:</strong> Aggregates predictions from multiple models to improve overall recommendation quality and reduce variance.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== RESULTS & PERFORMANCE =====-->
+        <section id="results" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Results & Performance</h2>
+                    <p class="section-subtitle">Demonstrating accurate recommendations and efficient system performance</p>
+                </div>
+                
+                <div class="achievement-card animate-scale">
+                    <div class="achievement-content">
+                        <div class="achievement-number">
+                            <i class='bx bx-check-shield' style="font-size: 5rem;"></i>
+                        </div>
+                        <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Production-Ready Deployment</h3>
+                        <p>Successfully deployed live machine learning application with accurate recommendations, responsive web interface, and efficient algorithm performance on Render cloud platform.</p>
+                    </div>
+                </div>
+                
+                <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 2rem; margin-top: 3rem;">
+                    <div class="feature-card animate-slide-right">
+                        <div class="feature-icon">
+                            <i class='bx bx-target-lock'></i>
+                        </div>
+                        <h3 class="feature-title">Recommendation Accuracy</h3>
+                        <p>Hybrid algorithm approach delivers highly relevant book suggestions, balancing user preferences with content similarity for optimal recommendation quality.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-left">
+                        <div class="feature-icon">
+                            <i class='bx bx-tachometer'></i>
+                        </div>
+                        <h3 class="feature-title">Fast Response Time</h3>
+                        <p>Optimized algorithms and efficient data structures enable real-time recommendation generation with sub-second response times for user queries.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-layer'></i>
+                        </div>
+                        <h3 class="feature-title">Scalable Architecture</h3>
+                        <p>Modular design allows easy addition of new features, datasets, and algorithms without disrupting existing functionality.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-right">
+                        <div class="feature-icon">
+                            <i class='bx bx-mobile'></i>
+                        </div>
+                        <h3 class="feature-title">Responsive Design</h3>
+                        <p>Web interface adapts seamlessly to different screen sizes, providing excellent user experience on desktop, tablet, and mobile devices.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-slide-left">
+                        <div class="feature-icon">
+                            <i class='bx bx-cloud-upload'></i>
+                        </div>
+                        <h3 class="feature-title">Cloud Deployment</h3>
+                        <p>Successfully deployed on Render platform with automatic scaling, continuous integration, and high availability for production use.</p>
+                    </div>
+                    
+                    <div class="feature-card animate-scale">
+                        <div class="feature-icon">
+                            <i class='bx bx-code-alt'></i>
+                        </div>
+                        <h3 class="feature-title">Clean Codebase</h3>
+                        <p>Well-documented, modular code following best practices for maintainability, testing, and future enhancements.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== LIVE DEMO SECTION =====-->
+        <section id="live-demo" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Live Demo</h2>
+                    <p class="section-subtitle">Experience the recommendation system in action</p>
+                </div>
+                
+                <div class="live-demo-section animate-scale">
+                    <div style="max-width: 700px; margin: 0 auto;">
+                        <i class='bx bx-rocket' style="font-size: 4rem; color: #06beb6; margin-bottom: 1.5rem;"></i>
+                        <h3 style="font-size: 2rem; color: var(--second-color); margin-bottom: 1rem;">Try It Live!</h3>
+                        <p style="font-size: 1.1rem; color: #666; line-height: 1.8; margin-bottom: 2rem;">
+                            The Smart Book Recommendation System is deployed and running live on Render cloud platform. Visit the application to search for books, discover personalized recommendations, and explore popular titles. The system is fully functional with real-time recommendation generation.
+                        </p>
+                        <a href="https://bookrecommender-s80k.onrender.com/" target="_blank" class="demo-button">
+                            <i class='bx bx-link-external'></i>
+                            Launch Live Demo
+                        </a>
+                        <p style="font-size: 0.9rem; color: #888; margin-top: 1rem;">
+                            <i class='bx bx-info-circle'></i> Note: Initial load may take a moment as the server wakes up from sleep mode
+                        </p>
+                    </div>
+                </div>
+                
+                <div class="project-images">
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/project2.jpg" alt="Book Recommender Interface">
+                        <div class="project-image-caption">
+                            Clean and Intuitive User Interface
+                        </div>
+                    </div>
+                    
+                    <div class="project-image animate-scale">
+                        <img src="assets/img/project3.jpg" alt="Recommendation Results">
+                        <div class="project-image-caption">
+                            Personalized Book Recommendations
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FUTURE ENHANCEMENTS =====-->
+        <section id="future" class="project-section">
+            <div class="bd-grid">
+                <div class="section-header animate-fade-in">
+                    <h2 class="section-title">Future Enhancements</h2>
+                    <p class="section-subtitle">Planned improvements and advanced features</p>
+                </div>
+                
+                <div style="max-width: 900px; margin: 0 auto;">
+                    <div class="feature-card animate-fade-in" style="text-align: left;">
+                        <h3 style="font-size: 1.3rem; color: var(--second-color); margin-bottom: 1.5rem;">
+                            <i class='bx bx-bulb' style="color: #06beb6;"></i> Roadmap for Future Development
+                        </h3>
+                        <ul style="line-height: 2; color: #555; padding-left: 2rem;">
+                            <li><strong>User Authentication & Profiles:</strong> Implement user accounts to save reading history, preferences, and personalized recommendation lists.</li>
+                            <li><strong>Deep Learning Integration:</strong> Incorporate neural networks and deep learning models (Neural Collaborative Filtering, Autoencoders) for improved accuracy.</li>
+                            <li><strong>Social Features:</strong> Add friend connections, book sharing, reading lists, and community reviews to enhance collaborative filtering.</li>
+                            <li><strong>Advanced Filtering Options:</strong> Enable users to filter recommendations by genre, publication year, length, rating threshold, and language.</li>
+                            <li><strong>Reading Analytics:</strong> Provide personalized insights into reading patterns, genre preferences, and reading goal tracking.</li>
+                            <li><strong>API Development:</strong> Create RESTful API for third-party integration and mobile app development.</li>
+                            <li><strong>Real-Time Learning:</strong> Implement online learning to continuously improve recommendations based on user feedback and interactions.</li>
+                            <li><strong>Multi-Language Support:</strong> Expand to support book recommendations in multiple languages with internationalization.</li>
+                            <li><strong>Advanced Visualization:</strong> Add interactive charts and graphs showing recommendation reasoning and book relationships.</li>
+                            <li><strong>Performance Optimization:</strong> Implement caching strategies, database optimization, and algorithm improvements for handling larger datasets.</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== CALL TO ACTION =====-->
+        <section class="cta-section">
+            <div class="bd-grid">
+                <div class="animate-fade-in">
+                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Interested in This Project?</h2>
+                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                        Try the live demo, explore the code, or get in touch to discuss machine learning projects
+                    </p>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://bookrecommender-s80k.onrender.com/" target="_blank" class="cta-button">
+                            <i class='bx bx-rocket'></i>
+                            Try Live Demo
+                        </a>
+                        <a href="https://github.com/KMTanVeer" target="_blank" class="cta-button">
+                            <i class='bx bxl-github'></i>
+                            View on GitHub
+                        </a>
+                        <a href="projects.html" class="cta-button">
+                            <i class='bx bx-arrow-back'></i>
+                            Back to Projects
+                        </a>
+                        <a href="contact.html" class="cta-button">
+                            <i class='bx bx-envelope'></i>
+                            Contact Me
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
+            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', function(e) {
+                e.preventDefault();
+                
+                // Remove active class from all links
+                document.querySelectorAll('.nav-link').forEach(l => l.classList.remove('active'));
+                // Add active class to clicked link
+                this.classList.add('active');
+                
+                // Smooth scroll to target section
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Animation on scroll
+        function animateOnScroll() {
+            const animatedElements = document.querySelectorAll('.animate-fade-in, .animate-slide-right, .animate-slide-left, .animate-scale');
+            
+            animatedElements.forEach(element => {
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < window.innerHeight - elementVisible) {
+                    element.classList.add('visible');
+                }
+            });
+        }
+
+        // Update active navigation link based on scroll position
+        function updateActiveNavLink() {
+            const sections = document.querySelectorAll('[id]');
+            const navLinks = document.querySelectorAll('.nav-link');
+            
+            let current = '';
+            sections.forEach(section => {
+                const sectionTop = section.getBoundingClientRect().top;
+                if (sectionTop <= 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+            
+            navLinks.forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === '#' + current) {
+                    link.classList.add('active');
+                }
+            });
+        }
+
+        // Handle navbar hiding and project nav enhancement
+        function handleNavbarScroll() {
+            const header = document.querySelector('.l-header');
+            const projectNav = document.querySelector('.project-nav');
+            const projectTitle = document.querySelector('.project-title');
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            
+            if (scrollTop > 100) {
+                // Hide main navbar
+                if (header) {
+                    header.style.transform = 'translateY(-100%)';
+                    header.style.transition = 'transform 0.3s ease';
+                }
+                // Enhance project nav
+                if (projectNav) {
+                    projectNav.classList.add('scrolled');
+                }
+                // Show project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'block';
+                }
+            } else {
+                // Show main navbar
+                if (header) {
+                    header.style.transform = 'translateY(0)';
+                }
+                // Normal project nav
+                if (projectNav) {
+                    projectNav.classList.remove('scrolled');
+                }
+                // Hide project title
+                if (projectTitle) {
+                    projectTitle.style.display = 'none';
+                }
+            }
+        }
+
+        // Initialize animations and scroll listeners
+        window.addEventListener('load', animateOnScroll);
+        window.addEventListener('scroll', () => {
+            animateOnScroll();
+            updateActiveNavLink();
+            handleNavbarScroll();
+        });
+        
+        // Initial call
+        animateOnScroll();
+        updateActiveNavLink();
+    </script>
+</body>
+</html>

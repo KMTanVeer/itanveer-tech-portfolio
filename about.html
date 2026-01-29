@@ -896,6 +896,33 @@
   .contact-item:hover a {
     color: var(--primary-color);
   }
+  
+  /* Skill Card Hover Effects */
+  .skill-card-hover {
+    margin-bottom: 1.8rem;
+    background: var(--card-bg);
+    padding: 2rem 1.5rem;
+    border-radius: 1rem;
+    box-shadow: var(--shadow);
+    border: 2px solid var(--border-light);
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  
+  .skill-card-hover:hover {
+    transform: translateY(-5px);
+    box-shadow: var(--shadow-hover);
+  }
+  
+  /* About Photo Hover Effect */
+  .about__img img {
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .about__img img:hover {
+    transform: scale(1.05);
+    box-shadow: 0 8px 35px rgba(79, 70, 229, 0.35);
+  }
   </style>
 </head>
 
@@ -936,7 +963,7 @@
   <div class="about__container bd-grid scroll-animate" style="max-width: 1200px; margin: 0 auto;">
     <!-- Profile Photo -->
     <div class="about__img" style="text-align: center;">
-      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 4px 24px rgba(79, 70, 229, 0.25); max-width: 100%; height: auto; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 35px rgba(79, 70, 229, 0.35)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 24px rgba(79, 70, 229, 0.25)'">
+      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 4px 24px rgba(79, 70, 229, 0.25); max-width: 100%; height: auto;">
     </div>
     <div>
       <!-- Contact Information - ATS Friendly -->
@@ -986,7 +1013,7 @@
     <p class="skills__text" style="text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500;">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
     
     <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+      <div class="skill-card-hover">
         <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Control & Automation</h3>
         <div>
           <span class="skill-badge automation">PLC</span>
@@ -996,7 +1023,7 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+      <div class="skill-card-hover">
         <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Embedded & Programming</h3>
         <div>
           <span class="skill-badge embedded">C++</span>
@@ -1006,7 +1033,7 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+      <div class="skill-card-hover">
         <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Power & Control</h3>
         <div>
           <span class="skill-badge power">Power Electronics</span>
@@ -1015,7 +1042,7 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+      <div class="skill-card-hover">
         <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Simulation & Design Tools</h3>
         <div>
           <span class="skill-badge simulation">MATLAB/Simulink</span>
@@ -1024,7 +1051,7 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+      <div class="skill-card-hover">
         <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Software & Programming</h3>
         <div>
           <span class="skill-badge software">Flask</span>
@@ -1033,7 +1060,7 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 0; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+      <div class="skill-card-hover" style="margin-bottom: 0;">
         <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Deployment & Tools</h3>
         <div>
           <span class="skill-badge deployment">Render</span>
@@ -1095,7 +1122,7 @@
   <div class="footer__container bd-grid">
     <div class="footer__content">
       <h3 class="footer__brand">itanveer.tech</h3>
-      <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronic | Electrical</p>
+      <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
     </div>
     <div class="footer__links">
       <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
@@ -1158,7 +1185,6 @@ document.querySelectorAll('.education__data.scroll-animate').forEach((el, idx) =
 });
 document.querySelectorAll('.profile__data.scroll-animate').forEach((el, idx) => {
   el.style.transitionDelay = (idx * 0.15) + 's';
-});
 });
 </script>
 

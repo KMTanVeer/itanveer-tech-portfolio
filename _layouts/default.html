@@ -87,13 +87,18 @@
 
   <!--===== FOOTER =====-->
   <footer class="footer">
-    <p class="footer__title">{{ site.author.name }}</p>
-    <div class="footer__social">
-      <a href="{{ site.author.social.facebook }}" class="footer__icon"><i class='bx bxl-facebook'></i></a>
-      <a href="{{ site.author.social.instagram }}" class="footer__icon"><i class='bx bxl-instagram'></i></a>
-      <a href="{{ site.author.social.twitter }}" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+    <div class="footer__container bd-grid">
+      <div class="footer__content">
+        <h3 class="footer__brand">{{ site.title }}</h3>
+        <p class="footer__tagline">{{ site.author.bio }}</p>
+      </div>
+      <div class="footer__links">
+        <a href="{{ site.author.social.linkedin }}" class="footer__link" aria-label="LinkedIn"><i class='bx bxl-linkedin'></i></a>
+        <a href="{{ site.author.social.github }}" class="footer__link" aria-label="GitHub"><i class='bx bxl-github'></i></a>
+        <a href="{{ site.author.social.twitter }}" class="footer__link" aria-label="Twitter"><i class='bx bxl-twitter'></i></a>
+      </div>
+      <p class="footer__copyright">© 2024 {{ site.title }}</p>
     </div>
-    <p class="footer__copy">&#169; {{ site.title }}. All rights reserved</p>
   </footer>
 
   <!--===== SCROLL REVEAL =====-->

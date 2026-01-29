@@ -1,0 +1,621 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <title>Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects</title>
+  <meta name="description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="keywords" content="Arduino projects, ESP32 IoT, Smart Grid projects, MATLAB Simulink, embedded systems, engineering projects">
+  <meta name="robots" content="index, follow">
+
+  <!-- Canonical URL -->
+  <link rel="canonical" href="https://itanveer.tech/projects.html">
+
+  <!-- Favicon - Comprehensive setup for GitHub Pages -->
+  <link rel="icon" type="image/x-icon" href="/favicon.ico">
+  <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
+  <link rel="apple-touch-icon" href="/favicon.png">
+  <link rel="shortcut icon" href="/favicon.ico">
+  <meta name="msapplication-TileImage" content="/favicon.png">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+</head>
+
+<body>
+    <!--===== HEADER =====-->
+    <header class="l-header">
+        <nav class="nav bd-grid">
+            <div>
+                <a href="index.html" class="nav__logo">itanveer.tech</a>
+            </div>
+
+            <div class="nav__menu" id="nav-menu">
+                <ul class="nav__list">
+                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+                    <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+                </ul>
+            </div>
+
+            <div class="nav__toggle" id="nav-toggle">
+                <i class='bx bx-menu'></i>
+            </div>
+        </nav>
+    </header>
+
+    <main class="l-main">
+        <!--===== PROJECTS HEADER =====-->
+        <section class="projects-header reveal">
+            <div class="bd-grid">
+                <h1 class="projects-header__title reveal-scale">Projects</h1>
+                <p class="projects-header__subtitle reveal-fade-in">Detailed write-ups of my key engineering projects and experiments</p>
+            </div>
+        </section>
+
+        <!--===== PROJECT CATEGORIES =====-->
+        <section class="project-categories section-compact reveal-scale">
+            <div class="bd-grid">
+                <h2 class="section-title">Project Categories</h2>
+                <div class="categories-filter">
+                    <button class="filter-btn active" data-filter="all">All Projects</button>
+                    <button class="filter-btn" data-filter="arduino">Arduino</button>
+                    <button class="filter-btn" data-filter="iot">IoT & ESP32</button>
+                    <button class="filter-btn" data-filter="matlab">MATLAB/Simulink</button>
+                    <button class="filter-btn" data-filter="power">Power Systems</button>
+                </div>
+            </div>
+        </section>
+
+        <!--===== FEATURED PROJECTS =====-->
+        <section class="featured-projects section-compact reveal">
+            <div class="bd-grid">
+                <h2 class="section-title">Featured Projects</h2>
+                
+                <div class="projects-grid">
+                    <!-- Design and Implementation of Online UPS -->
+                    <div class="project-card featured reveal-left" data-category="power electronics">
+                        <div class="project-card__img">
+                            <img src="assets/img/UPS.jpg" alt="Online UPS Design">
+                            <div class="project-card__overlay">
+                                <a href="project-online-ups.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/online-ups-design" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Design and Implementation of Online UPS</h3>
+                            <p class="project-card__description">Comprehensive design and implementation of an online uninterruptible power supply system with advanced power conversion, battery management, and seamless power transfer capabilities for critical applications.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Develop reliable online UPS system for critical power protection
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> Power electronics, Battery management, Control systems, MATLAB simulation
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> Power conversion efficiency, seamless transfer, battery optimization
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Results:</strong> Zero transfer time, high efficiency, reliable power protection
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">Power Electronics</span>
+                                <span class="tag">UPS Design</span>
+                                <span class="tag">Battery Management</span>
+                                <span class="tag">Inverter Control</span>
+                                <span class="tag">Protection Systems</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- MPPT Solar Charge Controller -->
+                    <div class="project-card featured reveal-scale" data-category="iot power">
+                        <div class="project-card__img">
+                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller">
+                            <div class="project-card__overlay">
+                                <a href="project-mppt-solar.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/mppt-solar-controller" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Maximum Power Point Tracking Solar Charge Controller</h3>
+                            <p class="project-card__description">ESP32-based intelligent solar charge controller with MPPT algorithm achieving 98% efficiency. Features remote monitoring via Blynk app, precise current/voltage measurement, and automated solar panel protection system.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Maximize solar charging efficiency with intelligent MPPT control
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> ESP32, ASC712-30A sensor, ADS1015 ADC, Blynk app, Arduino IDE
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> MPPT algorithm tuning, noise reduction, wireless connectivity stability
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Results:</strong> 98% charging efficiency, real-time remote monitoring, automatic protection
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">ESP32</span>
+                                <span class="tag">Solar MPPT</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">Blynk App</span>
+                                <span class="tag">Power Electronics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Fiber Optic Community Area Networks -->
+                    <div class="project-card featured reveal-right" data-category="networking">
+                        <div class="project-card__img">
+                            <img src="assets/img/can.jpg" alt="Fiber Optic Community Area Networks">
+                            <div class="project-card__overlay">
+                                <a href="project-fiber-optic-can.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer/fiber-optic-can" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--ongoing">Research Phase</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Fiber Optic in Community Area Networks (CANs)</h3>
+                            <p class="project-card__description">Advanced research project focusing on implementing fiber optic infrastructure for Community Area Networks to enhance high-speed internet connectivity, reduce latency, and improve bandwidth efficiency in residential areas.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Design efficient fiber optic CAN topology for high-speed community connectivity
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Research Areas:</strong> Network topology, Fiber optic transmission, DWDM systems, Network optimization
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Current Focus:</strong> Literature review, topology modeling, cost-benefit analysis
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Next Phase:</strong> Network simulation, performance analysis, implementation planning
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">Fiber Optics</span>
+                                <span class="tag">Network Design</span>
+                                <span class="tag">Community Networks</span>
+                                <span class="tag">High-Speed Internet</span>
+                                <span class="tag">Research</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Helmet with Crash Detection -->
+                    <div class="project-card featured reveal-left" data-category="iot safety">
+                        <div class="project-card__img">
+                            <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet with Crash Detection">
+                            <div class="project-card__overlay">
+                                <a href="project-smart-helmet.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Smart Helmet with Crash Detection and Emergency Communication</h3>
+                            <p class="project-card__description">Intelligent motorcycle safety system featuring automatic crash detection using MPU6050 sensors, GPS tracking with NEO-8M module, and automated emergency SMS alerts via SIM800L GSM module for immediate assistance.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Develop automatic accident detection and emergency alert system for motorcycle riders
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> ESP32, MPU6050, NEO-8M GPS, SIM800L GSM, Li-Po Battery, OLED Display
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> False alarm management, power optimization, GPS signal accuracy, network reliability
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Results:</strong> Accurate crash detection, real-time GPS tracking, successful emergency communication
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">ESP32</span>
+                                <span class="tag">IoT</span>
+                                <span class="tag">GPS Tracking</span>
+                                <span class="tag">GSM Communication</span>
+                                <span class="tag">Safety Systems</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Smart Book Recommendation System -->
+                    <div class="project-card featured reveal-scale" data-category="machine-learning">
+                        <div class="project-card__img">
+                            <img src="assets/img/project2.jpg" alt="Smart Book Recommendation System">
+                            <div class="project-card__overlay">
+                                <a href="project-book-recommender.html" class="project-card__btn">View Details</a>
+                                <a href="https://bookrecommender-s80k.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-card__btn project-card__btn--secondary">Live Demo</a>
+                            </div>
+                            <div class="project-status project-status--completed">Live & Deployed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Smart Book Recommendation System</h3>
+                            <p class="project-card__description">Machine learning-based book recommendation system featuring collaborative and content-based filtering algorithms. Deployed live on Render cloud platform with Flask web framework and interactive user interface.</p>
+                            
+                            <div class="project-details">
+                                <div class="project-detail">
+                                    <strong>Goal:</strong> Build intelligent ML recommendation system with live deployment
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Tools Used:</strong> Python, Flask, Scikit-learn, Pandas, NumPy, HTML/CSS/JS, Render
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Challenges:</strong> Algorithm optimization, cloud deployment, responsive design, data processing
+                                </div>
+                                <div class="project-detail">
+                                    <strong>Results:</strong> Live system with accurate recommendations, fast response time, user-friendly interface
+                                </div>
+                            </div>
+
+                            <div class="project-card__tags">
+                                <span class="tag">Machine Learning</span>
+                                <span class="tag">Python</span>
+                                <span class="tag">Flask</span>
+                                <span class="tag">Cloud Deployment</span>
+                                <span class="tag">Data Science</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== OTHER PROJECTS =====-->
+        <section class="other-projects section reveal" style="display: none;">
+            <div class="bd-grid">
+                <h2 class="section-title">Other Projects</h2>
+                
+                <div class="projects-grid">
+                    <!-- Smart Home Automation -->
+                    <div class="project-card reveal-left" data-category="iot arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-smart-home.jpg" alt="Smart Home Automation">
+                            <div class="project-card__overlay">
+                                <a href="project-smart-home.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Smart Home Automation System</h3>
+                            <p class="project-card__description">Arduino-based home automation with relay control, mobile app interface, and voice command integration.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">Bluetooth</span>
+                                <span class="tag">Relay Control</span>
+                                <span class="tag">Mobile App</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Temperature Monitoring -->
+                    <div class="project-card reveal-scale" data-category="arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-temp.jpg" alt="Temperature Monitoring">
+                            <div class="project-card__overlay">
+                                <a href="project-temperature.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Multi-Point Temperature Monitoring</h3>
+                            <p class="project-card__description">Industrial temperature monitoring system using DS18B20 sensors with data logging and alert system.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">DS18B20</span>
+                                <span class="tag">Data Logging</span>
+                                <span class="tag">Alerts</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Power Quality Analyzer -->
+                    <div class="project-card reveal-right" data-category="matlab power">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-power-quality.jpg" alt="Power Quality Analyzer">
+                            <div class="project-card__overlay">
+                                <a href="project-power-quality.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--ongoing">In Progress</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Power Quality Analysis Tool</h3>
+                            <p class="project-card__description">MATLAB-based tool for analyzing power quality parameters including harmonics, voltage sags, and flicker.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">FFT Analysis</span>
+                                <span class="tag">Power Quality</span>
+                                <span class="tag">GUI</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Weather Station -->
+                    <div class="project-card reveal-left" data-category="iot">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-weather.jpg" alt="Weather Station">
+                            <div class="project-card__overlay">
+                                <a href="project-weather-station.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--planning">Planning</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">IoT Weather Station</h3>
+                            <p class="project-card__description">Comprehensive weather monitoring station with ESP32, multiple environmental sensors, and web dashboard.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">ESP32</span>
+                                <span class="tag">Weather Sensors</span>
+                                <span class="tag">Web Interface</span>
+                                <span class="tag">Data Analytics</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- LED Matrix Display -->
+                    <div class="project-card reveal-scale" data-category="arduino">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-led-matrix.jpg" alt="LED Matrix Display">
+                            <div class="project-card__overlay">
+                                <a href="project-led-matrix.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--completed">Completed</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Programmable LED Matrix Display</h3>
+                            <p class="project-card__description">8x8 LED matrix display system with text scrolling, animations, and mobile app control interface.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">Arduino</span>
+                                <span class="tag">LED Matrix</span>
+                                <span class="tag">Animations</span>
+                                <span class="tag">Bluetooth</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Circuit Simulator -->
+                    <div class="project-card" data-category="matlab">
+                        <div class="project-card__img">
+                            <img src="assets/img/project-simulator.jpg" alt="Circuit Simulator">
+                            <div class="project-card__overlay">
+                                <a href="project-circuit-simulator.html" class="project-card__btn">View Details</a>
+                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">GitHub</a>
+                            </div>
+                            <div class="project-status project-status--ongoing">In Progress</div>
+                        </div>
+                        <div class="project-card__content">
+                            <h3 class="project-card__title">Basic Circuit Simulator</h3>
+                            <p class="project-card__description">Educational circuit simulation tool built in MATLAB for analyzing basic electrical circuits and components.</p>
+                            <div class="project-card__tags">
+                                <span class="tag">MATLAB</span>
+                                <span class="tag">Circuit Analysis</span>
+                                <span class="tag">Educational Tool</span>
+                                <span class="tag">GUI</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <!--===== PROJECT STATS =====-->
+        <section class="project-stats section reveal">
+            <div class="bd-grid">
+                <div class="stats-grid">
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="15">0+</div>
+                        <div class="stat-card__label">Completed Projects</div>
+                    </div>
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="5">0</div>
+                        <div class="stat-card__label">Ongoing Projects</div>
+                    </div>
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="8">0</div>
+                        <div class="stat-card__label">GitHub Repositories</div>
+                    </div>
+                    <div class="stat-card reveal-scale">
+                        <div class="stat-card__number" data-target="500">0+</div>
+                        <div class="stat-card__label">Lines of Code</div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <!--===== FOOTER =====-->
+    <footer class="footer">
+        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
+        <div class="footer__social">
+            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook'></i></a>
+            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram'></i></a>
+            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter'></i></a>
+        </div>
+        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
+    </footer>
+
+    <!--===== SCROLL REVEAL =====-->
+    <script src="https://unpkg.com/scrollreveal"></script>
+
+    <!--===== MAIN JS =====-->
+    <script src="assets/js/main.js"></script>
+    <script src="assets/js/projects-filter.js"></script>
+
+    <!-- Scroll Reveal Animation Script -->
+    <script>
+        // Animated Counter Function
+        function animateCounter(element, target) {
+            let current = 0;
+            const increment = target / 100; // Adjust speed by changing divisor
+            const timer = setInterval(() => {
+                current += increment;
+                if (current >= target) {
+                    current = target;
+                    clearInterval(timer);
+                }
+                
+                // Format the display based on the target value
+                let displayValue = Math.floor(current);
+                if (target === 15) {
+                    element.textContent = displayValue + '+';
+                } else if (target === 500) {
+                    element.textContent = displayValue + '+';
+                } else {
+                    element.textContent = displayValue;
+                }
+            }, 30); // Update every 30ms for smooth animation
+        }
+
+        // Scroll Reveal Animation
+        function scrollReveal() {
+            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade-in');
+            
+            reveals.forEach(element => {
+                const windowHeight = window.innerHeight;
+                const elementTop = element.getBoundingClientRect().top;
+                const elementVisible = 150;
+                
+                if (elementTop < windowHeight - elementVisible && !element.classList.contains('active')) {
+                    element.classList.add('active');
+                    
+                    // Check if this is a stat card and animate counter
+                    if (element.classList.contains('stat-card')) {
+                        const counterElement = element.querySelector('.stat-card__number');
+                        const target = parseInt(counterElement.getAttribute('data-target'));
+                        
+                        // Start counter animation after a short delay
+                        setTimeout(() => {
+                            animateCounter(counterElement, target);
+                        }, 400); // Delay to let the scale animation start first
+                    }
+                }
+            });
+        }
+
+        // Initial scroll reveal check and scroll event listener
+        window.addEventListener('load', () => {
+            scrollReveal();
+            // Trigger header animations on load
+            setTimeout(() => {
+                document.querySelector('.projects-header__title').classList.add('active');
+            }, 200);
+        });
+        window.addEventListener('scroll', scrollReveal);
+    </script>
+
+    <style>
+        /* Compact section spacing for better flow */
+        .section-compact {
+            padding-top: 1.5rem;
+            padding-bottom: 1.5rem;
+        }
+        
+        /* Enhanced projects header with proper spacing */
+        .projects-header {
+            padding: 6rem 0 3rem !important; /* More space from navbar, balanced bottom */
+        }
+        
+        /* Smooth reveal animations */
+        .reveal {
+            opacity: 0;
+            transform: translateY(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        .reveal-left {
+            opacity: 0;
+            transform: translateX(-60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-left.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-right {
+            opacity: 0;
+            transform: translateX(60px);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-right.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .reveal-scale {
+            opacity: 0;
+            transform: scale(0.9);
+            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+
+        .reveal-scale.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .reveal-fade-in {
+            opacity: 0;
+            transform: translateY(20px);
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; /* Delay for staggered effect */
+        }
+
+        .reveal-fade-in.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Header title animation enhancement */
+        .projects-header__title {
+            transform: translateY(30px);
+            opacity: 0;
+            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+        }
+        
+        .projects-header__title.active {
+            transform: translateY(0);
+            opacity: 1;
+        }
+        
+        /* Responsive adjustments */
+        @media screen and (max-width: 768px) {
+            .projects-header {
+                padding: 5rem 0 2.5rem !important;
+            }
+            
+            .section-compact {
+                padding-top: 1rem;
+                padding-bottom: 1rem;
+            }
+        }
+    </style>
+</body>
+</html>

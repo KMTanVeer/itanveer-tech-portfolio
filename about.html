@@ -86,8 +86,8 @@
   :root {
     --bg-color: #f8f9fb;
     --card-bg: #ffffff;
-    --text-color: #2c3e50;
-    --text-light: #546e7a;
+    --text-color: #1a202c;
+    --text-light: #4a5568;
     --primary-color: #4f46e5;
     --primary-light: #818cf8;
     --shadow: 0 3px 12px rgba(79, 70, 229, 0.12);
@@ -514,6 +514,115 @@
     opacity: 1;
   }
   
+  /* Hide desktop theme toggle on mobile, show in hamburger menu */
+  @media screen and (max-width: 767px) {
+    .theme-toggle {
+      display: none;
+    }
+  }
+  
+  /* Mobile Theme Toggle Button in Hamburger Menu */
+  .theme-toggle-mobile {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    width: 100%;
+    padding: 0.75rem 1rem;
+    background: var(--card-bg);
+    border: 2px solid var(--primary-color);
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1rem;
+    color: var(--text-color);
+    transition: all 0.3s ease;
+    margin-top: 0.5rem;
+  }
+  
+  .theme-toggle-mobile:hover {
+    background: var(--primary-color);
+    color: white;
+    transform: scale(1.02);
+  }
+  
+  .theme-toggle-mobile .sun-icon,
+  .theme-toggle-mobile .moon-icon {
+    font-size: 1.2rem;
+    transition: all 0.3s ease;
+  }
+  
+  .theme-toggle-mobile .sun-icon {
+    opacity: 1;
+    color: var(--primary-color);
+  }
+  
+  .theme-toggle-mobile .moon-icon {
+    opacity: 0;
+    position: absolute;
+    color: var(--primary-color);
+  }
+  
+  .theme-toggle-mobile:hover .sun-icon,
+  .theme-toggle-mobile:hover .moon-icon {
+    color: white;
+  }
+  
+  [data-theme="dark"] .theme-toggle-mobile .sun-icon {
+    opacity: 0;
+  }
+  
+  [data-theme="dark"] .theme-toggle-mobile .moon-icon {
+    opacity: 1;
+    position: relative;
+  }
+  
+  .theme-toggle-mobile .theme-text {
+    font-weight: 600;
+  }
+  
+  .nav__item--theme {
+    border-top: 1px solid var(--border-light);
+    padding-top: 0.5rem;
+    margin-top: 0.5rem;
+  }
+  
+  /* Show desktop theme toggle on desktop only */
+  @media screen and (min-width: 768px) {
+    .theme-toggle-mobile {
+      display: none;
+    }
+    .nav__item--theme {
+      display: none;
+    }
+  }
+  
+  /* Fix hamburger background for light mode */
+  .nav__toggle {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--primary-color) !important;
+  }
+  
+  .nav__toggle:hover {
+    background: var(--primary-color) !important;
+  }
+  
+  .nav__toggle i {
+    color: var(--primary-color);
+  }
+  
+  .nav__toggle:hover i {
+    color: white !important;
+  }
+  
+  [data-theme="dark"] .nav__toggle {
+    background: var(--card-bg) !important;
+    border: 2px solid var(--primary-light) !important;
+  }
+  
+  [data-theme="dark"] .nav__toggle i {
+    color: var(--primary-light);
+  }
+  
   /* Info Card Styles for Dark Mode */
   .info-card {
     background: var(--card-bg);
@@ -805,6 +914,13 @@
         <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
         <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
         <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        <li class="nav__item nav__item--theme">
+          <button class="theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle dark mode">
+            <i class="fas fa-sun sun-icon"></i>
+            <i class="fas fa-moon moon-icon"></i>
+            <span class="theme-text">Toggle Theme</span>
+          </button>
+        </li>
       </ul>
     </div>
     <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
@@ -820,7 +936,7 @@
   <div class="about__container bd-grid scroll-animate" style="max-width: 1200px; margin: 0 auto;">
     <!-- Profile Photo -->
     <div class="about__img" style="text-align: center;">
-      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 4px 24px rgba(79, 70, 229, 0.25); max-width: 100%; height: auto;">
+      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 4px 24px rgba(79, 70, 229, 0.25); max-width: 100%; height: auto; transition: transform 0.3s ease, box-shadow 0.3s ease; cursor: pointer;" onmouseover="this.style.transform='scale(1.05)'; this.style.boxShadow='0 8px 35px rgba(79, 70, 229, 0.35)'" onmouseout="this.style.transform='scale(1)'; this.style.boxShadow='0 4px 24px rgba(79, 70, 229, 0.25)'">
     </div>
     <div>
       <!-- Contact Information - ATS Friendly -->
@@ -865,13 +981,13 @@
 
 <!--===== SKILLS =====-->
 <section class="skills section" id="skills">
-  <h2 class="section-title scroll-animate" style="text-align: center;">Technical Skills</h2>
-  <div class="skills__container scroll-animate" style="max-width: 1000px; margin: 0 auto;">          
-    <p class="skills__text" style="text-align: center; color: var(--text-light);">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
+  <h2 class="section-title scroll-animate" style="text-align: center; margin-bottom: 1rem;">Technical Skills</h2>
+  <div class="skills__container scroll-animate" style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">          
+    <p class="skills__text" style="text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500;">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
     
-    <div style="max-width: 900px; margin: 2rem auto; text-align: center;">
-      <div style="margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Control & Automation</h3>
+    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
+      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Control & Automation</h3>
         <div>
           <span class="skill-badge automation">PLC</span>
           <span class="skill-badge automation">Mechatronics</span>
@@ -880,8 +996,8 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Embedded & Programming</h3>
+      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Embedded & Programming</h3>
         <div>
           <span class="skill-badge embedded">C++</span>
           <span class="skill-badge embedded">ESP32</span>
@@ -890,8 +1006,8 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
-        <h3 style="color: var(--color-red); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Power & Control</h3>
+      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Power & Control</h3>
         <div>
           <span class="skill-badge power">Power Electronics</span>
           <span class="skill-badge power">UPS</span>
@@ -899,8 +1015,8 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Simulation & Design Tools</h3>
+      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Simulation & Design Tools</h3>
         <div>
           <span class="skill-badge simulation">MATLAB/Simulink</span>
           <span class="skill-badge simulation">Cadence Virtuoso</span>
@@ -908,8 +1024,8 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Software & Programming</h3>
+      <div style="margin-bottom: 1.8rem; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Software & Programming</h3>
         <div>
           <span class="skill-badge software">Flask</span>
           <span class="skill-badge software">PyCharm</span>
@@ -917,8 +1033,8 @@
         </div>
       </div>
       
-      <div style="margin-bottom: 2rem; background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow);">
-        <h3 style="color: var(--color-pink); font-weight: 700; margin-bottom: 1rem; font-size: 1.2rem;">Deployment & Tools</h3>
+      <div style="margin-bottom: 0; background: var(--card-bg); padding: 2rem 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); border: 2px solid var(--border-light); transition: transform 0.3s ease, box-shadow 0.3s ease;" onmouseover="this.style.transform='translateY(-5px)'; this.style.boxShadow='var(--shadow-hover)'" onmouseout="this.style.transform='translateY(0)'; this.style.boxShadow='var(--shadow)'">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Deployment & Tools</h3>
         <div>
           <span class="skill-badge deployment">Render</span>
           <span class="skill-badge deployment">Git/GitHub</span>
@@ -971,111 +1087,7 @@
   </div>
 </section>
 
-<!--===== CAPSTONE PROJECT =====-->
-<section class="profile section" id="capstone">
-  <h2 class="section-title scroll-animate" style="text-align: center;">Capstone Project</h2>
-  <div class="skills__container scroll-animate" style="max-width: 1000px; margin: 0 auto;">
-    <div class="project-card scroll-animate" style="border-left-color: var(--primary-color);">
-      <h3 style="color: var(--text-color);"><i class="fas fa-helmet-safety" style="color: var(--icon-color); margin-right: 10px;"></i>Smart Helmet with Sensor-Based Crash Detection & Emergency Alert System</h3>
-      <span class="tech-stack" style="color: var(--primary-color);">Technologies: ESP32, MPU6050 (Accelerometer & Gyroscope), GPS, GSM, Embedded Systems</span>
-      <ul>
-        <li style="color: var(--text-color);">Designed and implemented a smart helmet system to detect accidents by monitoring acceleration and angular velocity thresholds.</li>
-        <li style="color: var(--text-color);">Developed ESP32-based sensor fusion algorithm integrating accelerometer and gyroscope data.</li>
-        <li style="color: var(--text-color);">Integrated GPS and GSM modules to automatically send emergency location alerts, enhancing rider safety.</li>
-        <li style="color: var(--text-color);">Reduced false alarms through threshold tuning and implemented user-controlled cancellation mechanism.</li>
-        <li style="color: var(--text-color);">Conducted rigorous testing under real riding conditions and sudden impact scenarios to validate system reliability.</li>
-      </ul>
-    </div>
-  </div>
-</section>
 
-<!--===== ACADEMIC PROJECTS =====-->
-<section class="experience section" id="academic-projects">
-  <h2 class="section-title scroll-animate" style="text-align: center;">Academic Projects</h2>
-  <div class="skills__container scroll-animate" style="max-width: 1000px; margin: 0 auto;">
-    
-    <div class="project-card scroll-animate square" style="border-left-color: var(--primary-color);">
-      <h3><i class="fas fa-microchip" style="color: var(--icon-color); margin-right: 10px;"></i>4-Bit CMOS Full Adder Using 14nm Technology</h3>
-      <span class="tech-stack">Technologies: Cadence Virtuoso, CMOS Design, VLSI</span>
-      <ul>
-        <li>Designed and verified CMOS full adder using Cadence Virtuoso.</li>
-        <li>Achieved DRC/LVS clean layout and functional XOR/AND/OR logic.</li>
-        <li>Performed layout optimization and verification using Cadence Virtuoso.</li>
-      </ul>
-    </div>
-    
-    <div class="project-card scroll-animate" style="border-left-color: var(--primary-color);">
-      <h3><i class="fas fa-battery-full" style="color: var(--icon-color); margin-right: 10px;"></i>Online Uninterruptible Power Supply (UPS) System</h3>
-      <span class="tech-stack">Technologies: Power Electronics, AC-DC-AC Conversion, PFC</span>
-      <ul>
-        <li>Designed a double-conversion AC-DC-AC UPS ensuring uninterrupted power with minimal switching delay.</li>
-        <li>Integrated a high-efficiency rectifier and PFC stage achieving 30% improved power conversion.</li>
-      </ul>
-    </div>
-    
-    <div class="project-card scroll-animate square" style="border-left-color: var(--primary-color);">
-      <h3><i class="fas fa-solar-panel" style="color: var(--icon-color); margin-right: 10px;"></i>Maximum Power Point Tracking (MPPT) Solar Charge Controller</h3>
-      <span class="tech-stack">Technologies: MPPT Algorithms, Renewable Energy, Control Systems</span>
-      <ul>
-        <li>Designed a solar charge controller utilizing MPPT algorithms for maximum photovoltaic energy extraction.</li>
-        <li>Applied control systems principles to optimize energy yield for renewable integration.</li>
-      </ul>
-    </div>
-    
-    <div class="project-card scroll-animate" style="border-left-color: var(--primary-color);">
-      <h3><i class="fas fa-book-reader" style="color: var(--icon-color); margin-right: 10px;"></i>Machine Learning-Based Book Recommendation System</h3>
-      <span class="tech-stack">Technologies: Python, Flask, Machine Learning, Content-Based Filtering</span>
-      <ul>
-        <li>Developed a personalized ML-inspired recommendation system using content-based filtering.</li>
-        <li>Implemented preprocessing, vectorization, and similarity algorithms using Jupyter Notebook.</li>
-        <li>Built and deployed the web app with Flask & PyCharm, hosted on Render.</li>
-        <li><a href="https://bookrecommender-s80k.onrender.com/" target="_blank" style="color: var(--primary-color); font-weight: 600;">Live Demo</a></li>
-      </ul>
-    </div>
-    
-  </div>
-</section>
-
-<!--===== INDUSTRIAL TRAINING =====-->
-<section class="goals section" id="training">
-  <h2 class="section-title scroll-animate" style="text-align: center;">Industrial Training</h2>
-  <div class="skills__container scroll-animate" style="max-width: 1000px; margin: 0 auto;">
-    <div class="training-card scroll-animate">
-      <h3 style="color: var(--text-color);"><i class="fas fa-industry" style="margin-right: 10px; color: var(--primary-color);"></i>Bangladesh Industrial Technical Assistance Center (BITAC)</h3>
-      <h4 style="color: var(--primary-color); font-weight: 600; font-size: 1.2rem; margin-bottom: 0.5rem;">Tool & Technology Institute (TTI)</h4>
-      <span class="training-duration" style="color: var(--text-color);"><strong>Mechatronics & PLC Training</strong> | 88 Hours | January 2025 – February 2025</span>
-      
-      <div style="text-align: left; margin-top: 1.5rem;">
-        <ul style="list-style: none; padding: 0;">
-          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-color); line-height: 1.6;">
-            <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">▸</span>
-            Gained hands-on experience in PLC programming, industrial control systems, and mechatronics.
-          </li>
-          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-color); line-height: 1.6;">
-            <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">▸</span>
-            Implemented motor starter circuits including DOL, Star-Delta, and Forward/Reverse.
-          </li>
-          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-color); line-height: 1.6;">
-            <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">▸</span>
-            Developed PLC applications using timers, counters, and traffic light control logic.
-          </li>
-          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-color); line-height: 1.6;">
-            <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">▸</span>
-            Worked with pneumatic and electro-pneumatic systems and sequential control.
-          </li>
-          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-color); line-height: 1.6;">
-            <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">▸</span>
-            Configured Variable Frequency Drives (VFDs) for motor speed control with open/closed-loop feedback.
-          </li>
-          <li style="padding: 0.5rem 0; padding-left: 1.5rem; position: relative; color: var(--text-color); line-height: 1.6;">
-            <span style="position: absolute; left: 0; color: var(--primary-color); font-weight: bold;">▸</span>
-            Designed HMI-based monitoring and control systems for industrial automation.
-          </li>
-        </ul>
-      </div>
-    </div>
-  </div>
-</section>
 </main>
 
 <!--===== FOOTER =====-->
@@ -1083,7 +1095,7 @@
   <div class="footer__container bd-grid">
     <div class="footer__content">
       <h3 class="footer__brand">itanveer.tech</h3>
-      <p class="footer__tagline">Tech Explorer | Arduino & IoT Enthusiast</p>
+      <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronic | Electrical</p>
     </div>
     <div class="footer__links">
       <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
@@ -1104,19 +1116,29 @@
 <script>
 // Theme Toggle Functionality
 const themeToggle = document.getElementById('theme-toggle');
+const themeToggleMobile = document.getElementById('theme-toggle-mobile');
 const htmlElement = document.documentElement;
 
 // Check for saved theme preference or default to light mode
 const currentTheme = localStorage.getItem('theme') || 'light';
 htmlElement.setAttribute('data-theme', currentTheme);
 
-themeToggle.addEventListener('click', () => {
+// Function to toggle theme
+function toggleTheme() {
   const theme = htmlElement.getAttribute('data-theme');
   const newTheme = theme === 'light' ? 'dark' : 'light';
   
   htmlElement.setAttribute('data-theme', newTheme);
   localStorage.setItem('theme', newTheme);
-});
+}
+
+// Add event listeners to both theme toggle buttons
+if (themeToggle) {
+  themeToggle.addEventListener('click', toggleTheme);
+}
+if (themeToggleMobile) {
+  themeToggleMobile.addEventListener('click', toggleTheme);
+}
 
 // Scroll animation
 function onScrollAnimate() {
@@ -1136,6 +1158,7 @@ document.querySelectorAll('.education__data.scroll-animate').forEach((el, idx) =
 });
 document.querySelectorAll('.profile__data.scroll-animate').forEach((el, idx) => {
   el.style.transitionDelay = (idx * 0.15) + 's';
+});
 });
 </script>
 

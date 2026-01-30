@@ -96,8 +96,6 @@ img {
 
 html {
   scroll-behavior: smooth;
-  overflow-x: hidden;
-  max-width: 100%;
 }
 
 body {
@@ -109,7 +107,6 @@ body {
   min-height: 100vh;
   transition: background-color 0.3s ease;
   overflow-x: hidden;
-  max-width: 100%;
 }
 
 h1, h2, p {

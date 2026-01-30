@@ -103,7 +103,7 @@ body {
   font-family: var(--body-font);
   font-size: var(--normal-font-size);
   color: #0C2C55;
-  background: #EDEDCE;
+  background: #ffffff;
   min-height: 100vh;
   transition: background-color 0.3s ease;
 }
@@ -168,7 +168,7 @@ img {
   top: 0;
   left: 0;
   z-index: var(--z-fixed);
-  background-color: rgba(237, 237, 206, 0.9);
+  background-color: rgba(255, 255, 255, 0.9);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
   box-shadow: 0 1px 4px rgba(12, 44, 85, 0.15);
@@ -180,7 +180,7 @@ img {
 
 /* Enhanced header on scroll */
 .l-header.scroll-header {
-  background-color: rgba(237, 237, 206, 0.95);
+  background-color: rgba(255, 255, 255, 0.95);
   backdrop-filter: blur(30px);
   -webkit-backdrop-filter: blur(30px);
   box-shadow: 0 4px 20px rgba(12, 44, 85, 0.2);
@@ -1135,7 +1135,7 @@ img {
 }
 
 .project-card {
-  background: #fff;
+  background: #EDEDCE;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   overflow: hidden;
@@ -1243,7 +1243,7 @@ img {
 }
 
 .link-card {
-  background: #fff;
+  background: #EDEDCE;
   border-radius: 12px;
   box-shadow: 0 4px 20px rgba(0,0,0,0.1);
   padding: 2rem 1.5rem;

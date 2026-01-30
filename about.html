@@ -55,7 +55,7 @@
     "image": "https://itanveer.tech/assets/img/about.jpg",
     "sameAs": [
       "https://itanveer.tech",
-      "https://www.linkedin.com/in/kawsartanveer/",
+      "https://www.linkedin.com/kawsartanveer/",
       "https://www.facebook.com/itzzVeer/",
       "https://www.instagram.com/itzzveer/",
       "https://x.com/itzzveer",
@@ -107,94 +107,10 @@
     --color-yellow: #FFC107;
   }
   
-  /* Dark mode variables */
-  [data-theme="dark"] {
-    --bg-color: #0a0a0a;
-    --card-bg: #1a1a1a;
-    --text-color: #f5f5f5;
-    --text-light: #d0d0d0;
-    --primary-color: #818cf8;
-    --primary-light: #a5b4fc;
-    --shadow: 0 3px 12px rgba(129, 140, 248, 0.3);
-    --shadow-hover: 0 8px 30px rgba(129, 140, 248, 0.4);
-    --button-shadow: 0 4px 15px rgba(129, 140, 248, 0.4);
-    --button-shadow-hover: 0 6px 20px rgba(129, 140, 248, 0.5);
-    --border-light: #333333;
-    /* Adjusted bright colors for dark mode */
-    --color-blue: #5dbef7;
-    --color-green: #7fda84;
-    --color-orange: #ffb84d;
-    --color-red: #ff6b6b;
-    --color-purple: #c96dd8;
-    --color-teal: #4dd4c4;
-    --color-pink: #ff6b9d;
-    --color-yellow: #ffd95a;
-  }
-  
   body {
     background: var(--bg-color);
     color: var(--text-color);
-    transition: background 0.3s ease, color 0.3s ease;
     position: relative;
-  }
-  
-  /* Starry galaxy background for dark mode */
-  [data-theme="dark"] body::before {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(2px 2px at 20% 30%, white, transparent),
-      radial-gradient(2px 2px at 60% 70%, white, transparent),
-      radial-gradient(1px 1px at 50% 50%, white, transparent),
-      radial-gradient(1px 1px at 80% 10%, white, transparent),
-      radial-gradient(2px 2px at 90% 60%, white, transparent),
-      radial-gradient(1px 1px at 33% 80%, white, transparent),
-      radial-gradient(1px 1px at 15% 90%, white, transparent);
-    background-size: 200% 200%;
-    background-position: 0% 0%, 40% 40%, 50% 50%, 80% 10%, 90% 60%, 33% 80%, 15% 90%;
-    opacity: 0.5;
-    animation: twinkle 3s ease-in-out infinite;
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  [data-theme="dark"] body::after {
-    content: '';
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: 
-      radial-gradient(ellipse at center, rgba(138, 43, 226, 0.15) 0%, transparent 50%),
-      radial-gradient(ellipse at 80% 20%, rgba(75, 0, 130, 0.1) 0%, transparent 50%),
-      radial-gradient(ellipse at 20% 80%, rgba(25, 25, 112, 0.1) 0%, transparent 50%);
-    pointer-events: none;
-    z-index: 0;
-  }
-  
-  @keyframes twinkle {
-    0%, 100% { opacity: 0.5; }
-    50% { opacity: 0.8; }
-  }
-  
-  /* Disable animations for users who prefer reduced motion */
-  @media (prefers-reduced-motion: reduce) {
-    [data-theme="dark"] body::before {
-      animation: none;
-      opacity: 0.5;
-    }
-  }
-  
-  [data-theme="dark"] .l-header,
-  [data-theme="dark"] .l-main,
-  [data-theme="dark"] footer {
-    position: relative;
-    z-index: 1;
   }
 
   /* Scroll animation */
@@ -475,136 +391,6 @@
     }
   }
   
-  /* Theme Toggle Button */
-  .theme-toggle {
-    position: fixed;
-    bottom: 2rem;
-    right: 2rem;
-    width: 50px;
-    height: 50px;
-    border-radius: 50%;
-    background: var(--card-bg);
-    border: 2px solid var(--border-light);
-    box-shadow: var(--shadow);
-    cursor: pointer;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    font-size: 1.5rem;
-    color: var(--secondary-color);
-    transition: all 0.3s ease;
-    z-index: 999;
-  }
-  
-  .theme-toggle:hover {
-    transform: scale(1.1) rotate(20deg);
-    box-shadow: var(--shadow-hover);
-  }
-  
-  .theme-toggle .sun-icon,
-  .theme-toggle .moon-icon {
-    position: absolute;
-    transition: all 0.3s ease;
-  }
-  
-  .theme-toggle .sun-icon {
-    opacity: 1;
-  }
-  
-  .theme-toggle .moon-icon {
-    opacity: 0;
-  }
-  
-  [data-theme="dark"] .theme-toggle .sun-icon {
-    opacity: 0;
-  }
-  
-  [data-theme="dark"] .theme-toggle .moon-icon {
-    opacity: 1;
-  }
-  
-  /* Hide desktop theme toggle on mobile, show in hamburger menu */
-  @media screen and (max-width: 767px) {
-    .theme-toggle {
-      display: none;
-    }
-  }
-  
-  /* Mobile Theme Toggle Button in Hamburger Menu */
-  .theme-toggle-mobile {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 0.5rem;
-    width: 100%;
-    padding: 0.75rem 1rem;
-    background: var(--card-bg);
-    border: 2px solid var(--primary-color);
-    border-radius: 8px;
-    cursor: pointer;
-    font-size: 1rem;
-    color: var(--text-color);
-    transition: all 0.3s ease;
-    margin-top: 0.5rem;
-  }
-  
-  .theme-toggle-mobile:hover {
-    background: var(--primary-color);
-    color: white;
-    transform: scale(1.02);
-  }
-  
-  .theme-toggle-mobile .sun-icon,
-  .theme-toggle-mobile .moon-icon {
-    font-size: 1.2rem;
-    transition: all 0.3s ease;
-  }
-  
-  .theme-toggle-mobile .sun-icon {
-    opacity: 1;
-    color: var(--primary-color);
-  }
-  
-  .theme-toggle-mobile .moon-icon {
-    opacity: 0;
-    position: absolute;
-    color: var(--primary-color);
-  }
-  
-  .theme-toggle-mobile:hover .sun-icon,
-  .theme-toggle-mobile:hover .moon-icon {
-    color: white;
-  }
-  
-  [data-theme="dark"] .theme-toggle-mobile .sun-icon {
-    opacity: 0;
-  }
-  
-  [data-theme="dark"] .theme-toggle-mobile .moon-icon {
-    opacity: 1;
-    position: relative;
-  }
-  
-  .theme-toggle-mobile .theme-text {
-    font-weight: 600;
-  }
-  
-  .nav__item--theme {
-    border-top: 1px solid var(--border-light);
-    padding-top: 0.5rem;
-    margin-top: 0.5rem;
-  }
-  
-  /* Show desktop theme toggle on desktop only */
-  @media screen and (min-width: 768px) {
-    .theme-toggle-mobile {
-      display: none;
-    }
-    .nav__item--theme {
-      display: none;
-    }
-  }
-  
   /* Fix hamburger background for light mode */
   .nav__toggle {
     background: var(--card-bg) !important;
@@ -623,16 +409,7 @@
     color: white !important;
   }
   
-  [data-theme="dark"] .nav__toggle {
-    background: var(--card-bg) !important;
-    border: 2px solid var(--primary-light) !important;
-  }
-  
-  [data-theme="dark"] .nav__toggle i {
-    color: var(--primary-light);
-  }
-  
-  /* Info Card Styles for Dark Mode */
+  /* Info Card Styles */
   .info-card {
     background: var(--card-bg);
     padding: 2rem;
@@ -1009,13 +786,6 @@
         <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
         <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
         <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-        <li class="nav__item nav__item--theme">
-          <button class="theme-toggle-mobile" id="theme-toggle-mobile" aria-label="Toggle dark mode">
-            <i class="fas fa-sun sun-icon"></i>
-            <i class="fas fa-moon moon-icon"></i>
-            <span class="theme-text">Toggle Theme</span>
-          </button>
-        </li>
       </ul>
     </div>
     <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
@@ -1050,7 +820,7 @@
         </div>
         <div class="contact-item">
           <i class="fab fa-linkedin" style="color: var(--primary-color);"></i>
-          <a href="https://www.linkedin.com/in/kawsartanveer/" target="_blank" style="color: var(--text-color);">LinkedIn Profile</a>
+          <a href="https://www.linkedin.com/kawsartanveer/" target="_blank" style="color: var(--text-color);">LinkedIn Profile</a>
         </div>
       </div>
       
@@ -1193,7 +963,7 @@
       <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
     </div>
     <div class="footer__links">
-      <a href="https://www.linkedin.com/in/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
+      <a href="https://www.linkedin.com/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
       <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class='bx bxl-github'></i></a>
       <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
       <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
@@ -1202,39 +972,7 @@
   </div>
 </footer>
 
-<!-- Theme Toggle Button -->
-<button class="theme-toggle" id="theme-toggle" aria-label="Toggle dark mode">
-  <i class="fas fa-sun sun-icon"></i>
-  <i class="fas fa-moon moon-icon"></i>
-</button>
-
 <script>
-// Theme Toggle Functionality
-const themeToggle = document.getElementById('theme-toggle');
-const themeToggleMobile = document.getElementById('theme-toggle-mobile');
-const htmlElement = document.documentElement;
-
-// Check for saved theme preference or default to light mode
-const currentTheme = localStorage.getItem('theme') || 'light';
-htmlElement.setAttribute('data-theme', currentTheme);
-
-// Function to toggle theme
-function toggleTheme() {
-  const theme = htmlElement.getAttribute('data-theme');
-  const newTheme = theme === 'light' ? 'dark' : 'light';
-  
-  htmlElement.setAttribute('data-theme', newTheme);
-  localStorage.setItem('theme', newTheme);
-}
-
-// Add event listeners to both theme toggle buttons
-if (themeToggle) {
-  themeToggle.addEventListener('click', toggleTheme);
-}
-if (themeToggleMobile) {
-  themeToggleMobile.addEventListener('click', toggleTheme);
-}
-
 // Scroll animation
 function onScrollAnimate() {
   document.querySelectorAll('.scroll-animate').forEach(el => {

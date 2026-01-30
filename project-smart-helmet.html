@@ -12,11 +12,19 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://itanveer.tech/project-smart-helmet.html">
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itanveer.tech/project-smart-helmet.html">
+    <meta property="og:title" content="Smart Helmet with Crash Detection | itanveer.tech">
+    <meta property="og:description" content="ESP32-based Smart Helmet with automatic crash detection using MPU6050 sensor and emergency communication via SIM800L GSM module with GPS location tracking.">
+    <meta property="og:image" content="https://itanveer.tech/assets/smqrt-helmet/WhatsApp%20Image%202026-01-06%20at%207.02.05%20PM.jpeg">
+    <meta property="og:site_name" content="itanveer.tech">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Smart Helmet with Crash Detection Project">
     <meta name="twitter:description" content="ESP32-based intelligent helmet with automatic accident detection and emergency communication">
-    <meta name="twitter:image" content="assets/img/smart-helmet-main.jpg">
+    <meta name="twitter:image" content="https://itanveer.tech/assets/smqrt-helmet/WhatsApp%20Image%202026-01-06%20at%207.02.05%20PM.jpeg">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
@@ -28,13 +36,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
-        /* Project Page Specific Styles */
+        /* Project Page Specific Styles - Dark Theme */
+        :root {
+            --primary-color: #7F55B1;
+            --primary-dark: #7F55B1;
+            --secondary-color: #E8DFF1;
+            --accent-color: #F49BAB;
+            --dark-bg: #FFE1E0;
+            --card-bg: #E8DFF1;
+            --text-primary: #000000;
+            --text-secondary: #000000;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+        }
+
         .project-hero {
-            background: linear-gradient(135deg, #2563eb 0%, #14b8a6 100%);
-            padding: 8rem 0 4rem;
-            color: white;
+            background: var(--dark-bg);
+            padding: 8rem 2rem 6rem;
+            color: var(--text-primary);
             position: relative;
             overflow: hidden;
+            border-bottom: none;
         }
         
         .project-hero::before {
@@ -44,8 +69,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
-            opacity: 0.1;
+            background: rgba(127, 85, 177, 0.08);
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
         .project-hero__content {
@@ -55,16 +85,43 @@
         
         .project-hero__title {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
+            color: #000000;
+            letter-spacing: -0.5px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .project-hero__subtitle {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             opacity: 0.9;
             margin-bottom: 2rem;
-            max-width: 800px;
+            max-width: 900px;
+            color: #000000;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .project-meta {
@@ -78,27 +135,32 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
+            background: #ffffff;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            border: 1px solid rgba(127, 85, 177, 0.2);
+            color: #000000;
+        }
+
+        .meta-item i {
+            color: #7F55B1;
         }
         
         .project-nav {
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             padding: 0.8rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: none;
+            backdrop-filter: blur(10px);
         }
         
         .project-nav.scrolled {
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.98);
             padding: 0.6rem 0;
         }
         
@@ -112,39 +174,30 @@
             white-space: nowrap;
         }
         
-        .project-nav.scrolled .nav-links {
-            gap: 1rem;
-        }
-        
         .nav-link {
             text-decoration: none;
-            color: var(--second-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
+            color: #000000;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
             transition: all 0.3s ease;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             white-space: nowrap;
             flex-shrink: 0;
         }
         
-        .project-nav.scrolled .nav-link {
-            padding: 0.5rem 0.8rem;
-            font-size: 0.8rem;
-        }
-        
         .nav-link:hover, .nav-link.active {
-            background: var(--first-color);
-            color: white;
+            background: var(--primary-color);
+            color: #ffffff;
             transform: translateY(-2px);
         }
         
         .project-section {
-            padding: 4rem 0;
+            padding: 4rem 2rem;
         }
         
         .project-section:nth-child(even) {
-            background: #f8f9fa;
+            background: rgba(30, 41, 59, 0.4);
         }
         
         .section-header {
@@ -154,13 +207,13 @@
         
         .section-title {
             font-size: 2.5rem;
-            color: var(--second-color);
+            color: var(--text-primary);
             margin-bottom: 1rem;
         }
         
         .section-subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -173,12 +226,13 @@
         }
         
         .feature-card {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
         }
@@ -190,7 +244,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: rgba(59, 130, 246, 0.1);
             transition: left 0.5s ease;
         }
         
@@ -200,13 +254,15 @@
         
         .feature-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(98, 159, 173, 0.1);
         }
         
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -214,13 +270,19 @@
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: white;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
         
         .feature-title {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--second-color);
+            color: var(--text-primary);
+        }
+
+        .feature-desc {
+            color: var(--text-secondary);
+            line-height: 1.6;
         }
         
         .hardware-grid {
@@ -231,27 +293,29 @@
         }
         
         .hardware-item {
-            background: white;
+            background: rgba(30, 41, 59, 0.6);
             padding: 1.5rem;
             border-radius: 10px;
-            border-left: 4px solid var(--first-color);
-            box-shadow: 0 3px 15px rgba(0,0,0,0.1);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            border-left: 4px solid var(--primary-color);
+            box-shadow: 0 3px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
         }
         
         .hardware-item:hover {
             transform: translateX(5px);
-            box-shadow: 0 5px 25px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 25px rgba(59, 130, 246, 0.2);
+            border-color: rgba(59, 130, 246, 0.5);
         }
         
         .hardware-name {
             font-weight: 600;
-            color: var(--second-color);
+            color: var(--primary-color);
             margin-bottom: 0.5rem;
         }
         
         .hardware-desc {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 0.9rem;
         }
         
@@ -263,16 +327,18 @@
         }
         
         .component-item {
-            background: white;
+            background: var(--card-bg);
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
         }
         
         .component-item:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
         }
         
         .component-image {
@@ -280,7 +346,8 @@
             height: 200px;
             object-fit: contain;
             padding: 1.5rem;
-            background: #f8f9fa;
+            background: rgba(59, 130, 246, 0.05);
+            border-bottom: 2px solid rgba(59, 130, 246, 0.1);
         }
         
         .component-info {
@@ -291,12 +358,12 @@
         .component-name {
             font-size: 1.2rem;
             font-weight: 600;
-            color: var(--second-color);
+            color: var(--text-primary);
             margin-bottom: 0.5rem;
         }
         
         .component-desc {
-            color: #666;
+            color: var(--text-secondary);
             font-size: 0.9rem;
             line-height: 1.6;
         }
@@ -311,13 +378,15 @@
         .project-image {
             border-radius: 15px;
             overflow: hidden;
-            box-shadow: 0 10px 40px rgba(0,0,0,0.1);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 10px 40px rgba(0,0,0,0.3);
             transition: all 0.3s ease;
         }
         
         .project-image:hover {
             transform: scale(1.05);
-            box-shadow: 0 20px 60px rgba(0,0,0,0.2);
+            box-shadow: 0 20px 60px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
         }
         
         .project-image img {
@@ -328,31 +397,34 @@
         
         .project-image-caption {
             padding: 1rem;
-            background: white;
+            background: rgba(30, 41, 59, 0.6);
+            border-top: 1px solid rgba(59, 130, 246, 0.2);
             font-size: 0.9rem;
-            color: #666;
+            color: var(--text-secondary);
             text-align: center;
         }
         
         .challenge-card {
-            background: white;
+            background: rgba(239, 68, 68, 0.08);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            border: 2px solid rgba(239, 68, 68, 0.2);
+            border-left: 4px solid #ef4444;
+            box-shadow: 0 5px 30px rgba(0,0,0,0.2);
             margin-bottom: 1.5rem;
-            border-left: 4px solid #2563eb;
             transition: all 0.3s ease;
         }
         
         .challenge-card:hover {
             transform: translateX(5px);
-            box-shadow: 0 8px 35px rgba(0,0,0,0.15);
+            box-shadow: 0 8px 35px rgba(239, 68, 68, 0.2);
+            border-color: rgba(239, 68, 68, 0.4);
         }
         
         .challenge-title {
             font-size: 1.3rem;
             font-weight: 600;
-            color: var(--second-color);
+            color: #fca5a5;
             margin-bottom: 1rem;
             display: flex;
             align-items: center;
@@ -362,7 +434,7 @@
         .challenge-icon {
             width: 40px;
             height: 40px;
-            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            background: #ef4444;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -370,9 +442,14 @@
             color: white;
             font-size: 1.2rem;
         }
+
+        .challenge-card p {
+            color: var(--text-secondary);
+            line-height: 1.6;
+        }
         
         .achievement-card {
-            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            background: var(--primary-color);
             color: white;
             padding: 3rem;
             border-radius: 20px;
@@ -380,6 +457,7 @@
             margin: 3rem 0;
             position: relative;
             overflow: hidden;
+            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.3);
         }
         
         .achievement-card::before {
@@ -408,12 +486,19 @@
             font-weight: 700;
             margin-bottom: 1rem;
         }
+
+        .achievement-text {
+            font-size: 1.2rem;
+        }
         
         .cta-section {
-            background: linear-gradient(135deg, #2563eb, #14b8a6);
+            background: var(--primary-color);
             color: white;
-            padding: 4rem 0;
+            padding: 4rem 2rem;
             text-align: center;
+            border-radius: 20px;
+            margin: 3rem 0;
+            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.3);
         }
         
         .cta-buttons {
@@ -436,12 +521,14 @@
             border: 2px solid rgba(255,255,255,0.3);
             transition: all 0.3s ease;
             backdrop-filter: blur(10px);
+            font-weight: 600;
         }
         
         .cta-button:hover {
             background: white;
-            color: var(--first-color);
+            color: var(--primary-color);
             transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
         
         /* Animation Classes */
@@ -456,40 +543,6 @@
             transform: translateY(0);
         }
         
-        .animate-slide-right {
-            opacity: 0;
-            transform: translateX(-30px);
-            transition: all 0.8s ease;
-        }
-        
-        .animate-slide-right.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .animate-slide-left {
-            opacity: 0;
-            transform: translateX(30px);
-            transition: all 0.8s ease;
-        }
-        
-        .animate-slide-left.visible {
-            opacity: 1;
-            transform: translateX(0);
-        }
-        
-        .animate-scale {
-            opacity: 0;
-            transform: scale(0.8);
-            transition: all 0.8s ease;
-        }
-        
-        .animate-scale.visible {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        /* Mobile Responsiveness */
         @media screen and (max-width: 768px) {
             .project-hero__title {
                 font-size: 2.5rem;
@@ -498,6 +551,12 @@
             .project-meta {
                 justify-content: center;
             }
+            
+            .section-title {
+                font-size: 1.8rem;
+            }
+        }
+    </style>
             
             .nav-links {
                 gap: 0.8rem;
@@ -631,7 +690,7 @@
                         </div>
                         
                         <div class="project-image animate-slide-left">
-                            <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet with Crash Detection">
+                            <img src="assets/smqrt-helmet/WhatsApp%20Image%202026-01-06%20at%207.02.05%20PM.jpeg" alt="Smart Helmet with Crash Detection">
                             <div class="project-image-caption">
                                 Smart Helmet System with Integrated Safety Features
                             </div>
@@ -860,7 +919,7 @@
                         </div>
                     </div>
                     
-                    <div class="feature-card animate-fade-in" style="text-align: left; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(20, 184, 166, 0.1));">
+                    <div class="feature-card animate-fade-in" style="text-align: left; background: rgba(98, 159, 173, 0.1);">
                         <h3 style="font-size: 1.3rem; color: var(--second-color); margin-bottom: 1rem;">
                             <i class='bx bx-info-circle' style="color: var(--first-color);"></i> Key Design Considerations
                         </h3>
@@ -1019,7 +1078,7 @@
         <section id="challenges" class="project-section">
             <div class="bd-grid">
                 <div class="section-header animate-fade-in">
-                    <h2 class="section-title">Challenges Faced & Solutions</h2>
+                    <h2 class="section-title" style="color: #000000;">Challenges Faced & Solutions</h2>
                     <p class="section-subtitle">Overcoming technical hurdles during development and implementation</p>
                 </div>
                 
@@ -1097,7 +1156,7 @@
                     </div>
                 </div>
                 
-                <div class="feature-card animate-fade-in" style="margin-top: 3rem; background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(20, 184, 166, 0.1));">
+                <div class="feature-card animate-fade-in" style="margin-top: 3rem; background: rgba(98, 159, 173, 0.1);">
                     <h3 style="font-size: 1.3rem; color: var(--second-color); margin-bottom: 1rem;">
                         <i class='bx bx-bulb' style="color: var(--first-color);"></i> Future Recommendations
                     </h3>
@@ -1124,7 +1183,7 @@
                 
                 <div class="project-images">
                     <div class="project-image animate-scale">
-                        <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet System">
+                        <img src="assets/smqrt-helmet/final-sms.png" alt="Smart Helmet System">
                         <div class="project-image-caption">
                             Complete Smart Helmet System Setup
                         </div>
@@ -1177,7 +1236,7 @@
                 <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
                 <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
             </div>
-            <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by itanveer.me</a></p>
+            <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me/" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by Kawsar Mahmud Tanveer Khan</a></p>
         </div>
     </footer>
 

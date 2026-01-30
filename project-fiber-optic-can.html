@@ -12,11 +12,19 @@
     <!-- Canonical URL -->
     <link rel="canonical" href="https://itanveer.tech/project-fiber-optic-can.html">
 
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://itanveer.tech/project-fiber-optic-can.html">
+    <meta property="og:title" content="Fiber Optic Community Area Networks | itanveer.tech">
+    <meta property="og:description" content="Advanced research project on implementing fiber optic infrastructure for Community Area Networks (CANs) to enhance high-speed internet connectivity and reduce latency in residential areas.">
+    <meta property="og:image" content="https://itanveer.tech/assets/img/can.jpg">
+    <meta property="og:site_name" content="itanveer.tech">
+
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary_large_image">
     <meta name="twitter:title" content="Fiber Optic Community Area Networks Research">
     <meta name="twitter:description" content="Advanced research on fiber optic infrastructure for high-speed community connectivity">
-    <meta name="twitter:image" content="assets/img/can.jpg">
+    <meta name="twitter:image" content="https://itanveer.tech/assets/img/can.jpg">
 
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
@@ -28,13 +36,30 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
-        /* Project Page Specific Styles */
+        /* Project Page Specific Styles - Dark Theme */
+        :root {
+            --primary-color: #7F55B1;
+            --primary-dark: #7F55B1;
+            --secondary-color: #E8DFF1;
+            --accent-color: #F49BAB;
+            --dark-bg: #FFE1E0;
+            --card-bg: #E8DFF1;
+            --text-primary: #000000;
+            --text-secondary: #000000;
+        }
+
+        body {
+            background: var(--dark-bg);
+            color: var(--text-primary);
+        }
+
         .project-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
-            padding: 8rem 0 4rem;
-            color: white;
+            background: var(--dark-bg);
+            padding: 8rem 2rem 6rem;
+            color: var(--text-primary);
             position: relative;
             overflow: hidden;
+            border-bottom: none;
         }
         
         .project-hero::before {
@@ -44,8 +69,13 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 20"><defs><radialGradient id="a"><stop offset="0" stop-color="%23fff" stop-opacity="0.1"/><stop offset="1" stop-color="%23fff" stop-opacity="0"/></radialGradient></defs><circle fill="url(%23a)" cx="10" cy="10" r="10"/></svg>') repeat;
-            opacity: 0.1;
+            background: rgba(127, 85, 177, 0.08);
+            animation: gradientShift 15s ease infinite;
+        }
+        
+        @keyframes gradientShift {
+            0%, 100% { opacity: 1; }
+            50% { opacity: 0.7; }
         }
         
         .project-hero__content {
@@ -55,16 +85,43 @@
         
         .project-hero__title {
             font-size: 3.5rem;
-            font-weight: 700;
+            font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
+            color: #000000;
+            letter-spacing: -0.5px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .project-hero__subtitle {
-            font-size: 1.3rem;
+            font-size: 1.15rem;
             opacity: 0.9;
             margin-bottom: 2rem;
-            max-width: 800px;
+            max-width: 900px;
+            color: #000000;
+            animation: fadeInUp 0.8s ease-out 0.2s both;
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
         }
         
         .project-meta {
@@ -78,27 +135,32 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: rgba(255, 255, 255, 0.1);
-            padding: 0.8rem 1.5rem;
-            border-radius: 25px;
-            backdrop-filter: blur(10px);
+            background: #ffffff;
+            padding: 0.75rem 1.4rem;
+            border-radius: 999px;
+            border: 1px solid rgba(127, 85, 177, 0.2);
+            color: #000000;
+        }
+
+        .meta-item i {
+            color: #7F55B1;
         }
         
         .project-nav {
-            background: white;
-            box-shadow: 0 2px 20px rgba(0,0,0,0.1);
+            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 6px 20px rgba(0, 0, 0, 0.08);
             padding: 0.8rem 0;
             position: sticky;
             top: 0;
             z-index: 1000;
             transition: all 0.3s ease;
-            border-bottom: 1px solid #e9ecef;
+            border-bottom: none;
+            backdrop-filter: blur(10px);
         }
         
         .project-nav.scrolled {
-            box-shadow: 0 4px 25px rgba(0,0,0,0.15);
-            backdrop-filter: blur(10px);
-            background: rgba(255, 255, 255, 0.95);
+            box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+            background: rgba(255, 255, 255, 0.98);
             padding: 0.6rem 0;
         }
         
@@ -112,39 +174,30 @@
             white-space: nowrap;
         }
         
-        .project-nav.scrolled .nav-links {
-            gap: 1rem;
-        }
-        
         .nav-link {
             text-decoration: none;
-            color: var(--second-color);
-            padding: 0.6rem 1.2rem;
-            border-radius: 20px;
+            color: #000000;
+            padding: 0.55rem 1.1rem;
+            border-radius: 999px;
             transition: all 0.3s ease;
-            font-weight: 500;
+            font-weight: 600;
             font-size: 0.9rem;
             white-space: nowrap;
             flex-shrink: 0;
         }
         
-        .project-nav.scrolled .nav-link {
-            padding: 0.5rem 0.8rem;
-            font-size: 0.8rem;
-        }
-        
         .nav-link:hover, .nav-link.active {
-            background: var(--first-color);
-            color: white;
+            background: var(--primary-color);
+            color: #ffffff;
             transform: translateY(-2px);
         }
         
         .project-section {
-            padding: 4rem 0;
+            padding: 4rem 2rem;
         }
         
         .project-section:nth-child(even) {
-            background: #f8f9fa;
+            background: rgba(30, 41, 59, 0.4);
         }
         
         .section-header {
@@ -154,13 +207,13 @@
         
         .section-title {
             font-size: 2.5rem;
-            color: var(--second-color);
+            color: #296374;
             margin-bottom: 1rem;
         }
         
         .section-subtitle {
             font-size: 1.1rem;
-            color: #666;
+            color: var(--text-secondary);
             max-width: 600px;
             margin: 0 auto;
         }
@@ -173,12 +226,13 @@
         }
         
         .research-card {
-            background: white;
+            background: var(--card-bg);
             padding: 2rem;
             border-radius: 15px;
-            box-shadow: 0 5px 30px rgba(0,0,0,0.1);
+            border: 2px solid rgba(59, 130, 246, 0.2);
+            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
             text-align: center;
-            transition: all 0.3s ease;
+            transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
             overflow: hidden;
         }
@@ -190,7 +244,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.4), transparent);
+            background: rgba(59, 130, 246, 0.1);
             transition: left 0.5s ease;
         }
         
@@ -200,13 +254,15 @@
         
         .research-card:hover {
             transform: translateY(-10px);
-            box-shadow: 0 15px 40px rgba(0,0,0,0.2);
+            box-shadow: 0 15px 50px rgba(59, 130, 246, 0.3);
+            border-color: rgba(59, 130, 246, 0.5);
+            background: rgba(98, 159, 173, 0.1);
         }
         
         .research-icon {
             width: 80px;
             height: 80px;
-            background: linear-gradient(135deg, var(--first-color), #667eea);
+            background: var(--primary-color);
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -214,13 +270,14 @@
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: white;
+            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
         }
         
         .research-title {
             font-size: 1.3rem;
             font-weight: 600;
             margin-bottom: 1rem;
-            color: var(--second-color);
+            color: var(--text-primary);
         }
         
         .progress-bar {
@@ -472,7 +529,7 @@
             left: -100%;
             width: 100%;
             height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(102, 126, 234, 0.1), transparent);
+            background: rgba(102, 126, 234, 0.1);
             transition: left 0.6s ease;
         }
         
@@ -1100,7 +1157,7 @@
                 <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
                 <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
             </div>
-            <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by itanveer.me</a></p>
+            <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me/" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by Kawsar Mahmud Tanveer Khan</a></p>
         </div>
     </footer>
 

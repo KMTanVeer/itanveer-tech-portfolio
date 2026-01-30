@@ -84,27 +84,29 @@
   
   <style>
   :root {
-    --bg-color: #f8f9fb;
-    --card-bg: #ffffff;
-    --text-color: #1a202c;
-    --text-light: #4a5568;
-    --primary-color: #4f46e5;
-    --primary-light: #818cf8;
-    --shadow: 0 3px 12px rgba(79, 70, 229, 0.12);
-    --shadow-hover: 0 8px 30px rgba(79, 70, 229, 0.18);
-    --button-shadow: 0 4px 15px rgba(79, 70, 229, 0.25);
-    --button-shadow-hover: 0 6px 20px rgba(79, 70, 229, 0.35);
-    --border-light: #e8eaf6;
-    --icon-color: #6366f1;
-    /* Colors for light mode */
-    --color-blue: #2196F3;
-    --color-green: #4CAF50;
-    --color-orange: #FF9800;
-    --color-red: #f44336;
-    --color-purple: #9C27B0;
-    --color-teal: #009688;
-    --color-pink: #E91E63;
-    --color-yellow: #FFC107;
+    --bg-color: #EDEDCE;
+    --card-bg: #C0C9EE;
+    --text-color: #0C2C55;
+    --text-light: #296374;
+    --primary-color: #0C2C55;
+    --primary-light: #296374;
+    --secondary-color: #629FAD;
+    --accent-color: #A2AADB;
+    --shadow: 0 3px 12px rgba(12, 44, 85, 0.15);
+    --shadow-hover: 0 8px 30px rgba(12, 44, 85, 0.25);
+    --button-shadow: 0 4px 15px rgba(41, 99, 116, 0.25);
+    --button-shadow-hover: 0 6px 20px rgba(41, 99, 116, 0.35);
+    --border-light: #629FAD;
+    --icon-color: #296374;
+    /* Colors for dark mode */
+    --color-blue: #0C2C55;
+    --color-green: #296374;
+    --color-orange: #629FAD;
+    --color-red: #0C2C55;
+    --color-purple: #296374;
+    --color-teal: #629FAD;
+    --color-pink: #296374;
+    --color-yellow: #EDEDCE;
   }
   
   body {
@@ -117,7 +119,7 @@
   .scroll-animate {
     opacity: 0;
     transform: translateY(30px) scale(0.97);
-    transition: all 0.8s cubic-bezier(.18,1.25,.90,1.13);
+    transition: all 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
   }
   .scroll-animate.visible {
     opacity: 1;
@@ -181,23 +183,89 @@
 
   /* Skills Container Styling */
   .skills__container {
-    max-width: 900px;
+    max-width: 1200px;
     margin: 0 auto;
   }
 
   .skills__text {
     text-align: center;
-    margin-bottom: 2rem;
+    margin-bottom: 3rem;
     font-size: 1.1em;
     line-height: 1.6;
     color: var(--text-light);
+    animation: fadeInUp 0.8s ease-out 0.2s both;
+  }
+
+  @keyframes fadeInUp {
+    from {
+      opacity: 0;
+      transform: translateY(20px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 
   .skills__grid {
     display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
     gap: 2rem;
     margin-top: 2rem;
+  }
+  
+  /* Modern Skill Category Cards */
+  .skill-category {
+    background: var(--card-bg);
+    padding: 2rem;
+    border-radius: 1rem;
+    border: 2px solid var(--border-light);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    position: relative;
+    overflow: hidden;
+    animation: fadeInUp 0.8s ease-out both;
+  }
+
+  .skill-category::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(98, 159, 173, 0.18);
+    transition: left 0.6s ease;
+  }
+
+  .skill-category:hover::before {
+    left: 100%;
+  }
+
+  .skill-category:hover {
+    border-color: var(--secondary-color);
+    background: #C0C9EE;
+    transform: translateY(-8px);
+    box-shadow: 0 15px 40px rgba(12, 44, 85, 0.18);
+  }
+
+  .skill-category h3 {
+    color: var(--text-color);
+    font-weight: 700;
+    margin-bottom: 1.5rem;
+    font-size: 1.3rem;
+    display: flex;
+    align-items: center;
+    gap: 0.8rem;
+  }
+
+  .skill-category-icon {
+    font-size: 1.8rem;
+    background: rgba(41, 99, 116, 0.15);
+    padding: 0.5rem;
+    border-radius: 0.5rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
   
   /* Education cards in one row on PC view */
@@ -224,13 +292,18 @@
     background: var(--card-bg);
     padding: 1em 1.5em;
     border-radius: 1em;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    box-shadow: 0 8px 24px rgba(12, 44, 85, 0.12);
     margin-bottom: 0.6em;
     flex-wrap: wrap;
     flex-direction: row;
     gap: 1.5em;
-    transition: background 0.4s, box-shadow 0.4s;
+    transition: background 0.4s, box-shadow 0.4s, transform 0.3s ease;
     border: 1px solid var(--border-light);
+  }
+
+  .education__data:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 14px 30px rgba(12, 44, 85, 0.18);
   }
   
   .education__names {
@@ -245,7 +318,7 @@
     background: var(--bg-color);
     border-radius: 50%;
     padding: 0.45em;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.09);
+    box-shadow: 0 2px 8px rgba(12, 44, 85, 0.12);
     margin-right: 0.3em;
     transition: background 0.4s;
   }
@@ -274,7 +347,7 @@
   
   .education__remark {
     font-size: 0.95em;
-    color: #43e97b;
+    color: var(--secondary-color);
     font-style: italic;
   }
   
@@ -365,7 +438,7 @@
   }
   
   .profile__social-icon:hover {
-    background: linear-gradient(135deg, #657ced 60%, #43e97b 100%);
+    background: #296374;
     color: #fff;
     border-color: var(--secondary-color);
     transform: scale(1.11) rotate(-7deg);
@@ -383,32 +456,14 @@
     }
   }
   
-  /* Fix hamburger background for light mode */
-  .nav__toggle {
-    background: var(--card-bg) !important;
-    border: 2px solid var(--primary-color) !important;
-  }
-  
-  .nav__toggle:hover {
-    background: var(--primary-color) !important;
-  }
-  
-  .nav__toggle i {
-    color: var(--primary-color);
-  }
-  
-  .nav__toggle:hover i {
-    color: white !important;
-  }
-  
   /* Info Card Styles */
   .info-card {
     background: var(--card-bg);
     padding: 2rem;
     border-radius: 1rem;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-    transition: transform 0.3s ease, box-shadow 0.3s ease, background 0.3s ease, border-color 0.3s ease;
-    border: 3px solid transparent;
+    box-shadow: 0 8px 24px rgba(12, 44, 85, 0.12);
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
+    border: 2px solid var(--border-light);
     text-align: center;
     position: relative;
     overflow: hidden;
@@ -421,7 +476,7 @@
     left: -100%;
     width: 100%;
     height: 100%;
-    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.2), transparent);
+    background: rgba(98, 159, 173, 0.2);
     transition: left 0.5s ease;
   }
   
@@ -431,32 +486,41 @@
   
   .info-card:hover {
     transform: translateY(-8px) scale(1.02);
-    box-shadow: var(--shadow-hover);
+    box-shadow: 0 15px 40px rgba(12, 44, 85, 0.18);
+    border-color: var(--secondary-color);
+    background: #C0C9EE;
   }
   
-  .info-card.color-blue { border-color: var(--primary-color); }
-  .info-card.color-green { border-color: var(--primary-color); }
-  .info-card.color-orange { border-color: var(--primary-color); }
-  .info-card.color-red { border-color: var(--color-red); }
-  .info-card.color-purple { border-color: var(--primary-color); }
-  .info-card.color-teal { border-color: var(--primary-color); }
-  .info-card.color-pink { border-color: var(--color-pink); }
-  .info-card.color-yellow { border-color: var(--color-yellow); }
+  .info-card.color-blue { border-color: rgba(12, 44, 85, 0.35); }
+  .info-card.color-green { border-color: rgba(41, 99, 116, 0.35); }
+  .info-card.color-orange { border-color: rgba(98, 159, 173, 0.35); }
+  .info-card.color-red { border-color: rgba(12, 44, 85, 0.35); }
+  .info-card.color-purple { border-color: rgba(41, 99, 116, 0.35); }
+  .info-card.color-teal { border-color: rgba(98, 159, 173, 0.35); }
+  .info-card.color-pink { border-color: rgba(41, 99, 116, 0.35); }
+  .info-card.color-yellow { border-color: rgba(237, 237, 206, 0.6); }
   
   .info-card__icon-wrapper {
     display: flex;
     align-items: center;
     justify-content: center;
-    width: 60px;
-    height: 60px;
+    width: 70px;
+    height: 70px;
     margin: 0 auto 1rem;
     border-radius: 50%;
-    background: var(--bg-color);
-    transition: background 0.3s ease;
+    background: rgba(98, 159, 173, 0.2);
+    border: 2px solid rgba(98, 159, 173, 0.45);
+    transition: all 0.3s ease;
+  }
+
+  .info-card:hover .info-card__icon-wrapper {
+    background: rgba(98, 159, 173, 0.3);
+    border-color: rgba(41, 99, 116, 0.7);
   }
   
   .info-card__icon {
     font-size: 2rem;
+    color: var(--primary-light);
   }
   
   .info-card__title {
@@ -480,22 +544,38 @@
   .resume-button {
     display: inline-flex;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.8rem 2rem;
-    background: linear-gradient(135deg, #657ced 0%, #7873f5 100%);
+    gap: 0.8rem;
+    padding: 1rem 2.2rem;
+    background: #296374;
     color: white;
     border-radius: 50px;
     font-weight: 600;
     text-decoration: none;
-    transition: all 0.3s ease;
+    transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
     position: relative;
     overflow: hidden;
-    box-shadow: var(--button-shadow);
+    box-shadow: 0 8px 25px rgba(59, 130, 246, 0.3);
+    border: none;
+  }
+
+  .resume-button::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: rgba(255,255,255,0.3);
+    transition: left 0.6s ease;
+  }
+
+  .resume-button:hover::before {
+    left: 100%;
   }
   
   .resume-button:hover {
-    transform: translateY(-3px);
-    box-shadow: var(--button-shadow-hover);
+    transform: translateY(-4px);
+    box-shadow: 0 12px 35px rgba(59, 130, 246, 0.4);
   }
   
   .resume-icon {
@@ -506,7 +586,49 @@
     font-size: 1rem;
   }
   
-  /* Project Card Styles - ATS Friendly */
+  /* Contact Info Styles */
+  .contact-info {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin: 1.5rem 0;
+    justify-content: center;
+  }
+  
+  .contact-item {
+    display: flex;
+    align-items: center;
+    gap: 0.7rem;
+    padding: 0.8rem 1.3rem;
+    background: rgba(59, 130, 246, 0.1);
+    border-radius: 50px;
+    border: 2px solid rgba(59, 130, 246, 0.3);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+  }
+  
+  .contact-item:hover {
+    transform: translateY(-3px);
+    border-color: rgba(59, 130, 246, 0.6);
+    background: rgba(59, 130, 246, 0.15);
+    box-shadow: 0 8px 20px rgba(59, 130, 246, 0.2);
+  }
+  
+  .contact-item i {
+    color: var(--primary-light);
+    font-size: 1.2rem;
+  }
+  
+  .contact-item a {
+    color: var(--text-color);
+    text-decoration: none;
+    font-weight: 500;
+    transition: color 0.3s ease;
+  }
+  
+  .contact-item:hover i,
+  .contact-item:hover a {
+    color: var(--primary-light);
+  }
   .project-card {
     background: var(--card-bg);
     padding: 2rem;
@@ -611,71 +733,100 @@
   .skill-badge {
     display: inline-block;
     padding: 0.6rem 1.2rem;
-    margin: 0.4rem;
-    background: var(--primary-color);
-    color: white;
+    margin: 0.4rem 0.4rem 0.4rem 0;
+    background: rgba(59, 130, 246, 0.15);
+    color: var(--primary-light);
+    border: 1.5px solid var(--primary-color);
     border-radius: 25px;
     font-size: 0.9rem;
     font-weight: 600;
-    transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
+    transition: all 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
+    box-shadow: inset 0 2px 8px rgba(59, 130, 246, 0.1);
+    position: relative;
   }
-  
+
+  .skill-badge::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255,255,255,0.1), transparent);
+    transition: left 0.5s ease;
+    border-radius: 25px;
+  }
+
   .skill-badge:hover {
-    transform: translateY(-2px) scale(1.05);
-    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
+    transform: translateY(-3px) scale(1.05);
+    box-shadow: inset 0 2px 8px rgba(59, 130, 246, 0.1), 0 8px 20px rgba(59, 130, 246, 0.3);
+    background: rgba(59, 130, 246, 0.25);
   }
-  
+
   .skill-badge.automation { 
-    background: var(--color-orange); 
-    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.2);
+    border-color: var(--color-orange);
+    color: var(--color-orange);
+    background: rgba(245, 158, 11, 0.1);
+    box-shadow: inset 0 2px 8px rgba(245, 158, 11, 0.1);
   }
   .skill-badge.automation:hover {
-    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+    box-shadow: inset 0 2px 8px rgba(245, 158, 11, 0.1), 0 8px 20px rgba(245, 158, 11, 0.3);
+    background: rgba(245, 158, 11, 0.2);
   }
   
   .skill-badge.embedded { 
-    background: var(--color-green);
-    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+    border-color: var(--color-green);
+    color: var(--color-green);
+    background: rgba(16, 185, 129, 0.1);
+    box-shadow: inset 0 2px 8px rgba(16, 185, 129, 0.1);
   }
   .skill-badge.embedded:hover {
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+    box-shadow: inset 0 2px 8px rgba(16, 185, 129, 0.1), 0 8px 20px rgba(16, 185, 129, 0.3);
+    background: rgba(16, 185, 129, 0.2);
   }
   
   .skill-badge.power { 
-    background: var(--color-red);
-    box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+    border-color: var(--color-red);
+    color: var(--color-red);
+    background: rgba(239, 68, 68, 0.1);
+    box-shadow: inset 0 2px 8px rgba(239, 68, 68, 0.1);
   }
   .skill-badge.power:hover {
-    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+    box-shadow: inset 0 2px 8px rgba(239, 68, 68, 0.1), 0 8px 20px rgba(239, 68, 68, 0.3);
+    background: rgba(239, 68, 68, 0.2);
   }
   
   .skill-badge.simulation { 
-    background: var(--color-purple);
-    box-shadow: 0 2px 8px rgba(156, 39, 176, 0.2);
+    border-color: var(--color-purple);
+    color: var(--color-purple);
+    background: rgba(168, 85, 247, 0.1);
+    box-shadow: inset 0 2px 8px rgba(168, 85, 247, 0.1);
   }
   .skill-badge.simulation:hover {
-    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+    box-shadow: inset 0 2px 8px rgba(168, 85, 247, 0.1), 0 8px 20px rgba(168, 85, 247, 0.3);
+    background: rgba(168, 85, 247, 0.2);
   }
   
   .skill-badge.software { 
-    background: var(--color-teal);
-    box-shadow: 0 2px 8px rgba(0, 150, 136, 0.2);
+    border-color: var(--color-teal);
+    color: var(--color-teal);
+    background: rgba(6, 182, 212, 0.1);
+    box-shadow: inset 0 2px 8px rgba(6, 182, 212, 0.1);
   }
   .skill-badge.software:hover {
-    box-shadow: 0 4px 15px rgba(0, 150, 136, 0.4);
+    box-shadow: inset 0 2px 8px rgba(6, 182, 212, 0.1), 0 8px 20px rgba(6, 182, 212, 0.3);
+    background: rgba(6, 182, 212, 0.2);
   }
   
   .skill-badge.deployment { 
-    background: var(--color-pink);
-    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.2);
+    border-color: var(--color-pink);
+    color: var(--color-pink);
+    background: rgba(236, 72, 153, 0.1);
+    box-shadow: inset 0 2px 8px rgba(236, 72, 153, 0.1);
   }
   .skill-badge.deployment:hover {
-    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
-  }
-  
-  /* Contact Info Styles - ATS Friendly */
-  .contact-info {
+    box-shadow: inset 0 2px 8px rgba(236, 72, 153, 0.1), 0 8px 20px rgba(236, 72, 153, 0.3);
+    background: rgba(236, 72, 153, 0.2);
     display: flex;
     flex-wrap: wrap;
     gap: 1.5rem;
@@ -684,35 +835,44 @@
   }
   
   .contact-item {
-    display: flex;
+    display: grid;
+    grid-template-columns: 22px 1fr;
     align-items: center;
-    gap: 0.5rem;
-    padding: 0.6rem 1.2rem;
-    background: var(--card-bg);
-    border-radius: 25px;
-    border: 2px solid var(--color-blue);
-    transition: all 0.3s ease;
+    gap: 0.6rem;
+    padding: 0.7rem 1rem;
+    background: rgba(237, 237, 206, 0.8);
+    border-radius: 14px;
+    border: 1px solid rgba(98, 159, 173, 0.45);
+    transition: all 0.25s ease;
+    width: 100%;
+    box-sizing: border-box;
   }
   
   .contact-item:hover {
-    transform: scale(1.05);
-    border-color: var(--primary-color);
-    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+    transform: translateY(-2px);
+    border-color: rgba(41, 99, 116, 0.7);
+    box-shadow: 0 8px 18px rgba(12, 44, 85, 0.15);
   }
   
   .contact-item i {
     color: var(--primary-color);
-    font-size: 1.2rem;
+    font-size: 1.05rem;
+    text-align: center;
   }
   
-  .contact-item a {
+  .contact-item a,
+  .contact-item span {
     color: var(--text-color);
     text-decoration: none;
-    font-weight: 500;
+    font-weight: 600;
+    font-size: 0.95rem;
+    line-height: 1.2;
+    word-break: break-word;
   }
   
   .contact-item:hover i,
-  .contact-item:hover a {
+  .contact-item:hover a,
+  .contact-item:hover span {
     color: var(--primary-color);
   }
   
@@ -750,25 +910,59 @@
     border-radius: 2px;
   }
   
-  /* About Photo Hover Effect */
+  /* About Photo Frame & Hover Effect */
+  .about__img {
+    display: flex;
+    justify-content: center;
+  }
+
   .about__img img {
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition: transform 0.35s ease, box-shadow 0.35s ease, border-color 0.35s ease;
     cursor: pointer;
+    box-shadow: 0 12px 30px rgba(12, 44, 85, 0.2);
+    border: 3px solid rgba(98, 159, 173, 0.6);
+    width: 100%;
+    max-width: 380px;
+    height: auto;
+    display: block;
   }
   
   .about__img img:hover {
-    transform: scale(1.05);
-    box-shadow: 0 8px 35px rgba(79, 70, 229, 0.35);
+    transform: translateY(-6px) scale(1.03);
+    box-shadow: 0 18px 40px rgba(12, 44, 85, 0.28);
+    border-color: rgba(41, 99, 116, 0.85);
+  }
+
+  .about__info-grid {
+    display: grid;
+    grid-template-columns: minmax(280px, 360px) minmax(420px, 1.4fr);
+    gap: 1.5rem;
+    align-items: start;
+  }
+
+  @media (max-width: 900px) {
+    .about__info-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  .professional-summary {
+    align-self: start;
+  }
+
+  .professional-summary h2 {
+    margin-top: 0;
   }
   
   /* About Hero Section */
   .about-hero {
-    background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
-    padding: 6rem 0 4rem;
-    color: white;
+    background: #EDEDCE;
+    padding: 8rem 2rem 6rem;
+    color: var(--text-color);
     position: relative;
     overflow: hidden;
     margin-top: var(--header-height);
+    border-bottom: 2px solid rgba(98, 159, 173, 0.35);
   }
   
   .about-hero::before {
@@ -778,20 +972,33 @@
     left: 0;
     right: 0;
     bottom: 0;
-    background: 
-      linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
-    animation: shimmer 3s infinite;
+    background: rgba(98, 159, 173, 0.08);
+    animation: gradientShift 15s ease infinite;
   }
   
-  @keyframes shimmer {
-    0% { transform: translateX(-100%); }
-    100% { transform: translateX(100%); }
+  @keyframes gradientShift {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.7; }
   }
   
   .about-hero__content {
     position: relative;
     z-index: 2;
     text-align: center;
+    max-width: 900px;
+    margin: 0 auto;
+    animation: fadeInDown 0.8s ease-out;
+  }
+  
+  @keyframes fadeInDown {
+    from {
+      opacity: 0;
+      transform: translateY(-30px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
   
   .about-hero__title {
@@ -799,19 +1006,15 @@
     font-weight: 700;
     margin-bottom: 1rem;
     line-height: 1.2;
+    color: #0C2C55;
   }
   
   .about-hero__subtitle {
     font-size: 1.2rem;
-    opacity: 0.9;
+    opacity: 0.85;
     max-width: 700px;
     margin: 0 auto;
-  }
-  
-  @media screen and (max-width: 768px) {
-    .about-hero__title {
-      font-size: 2.5rem;
-    }
+    color: var(--text-light);
   }
   </style>
 </head>
@@ -850,61 +1053,116 @@
 
 <!--===== ABOUT ME =====-->
 <section class="about section" id="about">
-  <div class="about__container bd-grid scroll-animate" style="max-width: 1200px; margin: 0 auto;">
-    <!-- Profile Photo -->
-    <div class="about__img" style="text-align: center;">
-      <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1rem; box-shadow: 0 4px 24px rgba(79, 70, 229, 0.25); max-width: 100%; height: auto;">
-    </div>
-    <div>
-      <!-- Contact Information - ATS Friendly -->
-      <div class="contact-info" style="background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); margin-bottom: 1.5rem;">
-        <div class="contact-item">
-          <i class="fas fa-map-marker-alt" style="color: var(--primary-color);"></i>
-          <span style="color: var(--text-color);">Aminpur, Sujanagar, Pabna</span>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-phone" style="color: var(--primary-color);"></i>
-          <a href="tel:+8801758161680" style="color: var(--text-color);">+880 1758161680</a>
-        </div>
-        <div class="contact-item">
-          <i class="fas fa-envelope" style="color: var(--primary-color);"></i>
-          <a href="mailto:tanveerk.eee@gmail.com" style="color: var(--text-color);">tanveerk.eee@gmail.com</a>
-        </div>
-        <div class="contact-item">
-          <i class="fab fa-linkedin" style="color: var(--primary-color);"></i>
-          <a href="https://www.linkedin.com/kawsartanveer/" target="_blank" style="color: var(--text-color);">LinkedIn Profile</a>
-        </div>
+  <div class="about__container bd-grid scroll-animate" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+    <div style="display: grid; grid-template-columns: minmax(320px, 420px) 1fr; gap: 3rem; align-items: start; margin-bottom: 3rem;">
+      <!-- Profile Photo -->
+      <div class="about__img">
+        <img src="assets/img/about.jpg" alt="Kawsar Mahmud Tanveer Khan" style="border-radius: 1.5rem;">
       </div>
       
-      <!-- Professional Summary -->
-      <div style="background: var(--card-bg); padding: 1.5rem; border-radius: 1rem; box-shadow: var(--shadow); margin-bottom: 1.5rem;">
-        <h2 class="about__subtitle" style="color: var(--primary-color); margin-bottom: 1rem;">Professional Summary</h2>
-        <p class="about__text" style="margin-bottom:0; color: var(--text-color); line-height: 1.8;">
-          Electrical and Electronic Engineering undergraduate with hands-on experience in <b style="color: var(--primary-color);">embedded systems</b>, <b style="color: var(--primary-color);">PLC automation</b>, and <b style="color: var(--primary-color);">sensor-based safety projects</b>. Skilled in simulation, system optimization, and industrial automation, with practical training exposure and a strong interest in <b style="color: var(--primary-color);">IoT</b> and <b style="color: var(--primary-color);">intelligent control systems</b>.
-        </p>
-      </div>
-      
-      <!-- Portfolio Button -->
-      <div class="resume-section" style="text-align: center;">
-        <a href="https://itanveer.me" target="_blank" rel="noopener noreferrer" class="resume-button" title="Visit itanveer.me - Complete Portfolio">
-          <i class="fas fa-briefcase resume-icon"></i>
-          <span class="resume-text">Visit Portfolio - itanveer.me</span>
-          <div class="resume-glow"></div>
-        </a>
+      <div style="animation: fadeInRight 0.8s ease-out;">
+        <div class="about__info-grid">
+          <!-- Contact Information -->
+          <div class="contact-info" style="background: rgba(98, 159, 173, 0.12); padding: 1.5rem; border-radius: 1rem; border: 2px solid rgba(98, 159, 173, 0.45); margin-bottom: 0; flex-direction: column; justify-content: flex-start; gap: 1rem;">
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Aminpur, Sujanagar, Pabna</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-phone"></i>
+              <a href="tel:+8801758161680">+880 1758161680</a>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <a href="mailto:tanveerk.eee@gmail.com">tanveerk.eee@gmail.com</a>
+            </div>
+            <div class="contact-item">
+              <i class="fab fa-linkedin"></i>
+              <a href="https://www.linkedin.com/in/kawsartanveer/" target="_blank" rel="noopener noreferrer">LinkedIn Profile</a>
+            </div>
+          </div>
+          
+          <!-- Professional Summary -->
+          <div class="professional-summary" style="background: rgba(98, 159, 173, 0.1); padding: 1.5rem; border-radius: 1rem; border: 2px solid rgba(41, 99, 116, 0.35); margin-bottom: 0; margin-top: 1.4rem;">
+            <h2 style="color: var(--text-color); margin-bottom: 0.8rem; font-size: 1.2rem;">Professional Summary</h2>
+            <p style="margin-bottom: 0; color: var(--text-light); line-height: 1.8; font-size: 0.95rem;">
+              Electrical and Electronic Engineering undergraduate with hands-on experience in <b style="color: var(--primary-color);">embedded systems</b>, <b style="color: var(--primary-color);">PLC automation</b>, and <b style="color: var(--primary-color);">sensor-based safety projects</b>. Skilled in simulation, system optimization, and industrial automation.
+            </p>
+          </div>
+        </div>
+
+        <!-- Portfolio Button -->
+        <div class="resume-section about__cta">
+          <a href="https://itanveer.me" target="_blank" rel="noopener noreferrer" class="resume-button" title="Visit itanveer.me - Complete Portfolio">
+            <i class="fas fa-briefcase resume-icon"></i>
+            <span class="resume-text">View Full Portfolio</span>
+          </a>
+        </div>
       </div>
     </div>
   </div>
+  
+  <style>
+    @keyframes fadeInLeft {
+      from {
+        opacity: 0;
+        transform: translateX(-30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @keyframes fadeInRight {
+      from {
+        opacity: 0;
+        transform: translateX(30px);
+      }
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+    
+    @media (max-width: 768px) {
+      .about__container > div {
+        grid-template-columns: 1fr !important;
+      }
+      .contact-info {
+        flex-direction: row !important;
+        flex-wrap: wrap !important;
+      }
+    }
+
+    .about__cta {
+      display: flex;
+      justify-content: flex-start;
+      margin-top: 1rem;
+      width: 100%;
+    }
+
+    @media (max-width: 768px) {
+      .about__cta {
+        justify-content: center;
+      }
+    }
+  </style>
 </section>
 
 <!--===== SKILLS =====-->
 <section class="skills section" id="skills">
-  <h2 class="section-title scroll-animate" style="text-align: center; margin-bottom: 1rem;">Technical Skills</h2>
-  <div class="skills__container scroll-animate" style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">          
+  <div class="skills__container" style="max-width: 1200px; margin: 0 auto; padding: 0 1rem;">
+    <h2 class="section-title scroll-animate" style="text-align: center; margin-bottom: 1rem; color: var(--text-color);">Technical Skills</h2>
     <p class="skills__text" style="text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 3rem; font-weight: 500;">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
     
-    <div style="max-width: 1000px; margin: 0 auto;">
-      <div class="skill-card-hover" style="text-align: left;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Control & Automation</h3>
+    <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 2rem;">
+      <!-- Control & Automation Card -->
+      <div class="skill-category scroll-animate" style="animation-delay: 0.1s;">
+        <h3>
+          <span class="skill-category-icon"><i class="fas fa-cogs"></i></span>
+          Control & Automation
+        </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge automation">PLC</span>
           <span class="skill-badge automation">Mechatronics</span>
@@ -913,8 +1171,12 @@
         </div>
       </div>
       
-      <div class="skill-card-hover" style="text-align: left;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Embedded & Programming</h3>
+      <!-- Embedded & Programming Card -->
+      <div class="skill-category scroll-animate" style="animation-delay: 0.2s;">
+        <h3>
+          <span class="skill-category-icon"><i class="fas fa-microchip"></i></span>
+          Embedded & Programming
+        </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge embedded">C++</span>
           <span class="skill-badge embedded">ESP32</span>
@@ -923,8 +1185,12 @@
         </div>
       </div>
       
-      <div class="skill-card-hover" style="text-align: left;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Power & Control</h3>
+      <!-- Power & Control Card -->
+      <div class="skill-category scroll-animate" style="animation-delay: 0.3s;">
+        <h3>
+          <span class="skill-category-icon"><i class="fas fa-bolt"></i></span>
+          Power & Control
+        </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge power">Power Electronics</span>
           <span class="skill-badge power">UPS</span>
@@ -932,8 +1198,12 @@
         </div>
       </div>
       
-      <div class="skill-card-hover" style="text-align: left;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Simulation & Design Tools</h3>
+      <!-- Simulation & Design Tools Card -->
+      <div class="skill-category scroll-animate" style="animation-delay: 0.4s;">
+        <h3>
+          <span class="skill-category-icon"><i class="fas fa-diagram-project"></i></span>
+          Simulation & Design
+        </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge simulation">MATLAB/Simulink</span>
           <span class="skill-badge simulation">Cadence Virtuoso</span>
@@ -941,8 +1211,12 @@
         </div>
       </div>
       
-      <div class="skill-card-hover" style="text-align: left;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Software & Programming</h3>
+      <!-- Software & Development Card -->
+      <div class="skill-category scroll-animate" style="animation-delay: 0.5s;">
+        <h3>
+          <span class="skill-category-icon"><i class="fas fa-code"></i></span>
+          Software & Development
+        </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge software">Flask</span>
           <span class="skill-badge software">PyCharm</span>
@@ -950,11 +1224,16 @@
         </div>
       </div>
       
-      <div class="skill-card-hover" style="text-align: left; margin-bottom: 0;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Deployment & Tools</h3>
+      <!-- Deployment & Tools Card -->
+      <div class="skill-category scroll-animate" style="animation-delay: 0.6s;">
+        <h3>
+          <span class="skill-category-icon"><i class="fas fa-rocket"></i></span>
+          Deployment & Tools
+        </h3>
         <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge deployment">Render</span>
           <span class="skill-badge deployment">Git/GitHub</span>
+          <span class="skill-badge deployment">Linux</span>
         </div>
       </div>
     </div>
@@ -963,40 +1242,40 @@
 
 <!--===== EDUCATION SECTION =====-->
 <section class="education section" id="education">
-  <h2 class="section-title scroll-animate" style="text-align: center;">Education</h2>
-  <div class="skills__container scroll-animate" style="max-width: 1000px; margin: 0 auto;">
-    <div class="skills__grid">
-      <div class="info-card scroll-animate">
+  <div style="max-width: 1000px; margin: 0 auto; padding: 0 1rem;">
+    <h2 class="section-title scroll-animate" style="text-align: center; color: var(--text-color);">Education</h2>
+    <div class="skills__grid" style="margin-top: 3rem;">
+      <div class="info-card scroll-animate" style="animation-delay: 0.1s;">
         <div class="info-card__icon-wrapper">
-          <i class="fas fa-graduation-cap info-card__icon" style="color: var(--icon-color)"></i>
+          <i class="fas fa-graduation-cap info-card__icon"></i>
         </div>
-        <h3 class="info-card__title" style="color: var(--text-color);">B.Sc. in Electrical & Electronic Engineering</h3>
-        <p class="info-card__description" style="color: var(--text-light);">
-          <strong style="color: var(--text-color);">Daffodil International University, Dhaka</strong><br>
-          2022 - 2025
+        <h3 class="info-card__title">B.Sc. in Electrical & Electronic Engineering</h3>
+        <p class="info-card__description">
+          <strong>Daffodil International University, Dhaka</strong><br>
+          <span style="font-size: 0.9rem; color: var(--primary-light);">2022 - 2025</span>
         </p>
       </div>
 
-      <div class="info-card scroll-animate">
+      <div class="info-card scroll-animate" style="animation-delay: 0.2s;">
         <div class="info-card__icon-wrapper">
-          <i class="fas fa-school info-card__icon" style="color: var(--icon-color)"></i>
+          <i class="fas fa-school info-card__icon"></i>
         </div>
-        <h3 class="info-card__title" style="color: var(--text-color);">Higher Secondary Certificate (HSC)</h3>
-        <p class="info-card__description" style="color: var(--text-light);">
-          <strong style="color: var(--text-color);">BAF Shaheen College Dhaka</strong><br>
-          2017 - 2019<br>
+        <h3 class="info-card__title">Higher Secondary Certificate (HSC)</h3>
+        <p class="info-card__description">
+          <strong>BAF Shaheen College Dhaka</strong><br>
+          <span style="font-size: 0.9rem; color: var(--primary-light);">2017 - 2019</span><br>
           Science Group
         </p>
       </div>
 
-      <div class="info-card scroll-animate">
+      <div class="info-card scroll-animate" style="animation-delay: 0.3s;">
         <div class="info-card__icon-wrapper">
-          <i class="fas fa-book info-card__icon" style="color: var(--icon-color)"></i>
+          <i class="fas fa-book info-card__icon"></i>
         </div>
-        <h3 class="info-card__title" style="color: var(--text-color);">Secondary School Certificate (SSC)</h3>
-        <p class="info-card__description" style="color: var(--text-light);">
-          <strong style="color: var(--text-color);">Dulai High School</strong><br>
-          2015 - 2017<br>
+        <h3 class="info-card__title">Secondary School Certificate (SSC)</h3>
+        <p class="info-card__description">
+          <strong>Dulai High School</strong><br>
+          <span style="font-size: 0.9rem; color: var(--primary-light);">2015 - 2017</span><br>
           Science Group
         </p>
       </div>
@@ -1020,7 +1299,7 @@
       <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
       <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
     </div>
-    <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by itanveer.me</a></p>
+    <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me/" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by Kawsar Mahmud Tanveer Khan</a></p>
   </div>
 </footer>
 

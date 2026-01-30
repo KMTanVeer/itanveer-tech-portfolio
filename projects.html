@@ -13,6 +13,20 @@
   <!-- Canonical URL -->
   <link rel="canonical" href="https://itanveer.tech/projects.html">
 
+  <!-- Open Graph / Facebook -->
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://itanveer.tech/projects.html">
+  <meta property="og:title" content="Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects">
+  <meta property="og:description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
+  <meta property="og:image" content="https://itanveer.tech/assets/img/about.png">
+  <meta property="og:site_name" content="itanveer.tech">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects">
+  <meta name="twitter:description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
+  <meta name="twitter:image" content="https://itanveer.tech/assets/img/about.png">
+
   <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
@@ -29,15 +43,16 @@
   <style>
     /* Professional Color Palette */
     :root {
-      --primary-blue: #2563eb;
-      --secondary-teal: #14b8a6;
-      --accent-orange: #f59e0b;
-      --dark-gray: #1e293b;
-      --light-gray: #f1f5f9;
+      --primary-blue: #7F55B1;
+      --secondary-teal: #9B7EBD;
+      --accent-orange: #F49BAB;
+      --dark-gray: #7F55B1;
+      --light-gray: #FFE1E0;
       --white: #ffffff;
-      --text-primary: #0f172a;
-      --text-secondary: #64748b;
-      --border-color: #e2e8f0;
+      --text-primary: #000000;
+      --text-secondary: #000000;
+      --border-color: #9B7EBD;
+      --second-color: #000000;
     }
 
     /* Projects Page Specific Styles */
@@ -122,8 +137,8 @@
       padding: 2rem 0;
       box-shadow: 0 2px 8px rgba(0,0,0,0.05);
       position: sticky;
-      top: 0;
-      z-index: 100;
+      top: var(--header-height);
+      z-index: 50;
     }
 
     .filter-buttons {
@@ -300,12 +315,12 @@
       font-size: 1.3rem;
       font-weight: 600;
       margin-bottom: 0.8rem;
-      color: var(--text-primary);
+      color: #000000;
       line-height: 1.4;
     }
 
     .project-card__description {
-      color: var(--text-secondary);
+      color: #000000;
       line-height: 1.6;
       margin-bottom: 1rem;
       flex: 1;
@@ -316,7 +331,7 @@
       gap: 1rem;
       margin-bottom: 1rem;
       font-size: 0.85rem;
-      color: var(--text-secondary);
+      color: #000000;
     }
 
     .meta-item {
@@ -326,7 +341,7 @@
     }
 
     .meta-item i {
-      color: var(--primary-blue);
+      color: #000000;
     }
 
     .project-card__tags {
@@ -339,7 +354,7 @@
     .tag {
       padding: 0.4rem 0.8rem;
       background: var(--light-gray);
-      color: var(--text-primary);
+      color: #000000;
       border-radius: 6px;
       font-size: 0.8rem;
       font-weight: 500;
@@ -388,26 +403,26 @@
 <body>
     <!--===== HEADER =====-->
     <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="index.html" class="nav__logo">itanveer.tech</a>
-            </div>
+      <nav class="nav bd-grid">
+        <div>
+          <a href="index.html" class="nav__logo">itanveer.tech</a>
+        </div>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
-                    <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
-                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
+        <div class="nav__menu" id="nav-menu">
+          <ul class="nav__list">
+            <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+            <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+            <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+            <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+            <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+            <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+          </ul>
+        </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
+        <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
+          <i class='bx bx-menu' aria-hidden="true"></i>
+        </div>
+      </nav>
     </header>
 
     <main class="l-main">
@@ -425,7 +440,7 @@
                     </div>
                     <div class="stat-item">
                         <i class="fas fa-code"></i>
-                        <span class="stat-number">5</span>
+                        <span class="stat-number">2</span>
                         <span class="stat-label">In Progress</span>
                     </div>
                     <div class="stat-item">
@@ -534,7 +549,7 @@
                             <div class="project-card__meta">
                                 <div class="meta-item">
                                     <i class="fas fa-calendar"></i>
-                                    <span>2024</span>
+                                    <span>2022</span>
                                 </div>
                                 <div class="meta-item">
                                     <i class="fas fa-clock"></i>
@@ -615,7 +630,7 @@
                             <div class="project-card__meta">
                                 <div class="meta-item">
                                     <i class="fas fa-calendar"></i>
-                                    <span>2023</span>
+                                    <span>2025</span>
                                 </div>
                                 <div class="meta-item">
                                     <i class="fas fa-clock"></i>
@@ -634,7 +649,7 @@
                     <!-- Book Recommender -->
                     <div class="project-card fade-in" data-category="ml">
                         <div class="project-card__img">
-                            <img src="assets/img/project2.jpg" alt="Smart Book Recommendation System">
+                            <img src="assets/book-recommendation/Home.png" alt="Smart Book Recommendation System">
                             <div class="project-status project-status--completed">
                                 <i class="fas fa-check-circle"></i>
                                 Live & Deployed
@@ -689,7 +704,7 @@
                 <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
                 <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
             </div>
-            <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by itanveer.me</a></p>
+            <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me/" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by Kawsar Mahmud Tanveer Khan</a></p>
         </div>
     </footer>
 

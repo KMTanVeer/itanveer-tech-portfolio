@@ -96,6 +96,15 @@
     --button-shadow-hover: 0 6px 20px rgba(79, 70, 229, 0.35);
     --border-light: #e8eaf6;
     --icon-color: #6366f1;
+    /* Colors for light mode */
+    --color-blue: #2196F3;
+    --color-green: #4CAF50;
+    --color-orange: #FF9800;
+    --color-red: #f44336;
+    --color-purple: #9C27B0;
+    --color-teal: #009688;
+    --color-pink: #E91E63;
+    --color-yellow: #FFC107;
   }
   
   /* Dark mode variables */
@@ -832,28 +841,69 @@
   /* Skill Badge Styles */
   .skill-badge {
     display: inline-block;
-    padding: 0.4rem 1rem;
-    margin: 0.3rem;
-    background: var(--color-blue);
+    padding: 0.6rem 1.2rem;
+    margin: 0.4rem;
+    background: var(--primary-color);
     color: white;
-    border-radius: 20px;
-    font-size: 0.85rem;
+    border-radius: 25px;
+    font-size: 0.9rem;
     font-weight: 600;
     transition: all 0.3s ease;
-    box-shadow: 0 2px 8px rgba(33, 150, 243, 0.3);
+    box-shadow: 0 2px 8px rgba(79, 70, 229, 0.2);
   }
   
   .skill-badge:hover {
-    transform: translateY(-3px) scale(1.05);
-    box-shadow: 0 4px 15px rgba(33, 150, 243, 0.5);
+    transform: translateY(-2px) scale(1.05);
+    box-shadow: 0 4px 15px rgba(79, 70, 229, 0.4);
   }
   
-  .skill-badge.automation { background: var(--color-orange); }
-  .skill-badge.embedded { background: var(--color-green); }
-  .skill-badge.power { background: var(--color-red); }
-  .skill-badge.simulation { background: var(--color-purple); }
-  .skill-badge.software { background: var(--color-teal); }
-  .skill-badge.deployment { background: var(--color-pink); }
+  .skill-badge.automation { 
+    background: var(--color-orange); 
+    box-shadow: 0 2px 8px rgba(255, 152, 0, 0.2);
+  }
+  .skill-badge.automation:hover {
+    box-shadow: 0 4px 15px rgba(255, 152, 0, 0.4);
+  }
+  
+  .skill-badge.embedded { 
+    background: var(--color-green);
+    box-shadow: 0 2px 8px rgba(76, 175, 80, 0.2);
+  }
+  .skill-badge.embedded:hover {
+    box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4);
+  }
+  
+  .skill-badge.power { 
+    background: var(--color-red);
+    box-shadow: 0 2px 8px rgba(244, 67, 54, 0.2);
+  }
+  .skill-badge.power:hover {
+    box-shadow: 0 4px 15px rgba(244, 67, 54, 0.4);
+  }
+  
+  .skill-badge.simulation { 
+    background: var(--color-purple);
+    box-shadow: 0 2px 8px rgba(156, 39, 176, 0.2);
+  }
+  .skill-badge.simulation:hover {
+    box-shadow: 0 4px 15px rgba(156, 39, 176, 0.4);
+  }
+  
+  .skill-badge.software { 
+    background: var(--color-teal);
+    box-shadow: 0 2px 8px rgba(0, 150, 136, 0.2);
+  }
+  .skill-badge.software:hover {
+    box-shadow: 0 4px 15px rgba(0, 150, 136, 0.4);
+  }
+  
+  .skill-badge.deployment { 
+    background: var(--color-pink);
+    box-shadow: 0 2px 8px rgba(233, 30, 99, 0.2);
+  }
+  .skill-badge.deployment:hover {
+    box-shadow: 0 4px 15px rgba(233, 30, 99, 0.4);
+  }
   
   /* Contact Info Styles - ATS Friendly */
   .contact-info {
@@ -897,20 +947,38 @@
     color: var(--primary-color);
   }
   
-  /* Skill Card Hover Effects */
+  /* Skill Card Hover Effects - Redesigned */
   .skill-card-hover {
-    margin-bottom: 1.8rem;
-    background: var(--card-bg);
-    padding: 2rem 1.5rem;
-    border-radius: 1rem;
-    box-shadow: var(--shadow);
-    border: 2px solid var(--border-light);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    margin-bottom: 2rem;
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border: none;
+    transition: none;
   }
   
   .skill-card-hover:hover {
-    transform: translateY(-5px);
-    box-shadow: var(--shadow-hover);
+    transform: none;
+    box-shadow: none;
+  }
+  
+  .skill-card-hover h3 {
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.5rem;
+    margin-bottom: 1rem;
+  }
+  
+  .skill-card-hover h3::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 50px;
+    height: 3px;
+    background: var(--primary-color);
+    border-radius: 2px;
   }
   
   /* About Photo Hover Effect */
@@ -1010,12 +1078,12 @@
 <section class="skills section" id="skills">
   <h2 class="section-title scroll-animate" style="text-align: center; margin-bottom: 1rem;">Technical Skills</h2>
   <div class="skills__container scroll-animate" style="max-width: 1100px; margin: 0 auto; padding: 0 1rem;">          
-    <p class="skills__text" style="text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 2.5rem; font-weight: 500;">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
+    <p class="skills__text" style="text-align: center; color: var(--text-light); font-size: 1.1rem; margin-bottom: 3rem; font-weight: 500;">Comprehensive technical skillset covering control systems, automation, embedded programming, power electronics, simulation tools, and modern software development practices.</p>
     
-    <div style="max-width: 1000px; margin: 0 auto; text-align: center;">
-      <div class="skill-card-hover">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Control & Automation</h3>
-        <div>
+    <div style="max-width: 1000px; margin: 0 auto;">
+      <div class="skill-card-hover" style="text-align: left;">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Control & Automation</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge automation">PLC</span>
           <span class="skill-badge automation">Mechatronics</span>
           <span class="skill-badge automation">Industrial Automation</span>
@@ -1023,9 +1091,9 @@
         </div>
       </div>
       
-      <div class="skill-card-hover">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Embedded & Programming</h3>
-        <div>
+      <div class="skill-card-hover" style="text-align: left;">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Embedded & Programming</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge embedded">C++</span>
           <span class="skill-badge embedded">ESP32</span>
           <span class="skill-badge embedded">Arduino</span>
@@ -1033,36 +1101,36 @@
         </div>
       </div>
       
-      <div class="skill-card-hover">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Power & Control</h3>
-        <div>
+      <div class="skill-card-hover" style="text-align: left;">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Power & Control</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge power">Power Electronics</span>
           <span class="skill-badge power">UPS</span>
           <span class="skill-badge power">MPPT</span>
         </div>
       </div>
       
-      <div class="skill-card-hover">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Simulation & Design Tools</h3>
-        <div>
+      <div class="skill-card-hover" style="text-align: left;">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Simulation & Design Tools</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge simulation">MATLAB/Simulink</span>
           <span class="skill-badge simulation">Cadence Virtuoso</span>
           <span class="skill-badge simulation">Proteus</span>
         </div>
       </div>
       
-      <div class="skill-card-hover">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Software & Programming</h3>
-        <div>
+      <div class="skill-card-hover" style="text-align: left;">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Software & Programming</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge software">Flask</span>
           <span class="skill-badge software">PyCharm</span>
           <span class="skill-badge software">Jupyter Notebook</span>
         </div>
       </div>
       
-      <div class="skill-card-hover" style="margin-bottom: 0;">
-        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1.2rem; font-size: 1.4rem;">Deployment & Tools</h3>
-        <div>
+      <div class="skill-card-hover" style="text-align: left; margin-bottom: 0;">
+        <h3 style="color: var(--primary-color); font-weight: 700; margin-bottom: 1rem; font-size: 1.3rem;">Deployment & Tools</h3>
+        <div style="display: flex; flex-wrap: wrap; gap: 0.5rem;">
           <span class="skill-badge deployment">Render</span>
           <span class="skill-badge deployment">Git/GitHub</span>
         </div>
@@ -1130,7 +1198,7 @@
       <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
       <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
     </div>
-    <p class="footer__copyright">© 2025 itanveer.tech | <a href="https://itanveer.me" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by itanveer.me</a></p>
+    <p class="footer__copyright">© 2026 itanveer.tech | <a href="https://itanveer.me" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">by itanveer.me</a></p>
   </div>
 </footer>
 

@@ -560,6 +560,15 @@
             transform: scale(1);
         }
         
+        /* Project Overview Grid */
+        .project-overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 3rem;
+            align-items: center;
+            margin-top: 3rem;
+        }
+        
         /* Mobile Responsiveness */
         @media screen and (max-width: 768px) {
             .project-hero__title {
@@ -596,6 +605,12 @@
             
             .achievement-number {
                 font-size: 3rem;
+            }
+
+            /* Single column layout for mobile - abstract first, then image */
+            .project-overview-grid {
+                grid-template-columns: 1fr;
+                gap: 2rem;
             }
         }
     </style>
@@ -689,7 +704,7 @@
                 </div>
                 
                 <div class="project-content">
-                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 3rem; align-items: center; margin-top: 3rem;">
+                    <div class="project-overview-grid">
                         <div class="animate-slide-right">
                             <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
                             <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">

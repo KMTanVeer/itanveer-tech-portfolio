@@ -374,7 +374,7 @@
         <div class="footer__container bd-grid">
             <div class="footer__content">
                 <h3 class="footer__brand">itanveer.tech</h3>
-                <p class="footer__tagline">in IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
+                <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
             </div>
             <div class="footer__links">
                 <a href="https://www.linkedin.com/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
@@ -427,12 +427,31 @@
             padding-bottom: 1.5rem;
         }
         
-        /* Enhanced resources header with proper spacing */
+        /* Enhanced resources header with proper spacing - Project Page Style */
         .resources-header {
             padding: 6rem 0 3rem !important; /* More space from navbar, balanced bottom */
             text-align: center;
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
             color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .resources-header::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
         
         .resources-header__title {
@@ -442,6 +461,8 @@
             transform: translateY(30px);
             opacity: 0;
             transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
+            position: relative;
+            z-index: 2;
         }
         
         .resources-header__title.active {
@@ -452,6 +473,8 @@
         .resources-header__subtitle {
             font-size: 1.2rem;
             opacity: 0.9;
+            position: relative;
+            z-index: 2;
         }
         
         /* Smooth reveal animations */

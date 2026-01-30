@@ -96,6 +96,7 @@ img {
 
 html {
   scroll-behavior: smooth;
+  overflow-x: hidden;
 }
 
 body {
@@ -1618,7 +1619,7 @@ img {
 
 .resources-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 2rem;
   margin-bottom: var(--mb-6);
 }
@@ -1688,7 +1689,7 @@ img {
 
 .courses-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 2rem;
   margin-bottom: var(--mb-6);
 }
@@ -1766,7 +1767,7 @@ img {
 
 .tools-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 2rem;
   margin-bottom: var(--mb-6);
 }
@@ -1822,7 +1823,7 @@ img {
 
 .download-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
   gap: 2rem;
   margin-bottom: 2rem;
 }
@@ -2108,7 +2109,7 @@ img {
 
 .quick-links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(min(100%, 250px), 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 200px), 1fr));
   gap: 2rem;
   margin-top: 2rem;
 }
@@ -2161,7 +2162,7 @@ img {
   
   .social-links {
     justify-content: center;
-    max-width: 280px;
+    max-width: 350px;
     margin: 2rem auto 0;
   }
   
@@ -2865,7 +2866,7 @@ pre code {
   }
   
   .social-links {
-    max-width: 250px;
+    max-width: 100%;
     gap: 0.8rem;
   }
   
@@ -2873,6 +2874,10 @@ pre code {
     width: 40px;
     height: 40px;
     font-size: 1rem;
+  }
+  
+  .contact-form-wrapper {
+    padding: 1.5rem;
   }
   
   .resources-grid,

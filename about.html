@@ -760,6 +760,59 @@
     transform: scale(1.05);
     box-shadow: 0 8px 35px rgba(79, 70, 229, 0.35);
   }
+  
+  /* About Hero Section */
+  .about-hero {
+    background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
+    padding: 6rem 0 4rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--header-height);
+  }
+  
+  .about-hero::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
+    animation: shimmer 3s infinite;
+  }
+  
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+  
+  .about-hero__content {
+    position: relative;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .about-hero__title {
+    font-size: 3.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    line-height: 1.2;
+  }
+  
+  .about-hero__subtitle {
+    font-size: 1.2rem;
+    opacity: 0.9;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+  
+  @media screen and (max-width: 768px) {
+    .about-hero__title {
+      font-size: 2.5rem;
+    }
+  }
   </style>
 </head>
 
@@ -787,9 +840,16 @@
 </header> 
 
 <main class="l-main">
+<!--===== ABOUT HERO =====-->
+<section class="about-hero">
+  <div class="bd-grid about-hero__content">
+    <h1 class="about-hero__title">About Me</h1>
+    <p class="about-hero__subtitle">Tech enthusiast specializing in embedded systems, IoT, and smart grid technologies</p>
+  </div>
+</section>
+
 <!--===== ABOUT ME =====-->
 <section class="about section" id="about">
-  <h2 class="section-title scroll-animate" style="text-align: center;">About Me</h2>
   <div class="about__container bd-grid scroll-animate" style="max-width: 1200px; margin: 0 auto;">
     <!-- Profile Photo -->
     <div class="about__img" style="text-align: center;">

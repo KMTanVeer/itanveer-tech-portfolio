@@ -22,6 +22,91 @@
   <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
+  
+  <style>
+  /* Blog Post Header - Project Page Style */
+  .blog-post-header {
+    background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
+    padding: 6rem 0 3rem;
+    color: white;
+    position: relative;
+    overflow: hidden;
+    margin-top: var(--header-height);
+  }
+
+  .blog-post-header::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background: 
+      linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
+    animation: shimmer 3s infinite;
+  }
+
+  @keyframes shimmer {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .blog-post-header .bd-grid {
+    position: relative;
+    z-index: 2;
+  }
+
+  .blog-post-title {
+    font-size: 2.5rem;
+    font-weight: 700;
+    margin-bottom: 1rem;
+    color: white;
+  }
+
+  .blog-post-subtitle {
+    font-size: 1.1rem;
+    opacity: 0.9;
+    margin-bottom: 2rem;
+    color: white;
+  }
+
+  .blog-post-meta {
+    display: flex;
+    gap: 1.5rem;
+    margin-bottom: 2rem;
+    flex-wrap: wrap;
+  }
+
+  .blog-post-category,
+  .blog-post-date,
+  .blog-post-read-time {
+    background: rgba(255, 255, 255, 0.1);
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    backdrop-filter: blur(10px);
+    color: white;
+  }
+
+  .breadcrumb {
+    margin-bottom: 1.5rem;
+    color: rgba(255, 255, 255, 0.8);
+  }
+
+  .breadcrumb a {
+    color: white;
+    text-decoration: none;
+  }
+
+  .breadcrumb a:hover {
+    text-decoration: underline;
+  }
+
+  @media screen and (max-width: 768px) {
+    .blog-post-title {
+      font-size: 2rem;
+    }
+  }
+  </style>
 </head>
 
 <body>
@@ -795,7 +880,7 @@ void efficientUpdate() {
         <div class="footer__container bd-grid">
             <div class="footer__content">
                 <h3 class="footer__brand">itanveer.tech</h3>
-                <p class="footer__tagline">in IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
+                <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
             </div>
             <div class="footer__links">
                 <a href="https://www.linkedin.com/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>

@@ -20,13 +20,32 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
     
     <style>
-        /* Blog Hero Section */
+        /* Blog Hero Section - Project Page Style */
         .blog-hero {
-            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
             padding: 4rem 0 2rem;
             color: white;
             text-align: center;
             margin-top: var(--header-height);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .blog-hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
+            animation: shimmer 3s infinite;
+        }
+        
+        @keyframes shimmer {
+            0% { transform: translateX(-100%); }
+            100% { transform: translateX(100%); }
         }
 
         .blog-hero h1 {
@@ -34,6 +53,8 @@
             color: white;
             margin-bottom: 1rem;
             font-weight: 700;
+            position: relative;
+            z-index: 2;
         }
 
         .blog-hero p {
@@ -41,6 +62,8 @@
             opacity: 0.9;
             max-width: 600px;
             margin: 0 auto;
+            position: relative;
+            z-index: 2;
         }
 
         /* Category Filter Icons */
@@ -69,8 +92,8 @@
         }
 
         .filter-icon.active {
-            background: linear-gradient(135deg, var(--first-color), #667eea);
-            border-color: var(--first-color);
+            background: linear-gradient(135deg, var(--primary-blue), var(--secondary-teal));
+            border-color: var(--primary-blue);
             transform: scale(1.1);
         }
 
@@ -86,7 +109,7 @@
 
         .filter-icon:hover {
             transform: scale(1.05);
-            border-color: var(--first-color);
+            border-color: var(--primary-blue);
         }
 
         .filter-icon::before {
@@ -680,7 +703,7 @@
         <div class="footer__container bd-grid">
             <div class="footer__content">
                 <h3 class="footer__brand">itanveer.tech</h3>
-                <p class="footer__tagline">in IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
+                <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
             </div>
             <div class="footer__links">
                 <a href="https://www.linkedin.com/kawsartanveer/" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>

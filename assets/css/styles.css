@@ -594,9 +594,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .links-grid {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(260px, 380px));
+  grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
   gap: 1.5rem;
-  justify-content: center;
 }
 
 .link-card {

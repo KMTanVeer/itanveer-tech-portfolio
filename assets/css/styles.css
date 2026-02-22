@@ -1904,12 +1904,6 @@ body.menu-open::after {
 .components-grid .component-item span { font-size: .8rem; color: var(--color-text-muted); }
 
 /* Hero profile image frame */
-.home__blob-frame {
-  position: relative;
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-}
 .home__blob-ring {
   position: absolute;
   border-radius: 50%;

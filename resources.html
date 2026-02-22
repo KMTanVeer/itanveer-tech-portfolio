@@ -60,38 +60,53 @@
 </head>
 
 <body>
-    <!--===== HEADER =====-->
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="index.html" class="nav__logo">itanveer.tech</a>
-            </div>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
-                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
-                    <li class="nav__item"><a href="resources.html" class="nav__link active-link">Resources</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
+  <!--===== HEADER =====-->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <a href="index.html" class="nav__logo">itanveer<span>.tech</span></a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+          <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+          <li class="nav__item"><a href="resources.html" class="nav__link active-link">Resources</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </div>
+    </nav>
+  </header>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
-        </nav>
-    </header>
-
-    <main class="l-main">
-        <!--===== RESOURCES HEADER =====-->
-        <section class="resources-header reveal">
-            <div class="bd-grid">
-                <h1 class="resources-header__title reveal-scale">Learning Resources</h1>
-                <p class="resources-header__subtitle reveal-fade-in">Curated materials, tutorials, and references for tech enthusiasts</p>
-            </div>
-        </section>
+  <main class="l-main" id="main">
+    <!--===== RESOURCES HERO =====-->
+    <section class="page-hero">
+      <div class="bd-grid page-hero__content">
+        <h1 class="page-hero__title">Learning Resources</h1>
+        <p class="page-hero__subtitle">Curated materials, tutorials, and references for tech enthusiasts</p>
+        <div class="page-hero__stats">
+          <div class="stat-item">
+            <i class="fas fa-microchip"></i>
+            <span class="stat-number">Arduino</span>
+            <span class="stat-label">Embedded Systems</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-wifi"></i>
+            <span class="stat-number">IoT</span>
+            <span class="stat-label">Wireless Comms</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-bolt"></i>
+            <span class="stat-number">Power</span>
+            <span class="stat-label">Smart Grid</span>
+          </div>
+        </div>
+      </div>
+    </section>
 
         <!--===== ARDUINO RESOURCES =====-->
         <section class="resource-category section-compact reveal-left">
@@ -410,181 +425,18 @@
         <div class="footer__container bd-grid">
             <div class="footer__content">
                 <h3 class="footer__brand">itanveer.tech</h3>
-                <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
+                <p class="footer__tagline">IoT &bull; Embedded Systems &bull; PLC &bull; Electronics &bull; Electrical Engineering</p>
             </div>
             <div class="footer__links">
-                <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class='bx bxl-github'></i></a>
-                <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
-                <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
+                <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+                <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i></a>
+                <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter/X" rel="noopener noreferrer" target="_blank"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class="fas fa-globe"></i></a>
             </div>
-            <p class="footer__copyright">© 2026 itanveer.tech | by <a href="https://itanveer.me/" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">itanveer.me</a></p>
+            <p class="footer__copyright">&copy; 2026 itanveer.tech &bull; by <a href="https://itanveer.me/" rel="author" style="color:rgba(255,255,255,.6)">itanveer.me</a></p>
         </div>
     </footer>
 
-    <!--===== SCROLL REVEAL =====-->
-    <script src="https://unpkg.com/scrollreveal"></script>
-
-    <!--===== MAIN JS =====-->
     <script src="assets/js/main.js"></script>
-
-    <!-- Scroll Reveal Animation Script -->
-    <script>
-        // Scroll Reveal Animation
-        function scrollReveal() {
-            const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale, .reveal-fade-in');
-            
-            reveals.forEach(element => {
-                const windowHeight = window.innerHeight;
-                const elementTop = element.getBoundingClientRect().top;
-                const elementVisible = 150;
-                
-                if (elementTop < windowHeight - elementVisible && !element.classList.contains('active')) {
-                    element.classList.add('active');
-                }
-            });
-        }
-
-        // Initial scroll reveal check and scroll event listener
-        window.addEventListener('load', () => {
-            scrollReveal();
-            // Trigger header animations on load
-            setTimeout(() => {
-                document.querySelector('.resources-header__title').classList.add('active');
-            }, 200);
-        });
-        window.addEventListener('scroll', scrollReveal);
-    </script>
-
-    <style>
-        /* Compact section spacing for better flow */
-        .section-compact {
-            padding-top: 1.5rem;
-            padding-bottom: 1.5rem;
-        }
-        
-        /* Enhanced resources header with proper spacing - Project Page Style */
-        .resources-header {
-            padding: 6rem 0 3rem !important; /* More space from navbar, balanced bottom */
-            text-align: center;
-            background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
-            color: white;
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .resources-header::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: 
-                linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
-            animation: shimmer 3s infinite;
-        }
-        
-        @keyframes shimmer {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-        
-        .resources-header__title {
-            font-size: 3rem;
-            font-weight: 700;
-            margin-bottom: 1rem;
-            transform: translateY(30px);
-            opacity: 0;
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1);
-            position: relative;
-            z-index: 2;
-        }
-        
-        .resources-header__title.active {
-            transform: translateY(0);
-            opacity: 1;
-        }
-        
-        .resources-header__subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
-            position: relative;
-            z-index: 2;
-        }
-        
-        /* Smooth reveal animations */
-        .reveal {
-            opacity: 0;
-            transform: translateY(60px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-
-        .reveal-left {
-            opacity: 0;
-            transform: translateX(-60px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-left.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-right {
-            opacity: 0;
-            transform: translateX(60px);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-right.active {
-            opacity: 1;
-            transform: translateX(0);
-        }
-
-        .reveal-scale {
-            opacity: 0;
-            transform: scale(0.9);
-            transition: all 0.8s cubic-bezier(0.4, 0, 0.2, 1);
-        }
-
-        .reveal-scale.active {
-            opacity: 1;
-            transform: scale(1);
-        }
-        
-        .reveal-fade-in {
-            opacity: 0;
-            transform: translateY(20px);
-            transition: all 1s cubic-bezier(0.4, 0, 0.2, 1) 0.3s; /* Delay for staggered effect */
-        }
-
-        .reveal-fade-in.active {
-            opacity: 1;
-            transform: translateY(0);
-        }
-        
-        /* Responsive adjustments */
-        @media screen and (max-width: 768px) {
-            .resources-header {
-                padding: 5rem 0 2.5rem !important;
-            }
-            
-            .resources-header__title {
-                font-size: 2rem;
-            }
-            
-            .section-compact {
-                padding-top: 1rem;
-                padding-bottom: 1rem;
-            }
-        }
-    </style>
-    </style>
 </body>
 </html>

@@ -63,14 +63,14 @@
     <style>
         /* Project Page Specific Styles - Dark Theme */
         :root {
-            --primary-color: #7F55B1;
-            --primary-dark: #7F55B1;
-            --secondary-color: #E8DFF1;
-            --accent-color: #F49BAB;
-            --dark-bg: #FFE1E0;
-            --card-bg: #E8DFF1;
-            --text-primary: #000000;
-            --text-secondary: #000000;
+            --primary-color: #2563EB;
+            --primary-dark: #1D4ED8;
+            --secondary-color: #F1F5F9;
+            --accent-color: #C8973A;
+            --dark-bg: #F8FAFC;
+            --card-bg: #FFFFFF;
+            --text-primary: #0F172A;
+            --text-secondary: #475569;
         }
 
         body {
@@ -79,9 +79,9 @@
         }
 
         .project-hero {
-            background: var(--dark-bg);
-            padding: 8rem 2rem 6rem;
-            color: var(--text-primary);
+            background: #0F172A;
+            padding: 5rem 2rem 3rem;
+            color: #ffffff;
             position: relative;
             overflow: hidden;
             border-bottom: none;
@@ -94,7 +94,7 @@
             left: 0;
             right: 0;
             bottom: 0;
-            background: rgba(127, 85, 177, 0.08);
+            background: rgba(37, 99, 235, 0.08);
             animation: gradientShift 15s ease infinite;
         }
         
@@ -113,7 +113,7 @@
             font-weight: 800;
             margin-bottom: 1rem;
             line-height: 1.2;
-            color: #000000;
+            color: #ffffff;
             letter-spacing: -0.5px;
             animation: fadeInDown 0.8s ease-out;
         }
@@ -134,7 +134,7 @@
             opacity: 0.9;
             margin-bottom: 2rem;
             max-width: 900px;
-            color: #000000;
+            color: rgba(255,255,255,0.8);
             animation: fadeInUp 0.8s ease-out 0.2s both;
         }
 
@@ -160,15 +160,15 @@
             display: flex;
             align-items: center;
             gap: 0.5rem;
-            background: #ffffff;
+            background: rgba(255,255,255,0.15);
             padding: 0.75rem 1.4rem;
             border-radius: 999px;
-            border: 1px solid rgba(127, 85, 177, 0.2);
-            color: #000000;
+            border: 1px solid rgba(255,255,255,0.25);
+            color: rgba(255,255,255,0.9);
         }
 
         .meta-item i {
-            color: #7F55B1;
+            color: #E5B85C;
         }
         
         .project-nav {
@@ -212,7 +212,7 @@
         }
         
         .nav-link:hover, .nav-link.active {
-            background: var(--primary-color);
+            background: #2563EB;
             color: #ffffff;
             transform: translateY(-2px);
         }
@@ -222,7 +222,7 @@
         }
         
         .project-section:nth-child(even) {
-            background: rgba(30, 41, 59, 0.4);
+            background: #F1F5F9;
         }
         
         .section-header {
@@ -251,11 +251,11 @@
         }
         
         .feature-card {
-            background: var(--card-bg);
+            background: #FFFFFF;
             padding: 2rem;
             border-radius: 15px;
-            border: 2px solid rgba(59, 130, 246, 0.2);
-            box-shadow: 0 5px 30px rgba(0,0,0,0.3);
+            border: 1px solid #E2E8F0;
+            box-shadow: 0 2px 8px rgba(15,23,42,0.08);
             text-align: center;
             transition: all 0.4s cubic-bezier(0.34, 1.56, 0.64, 1);
             position: relative;
@@ -287,7 +287,7 @@
         .feature-icon {
             width: 80px;
             height: 80px;
-            background: var(--primary-color);
+            background: #2563EB;
             border-radius: 50%;
             display: flex;
             align-items: center;
@@ -295,7 +295,7 @@
             margin: 0 auto 1.5rem;
             font-size: 2rem;
             color: white;
-            box-shadow: 0 8px 20px rgba(59, 130, 246, 0.3);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.25);
         }
         
         .feature-title {
@@ -318,10 +318,10 @@
         }
         
         .hardware-item {
-            background: rgba(30, 41, 59, 0.6);
+            background: #F8FAFC;
             padding: 1.5rem;
             border-radius: 10px;
-            border: 2px solid rgba(59, 130, 246, 0.2);
+            border: 2px solid rgba(37, 99, 235, 0.15);
             border-left: 4px solid var(--primary-color);
             box-shadow: 0 3px 15px rgba(0,0,0,0.2);
             transition: all 0.3s ease;
@@ -335,7 +335,7 @@
         
         .hardware-name {
             font-weight: 600;
-            color: var(--primary-color);
+            color: #2563EB;
             margin-bottom: 0.5rem;
         }
         
@@ -422,15 +422,15 @@
         
         .project-image-caption {
             padding: 1rem;
-            background: rgba(30, 41, 59, 0.6);
-            border-top: 1px solid rgba(59, 130, 246, 0.2);
+            background: rgba(15, 23, 42, 0.65);
+            border-top: 1px solid rgba(255,255,255,0.1);
             font-size: 0.9rem;
-            color: var(--text-secondary);
+            color: rgba(255,255,255,0.8);
             text-align: center;
         }
         
         .achievement-card {
-            background: var(--primary-color);
+            background: #2563EB;
             color: white;
             padding: 3rem;
             border-radius: 20px;
@@ -473,7 +473,7 @@
         }
         
         .cta-section {
-            background: var(--primary-color);
+            background: #0F172A;
             color: white;
             padding: 4rem 2rem;
             text-align: center;
@@ -507,7 +507,7 @@
         
         .cta-button:hover {
             background: white;
-            color: var(--primary-color);
+            color: #0F172A;
             transform: translateY(-2px);
             box-shadow: 0 8px 20px rgba(0,0,0,0.2);
         }
@@ -621,24 +621,20 @@
     <!--===== HEADER =====-->
     <header class="l-header">
         <nav class="nav bd-grid">
-            <div>
-                <a href="index.html" class="nav__logo">itanveer.tech</a>
-            </div>
-
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
-                    <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
-                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
-
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
+      <a href="index.html" class="nav__logo">itanveer<span>.tech</span></a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+          <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+          <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </div>
         </nav>
     </header>
 

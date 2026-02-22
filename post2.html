@@ -26,44 +26,12 @@
     <!-- Favicon -->
     <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-    <!-- CSS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link rel="stylesheet" href="assets/css/styles.css">
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
-    
-    <style>
-        /* Blog Post Layout */
-        .blog-post-wrapper {
-            display: grid;
-            grid-template-columns: 2fr 1fr;
-            gap: 3rem;
-            max-width: 1200px;
-            margin: 0 auto;
-        }
-        
-        .blog-article {
-            min-width: 0; /* Prevents overflow issues */
-        }
-        
-        .blog-sidebar {
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-        }
-        
-        /* Mobile responsiveness */
-        @media screen and (max-width: 968px) {
-            .blog-post-wrapper {
-                grid-template-columns: 1fr;
-                gap: 2rem;
-            }
-            
-            .blog-sidebar {
-                position: static;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
   <!-- Google AdSense -->
   <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7600105987455186"
      crossorigin="anonymous"></script>
@@ -71,108 +39,76 @@
 </head>
 
 <body>
-    <!--===== HEADER =====-->
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="index.html" class="nav__logo">itanveer.tech</a>
-            </div>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
-                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
-                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
+  <!-- HEADER -->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <a href="index.html" class="nav__logo">itanveer<span>.tech</span></a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
+          <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+          <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </div>
+    </nav>
+  </header>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
+  <main class="l-main" id="main">
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div class="bd-grid post-hero__content">
+        <nav class="post-hero__breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right"></i>
+          <a href="blog.html">Blog</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>ESP32 WiFi Guide</span>
         </nav>
-    </header>
+        <div class="post-hero__category"><i class="fas fa-wifi"></i> ESP32 &amp; IoT</div>
+        <h1 class="post-hero__title">ESP32 WiFi Setup Quick Guide</h1>
+        <div class="post-hero__meta">
+          <span><i class="fas fa-calendar-alt"></i> August 8, 2025</span>
+          <span><i class="fas fa-clock"></i> 7 min read</span>
+          <span><i class="fas fa-user"></i> Kawsar Mahmud Tanveer Khan</span>
+        </div>
+      </div>
+    </section>
 
-    <main class="l-main">
-        <!--===== BLOG POST HEADER =====-->
-        <section class="blog-post-header section">
-            <div class="bd-grid">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a> > <a href="blog.html">Blog</a> > <span>ESP32 WiFi Guide</span>
-                </div>
-                
-                <div class="blog-post-meta">
-                    <span class="blog-post-category">ESP32 & IoT</span>
-                    <span class="blog-post-date">August 8, 2025</span>
-                    <span class="blog-post-read-time">7 min read</span>
-                </div>
-                
-                <h1 class="blog-post-title">ESP32 WiFi Setup Quick Guide</h1>
-                <p class="blog-post-subtitle">Master ESP32 WiFi connectivity with this comprehensive guide. From basic setup to advanced configurations for IoT projects.</p>
-                
-                <div class="blog-post-author">
-                    <img src="assets/img/perfil.png" alt="Kawsar Mahmud Tanveer Khan" class="author-avatar">
-                    <div class="author-info">
-                        <span class="author-name">Kawsar Mahmud Tanveer Khan</span>
-                        <span class="author-title">Tech Enthusiast & Explorer</span>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!--===== BLOG POST CONTENT =====-->
-        <section class="blog-post-content section">
-            <div class="bd-grid">
-                <div class="blog-post-wrapper">
-                    <article class="blog-article">
-                        <div class="featured-image">
-                            <img src="assets/img/esp32.jpg" alt="ESP32 WiFi Setup" onerror="this.src='assets/img/esp32-board.jpg'">
-                            <p class="image-caption">ESP32 development board with built-in WiFi capabilities</p>
-                        </div>
-
-                        <div class="article-content">
+    <!-- POST BODY -->
+    <section class="blog-post-layout">
+      <div class="bd-grid">
+        <div class="blog-post-wrapper">
+          <article class="blog-article">
+            <div class="article-body">
+              <img src="assets/img/esp32.jpg" alt="ESP32 development board with built-in WiFi" loading="eager" style="width:100%; margin-bottom:1.5rem;">
                             <h2>Introduction</h2>
                             <p>The ESP32 is a powerful microcontroller with built-in WiFi and Bluetooth capabilities, making it perfect for IoT projects. In this comprehensive guide, I'll show you how to set up WiFi connectivity on your ESP32 and explore various configuration options for robust wireless communication.</p>
 
                             <p>Whether you're building a simple sensor node or a complex IoT system, understanding ESP32 WiFi connectivity is essential for creating reliable wireless applications.</p>
 
-                            <div class="info-box">
-                                <i class='bx bx-info-circle'></i>
-                                <div>
-                                    <h4>What You'll Learn</h4>
-                                    <p>By the end of this guide, you'll master ESP32 WiFi connection methods, understand different WiFi modes, and implement robust connection handling for your IoT projects.</p>
-                                </div>
-                            </div>
+              <div class="notice-box">
+                <strong><i class="fas fa-info-circle"></i> What You'll Learn:</strong>
+                By the end of this guide, you'll master ESP32 WiFi connection methods, understand different WiFi modes, and implement robust connection handling for your IoT projects.
+              </div>
 
                             <h2>Prerequisites</h2>
-                            <div class="components-grid">
-                                <div class="component-item">
-                                    <strong>ESP32 Development Board</strong>
-                                    <span>Any ESP32 variant with WiFi</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>Arduino IDE</strong>
-                                    <span>With ESP32 board package</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>USB Cable</strong>
-                                    <span>For programming and power</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>WiFi Network</strong>
-                                    <span>2.4GHz network credentials</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>WiFi Library</strong>
-                                    <span>Built-in ESP32 WiFi library</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>Serial Monitor</strong>
-                                    <span>For debugging output</span>
-                                </div>
-                            </div>
+              <ul>
+                <li><strong>ESP32 Development Board</strong> – Any ESP32 variant with WiFi</li>
+                <li><strong>Arduino IDE</strong> – With ESP32 board package installed</li>
+                <li><strong>USB Cable</strong> – For programming and power</li>
+                <li><strong>WiFi Network</strong> – 2.4GHz network credentials</li>
+                <li><strong>WiFi Library</strong> – Built-in ESP32 WiFi library</li>
+                <li><strong>Serial Monitor</strong> – For debugging output</li>
+              </ul>
 
                             <h2>Basic WiFi Connection</h2>
                             <p>Let's start with a simple WiFi connection example that demonstrates the fundamental concepts:</p>
@@ -262,53 +198,28 @@ WiFi.begin(ssid, password);
 WiFi.softAP("ESP32_Hotspot", "password123");</code></pre>
 
                             <h2>Useful WiFi Functions</h2>
-                            <div class="results-table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Function</th>
-                                            <th>Description</th>
-                                            <th>Return Type</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>WiFi.localIP()</td>
-                                            <td>Get assigned IP address</td>
-                                            <td>IPAddress</td>
-                                        </tr>
-                                        <tr>
-                                            <td>WiFi.RSSI()</td>
-                                            <td>Get signal strength in dBm</td>
-                                            <td>int32_t</td>
-                                        </tr>
-                                        <tr>
-                                            <td>WiFi.macAddress()</td>
-                                            <td>Get MAC address</td>
-                                            <td>String</td>
-                                        </tr>
-                                        <tr>
-                                            <td>WiFi.disconnect()</td>
-                                            <td>Disconnect from network</td>
-                                            <td>bool</td>
-                                        </tr>
-                                        <tr>
-                                            <td>WiFi.scanNetworks()</td>
-                                            <td>Scan for available networks</td>
-                                            <td>int</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+              <table style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:.9rem;">
+                <thead>
+                  <tr style="background:var(--color-bg-alt);">
+                    <th style="padding:.75rem 1rem; text-align:left; border:1px solid var(--color-border);">Function</th>
+                    <th style="padding:.75rem 1rem; text-align:left; border:1px solid var(--color-border);">Description</th>
+                    <th style="padding:.75rem 1rem; text-align:left; border:1px solid var(--color-border);">Return</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">WiFi.localIP()</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Get assigned IP address</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">IPAddress</td></tr>
+                  <tr style="background:var(--color-bg-alt);"><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">WiFi.RSSI()</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Get signal strength in dBm</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">int32_t</td></tr>
+                  <tr><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">WiFi.macAddress()</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Get MAC address</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">String</td></tr>
+                  <tr style="background:var(--color-bg-alt);"><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">WiFi.disconnect()</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Disconnect from network</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">bool</td></tr>
+                  <tr><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">WiFi.scanNetworks()</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Scan for available networks</td><td style="padding:.75rem 1rem; border:1px solid var(--color-border);">int</td></tr>
+                </tbody>
+              </table>
 
                             <h2>Troubleshooting</h2>
-                            <div class="warning-box">
-                                <i class='bx bx-error'></i>
-                                <div>
-                                    <h4>Common Issues</h4>
-                                    <p>Here are the most common WiFi connection problems and their solutions:</p>
-                                </div>
-                            </div>
+              <div class="notice-box">
+                <strong><i class="fas fa-exclamation-triangle"></i> Common Issues:</strong>
+                Here are the most common WiFi connection problems and their solutions:
+              </div>
 
                             <ul>
                                 <li><strong>Connection fails:</strong> Double-check SSID and password spelling, ensure 2.4GHz network</li>
@@ -343,105 +254,76 @@ WiFi.softAP("ESP32_Hotspot", "password123");</code></pre>
 
                             <p>Remember to always implement connection monitoring and reconnection logic for production applications. The ESP32's built-in WiFi capabilities combined with proper programming practices will ensure your IoT projects are both reliable and efficient.</p>
 
-                            <div class="project-links">
-                                <a href="https://github.com/KMTanVeer/esp32-wifi-guide" class="project-link" target="_blank">
-                                    <i class='bx bxl-github'></i>
-                                    View on GitHub
-                                </a>
-                                <a href="projects.html" class="project-link">
-                                    <i class='bx bx-info-circle'></i>
-                                    More Projects
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <aside class="blog-sidebar">
-                        <div class="sidebar-widget">
-                            <h3>Related Posts</h3>
-                            <div class="related-posts">
-                                <a href="post1.html" class="related-post">
-                                    <img src="assets/img/arduino-lcd.jpg" alt="Arduino LED Matrix">
-                                    <div>
-                                        <h4>Arduino LED Matrix Display Project</h4>
-                                        <span>August 9, 2025</span>
-                                    </div>
-                                </a>
-                                <a href="post3.html" class="related-post">
-                                    <img src="assets/img/multimeter-digital.jpg" alt="Arduino Multimeter">
-                                    <div>
-                                        <h4>Building an Arduino-Based Digital Multimeter</h4>
-                                        <span>January 15, 2025</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-widget">
-                            <h3>Tags</h3>
-                            <div class="tag-cloud">
-                                <span class="tag">ESP32</span>
-                                <span class="tag">WiFi</span>
-                                <span class="tag">IoT</span>
-                                <span class="tag">Wireless</span>
-                                <span class="tag">Arduino IDE</span>
-                                <span class="tag">Microcontroller</span>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-widget">
-                            <h3>Share This Post</h3>
-                            <div class="share-buttons">
-                                <a href="#" class="share-button twitter">
-                                    <i class='bx bxl-twitter'></i>
-                                </a>
-                                <a href="#" class="share-button facebook">
-                                    <i class='bx bxl-facebook'></i>
-                                </a>
-                                <a href="#" class="share-button linkedin">
-                                    <i class='bx bxl-linkedin'></i>
-                                </a>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
+              <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;">
+                <a href="https://github.com/KMTanVeer/esp32-wifi-guide" class="button" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View on GitHub</a>
+                <a href="projects.html" class="button button-outline"><i class="fas fa-th-large"></i> More Projects</a>
+              </div>
             </div>
-        </section>
+          </article>
 
-        <!--===== COMMENTS SECTION =====-->
-        <section class="comments-section section">
-            <div class="bd-grid">
-                <h2 class="section-title">Comments & Discussion</h2>
-                <p class="comments-notice">
-                    Have questions about ESP32 WiFi connectivity? Share your thoughts below or 
-                    <a href="contact.html">contact me directly</a> for technical discussions.
-                </p>
-                
-                <div class="comment-placeholder">
-                    <p>Comments system will be integrated here. For now, feel free to reach out via the contact form!</p>
-                </div>
+          <aside class="blog-sidebar">
+            <div class="sidebar-widget">
+              <h3 class="sidebar-widget__title"><i class="fas fa-newspaper"></i> Related Posts</h3>
+              <div class="related-posts">
+                <a href="post1.html" class="related-post">
+                  <img src="assets/img/arduino-lcd.jpg" alt="Arduino LED Matrix" loading="lazy">
+                  <div>
+                    <p class="related-post__text">Arduino LED Matrix Display Project</p>
+                    <p class="related-post__meta"><i class="fas fa-calendar-alt"></i> Aug 9, 2025</p>
+                  </div>
+                </a>
+                <a href="post3.html" class="related-post">
+                  <img src="assets/img/multimeter-digital.jpg" alt="Arduino Multimeter" loading="lazy">
+                  <div>
+                    <p class="related-post__text">Building an Arduino-Based Digital Multimeter</p>
+                    <p class="related-post__meta"><i class="fas fa-calendar-alt"></i> Jan 15, 2025</p>
+                  </div>
+                </a>
+              </div>
             </div>
-        </section>
-    </main>
+            <div class="sidebar-widget">
+              <h3 class="sidebar-widget__title"><i class="fas fa-tags"></i> Tags</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:.4rem;">
+                <span class="tag">ESP32</span>
+                <span class="tag">WiFi</span>
+                <span class="tag">IoT</span>
+                <span class="tag">Wireless</span>
+                <span class="tag">Arduino IDE</span>
+              </div>
+            </div>
+            <div class="sidebar-widget">
+              <h3 class="sidebar-widget__title"><i class="fas fa-share-alt"></i> Share</h3>
+              <div style="display:flex; gap:.6rem;">
+                <a href="https://twitter.com/intent/tweet?url=https://itanveer.tech/post2.html" class="social-link" target="_blank" rel="noopener noreferrer" title="Share on Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://itanveer.tech/post2.html" class="social-link" target="_blank" rel="noopener noreferrer" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/shareArticle?url=https://itanveer.tech/post2.html" class="social-link" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </aside>
 
-    <!--===== FOOTER =====-->
-    <footer class="footer">
-        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
-        <div class="footer__social">
-            <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
-            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
         </div>
-        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
-    </footer>
+      </div>
+    </section>
+  </main>
 
-    <!--===== SCROLL REVEAL =====-->
-    <script src="https://unpkg.com/scrollreveal"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__container bd-grid">
+      <div class="footer__content">
+        <h3 class="footer__brand">itanveer.tech</h3>
+        <p class="footer__tagline">IoT &bull; Embedded Systems &bull; PLC &bull; Electronics &bull; Electrical Engineering</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter/X" rel="noopener noreferrer" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>
+      <p class="footer__copyright">&copy; 2026 itanveer.tech &bull; by <a href="https://itanveer.me/" rel="author" style="color:rgba(255,255,255,.6)">itanveer.me</a></p>
+    </div>
+  </footer>
 
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/main.js"></script>
+  <script src="assets/js/main.js"></script>
     
     <!--===== SYNTAX HIGHLIGHTING =====-->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>

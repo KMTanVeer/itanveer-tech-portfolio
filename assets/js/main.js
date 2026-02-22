@@ -10,6 +10,11 @@
       toggle.classList.toggle('active', open);
       body.classList.toggle('menu-open', open);
       toggle.setAttribute('aria-expanded', open);
+      const icon = toggle.querySelector('i');
+      if (icon) {
+        icon.classList.toggle('fa-bars', !open);
+        icon.classList.toggle('fa-xmark', open);
+      }
     });
 
     toggle.addEventListener('keydown', e => {
@@ -23,6 +28,11 @@
       menu && menu.classList.remove('show');
       toggle && toggle.classList.remove('active');
       body.classList.remove('menu-open');
+      const icon = toggle && toggle.querySelector('i');
+      if (icon) {
+        icon.classList.add('fa-bars');
+        icon.classList.remove('fa-xmark');
+      }
     });
   });
 })();

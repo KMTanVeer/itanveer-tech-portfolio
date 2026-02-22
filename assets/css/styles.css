@@ -78,6 +78,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-font-smoothing: antialiased;
+  overflow-x: hidden;
 }
 
 body {
@@ -429,8 +430,8 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   z-index: 1;
 }
 
-.home__blob path:first-of-type { fill: var(--color-blue-l); opacity: .15; }
-.home__blob path:last-of-type { fill: var(--color-accent); opacity: .1; }
+.home__blob g > path:first-of-type { fill: var(--color-blue-l); opacity: .15; }
+.home__blob g > path:last-of-type { fill: var(--color-accent); opacity: .1; }
 
 .home__blob-img { clip-path: none; }
 

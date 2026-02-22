@@ -27,6 +27,7 @@
     link.addEventListener('click', () => {
       menu && menu.classList.remove('show');
       toggle && toggle.classList.remove('active');
+      toggle && toggle.setAttribute('aria-expanded', 'false');
       body.classList.remove('menu-open');
       const icon = toggle && toggle.querySelector('i');
       if (icon) {

@@ -150,12 +150,12 @@
 </head>
 
 <body>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
     <!--===== HEADER =====-->
     <header class="l-header">
         <nav class="nav bd-grid">
-            <div>
-                <a href="index.html" class="nav__logo">itanveer.tech</a>
-            </div>
+      <a href="index.html" class="nav__logo">itanveer<span>.tech</span></a>
 
             <div class="nav__menu" id="nav-menu">
                 <ul class="nav__list">
@@ -168,13 +168,13 @@
                 </ul>
             </div>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
+            <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+                <i class="fas fa-bars" aria-hidden="true"></i>
             </div>
         </nav>
     </header>
 
-    <main class="l-main">
+    <main class="l-main" id="main">
         <!--===== BLOG POST HEADER =====-->
         <section class="blog-post-header section">
             <div class="bd-grid">

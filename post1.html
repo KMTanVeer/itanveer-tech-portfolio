@@ -1,198 +1,126 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Arduino LED Matrix Display Project | itanveer.tech</title>
-    <meta name="description" content="Learn how to create stunning LED matrix displays with Arduino. Complete guide with code examples and circuit diagrams for your next project.">
-    <meta name="author" content="Kawsar Mahmud Tanveer Khan">
-    <meta name="keywords" content="Arduino, LED Matrix, MAX7219, Electronics, Display, Programming, DIY Projects">
-    <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Arduino LED Matrix Display Project | itanveer.tech</title>
+  <meta name="description" content="Learn how to create LED matrix displays with Arduino. Complete guide with code examples and circuit diagrams.">
+  <meta name="author" content="Kawsar Mahmud Tanveer Khan">
+  <meta name="robots" content="noindex, nofollow">
 
-    <!-- Open Graph / Facebook -->
-    <meta property="og:type" content="article">
-    <meta property="og:url" content="https://itanveer.tech/post1.html">
-    <meta property="og:title" content="Arduino LED Matrix Display Project | itanveer.tech">
-    <meta property="og:description" content="Learn how to create stunning LED matrix displays with Arduino. Complete guide with code examples and circuit diagrams for your next project.">
-    <meta property="og:image" content="https://itanveer.tech/assets/img/arduino-lcd.jpg">
-    <meta property="og:site_name" content="itanveer.tech">
+  <meta property="og:type" content="article">
+  <meta property="og:url" content="https://itanveer.tech/post1.html">
+  <meta property="og:title" content="Arduino LED Matrix Display Project | itanveer.tech">
+  <meta property="og:description" content="Learn how to create stunning LED matrix displays with Arduino.">
+  <meta property="og:image" content="https://itanveer.tech/assets/img/arduino-lcd.jpg">
 
-    <!-- Twitter Card -->
-    <meta name="twitter:card" content="summary_large_image">
-    <meta name="twitter:title" content="Arduino LED Matrix Display Project">
-    <meta name="twitter:description" content="Complete guide to creating LED matrix displays with Arduino">
-    <meta name="twitter:image" content="https://itanveer.tech/assets/img/arduino-lcd.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Arduino LED Matrix Display Project">
+  <meta name="twitter:image" content="https://itanveer.tech/assets/img/arduino-lcd.jpg">
 
-    <!-- Favicon -->
-    <link rel="shortcut icon" href="favicon.png" type="image/png">
+  <link rel="shortcut icon" href="favicon.png" type="image/png">
 
-    <!-- CSS -->
-    <link rel="stylesheet" href="assets/css/styles.css">
-    <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism.min.css">
-    
-    <style>
-        /* Blog Post Layout - Override main CSS */
-        .blog-post-wrapper {
-            display: grid !important;
-            grid-template-columns: 2fr 350px !important;
-            gap: 3rem !important;
-            max-width: 1200px !important;
-            margin: 0 auto !important;
-        }
-        
-        .blog-article {
-            min-width: 0; /* Prevents overflow issues */
-        }
-        
-        .blog-sidebar {
-            position: sticky !important;
-            top: 100px !important;
-            height: fit-content !important;
-            align-self: start !important;
-        }
-        
-        /* Mobile responsiveness */
-        @media screen and (max-width: 968px) {
-            .blog-post-wrapper {
-                grid-template-columns: 1fr !important;
-                gap: 2rem !important;
-            }
-            
-            .blog-sidebar {
-                position: static !important;
-                order: 2 !important;
-            }
-        }
-    </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7600105987455186"
-     crossorigin="anonymous"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 
+  <link rel="stylesheet" href="assets/css/styles.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/themes/prism-tomorrow.min.css">
+
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7600105987455186" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!--===== HEADER =====-->
-    <header class="l-header">
-        <nav class="nav bd-grid">
-            <div>
-                <a href="index.html" class="nav__logo">itanveer.tech</a>
-            </div>
+  <a href="#main" class="skip-link">Skip to main content</a>
 
-            <div class="nav__menu" id="nav-menu">
-                <ul class="nav__list">
-                    <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-                    <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-                    <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
-                    <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
-                    <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
-                    <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-                </ul>
-            </div>
+  <!-- HEADER -->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <a href="index.html" class="nav__logo">itanveer<span>.tech</span></a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="blog.html" class="nav__link active-link">Blog</a></li>
+          <li class="nav__item"><a href="projects.html" class="nav__link">Projects</a></li>
+          <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </div>
+    </nav>
+  </header>
 
-            <div class="nav__toggle" id="nav-toggle">
-                <i class='bx bx-menu'></i>
-            </div>
+  <main class="l-main" id="main">
+
+    <!-- POST HERO -->
+    <section class="post-hero">
+      <div class="bd-grid post-hero__content">
+        <nav class="post-hero__breadcrumb" aria-label="Breadcrumb">
+          <a href="index.html">Home</a>
+          <i class="fas fa-chevron-right"></i>
+          <a href="blog.html">Blog</a>
+          <i class="fas fa-chevron-right"></i>
+          <span>Arduino LED Matrix</span>
         </nav>
-    </header>
+        <div class="post-hero__category"><i class="fas fa-microchip"></i> Arduino Projects</div>
+        <h1 class="post-hero__title">Arduino LED Matrix Display Project</h1>
+        <div class="post-hero__meta">
+          <span><i class="fas fa-calendar-alt"></i> August 9, 2025</span>
+          <span><i class="fas fa-clock"></i> 5 min read</span>
+          <span><i class="fas fa-user"></i> Kawsar Mahmud Tanveer Khan</span>
+        </div>
+      </div>
+    </section>
 
-    <main class="l-main">
-        <!--===== BLOG POST HEADER =====-->
-        <section class="blog-post-header section">
-            <div class="bd-grid">
-                <div class="breadcrumb">
-                    <a href="index.html">Home</a> > <a href="blog.html">Blog</a> > <span>Arduino LED Matrix</span>
-                </div>
-                
-                <div class="blog-post-meta">
-                    <span class="blog-post-category">Arduino Projects</span>
-                    <span class="blog-post-date">August 9, 2025</span>
-                    <span class="blog-post-read-time">5 min read</span>
-                </div>
-                
-                <h1 class="blog-post-title">Arduino LED Matrix Display Project</h1>
-                <p class="blog-post-subtitle">Learn how to create stunning LED matrix displays with Arduino. Complete guide with code examples and circuit diagrams for your next project.</p>
-                
-                <div class="blog-post-author">
-                    <img src="assets/img/perfil.png" alt="Kawsar Mahmud Tanveer Khan" class="author-avatar">
-                    <div class="author-info">
-                        <span class="author-name">Kawsar Mahmud Tanveer Khan</span>
-                        <span class="author-title">Tech Enthusiast & Explorer</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+    <!-- POST BODY -->
+    <section class="blog-post-layout">
+      <div class="bd-grid">
+        <div class="blog-post-wrapper">
 
-        <!--===== BLOG POST CONTENT =====-->
-        <section class="blog-post-content section">
-            <div class="bd-grid">
-                <div class="blog-post-wrapper">
-                    <article class="blog-article">
-                        <div class="featured-image">
-                            <img src="assets/img/arduino-lcd.jpg" alt="Arduino LED Matrix Project" onerror="this.src='assets/img/arduino.jpg'">
-                            <p class="image-caption">Arduino LED Matrix Display with MAX7219 controller</p>
-                        </div>
+          <!-- Article -->
+          <article class="blog-article">
+            <div class="article-body">
+              <img src="assets/img/arduino-lcd.jpg" alt="Arduino LED Matrix Display with MAX7219 controller" loading="eager" style="width:100%; margin-bottom:1.5rem;">
 
-                        <div class="article-content">
-                            <h2>Introduction</h2>
-                            <p>LED matrix displays are one of the most exciting projects you can build with Arduino. They allow you to create stunning visual effects, scrolling text, animations, and even simple games. In this comprehensive guide, I'll walk you through everything you need to know to create your own LED matrix display.</p>
+              <h2>Introduction</h2>
+              <p>LED matrix displays are one of the most exciting projects you can build with Arduino. They allow you to create stunning visual effects, scrolling text, animations, and even simple games. In this comprehensive guide, I'll walk you through everything you need to know to create your own LED matrix display.</p>
+              <p>Whether you're a beginner looking to learn more about Arduino programming or an experienced maker wanting to add visual elements to your projects, this tutorial has you covered.</p>
 
-                            <p>Whether you're a beginner looking to learn more about Arduino programming or an experienced maker wanting to add visual elements to your projects, this tutorial will provide you with all the knowledge you need.</p>
+              <div class="notice-box">
+                <strong><i class="fas fa-info-circle"></i> What You'll Learn:</strong>
+                By the end of this project, you'll understand how to control LED matrices, work with the MAX7219 driver, and create your own custom patterns and animations.
+              </div>
 
-                            <div class="info-box">
-                                <i class='bx bx-info-circle'></i>
-                                <div>
-                                    <h4>What You'll Learn</h4>
-                                    <p>By the end of this project, you'll understand how to control LED matrices, work with the MAX7219 driver, and create your own custom patterns and animations.</p>
-                                </div>
-                            </div>
+              <h2>Components Required</h2>
+              <ul>
+                <li><strong>Arduino Uno/Nano</strong> – Microcontroller board</li>
+                <li><strong>8x8 LED Matrix</strong> – MAX7219-based module</li>
+                <li><strong>Jumper Wires</strong> – Male to female connectors</li>
+                <li><strong>Breadboard</strong> – For prototyping connections</li>
+                <li><strong>5V Power Supply</strong> – External power source</li>
+                <li><strong>LedControl Library</strong> – Arduino library for MAX7219</li>
+              </ul>
 
-                            <h2>Components Required</h2>
-                            <div class="components-grid">
-                                <div class="component-item">
-                                    <strong>Arduino Uno/Nano</strong>
-                                    <span>Microcontroller board</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>8x8 LED Matrix</strong>
-                                    <span>MAX7219 based module</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>Jumper Wires</strong>
-                                    <span>Male to female connectors</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>Breadboard</strong>
-                                    <span>For prototyping connections</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>5V Power Supply</strong>
-                                    <span>External power source</span>
-                                </div>
-                                <div class="component-item">
-                                    <strong>LedControl Library</strong>
-                                    <span>Arduino library for MAX7219</span>
-                                </div>
-                            </div>
+              <h2>Circuit Diagram</h2>
+              <p>The MAX7219 IC handles all multiplexing and current limiting, so you only need to send it the row data. Connect the LED matrix using this pin configuration:</p>
 
-                            <h2>Circuit Diagram</h2>
-                            <p>The MAX7219 IC makes controlling LED matrices incredibly easy. It handles all the multiplexing and current limiting, so you only need to send it the data for each row. Connect the LED matrix to your Arduino using the following pin configuration:</p>
-
-                            <h3>Pin Connections</h3>
-                            <pre><code class="language-cpp">// LED Matrix to Arduino connections
+              <h3>Pin Connections</h3>
+              <pre><code class="language-cpp">// LED Matrix to Arduino connections
 VCC → 5V
 GND → GND
 DIN → Digital Pin 12
 CS  → Digital Pin 10
 CLK → Digital Pin 11</code></pre>
 
-                            <h2>Programming the Arduino</h2>
-                            <p>Here's the complete code to get you started with basic patterns and animations:</p>
+              <h2>Programming the Arduino</h2>
+              <p>Here's the complete code to get you started with basic patterns and animations:</p>
 
-                            <pre><code class="language-cpp">#include &lt;LedControl.h&gt;
+              <pre><code class="language-cpp">#include &lt;LedControl.h&gt;
 
-// Pin connections
 const int dataPin = 12;
 const int clockPin = 11;
 const int csPin = 10;
@@ -200,222 +128,157 @@ const int csPin = 10;
 LedControl lc = LedControl(dataPin, clockPin, csPin, 1);
 
 void setup() {
-    // Wake up the MAX7219
-    lc.shutdown(0, false);
-    // Set brightness (0-15)
-    lc.setIntensity(0, 8);
-    // Clear the display
+    lc.shutdown(0, false);  // Wake up MAX7219
+    lc.setIntensity(0, 8);  // Brightness 0-15
     lc.clearDisplay(0);
 }
 
 void loop() {
-    // Display a smiley face
     byte smiley[8] = {
-        B00111100,
-        B01000010,
-        B10100101,
-        B10000001,
-        B10100101,
-        B10011001,
-        B01000010,
-        B00111100
+        B00111100, B01000010, B10100101, B10000001,
+        B10100101, B10011001, B01000010, B00111100
     };
-    
     displayPattern(smiley);
     delay(2000);
-    
-    // Display a heart
+
     byte heart[8] = {
-        B00000000,
-        B01100110,
-        B11111111,
-        B11111111,
-        B01111110,
-        B00111100,
-        B00011000,
-        B00000000
+        B00000000, B01100110, B11111111, B11111111,
+        B01111110, B00111100, B00011000, B00000000
     };
-    
     displayPattern(heart);
     delay(2000);
-    
-    // Clear and repeat
+
     lc.clearDisplay(0);
     delay(500);
 }
 
 void displayPattern(byte pattern[8]) {
-    for (int i = 0; i < 8; i++) {
+    for (int i = 0; i &lt; 8; i++) {
         lc.setRow(0, i, pattern[i]);
     }
 }</code></pre>
 
-                            <h2>Advanced Features</h2>
-                            <p>Once you have the basic setup working, you can explore these advanced features:</p>
-                            <ul>
-                                <li><strong>Scrolling Text:</strong> Display moving messages across the matrix</li>
-                                <li><strong>Animation Sequences:</strong> Create smooth transitions between patterns</li>
-                                <li><strong>Multiple Matrix Chaining:</strong> Connect several matrices for larger displays</li>
-                                <li><strong>Sensor Integration:</strong> Make displays react to environmental changes</li>
-                                <li><strong>Wireless Control:</strong> Control via ESP32 or Bluetooth modules</li>
-                            </ul>
+              <h2>Advanced Features</h2>
+              <ul>
+                <li><strong>Scrolling Text:</strong> Display moving messages across the matrix</li>
+                <li><strong>Animation Sequences:</strong> Create smooth transitions between patterns</li>
+                <li><strong>Multiple Matrix Chaining:</strong> Connect several matrices for larger displays</li>
+                <li><strong>Sensor Integration:</strong> Make displays react to environmental changes</li>
+                <li><strong>Wireless Control:</strong> Control via ESP32 or Bluetooth modules</li>
+              </ul>
 
-                            <h2>Troubleshooting</h2>
-                            <div class="warning-box">
-                                <i class='bx bx-error'></i>
-                                <div>
-                                    <h4>Common Issues</h4>
-                                    <p>If your display isn't working properly, check these common solutions:</p>
-                                </div>
-                            </div>
+              <h2>Troubleshooting</h2>
+              <div class="notice-box">
+                <strong><i class="fas fa-exclamation-triangle"></i> Common Issues:</strong>
+                If your display isn't working, check power connections, verify pin wiring, and ensure the LedControl library is installed.
+              </div>
 
-                            <div class="results-table">
-                                <table>
-                                    <thead>
-                                        <tr>
-                                            <th>Problem</th>
-                                            <th>Solution</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr>
-                                            <td>Display not lighting up</td>
-                                            <td>Check power connections and wiring</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Dim or flickering display</td>
-                                            <td>Adjust brightness using setIntensity()</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Erratic behavior</td>
-                                            <td>Ensure proper ground connections</td>
-                                        </tr>
-                                        <tr>
-                                            <td>Patterns not displaying correctly</td>
-                                            <td>Verify pin connections and library installation</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
-                            </div>
+              <table style="width:100%; border-collapse:collapse; margin:1.5rem 0; font-size:.9rem;">
+                <thead>
+                  <tr style="background:var(--color-bg-alt);">
+                    <th style="padding:.75rem 1rem; text-align:left; border:1px solid var(--color-border);">Problem</th>
+                    <th style="padding:.75rem 1rem; text-align:left; border:1px solid var(--color-border);">Solution</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Display not lighting up</td>
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Check power connections and wiring</td>
+                  </tr>
+                  <tr style="background:var(--color-bg-alt);">
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Dim or flickering display</td>
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Adjust brightness with setIntensity()</td>
+                  </tr>
+                  <tr>
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Erratic behavior</td>
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Ensure proper ground connections</td>
+                  </tr>
+                  <tr style="background:var(--color-bg-alt);">
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Patterns not displaying</td>
+                    <td style="padding:.75rem 1rem; border:1px solid var(--color-border);">Verify pin connections and library installation</td>
+                  </tr>
+                </tbody>
+              </table>
 
-                            <h2>Future Enhancements</h2>
-                            <p>This project can be expanded with several exciting additions:</p>
-                            <ul>
-                                <li><strong>Real-time Clock Display:</strong> Show current time and date</li>
-                                <li><strong>Weather Station:</strong> Display temperature and humidity</li>
-                                <li><strong>Game Development:</strong> Create simple games like Snake or Tetris</li>
-                                <li><strong>Music Visualizer:</strong> Sync patterns with audio input</li>
-                                <li><strong>IoT Integration:</strong> Display notifications from smartphone apps</li>
-                            </ul>
+              <h2>Conclusion</h2>
+              <p>LED matrix displays open endless possibilities for creative projects. The MAX7219 controller makes it incredibly easy to get started, and with Arduino's flexibility, you can create anything from simple indicators to complex animated displays. Start with this basic setup and gradually add more features as you become comfortable.</p>
 
-                            <h2>Conclusion</h2>
-                            <p>LED matrix displays open up endless possibilities for creative projects. The MAX7219 controller makes it incredibly easy to get started, and with Arduino's flexibility, you can create anything from simple indicators to complex animated displays.</p>
-
-                            <p>Start with this basic setup and gradually add more features as you become comfortable with the hardware and code. Don't forget to experiment with different patterns and animations to make your project unique!</p>
-
-                            <div class="project-links">
-                                <a href="https://github.com/KMTanVeer/arduino-led-matrix" class="project-link" target="_blank">
-                                    <i class='bx bxl-github'></i>
-                                    View on GitHub
-                                </a>
-                                <a href="projects.html" class="project-link">
-                                    <i class='bx bx-info-circle'></i>
-                                    More Projects
-                                </a>
-                            </div>
-                        </div>
-                    </article>
-
-                    <aside class="blog-sidebar">
-                        <div class="sidebar-widget">
-                            <h3>Related Posts</h3>
-                            <div class="related-posts">
-                                <a href="post3.html" class="related-post">
-                                    <img src="assets/img/multimeter-digital.jpg" alt="Arduino Multimeter">
-                                    <div>
-                                        <h4>Building an Arduino-Based Digital Multimeter</h4>
-                                        <span>January 15, 2025</span>
-                                    </div>
-                                </a>
-                                <a href="post2.html" class="related-post">
-                                    <img src="assets/img/esp32.jpg" alt="ESP32 WiFi Guide">
-                                    <div>
-                                        <h4>ESP32 WiFi Setup Quick Guide</h4>
-                                        <span>August 8, 2025</span>
-                                    </div>
-                                </a>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-widget">
-                            <h3>Tags</h3>
-                            <div class="tag-cloud">
-                                <span class="tag">Arduino</span>
-                                <span class="tag">LED Matrix</span>
-                                <span class="tag">MAX7219</span>
-                                <span class="tag">Electronics</span>
-                                <span class="tag">Programming</span>
-                                <span class="tag">DIY</span>
-                            </div>
-                        </div>
-
-                        <div class="sidebar-widget">
-                            <h3>Share This Post</h3>
-                            <div class="share-buttons">
-                                <a href="#" class="share-button twitter">
-                                    <i class='bx bxl-twitter'></i>
-                                </a>
-                                <a href="#" class="share-button facebook">
-                                    <i class='bx bxl-facebook'></i>
-                                </a>
-                                <a href="#" class="share-button linkedin">
-                                    <i class='bx bxl-linkedin'></i>
-                                </a>
-                            </div>
-                        </div>
-                    </aside>
-                </div>
+              <div style="display:flex; gap:1rem; margin-top:2rem; flex-wrap:wrap;">
+                <a href="https://github.com/KMTanVeer/arduino-led-matrix" class="button" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> View on GitHub</a>
+                <a href="projects.html" class="button button-outline"><i class="fas fa-th-large"></i> More Projects</a>
+              </div>
             </div>
-        </section>
+          </article>
 
-        <!--===== COMMENTS SECTION =====-->
-        <section class="comments-section section">
-            <div class="bd-grid">
-                <h2 class="section-title">Comments & Discussion</h2>
-                <p class="comments-notice">
-                    Have questions about this project? Found an improvement? Share your thoughts below or 
-                    <a href="contact.html">contact me directly</a> for technical discussions.
-                </p>
-                
-                <!-- You can integrate a commenting system like Disqus here -->
-                <div class="comment-placeholder">
-                    <p>Comments system will be integrated here. For now, feel free to reach out via the contact form!</p>
-                </div>
+          <!-- Sidebar -->
+          <aside class="blog-sidebar">
+            <div class="sidebar-widget">
+              <h3 class="sidebar-widget__title"><i class="fas fa-newspaper"></i> Related Posts</h3>
+              <div class="related-posts">
+                <a href="post3.html" class="related-post">
+                  <img src="assets/img/multimeter-digital.jpg" alt="Arduino Multimeter" loading="lazy">
+                  <div>
+                    <p class="related-post__text">Building an Arduino-Based Digital Multimeter</p>
+                    <p class="related-post__meta"><i class="fas fa-calendar-alt"></i> Jan 15, 2025</p>
+                  </div>
+                </a>
+                <a href="post2.html" class="related-post">
+                  <img src="assets/img/esp32.jpg" alt="ESP32 WiFi" loading="lazy">
+                  <div>
+                    <p class="related-post__text">ESP32 WiFi Setup Quick Guide</p>
+                    <p class="related-post__meta"><i class="fas fa-calendar-alt"></i> Aug 8, 2025</p>
+                  </div>
+                </a>
+              </div>
             </div>
-        </section>
-    </main>
 
-    <!--===== FOOTER =====-->
-    <footer class="footer">
-        <p class="footer__title">Kawsar Mahmud Tanveer Khan</p>
-        <div class="footer__social">
-            <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__icon"><i class='bx bxl-linkedin'></i></a>
-            <a href="https://github.com/KMTanVeer" class="footer__icon"><i class='bx bxl-github'></i></a>
-            <a href="https://www.facebook.com/itzzVeer/" class="footer__icon"><i class='bx bxl-facebook' ></i></a>
-            <a href="https://www.instagram.com/itzzveer/" class="footer__icon"><i class='bx bxl-instagram' ></i></a>
-            <a href="https://x.com/itzzveer" class="footer__icon"><i class='bx bxl-twitter' ></i></a>
+            <div class="sidebar-widget">
+              <h3 class="sidebar-widget__title"><i class="fas fa-tags"></i> Tags</h3>
+              <div style="display:flex; flex-wrap:wrap; gap:.4rem;">
+                <span class="tag">Arduino</span>
+                <span class="tag">LED Matrix</span>
+                <span class="tag">MAX7219</span>
+                <span class="tag">Electronics</span>
+                <span class="tag">Programming</span>
+                <span class="tag">DIY</span>
+              </div>
+            </div>
+
+            <div class="sidebar-widget">
+              <h3 class="sidebar-widget__title"><i class="fas fa-share-alt"></i> Share</h3>
+              <div style="display:flex; gap:.6rem;">
+                <a href="https://twitter.com/intent/tweet?url=https://itanveer.tech/post1.html&text=Arduino+LED+Matrix+Project" class="social-link" target="_blank" rel="noopener noreferrer" title="Share on Twitter/X"><i class="fab fa-x-twitter"></i></a>
+                <a href="https://www.facebook.com/sharer/sharer.php?u=https://itanveer.tech/post1.html" class="social-link" target="_blank" rel="noopener noreferrer" title="Share on Facebook"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.linkedin.com/shareArticle?url=https://itanveer.tech/post1.html" class="social-link" target="_blank" rel="noopener noreferrer" title="Share on LinkedIn"><i class="fab fa-linkedin-in"></i></a>
+              </div>
+            </div>
+          </aside>
+
         </div>
-        <p class="footer__copy">&#169; itanveer.tech. All rights reserved</p>
-    </footer>
+      </div>
+    </section>
 
-    <!--===== SCROLL REVEAL =====-->
-    <script src="https://unpkg.com/scrollreveal"></script>
+  </main>
 
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/main.js"></script>
-    
-    <!--===== SYNTAX HIGHLIGHTING =====-->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js"></script>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__container bd-grid">
+      <div class="footer__content">
+        <h3 class="footer__brand">itanveer.tech</h3>
+        <p class="footer__tagline">IoT &bull; Embedded Systems &bull; PLC &bull; Electronics &bull; Electrical Engineering</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter/X" rel="noopener noreferrer" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>
+      <p class="footer__copyright">&copy; 2026 itanveer.tech &bull; by <a href="https://itanveer.me/" rel="author" style="color:rgba(255,255,255,.6)">itanveer.me</a></p>
+    </div>
+  </footer>
+
+  <script src="assets/js/main.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/components/prism-core.min.js" integrity="sha384-Ys19uRRZVZM1S1WQhamBRE3pU+n5SZ+zY6fIIONKskluBunvcbS/+Ju65BVZf3pt" crossorigin="anonymous"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.24.1/plugins/autoloader/prism-autoloader.min.js" integrity="sha384-sJ2kXw/b/YDecImwXSEngukcfLw5zcfgkMjCi+Mg7wRJMIQw/Tl+LcGUQDXdxoqL" crossorigin="anonymous"></script>
 </body>
 </html>

@@ -3,781 +3,270 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  
-  <title>Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects</title>
+  <title>Projects | itanveer.tech - Arduino, ESP32 &amp; Smart Grid Projects</title>
   <meta name="description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
   <meta name="author" content="Kawsar Mahmud Tanveer Khan">
   <meta name="keywords" content="Arduino projects, ESP32 IoT, Smart Grid projects, MATLAB Simulink, embedded systems, engineering projects">
   <meta name="robots" content="index, follow">
 
-  <!-- Canonical URL -->
   <link rel="canonical" href="https://itanveer.tech/projects.html">
 
-  <!-- Open Graph / Facebook -->
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://itanveer.tech/projects.html">
-  <meta property="og:title" content="Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects">
-  <meta property="og:description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
+  <meta property="og:title" content="Projects | itanveer.tech - Arduino, ESP32 &amp; Smart Grid Projects">
+  <meta property="og:description" content="Explore detailed project write-ups including Arduino Multimeter, ESP32 IoT systems, and more engineering projects.">
   <meta property="og:image" content="https://itanveer.tech/assets/img/about.png">
   <meta property="og:site_name" content="itanveer.tech">
 
-  <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:site" content="@itzzveer">
-  <meta name="twitter:creator" content="@itzzveer">
-  <meta name="twitter:title" content="Projects | itanveer.tech - Arduino, ESP32 & Smart Grid Projects">
-  <meta name="twitter:description" content="Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.">
+  <meta name="twitter:title" content="Projects | itanveer.tech">
   <meta name="twitter:image" content="https://itanveer.tech/assets/img/about.png">
 
-  <!-- Structured Data for Rich Results -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
     "@type": "CollectionPage",
     "name": "Projects | itanveer.tech",
-    "description": "Explore detailed project write-ups including Arduino Multimeter, Distance Protection with Simulink, ESP32 IoT systems, and more embedded systems projects.",
+    "description": "Explore detailed engineering project write-ups.",
     "url": "https://itanveer.tech/projects.html",
-    "author": {
-      "@type": "Person",
-      "name": "Kawsar Mahmud Tanveer Khan",
-      "url": "https://itanveer.me"
-    }
+    "author": { "@type": "Person", "name": "Kawsar Mahmud Tanveer Khan", "url": "https://itanveer.me" }
   }
   </script>
 
-  <!-- Favicon -->
   <link rel="icon" type="image/x-icon" href="/favicon.ico">
   <link rel="icon" type="image/png" sizes="32x32" href="/favicon.png">
-  <link rel="icon" type="image/png" sizes="16x16" href="/favicon.png">
   <link rel="apple-touch-icon" href="/favicon.png">
   <link rel="shortcut icon" href="/favicon.ico">
-  <meta name="msapplication-TileImage" content="/favicon.png">
 
-  <!-- CSS -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+
   <link rel="stylesheet" href="assets/css/styles.css">
-  <link href='https://cdn.jsdelivr.net/npm/boxicons@2.0.5/css/boxicons.min.css' rel='stylesheet'>
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/boxicons@2.1.4/css/boxicons.min.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
-  
-  <style>
-    /* Professional Color Palette */
-    :root {
-      --primary-blue: #7F55B1;
-      --secondary-teal: #9B7EBD;
-      --accent-orange: #F49BAB;
-      --dark-gray: #7F55B1;
-      --light-gray: #FFE1E0;
-      --white: #ffffff;
-      --text-primary: #000000;
-      --text-secondary: #000000;
-      --border-color: #9B7EBD;
-      --second-color: #000000;
-    }
 
-    /* Projects Page Specific Styles */
-    .projects-hero {
-      background: linear-gradient(135deg, var(--dark-gray) 0%, #334155 100%);
-      padding: 6rem 0 4rem;
-      color: var(--white);
-      position: relative;
-      overflow: hidden;
-    }
-
-    .projects-hero::before {
-      content: '';
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      bottom: 0;
-      background: 
-        linear-gradient(90deg, transparent 0%, rgba(37, 99, 235, 0.1) 50%, transparent 100%);
-      animation: shimmer 3s infinite;
-    }
-
-    @keyframes shimmer {
-      0% { transform: translateX(-100%); }
-      100% { transform: translateX(100%); }
-    }
-
-    .projects-hero__content {
-      position: relative;
-      z-index: 2;
-      text-align: center;
-    }
-
-    .projects-hero__title {
-      font-size: 3.5rem;
-      font-weight: 700;
-      margin-bottom: 1rem;
-      line-height: 1.2;
-    }
-
-    .projects-hero__subtitle {
-      font-size: 1.2rem;
-      opacity: 0.9;
-      max-width: 700px;
-      margin: 0 auto 2rem;
-    }
-
-    .projects-hero__stats {
-      display: flex;
-      justify-content: center;
-      gap: 3rem;
-      margin-top: 2rem;
-      flex-wrap: wrap;
-    }
-
-    .stat-item {
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .stat-item i {
-      font-size: 2rem;
-      color: var(--secondary-teal);
-    }
-
-    .stat-number {
-      font-size: 2rem;
-      font-weight: 700;
-    }
-
-    .stat-label {
-      font-size: 0.9rem;
-      opacity: 0.8;
-    }
-
-    /* Filter Section */
-    .filter-section {
-      background: var(--white);
-      padding: 2rem 0;
-      box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-      position: sticky;
-      top: var(--header-height);
-      z-index: 50;
-    }
-
-    .filter-buttons {
-      display: flex;
-      gap: 1rem;
-      justify-content: center;
-      flex-wrap: wrap;
-    }
-
-    .filter-btn {
-      padding: 0.75rem 1.5rem;
-      border: 2px solid var(--border-color);
-      background: var(--white);
-      color: var(--text-secondary);
-      border-radius: 8px;
-      cursor: pointer;
-      transition: all 0.3s ease;
-      font-weight: 500;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .filter-btn i {
-      font-size: 1.1rem;
-    }
-
-    .filter-btn:hover {
-      border-color: var(--primary-blue);
-      color: var(--primary-blue);
-      transform: translateY(-2px);
-    }
-
-    .filter-btn.active {
-      background: var(--primary-blue);
-      color: var(--white);
-      border-color: var(--primary-blue);
-    }
-
-    /* Projects Grid */
-    .projects-section {
-      padding: 4rem 0;
-      background: var(--light-gray);
-    }
-
-    .projects-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
-      gap: 2rem;
-      margin-top: 2rem;
-    }
-
-    /* Project Card - Redesigned */
-    .project-card {
-      background: var(--white);
-      border-radius: 12px;
-      overflow: hidden;
-      transition: all 0.3s ease;
-      border: 1px solid var(--border-color);
-      display: flex;
-      flex-direction: column;
-      height: 100%;
-    }
-
-    .project-card:hover {
-      transform: translateY(-8px);
-      box-shadow: 0 12px 24px rgba(0,0,0,0.1);
-    }
-
-    .project-card__img {
-      position: relative;
-      overflow: hidden;
-      height: 240px;
-    }
-
-    .project-card__img img {
-      width: 100%;
-      height: 100%;
-      object-fit: cover;
-      transition: transform 0.5s ease;
-    }
-
-    .project-card:hover .project-card__img img {
-      transform: scale(1.1);
-    }
-
-    .project-status {
-      position: absolute;
-      top: 1rem;
-      right: 1rem;
-      padding: 0.4rem 1rem;
-      border-radius: 20px;
-      font-size: 0.85rem;
-      font-weight: 600;
-      backdrop-filter: blur(10px);
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .project-status i {
-      font-size: 0.9rem;
-    }
-
-    .project-status--completed {
-      background: rgba(16, 185, 129, 0.9);
-      color: white;
-    }
-
-    .project-status--ongoing {
-      background: rgba(245, 158, 11, 0.9);
-      color: white;
-    }
-
-    .project-status--planning {
-      background: rgba(37, 99, 235, 0.9);
-      color: white;
-    }
-
-    .project-card__overlay {
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(180deg, transparent 0%, rgba(0,0,0,0.9) 100%);
-      display: flex;
-      align-items: flex-end;
-      justify-content: center;
-      gap: 1rem;
-      padding: 1.5rem;
-      opacity: 0;
-      transition: opacity 0.3s ease;
-    }
-
-    .project-card:hover .project-card__overlay {
-      opacity: 1;
-    }
-
-    .project-card__btn {
-      padding: 0.6rem 1.2rem;
-      background: var(--primary-blue);
-      color: var(--white);
-      text-decoration: none;
-      border-radius: 6px;
-      font-size: 0.9rem;
-      font-weight: 500;
-      transition: all 0.3s ease;
-      display: flex;
-      align-items: center;
-      gap: 0.5rem;
-    }
-
-    .project-card__btn:hover {
-      background: var(--secondary-teal);
-      transform: translateY(-2px);
-    }
-
-    .project-card__btn--secondary {
-      background: transparent;
-      border: 2px solid var(--white);
-    }
-
-    .project-card__btn--secondary:hover {
-      background: var(--white);
-      color: var(--primary-blue);
-    }
-
-    .project-card__content {
-      padding: 1.5rem;
-      flex: 1;
-      display: flex;
-      flex-direction: column;
-    }
-
-    .project-card__title {
-      font-size: 1.3rem;
-      font-weight: 600;
-      margin-bottom: 0.8rem;
-      color: #000000;
-      line-height: 1.4;
-    }
-
-    .project-card__description {
-      color: #000000;
-      line-height: 1.6;
-      margin-bottom: 1rem;
-      flex: 1;
-    }
-
-    .project-card__meta {
-      display: flex;
-      gap: 1rem;
-      margin-bottom: 1rem;
-      font-size: 0.85rem;
-      color: #000000;
-    }
-
-    .meta-item {
-      display: flex;
-      align-items: center;
-      gap: 0.4rem;
-    }
-
-    .meta-item i {
-      color: #000000;
-    }
-
-    .project-card__tags {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 0.5rem;
-      margin-top: auto;
-    }
-
-    .tag {
-      padding: 0.4rem 0.8rem;
-      background: var(--light-gray);
-      color: #000000;
-      border-radius: 6px;
-      font-size: 0.8rem;
-      font-weight: 500;
-      border: 1px solid var(--border-color);
-    }
-
-    /* Responsive Design */
-    @media screen and (max-width: 768px) {
-      .projects-hero__title {
-        font-size: 2.5rem;
-      }
-
-      .projects-hero__stats {
-        gap: 2rem;
-      }
-
-      .projects-grid {
-        grid-template-columns: 1fr;
-        gap: 1.5rem;
-      }
-
-      .filter-buttons {
-        gap: 0.5rem;
-      }
-
-      .filter-btn {
-        padding: 0.6rem 1rem;
-        font-size: 0.9rem;
-      }
-    }
-
-    /* Animation Classes */
-    .fade-in {
-      opacity: 0;
-      transform: translateY(30px);
-      transition: all 0.6s ease;
-    }
-
-    .fade-in.visible {
-      opacity: 1;
-      transform: translateY(0);
-    }
-  </style>
-  <!-- Google AdSense -->
-  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7600105987455186"
-     crossorigin="anonymous"></script>
-
+  <script async src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js?client=ca-pub-7600105987455186" crossorigin="anonymous"></script>
 </head>
 
 <body>
-    <!--===== HEADER =====-->
-    <header class="l-header">
-      <nav class="nav bd-grid">
-        <div>
-          <a href="index.html" class="nav__logo">itanveer.tech</a>
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- HEADER -->
+  <header class="l-header">
+    <nav class="nav bd-grid">
+      <a href="index.html" class="nav__logo">itanveer<span>.tech</span></a>
+      <div class="nav__menu" id="nav-menu">
+        <ul class="nav__list">
+          <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
+          <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
+          <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
+          <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
+          <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
+          <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
+        </ul>
+      </div>
+      <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation" aria-expanded="false" tabindex="0">
+        <i class="fas fa-bars" aria-hidden="true"></i>
+      </div>
+    </nav>
+  </header>
+
+  <main class="l-main" id="main">
+
+    <!-- PAGE HERO -->
+    <section class="page-hero">
+      <div class="bd-grid page-hero__content">
+        <h1 class="page-hero__title">Featured Projects</h1>
+        <p class="page-hero__subtitle">Engineering projects spanning IoT, embedded systems, power electronics, and machine learning</p>
+        <div class="page-hero__stats">
+          <div class="stat-item">
+            <i class="fas fa-clipboard-check"></i>
+            <span class="stat-number">15+</span>
+            <span class="stat-label">Completed</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-code"></i>
+            <span class="stat-number">2</span>
+            <span class="stat-label">In Progress</span>
+          </div>
+          <div class="stat-item">
+            <i class="fas fa-microchip"></i>
+            <span class="stat-number">10+</span>
+            <span class="stat-label">Technologies</span>
+          </div>
         </div>
+      </div>
+    </section>
 
-        <div class="nav__menu" id="nav-menu">
-          <ul class="nav__list">
-            <li class="nav__item"><a href="index.html" class="nav__link">Home</a></li>
-            <li class="nav__item"><a href="about.html" class="nav__link">About</a></li>
-            <li class="nav__item"><a href="blog.html" class="nav__link">Blog</a></li>
-            <li class="nav__item"><a href="projects.html" class="nav__link active-link">Projects</a></li>
-            <li class="nav__item"><a href="resources.html" class="nav__link">Resources</a></li>
-            <li class="nav__item"><a href="contact.html" class="nav__link">Contact</a></li>
-          </ul>
+    <!-- FILTER -->
+    <section class="filter-section">
+      <div class="bd-grid">
+        <div class="filter-buttons">
+          <button class="filter-btn active" data-filter="all"><i class="fas fa-th-large"></i> All</button>
+          <button class="filter-btn" data-filter="iot"><i class="fas fa-wifi"></i> IoT &amp; ESP32</button>
+          <button class="filter-btn" data-filter="power"><i class="fas fa-bolt"></i> Power Systems</button>
+          <button class="filter-btn" data-filter="arduino"><i class="fas fa-microchip"></i> Arduino</button>
+          <button class="filter-btn" data-filter="ml"><i class="fas fa-brain"></i> Machine Learning</button>
         </div>
+      </div>
+    </section>
 
-        <div class="nav__toggle" id="nav-toggle" role="button" aria-label="Toggle navigation menu" aria-expanded="false" tabindex="0">
-          <i class='bx bx-menu' aria-hidden="true"></i>
+    <!-- PROJECTS GRID -->
+    <section class="projects-section">
+      <div class="bd-grid">
+        <div class="projects-grid">
+
+          <!-- Online UPS -->
+          <div class="project-card fade-in" data-category="power">
+            <div class="project-card__img">
+              <img src="assets/img/UPS.jpg" alt="Online UPS Design" loading="lazy">
+              <div class="project-status project-status--completed"><i class="fas fa-check-circle"></i> Completed</div>
+              <div class="project-card__overlay">
+                <a href="project-online-ups.html" class="project-card__btn"><i class="fas fa-arrow-right"></i> Details</a>
+                <a href="https://github.com/KMTanVeer/online-ups-design" class="project-card__btn project-card__btn--secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Design and Implementation of Online UPS</h3>
+              <p class="project-card__description">Comprehensive design and implementation of an online uninterruptible power supply with advanced power conversion and battery management.</p>
+              <div class="project-card__meta">
+                <div class="meta-item"><i class="fas fa-calendar-alt"></i><span>2023</span></div>
+                <div class="meta-item"><i class="fas fa-clock"></i><span>6 months</span></div>
+              </div>
+              <div class="project-card__tags">
+                <span class="tag">Power Electronics</span>
+                <span class="tag">UPS Design</span>
+                <span class="tag">Battery Management</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- MPPT Solar -->
+          <div class="project-card fade-in" data-category="iot power">
+            <div class="project-card__img">
+              <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller" loading="lazy">
+              <div class="project-status project-status--completed"><i class="fas fa-check-circle"></i> Completed</div>
+              <div class="project-card__overlay">
+                <a href="project-mppt-solar.html" class="project-card__btn"><i class="fas fa-arrow-right"></i> Details</a>
+                <a href="https://github.com/KMTanVeer/mppt-solar-controller" class="project-card__btn project-card__btn--secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">MPPT Solar Charge Controller</h3>
+              <p class="project-card__description">ESP32-based intelligent solar charge controller with MPPT algorithm achieving 98% efficiency and remote monitoring via Blynk app.</p>
+              <div class="project-card__meta">
+                <div class="meta-item"><i class="fas fa-calendar-alt"></i><span>2022</span></div>
+                <div class="meta-item"><i class="fas fa-clock"></i><span>4 months</span></div>
+              </div>
+              <div class="project-card__tags">
+                <span class="tag">ESP32</span>
+                <span class="tag">Solar MPPT</span>
+                <span class="tag">IoT</span>
+                <span class="tag">Blynk</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Fiber Optic CAN -->
+          <div class="project-card fade-in" data-category="iot networking">
+            <div class="project-card__img">
+              <img src="assets/img/can.jpg" alt="Fiber Optic Community Area Networks" loading="lazy">
+              <div class="project-status project-status--ongoing"><i class="fas fa-spinner"></i> Research Phase</div>
+              <div class="project-card__overlay">
+                <a href="project-fiber-optic-can.html" class="project-card__btn"><i class="fas fa-arrow-right"></i> Details</a>
+                <a href="https://github.com/KMTanVeer/fiber-optic-can" class="project-card__btn project-card__btn--secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Fiber Optic Community Area Networks</h3>
+              <p class="project-card__description">Research project on implementing fiber optic infrastructure for Community Area Networks to enhance high-speed internet connectivity.</p>
+              <div class="project-card__meta">
+                <div class="meta-item"><i class="fas fa-calendar-alt"></i><span>2024</span></div>
+                <div class="meta-item"><i class="fas fa-clock"></i><span>Ongoing</span></div>
+              </div>
+              <div class="project-card__tags">
+                <span class="tag">Fiber Optics</span>
+                <span class="tag">Network Design</span>
+                <span class="tag">Research</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Smart Helmet -->
+          <div class="project-card fade-in" data-category="iot">
+            <div class="project-card__img">
+              <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet with Crash Detection" loading="lazy">
+              <div class="project-status project-status--completed"><i class="fas fa-check-circle"></i> Completed</div>
+              <div class="project-card__overlay">
+                <a href="project-smart-helmet.html" class="project-card__btn"><i class="fas fa-arrow-right"></i> Details</a>
+                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary" target="_blank" rel="noopener noreferrer"><i class="fab fa-github"></i> GitHub</a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Smart Helmet with Crash Detection</h3>
+              <p class="project-card__description">Intelligent motorcycle safety system with automatic crash detection via MPU6050, GPS tracking, and emergency SMS alerts via SIM800L.</p>
+              <div class="project-card__meta">
+                <div class="meta-item"><i class="fas fa-calendar-alt"></i><span>2025</span></div>
+                <div class="meta-item"><i class="fas fa-clock"></i><span>5 months</span></div>
+              </div>
+              <div class="project-card__tags">
+                <span class="tag">ESP32</span>
+                <span class="tag">IoT</span>
+                <span class="tag">GPS</span>
+                <span class="tag">Safety</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Book Recommender -->
+          <div class="project-card fade-in" data-category="ml">
+            <div class="project-card__img">
+              <img src="assets/book-recommendation/Home.png" alt="Smart Book Recommendation System" loading="lazy">
+              <div class="project-status project-status--completed"><i class="fas fa-circle-check"></i> Live &amp; Deployed</div>
+              <div class="project-card__overlay">
+                <a href="project-book-recommender.html" class="project-card__btn"><i class="fas fa-arrow-right"></i> Details</a>
+                <a href="https://bookrecommender-s80k.onrender.com/" class="project-card__btn project-card__btn--secondary" target="_blank" rel="noopener noreferrer"><i class="fas fa-external-link-alt"></i> Live Demo</a>
+              </div>
+            </div>
+            <div class="project-card__content">
+              <h3 class="project-card__title">Smart Book Recommendation System</h3>
+              <p class="project-card__description">ML-based book recommendation system with collaborative and content-based filtering. Deployed live on Render with Flask.</p>
+              <div class="project-card__meta">
+                <div class="meta-item"><i class="fas fa-calendar-alt"></i><span>2024</span></div>
+                <div class="meta-item"><i class="fas fa-clock"></i><span>3 months</span></div>
+              </div>
+              <div class="project-card__tags">
+                <span class="tag">Machine Learning</span>
+                <span class="tag">Python</span>
+                <span class="tag">Flask</span>
+                <span class="tag">Cloud</span>
+              </div>
+            </div>
+          </div>
+
         </div>
-      </nav>
-    </header>
+      </div>
+    </section>
+  </main>
 
-    <main class="l-main">
-        <!--===== PROJECTS HERO =====-->
-        <section class="projects-hero">
-            <div class="bd-grid projects-hero__content">
-                <h1 class="projects-hero__title">Featured Projects</h1>
-                <p class="projects-hero__subtitle">Explore my engineering projects spanning IoT, embedded systems, power electronics, and machine learning</p>
-                
-                <div class="projects-hero__stats">
-                    <div class="stat-item">
-                        <i class="fas fa-clipboard-check"></i>
-                        <span class="stat-number">15+</span>
-                        <span class="stat-label">Completed</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-code"></i>
-                        <span class="stat-number">2</span>
-                        <span class="stat-label">In Progress</span>
-                    </div>
-                    <div class="stat-item">
-                        <i class="fas fa-microchip"></i>
-                        <span class="stat-number">10+</span>
-                        <span class="stat-label">Technologies</span>
-                    </div>
-                </div>
-            </div>
-        </section>
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="footer__container bd-grid">
+      <div class="footer__content">
+        <h3 class="footer__brand">itanveer.tech</h3>
+        <p class="footer__tagline">IoT &bull; Embedded Systems &bull; PLC &bull; Electronics &bull; Electrical Engineering</p>
+      </div>
+      <div class="footer__links">
+        <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class="fab fa-linkedin-in"></i></a>
+        <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class="fab fa-github"></i></a>
+        <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter/X" rel="noopener noreferrer" target="_blank"><i class="fab fa-x-twitter"></i></a>
+        <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class="fas fa-globe"></i></a>
+      </div>
+      <p class="footer__copyright">&copy; 2026 itanveer.tech &bull; by <a href="https://itanveer.me/" rel="author" style="color:rgba(255,255,255,.6)">itanveer.me</a></p>
+    </div>
+  </footer>
 
-        <!--===== FILTER SECTION =====-->
-        <section class="filter-section">
-            <div class="bd-grid">
-                <div class="filter-buttons">
-                    <button class="filter-btn active" data-filter="all">
-                        <i class="fas fa-th"></i>
-                        All Projects
-                    </button>
-                    <button class="filter-btn" data-filter="iot">
-                        <i class="fas fa-wifi"></i>
-                        IoT & ESP32
-                    </button>
-                    <button class="filter-btn" data-filter="power">
-                        <i class="fas fa-bolt"></i>
-                        Power Systems
-                    </button>
-                    <button class="filter-btn" data-filter="arduino">
-                        <i class="fas fa-microchip"></i>
-                        Arduino
-                    </button>
-                    <button class="filter-btn" data-filter="ml">
-                        <i class="fas fa-brain"></i>
-                        Machine Learning
-                    </button>
-                </div>
-            </div>
-        </section>
-
-        <!--===== PROJECTS GRID =====-->
-        <section class="projects-section">
-            <div class="bd-grid">
-                <div class="projects-grid">
-                    <!-- Online UPS Design -->
-                    <div class="project-card fade-in" data-category="power">
-                        <div class="project-card__img">
-                            <img src="assets/img/UPS.jpg" alt="Online UPS Design">
-                            <div class="project-status project-status--completed">
-                                <i class="fas fa-check-circle"></i>
-                                Completed
-                            </div>
-                            <div class="project-card__overlay">
-                                <a href="project-online-ups.html" class="project-card__btn">
-                                    <i class="fas fa-arrow-right"></i>
-                                    View Details
-                                </a>
-                                <a href="https://github.com/KMTanVeer/online-ups-design" class="project-card__btn project-card__btn--secondary">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Design and Implementation of Online UPS</h3>
-                            <p class="project-card__description">Comprehensive design and implementation of an online uninterruptible power supply system with advanced power conversion, battery management, and seamless power transfer capabilities.</p>
-                            <div class="project-card__meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>2023</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>6 months</span>
-                                </div>
-                            </div>
-                            <div class="project-card__tags">
-                                <span class="tag">Power Electronics</span>
-                                <span class="tag">UPS Design</span>
-                                <span class="tag">Battery Management</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- MPPT Solar Controller -->
-                    <div class="project-card fade-in" data-category="iot power">
-                        <div class="project-card__img">
-                            <img src="assets/img/charge-controller-main.jpg" alt="MPPT Solar Charge Controller">
-                            <div class="project-status project-status--completed">
-                                <i class="fas fa-check-circle"></i>
-                                Completed
-                            </div>
-                            <div class="project-card__overlay">
-                                <a href="project-mppt-solar.html" class="project-card__btn">
-                                    <i class="fas fa-arrow-right"></i>
-                                    View Details
-                                </a>
-                                <a href="https://github.com/KMTanVeer/mppt-solar-controller" class="project-card__btn project-card__btn--secondary">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">MPPT Solar Charge Controller</h3>
-                            <p class="project-card__description">ESP32-based intelligent solar charge controller with MPPT algorithm achieving 98% efficiency. Features remote monitoring via Blynk app and automated protection system.</p>
-                            <div class="project-card__meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>2022</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>4 months</span>
-                                </div>
-                            </div>
-                            <div class="project-card__tags">
-                                <span class="tag">ESP32</span>
-                                <span class="tag">Solar MPPT</span>
-                                <span class="tag">IoT</span>
-                                <span class="tag">Blynk</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Fiber Optic CAN -->
-                    <div class="project-card fade-in" data-category="iot networking">
-                        <div class="project-card__img">
-                            <img src="assets/img/can.jpg" alt="Fiber Optic Community Area Networks">
-                            <div class="project-status project-status--ongoing">
-                                <i class="fas fa-spinner"></i>
-                                Research Phase
-                            </div>
-                            <div class="project-card__overlay">
-                                <a href="project-fiber-optic-can.html" class="project-card__btn">
-                                    <i class="fas fa-arrow-right"></i>
-                                    View Details
-                                </a>
-                                <a href="https://github.com/KMTanVeer/fiber-optic-can" class="project-card__btn project-card__btn--secondary">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Fiber Optic Community Area Networks</h3>
-                            <p class="project-card__description">Advanced research project focusing on implementing fiber optic infrastructure for Community Area Networks to enhance high-speed internet connectivity and reduce latency.</p>
-                            <div class="project-card__meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>2024</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>Ongoing</span>
-                                </div>
-                            </div>
-                            <div class="project-card__tags">
-                                <span class="tag">Fiber Optics</span>
-                                <span class="tag">Network Design</span>
-                                <span class="tag">Research</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Smart Helmet -->
-                    <div class="project-card fade-in" data-category="iot">
-                        <div class="project-card__img">
-                            <img src="assets/img/smart-helmet-main.jpg" alt="Smart Helmet with Crash Detection">
-                            <div class="project-status project-status--completed">
-                                <i class="fas fa-check-circle"></i>
-                                Completed
-                            </div>
-                            <div class="project-card__overlay">
-                                <a href="project-smart-helmet.html" class="project-card__btn">
-                                    <i class="fas fa-arrow-right"></i>
-                                    View Details
-                                </a>
-                                <a href="https://github.com/KMTanVeer" class="project-card__btn project-card__btn--secondary">
-                                    <i class="fab fa-github"></i>
-                                    GitHub
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Smart Helmet with Crash Detection</h3>
-                            <p class="project-card__description">Intelligent motorcycle safety system featuring automatic crash detection using MPU6050 sensors, GPS tracking, and automated emergency SMS alerts via SIM800L GSM module.</p>
-                            <div class="project-card__meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>2025</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>5 months</span>
-                                </div>
-                            </div>
-                            <div class="project-card__tags">
-                                <span class="tag">ESP32</span>
-                                <span class="tag">IoT</span>
-                                <span class="tag">GPS</span>
-                                <span class="tag">Safety Systems</span>
-                            </div>
-                        </div>
-                    </div>
-
-                    <!-- Book Recommender -->
-                    <div class="project-card fade-in" data-category="ml">
-                        <div class="project-card__img">
-                            <img src="assets/book-recommendation/Home.png" alt="Smart Book Recommendation System">
-                            <div class="project-status project-status--completed">
-                                <i class="fas fa-check-circle"></i>
-                                Live & Deployed
-                            </div>
-                            <div class="project-card__overlay">
-                                <a href="project-book-recommender.html" class="project-card__btn">
-                                    <i class="fas fa-arrow-right"></i>
-                                    View Details
-                                </a>
-                                <a href="https://bookrecommender-s80k.onrender.com/" target="_blank" rel="noopener noreferrer" class="project-card__btn project-card__btn--secondary">
-                                    <i class="fas fa-external-link-alt"></i>
-                                    Live Demo
-                                </a>
-                            </div>
-                        </div>
-                        <div class="project-card__content">
-                            <h3 class="project-card__title">Smart Book Recommendation System</h3>
-                            <p class="project-card__description">Machine learning-based book recommendation system featuring collaborative and content-based filtering algorithms. Deployed live on Render cloud platform with Flask framework.</p>
-                            <div class="project-card__meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-calendar"></i>
-                                    <span>2024</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-clock"></i>
-                                    <span>3 months</span>
-                                </div>
-                            </div>
-                            <div class="project-card__tags">
-                                <span class="tag">Machine Learning</span>
-                                <span class="tag">Python</span>
-                                <span class="tag">Flask</span>
-                                <span class="tag">Cloud</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </section>
-    </main>
-
-    <!--===== FOOTER =====-->
-    <footer class="footer">
-        <div class="footer__container bd-grid">
-            <div class="footer__content">
-                <h3 class="footer__brand">itanveer.tech</h3>
-                <p class="footer__tagline">IoT | Embedded Systems | PLC | Electronics | Electrical Engineering</p>
-            </div>
-            <div class="footer__links">
-                <a href="https://www.linkedin.com/in/KawsarTanveer" class="footer__link" aria-label="LinkedIn" rel="noopener noreferrer" target="_blank"><i class='bx bxl-linkedin'></i></a>
-                <a href="https://github.com/KMTanVeer" class="footer__link" aria-label="GitHub" rel="noopener noreferrer" target="_blank"><i class='bx bxl-github'></i></a>
-                <a href="https://x.com/itzzveer" class="footer__link" aria-label="Twitter" rel="noopener noreferrer" target="_blank"><i class='bx bxl-twitter'></i></a>
-                <a href="https://itanveer.me" class="footer__link" aria-label="Portfolio" rel="author" target="_blank"><i class='bx bx-globe'></i></a>
-            </div>
-            <p class="footer__copyright">© 2026 itanveer.tech | by <a href="https://itanveer.me/" rel="author" style="color: rgba(255, 255, 255, 0.8); text-decoration: none;">itanveer.me</a></p>
-        </div>
-    </footer>
-
-    <!--===== MAIN JS =====-->
-    <script src="assets/js/main.js"></script>
-    
-    <script>
-        // Filter functionality
-        const filterBtns = document.querySelectorAll('.filter-btn');
-        const projectCards = document.querySelectorAll('.project-card');
-
-        filterBtns.forEach(btn => {
-            btn.addEventListener('click', () => {
-                const filter = btn.getAttribute('data-filter');
-                
-                // Update active button
-                filterBtns.forEach(b => b.classList.remove('active'));
-                btn.classList.add('active');
-                
-                // Filter projects
-                projectCards.forEach(card => {
-                    const category = card.getAttribute('data-category');
-                    
-                    if (filter === 'all') {
-                        card.style.display = 'flex';
-                    } else if (category && category.includes(filter)) {
-                        card.style.display = 'flex';
-                    } else {
-                        card.style.display = 'none';
-                    }
-                });
-            });
-        });
-
-        // Fade in animation on scroll
-        const fadeInElements = document.querySelectorAll('.fade-in');
-        
-        const observerOptions = {
-            threshold: 0.1,
-            rootMargin: '0px 0px -50px 0px'
-        };
-        
-        const observer = new IntersectionObserver((entries) => {
-            entries.forEach(entry => {
-                if (entry.isIntersecting) {
-                    entry.target.classList.add('visible');
-                }
-            });
-        }, observerOptions);
-        
-        fadeInElements.forEach(el => observer.observe(el));
-    </script>
+  <script src="assets/js/main.js"></script>
 </body>
 </html>

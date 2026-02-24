@@ -347,7 +347,7 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   align-items: center;
   gap: .5rem;
   padding: .4rem 1rem;
-  background: rgba(37,99,235,.08);
+  background: rgba(37,99,235,.05);
   color: var(--color-blue);
   border-radius: var(--radius-full);
   font-size: .85rem;
@@ -1524,11 +1524,12 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
 
 .footer__copyright {
   font-size: .8rem;
-  color: rgba(255,255,255,.35);
+  color: rgba(255,255,255,.5);
   border-top: 1px solid rgba(255,255,255,.07);
   padding-top: 1.25rem;
   width: 100%;
 }
+.footer__copyright a { text-decoration: underline; }
 
 /*===== 404 PAGE =====*/
 .error-page {

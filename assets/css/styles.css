@@ -1529,7 +1529,10 @@ button { font-family: inherit; cursor: pointer; border: none; background: none; 
   padding-top: 1.25rem;
   width: 100%;
 }
-.footer__copyright a { text-decoration: underline; }
+.footer__copyright a {
+  color: rgba(255,255,255,.7);
+  text-decoration: underline;
+}
 
 /*===== 404 PAGE =====*/
 .error-page {

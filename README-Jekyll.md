@@ -1,4 +1,4 @@
-# Jekyll Blog Setup Guide for itanveer.tech
+# Jekyll Blog Setup Guide for tanveerk.dev
 
 ## 🚀 Getting Started with Your Jekyll-Powered Blog
 
@@ -110,9 +110,9 @@ You can modify the blog appearance by editing:
 
 ### Site Settings (`_config.yml`)
 ```yaml
-title: itanveer.tech
+title: tanveerk.dev
 description: Your site description
-url: "https://itanveer.tech"
+url: "https://tanveerk.dev"
 author:
   name: Kawsar Mahmud Tanveer Khan
   email: your-email@example.com

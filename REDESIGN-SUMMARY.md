@@ -1,7 +1,7 @@
 # Website Redesign Summary - Dark Professional Theme
 
 ## Overview
-Complete redesign of itanveer.tech portfolio with a professional dark theme, improved animations, and modern card-based layouts. The site now features better visual hierarchy, eye-catching styling, and enhanced user experience.
+Complete redesign of tanveerk.dev portfolio with a professional dark theme, improved animations, and modern card-based layouts. The site now features better visual hierarchy, eye-catching styling, and enhanced user experience.
 
 ## Key Changes
 

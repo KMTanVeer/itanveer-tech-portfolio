@@ -1,4 +1,4 @@
-# itanveer.tech - Personal Tech Portfolio & Blog
+# tanveerk.dev - Personal Tech Portfolio & Blog
 
 🚀 **Modern Tech Portfolio** featuring Arduino, ESP32, IoT projects, and engineering tutorials.
 
@@ -97,7 +97,7 @@ This is a personal portfolio project, but suggestions and feedback are welcome!
 
 ## 📬 **Contact**
 
-- **Website**: [itanveer.tech](https://itanveer.tech)
+- **Website**: [tanveerk.dev](https://tanveerk.dev)
 - **Email**: Professional inquiries welcome
 - **WhatsApp**: Quick technical discussions
 - **LinkedIn**: [Kawsar Mahmud Tanveer Khan](https://linkedin.com/in/kawsartanveer)

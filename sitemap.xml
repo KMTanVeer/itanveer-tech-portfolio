@@ -4,46 +4,46 @@
       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
       xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
             http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
-<!-- Updated sitemap for itanveer.tech - Generated on 2026-01-30 -->
+<!-- Updated sitemap for tanveerk.dev - Generated on 2026-01-30 -->
 
 <!-- Main Pages -->
 <url>
-  <loc>https://itanveer.tech/</loc>
+  <loc>https://tanveerk.dev/</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>1.0</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/about.html</loc>
+  <loc>https://tanveerk.dev/about.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.9</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/projects.html</loc>
+  <loc>https://tanveerk.dev/projects.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.9</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/blog.html</loc>
+  <loc>https://tanveerk.dev/blog.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>weekly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/contact.html</loc>
+  <loc>https://tanveerk.dev/contact.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/resources.html</loc>
+  <loc>https://tanveerk.dev/resources.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.7</priority>
@@ -51,35 +51,35 @@
 
 <!-- Project Pages -->
 <url>
-  <loc>https://itanveer.tech/project-smart-helmet.html</loc>
+  <loc>https://tanveerk.dev/project-smart-helmet.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/project-book-recommender.html</loc>
+  <loc>https://tanveerk.dev/project-book-recommender.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/project-fiber-optic-can.html</loc>
+  <loc>https://tanveerk.dev/project-fiber-optic-can.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/project-mppt-solar.html</loc>
+  <loc>https://tanveerk.dev/project-mppt-solar.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.8</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/project-online-ups.html</loc>
+  <loc>https://tanveerk.dev/project-online-ups.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.8</priority>
@@ -87,28 +87,28 @@
 
 <!-- Blog Posts -->
 <url>
-  <loc>https://itanveer.tech/blog-esp32-iot.html</loc>
+  <loc>https://tanveerk.dev/blog-esp32-iot.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.7</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/blog-arduino-lcd.html</loc>
+  <loc>https://tanveerk.dev/blog-arduino-lcd.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.7</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/blog-arduino-multimeter.html</loc>
+  <loc>https://tanveerk.dev/blog-arduino-multimeter.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.7</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/blog-smart-grid.html</loc>
+  <loc>https://tanveerk.dev/blog-smart-grid.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.7</priority>
@@ -116,21 +116,21 @@
 
 <!-- Additional Blog Posts -->
 <url>
-  <loc>https://itanveer.tech/post1.html</loc>
+  <loc>https://tanveerk.dev/post1.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.6</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/post2.html</loc>
+  <loc>https://tanveerk.dev/post2.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.6</priority>
 </url>
 
 <url>
-  <loc>https://itanveer.tech/post3.html</loc>
+  <loc>https://tanveerk.dev/post3.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>yearly</changefreq>
   <priority>0.6</priority>
@@ -138,7 +138,7 @@
 
 <!-- Sitemap Page -->
 <url>
-  <loc>https://itanveer.tech/sitemap-page.html</loc>
+  <loc>https://tanveerk.dev/sitemap-page.html</loc>
   <lastmod>2026-01-30T00:00:00+00:00</lastmod>
   <changefreq>monthly</changefreq>
   <priority>0.5</priority>

@@ -1,4 +1,4 @@
-# itanveer.tech - Technical Portfolio Summary
+# tanveerk.dev - Technical Portfolio Summary
 
 ## 🎯 **Project Overview**
 **Professional Tech Blog & Engineering Portfolio**  
@@ -76,7 +76,7 @@ Showcasing embedded systems, IoT solutions, and power electronics projects
 ---
 
 ## 🔗 **Live Demo**
-**Website**: [itanveer.tech](https://itanveer.tech)  
+**Website**: [tanveerk.dev](https://tanveerk.dev)  
 **Repository**: [GitHub/KMTanVeer/itanveer-tech-portfolio](https://github.com/KMTanVeer/itanveer-tech-portfolio)
 
 ---

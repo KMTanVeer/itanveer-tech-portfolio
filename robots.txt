@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://itanveer.tech/sitemap.xml
+Sitemap: https://tanveerk.dev/sitemap.xml

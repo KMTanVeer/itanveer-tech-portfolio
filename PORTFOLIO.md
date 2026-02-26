@@ -206,7 +206,7 @@ Code: Monospace for technical content
 ## 📞 Professional Contact & Social Presence
 
 ### **Direct Links**
-- **Portfolio**: [itanveer.me](https://itanveer.me)
+- **Portfolio**: [tanveerk.dev](https://tanveerk.dev)
 - **GitHub**: [KMTanVeer](https://github.com/KMTanVeer)
 - **LinkedIn**: [KawsarTanveer](https://linkedin.com/in/KawsarTanveer)
 - **Twitter/X**: [@itzzveer](https://x.com/itzzveer)

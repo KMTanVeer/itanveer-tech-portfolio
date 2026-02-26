@@ -1,12 +1,12 @@
 # Site settings
-title: tanveerk.dev
+title: itanveer.tech
 email: your-email@example.com
 description: >-
   Welcome to Tanveer's Tech Hub — Exploring Embedded Systems, IoT, Smart Grid 
   Innovations, and Arduino tutorials. Join the journey of an EEE student 
   passionate about technology.
 baseurl: "" # the subpath of your site, e.g. /blog
-url: "https://tanveerk.dev" # the base hostname & protocol for your site
+url: "https://itanveer.tech" # the base hostname & protocol for your site
 twitter_username: itzzveer
 github_username: KMTanVeer
 instagram_username: itzzveer

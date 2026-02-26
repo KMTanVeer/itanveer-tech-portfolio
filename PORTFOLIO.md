@@ -1,7 +1,7 @@
-# tanveerk.dev - Portfolio Overview
+# itanveer.tech - Portfolio Overview
 
 ## 🌟 Website Profile
-**URL**: [tanveerk.dev](https://tanveerk.dev)  
+**URL**: [itanveer.tech](https://itanveer.tech)  
 **Owner**: Kawsar Mahmud Tanveer Khan  
 **Type**: Technical Blog & Project Showcase  
 **Field**: Electrical & Electronic Engineering (EEE)  

@@ -689,57 +689,116 @@
 
         /* Mobile Responsiveness */
         @media screen and (max-width: 768px) {
+            .project-hero {
+                padding: 3rem 1rem 2rem;
+            }
             .project-hero__title {
-                font-size: 2.5rem;
+                font-size: clamp(1.4rem, 5.5vw, 1.85rem);
             }
-            
+            .project-hero__subtitle {
+                font-size: 0.875rem;
+                margin-bottom: 1.25rem;
+            }
             .project-meta {
-                justify-content: center;
-            }
-            
-            .nav-links {
-                gap: 0.8rem;
+                gap: 0.4rem;
                 justify-content: flex-start;
-                padding: 0 1rem;
+                margin-top: 1rem;
             }
-            
-            .project-nav.scrolled .nav-links {
-                gap: 0.5rem;
+            .meta-item {
+                padding: 0.35rem 0.75rem;
+                font-size: 0.78rem;
             }
-            
-            .nav-link {
-                padding: 0.5rem 0.8rem;
+            .section-title {
+                font-size: 1.35rem;
+            }
+            .section-subtitle {
+                font-size: 0.875rem;
+            }
+            .project-section {
+                padding: 2.5rem 1rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.875rem;
+            }
+            .feature-card {
+                padding: 1rem;
+            }
+            .feature-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 1.4rem;
+                margin: 0 auto 0.75rem;
+            }
+            .feature-title {
+                font-size: 0.875rem;
+                margin-bottom: 0.4rem;
+            }
+            .feature-desc {
+                font-size: 0.78rem;
+            }
+            .hardware-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+            .hardware-item {
+                padding: 1rem;
+            }
+            .hardware-name {
                 font-size: 0.85rem;
             }
-            
+            .hardware-desc {
+                font-size: 0.78rem;
+            }
+            .achievement-card {
+                padding: 2rem 1.25rem;
+                margin: 1.5rem 0;
+            }
+            .achievement-number {
+                font-size: 2.25rem;
+            }
+            .achievement-text {
+                font-size: 0.9rem;
+            }
+            .cta-section {
+                padding: 2.5rem 1rem;
+                margin: 1.5rem 0;
+                border-radius: 12px;
+            }
+            .nav-links {
+                gap: 0.4rem;
+                justify-content: flex-start;
+                padding: 0 0.5rem;
+            }
+            .project-nav.scrolled .nav-links {
+                gap: 0.3rem;
+            }
+            .nav-link {
+                padding: 0.4rem 0.65rem;
+                font-size: 0.8rem;
+            }
             .project-nav.scrolled .nav-link {
-                padding: 0.4rem 0.6rem;
+                padding: 0.35rem 0.5rem;
                 font-size: 0.75rem;
             }
-            
             .project-title {
                 display: none !important;
             }
-            
             .timeline::before {
                 left: 30px;
             }
-            
             .timeline-item {
                 width: 100%;
                 left: 0 !important;
                 text-align: left;
                 padding-left: 70px;
             }
-            
             .timeline-content::before {
                 left: -45px !important;
             }
-
-            /* Single column layout for mobile - abstract first, then image */
             .project-overview-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -830,7 +889,7 @@
                 <div class="project-content">
                     <div class="project-overview-grid">
                         <div class="animate-slide-right">
-                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <h3 style="font-size: clamp(1.2rem, 4vw, 1.8rem); color: var(--second-color); margin-bottom: 1.25rem;">Abstract</h3>
                             <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
                                 This research project focuses on the design and implementation of fiber optic infrastructure for Community Area Networks (CANs). The study aims to address the growing demand for high-speed internet connectivity in residential communities while ensuring cost-effectiveness and scalability.
                             </p>
@@ -1162,8 +1221,8 @@
         <section class="cta-section">
             <div class="bd-grid">
                 <div class="animate-fade-in">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Explore This Research</h2>
-                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                    <h2 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 1rem;">Explore This Research</h2>
+                    <p style="font-size: clamp(0.9rem, 3vw, 1.2rem); opacity: 0.9; margin-bottom: 1.5rem;">
                         Follow the progress of this cutting-edge research project and connect for collaboration opportunities
                     </p>
                     

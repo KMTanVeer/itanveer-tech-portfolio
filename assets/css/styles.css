@@ -2190,7 +2190,7 @@ body.menu-open::after {
 /*===== MOBILE LAYOUT IMPROVEMENTS (max-width: 768px) =====*/
 @media (max-width: 768px) {
   /* Narrow border: reduce bd-grid padding so content spans near full width */
-  .bd-grid { padding: 0 0.75rem; }
+  .bd-grid { padding-left: 0.75rem; padding-right: 0.75rem; }
 
   /* Single-column card layout on mobile */
   .projects-grid { grid-template-columns: 1fr; }

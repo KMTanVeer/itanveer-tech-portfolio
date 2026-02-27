@@ -2173,7 +2173,7 @@ body.menu-open::after {
   .blog-card__footer { padding: .75rem 1rem; }
 
   /* Project cards on listing page */
-  .projects-grid { gap: 1rem; }
+  .projects-grid { grid-template-columns: 1fr; gap: 1rem; }
   .project-card__img { height: 170px; }
   .project-card__content { padding: 1rem; gap: .35rem; }
   .project-card__title { font-size: .975rem; }
@@ -2181,4 +2181,25 @@ body.menu-open::after {
 
   /* Filter buttons */
   .filter-btn { padding: .4rem .85rem; font-size: .8rem; }
+}
+
+/*===== MOBILE LAYOUT IMPROVEMENTS (max-width: 768px) =====*/
+@media (max-width: 768px) {
+  /* Narrow border: reduce bd-grid padding so content spans near full width */
+  .bd-grid { padding: 0 0.75rem; }
+
+  /* Single-column card layout on mobile */
+  .projects-grid { grid-template-columns: 1fr; }
+  .blog-grid { grid-template-columns: 1fr; }
+
+  /* Justified text alignment in blog/project article content */
+  .article-content p, .article-content li,
+  .article-body p, .article-body li,
+  .project-section p, .project-section li { text-align: justify; }
+
+  /* Remove image shadows/3D effects in blog and project detail pages */
+  .featured-image img, .article-body img,
+  .project-image { box-shadow: none; }
+  .project-image:hover,
+  .component-item:hover { transform: none !important; box-shadow: none !important; }
 }

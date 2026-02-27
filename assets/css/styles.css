@@ -2201,5 +2201,5 @@ body.menu-open::after {
   .featured-image img, .article-body img,
   .project-image { box-shadow: none; }
   .project-image:hover,
-  .component-item:hover { transform: none; box-shadow: none; }
+  .component-item:hover { transform: none !important; box-shadow: none !important; }
 }

@@ -583,50 +583,104 @@
         }
         
         @media screen and (max-width: 768px) {
+            .project-hero {
+                padding: 3rem 1rem 2rem;
+            }
             .project-hero__title {
-                font-size: 2.5rem;
+                font-size: clamp(1.4rem, 5.5vw, 1.85rem);
             }
-            
+            .project-hero__subtitle {
+                font-size: 0.875rem;
+                margin-bottom: 1.25rem;
+            }
             .project-meta {
-                justify-content: center;
-            }
-            
-            .section-title {
-                font-size: 1.8rem;
-            }
-            
-            .nav-links {
-                gap: 0.8rem;
+                gap: 0.4rem;
                 justify-content: flex-start;
-                padding: 0 1rem;
+                margin-top: 1rem;
             }
-            
-            .project-nav.scrolled .nav-links {
-                gap: 0.5rem;
+            .meta-item {
+                padding: 0.35rem 0.75rem;
+                font-size: 0.78rem;
             }
-            
-            .nav-link {
-                padding: 0.5rem 0.8rem;
+            .section-title {
+                font-size: 1.35rem;
+            }
+            .section-subtitle {
+                font-size: 0.875rem;
+            }
+            .project-section {
+                padding: 2.5rem 1rem;
+            }
+            .features-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.875rem;
+            }
+            .feature-card {
+                padding: 1rem;
+            }
+            .feature-icon {
+                width: 52px;
+                height: 52px;
+                font-size: 1.4rem;
+                margin: 0 auto 0.75rem;
+            }
+            .feature-title {
+                font-size: 0.875rem;
+                margin-bottom: 0.4rem;
+            }
+            .feature-desc {
+                font-size: 0.78rem;
+            }
+            .hardware-grid {
+                grid-template-columns: 1fr 1fr;
+                gap: 0.75rem;
+            }
+            .hardware-item {
+                padding: 1rem;
+            }
+            .hardware-name {
                 font-size: 0.85rem;
             }
-            
+            .hardware-desc {
+                font-size: 0.78rem;
+            }
+            .achievement-card {
+                padding: 2rem 1.25rem;
+                margin: 1.5rem 0;
+            }
+            .achievement-number {
+                font-size: 2.25rem;
+            }
+            .achievement-text {
+                font-size: 0.9rem;
+            }
+            .cta-section {
+                padding: 2.5rem 1rem;
+                margin: 1.5rem 0;
+                border-radius: 12px;
+            }
+            .nav-links {
+                gap: 0.4rem;
+                justify-content: flex-start;
+                padding: 0 0.5rem;
+            }
+            .project-nav.scrolled .nav-links {
+                gap: 0.3rem;
+            }
+            .nav-link {
+                padding: 0.4rem 0.65rem;
+                font-size: 0.8rem;
+            }
             .project-nav.scrolled .nav-link {
-                padding: 0.4rem 0.6rem;
+                padding: 0.35rem 0.5rem;
                 font-size: 0.75rem;
             }
-            
             .project-title {
                 display: none !important;
             }
-            
-            .achievement-number {
-                font-size: 3rem;
-            }
-
-            /* Single column layout for mobile - abstract first, then image */
             .project-overview-grid {
                 grid-template-columns: 1fr;
-                gap: 2rem;
+                gap: 1.5rem;
             }
         }
     </style>
@@ -722,7 +776,7 @@
                 <div class="project-content">
                     <div class="project-overview-grid">
                         <div class="animate-slide-right">
-                            <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 1.5rem;">Abstract</h3>
+                            <h3 style="font-size: clamp(1.2rem, 4vw, 1.8rem); color: var(--second-color); margin-bottom: 1.25rem;">Abstract</h3>
                             <p style="line-height: 1.8; color: #555; margin-bottom: 2rem;">
                                 The Smart Helmet project addresses the critical need for rapid emergency response in motorcycle accidents. Using an ESP32 microcontroller integrated with MPU6050 accelerometer and gyroscope sensors, the system continuously monitors rider motion patterns to detect potential crashes.
                             </p>
@@ -922,7 +976,7 @@
                 
                 <div style="max-width: 900px; margin: 0 auto;">
                     <div class="feature-card animate-fade-in" style="text-align: left; margin-bottom: 2rem;">
-                        <h3 style="font-size: 1.5rem; color: var(--second-color); margin-bottom: 1.5rem; text-align: center;">
+                        <h3 style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); color: var(--second-color); margin-bottom: 1.25rem; text-align: center;">
                             <i class='bx bx-git-branch' style="color: var(--first-color);"></i> System Operation Flow
                         </h3>
                         
@@ -990,7 +1044,7 @@
                 <div class="achievement-card animate-scale">
                     <div class="achievement-content">
                         <div class="achievement-number">
-                            <i class='bx bx-check-shield' style="font-size: 5rem;"></i>
+                            <i class='bx bx-check-shield' style="font-size: clamp(2.5rem, 8vw, 5rem);"></i>
                         </div>
                         <h3 style="font-size: 1.5rem; margin-bottom: 1rem;">Successful Implementation</h3>
                         <p>The Smart Helmet successfully detected simulated accidents while maintaining low false alarm rates, demonstrating reliable GPS tracking and effective emergency communication through the GSM module.</p>
@@ -1048,7 +1102,7 @@
                 </div>
                 
                 <div class="feature-card animate-fade-in" style="margin-top: 3rem; text-align: left;">
-                    <h3 style="font-size: 1.5rem; color: var(--second-color); margin-bottom: 1.5rem; text-align: center;">
+                    <h3 style="font-size: clamp(1.1rem, 3.5vw, 1.5rem); color: var(--second-color); margin-bottom: 1.25rem; text-align: center;">
                         <i class='bx bx-bar-chart-alt-2' style="color: var(--first-color);"></i> Performance Analysis
                     </h3>
                     <div style="line-height: 1.8; color: #555;">
@@ -1068,7 +1122,7 @@
                 </div>
                 
                 <div style="margin-top: 4rem;">
-                    <h3 style="font-size: 1.8rem; color: var(--second-color); margin-bottom: 2rem; text-align: center;">
+                    <h3 style="font-size: clamp(1.2rem, 4vw, 1.8rem); color: var(--second-color); margin-bottom: 1.5rem; text-align: center;">
                         <i class='bx bx-test-tube' style="color: var(--first-color);"></i> Test Results & Scenarios
                     </h3>
                     
@@ -1248,8 +1302,8 @@
         <section class="cta-section">
             <div class="bd-grid">
                 <div class="animate-fade-in">
-                    <h2 style="font-size: 2.5rem; margin-bottom: 1rem;">Interested in This Project?</h2>
-                    <p style="font-size: 1.2rem; opacity: 0.9; margin-bottom: 2rem;">
+                    <h2 style="font-size: clamp(1.5rem, 5vw, 2.5rem); margin-bottom: 1rem;">Interested in This Project?</h2>
+                    <p style="font-size: clamp(0.9rem, 3vw, 1.2rem); opacity: 0.9; margin-bottom: 1.5rem;">
                         Explore more projects or get in touch to discuss safety technology innovations
                     </p>
                     

@@ -2119,3 +2119,66 @@ body.menu-open::after {
   font-size: .9rem;
   color: var(--color-text-muted);
 }
+
+/*===== MOBILE OPTIMIZATIONS (max-width: 480px) =====*/
+@media (max-width: 480px) {
+  /* Section spacing */
+  :root { --section-gap: 2.5rem; }
+
+  /* Page heroes */
+  .page-hero { padding: 3rem 0 2.25rem; }
+  .page-hero__title { font-size: 1.65rem; }
+  .page-hero__subtitle { font-size: .875rem; }
+  .page-hero__stats { gap: 1.5rem; }
+  .stat-item i { font-size: 1.2rem; }
+  .stat-number { font-size: 1.3rem; }
+  .stat-label { font-size: .75rem; }
+
+  /* Blog post header (shared class) */
+  .blog-post-header { padding: 3rem 0 2rem; }
+  .blog-post-title { font-size: 1.45rem !important; line-height: 1.3 !important; }
+  .blog-post-subtitle { font-size: .875rem !important; margin-bottom: 1rem !important; }
+  .blog-post-meta { gap: .4rem; margin-bottom: 1rem; }
+  .blog-post-category,
+  .blog-post-date,
+  .blog-post-read-time { font-size: .72rem; padding: .25rem .6rem; }
+  .blog-post-author { margin-top: 1rem; }
+  .author-avatar { width: 36px; height: 36px; }
+  .author-name { font-size: .8rem; }
+  .author-title { font-size: .72rem; }
+
+  /* Post hero (newer blog pages) */
+  .post-hero { padding: 3rem 0 2rem; }
+  .post-hero__title { font-size: clamp(1.35rem, 5vw, 1.75rem); }
+  .post-hero__meta { gap: .75rem; font-size: .8rem; }
+
+  /* Article content */
+  .article-content { padding: 1.25rem 1rem; }
+  .article-content h2 { font-size: 1.15rem; margin: 1.5rem 0 .6rem; }
+  .article-content h3 { font-size: 1rem; margin: 1.25rem 0 .5rem; }
+  .article-body { padding: 1.25rem 1rem; }
+  .article-body h2 { font-size: 1.15rem; margin: 1.5rem 0 .6rem; }
+  .article-body h3 { font-size: 1rem; margin: 1.25rem 0 .5rem; }
+
+  /* Blog post layout */
+  .blog-post-layout { padding: 1.5rem 0; }
+  .blog-post-content { padding-top: 1.5rem; padding-bottom: 1.5rem; }
+
+  /* Blog cards */
+  .blog-grid { grid-template-columns: 1fr; gap: 1rem; }
+  .blog-card__img { height: 160px; }
+  .blog-card__content { padding: 1rem; gap: .35rem; }
+  .blog-card__title { font-size: .975rem; }
+  .blog-card__excerpt { font-size: .825rem; }
+  .blog-card__footer { padding: .75rem 1rem; }
+
+  /* Project cards on listing page */
+  .projects-grid { gap: 1rem; }
+  .project-card__img { height: 170px; }
+  .project-card__content { padding: 1rem; gap: .35rem; }
+  .project-card__title { font-size: .975rem; }
+  .project-card__description { font-size: .825rem; }
+
+  /* Filter buttons */
+  .filter-btn { padding: .4rem .85rem; font-size: .8rem; }
+}

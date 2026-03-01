@@ -1,0 +1,371 @@
+/* ===================================================================
+   PROJECT PAGES — MINIMAL PROFESSIONAL STYLE OVERRIDES
+   Loaded after page-specific inline <style> blocks to produce a
+   clean, editorial look across all project detail pages.
+   =================================================================== */
+
+/* ---- Section layout ---- */
+.project-section {
+    padding: 3rem 2rem;
+}
+
+.section-header {
+    text-align: left;
+    margin-bottom: 2rem;
+    border-bottom: 2px solid #E2E8F0;
+    padding-bottom: 1rem;
+}
+
+.section-title {
+    font-size: 1.6rem;
+    color: #0F172A;
+    font-weight: 700;
+    margin-bottom: 0.35rem;
+}
+
+.section-subtitle {
+    font-size: 0.95rem;
+    color: #64748B;
+    max-width: none;
+    margin: 0;
+}
+
+/* ---- Feature / Research cards ---- */
+.feature-card,
+.research-card {
+    background: #FFFFFF;
+    padding: 1.25rem 1.375rem;
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    border-left: 3px solid #2563EB;
+    text-align: left;
+    box-shadow: none;
+    transition: border-color 0.2s ease;
+    overflow: visible;
+    position: static;
+}
+
+.feature-card::before,
+.research-card::before {
+    display: none;
+}
+
+.feature-card:hover,
+.research-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #CBD5E1;
+    border-left-color: #1D4ED8;
+    background: #FFFFFF;
+}
+
+/* ---- Feature / Research icons: small inline accent icon ---- */
+.feature-icon,
+.research-icon {
+    width: auto;
+    height: auto;
+    background: none;
+    border-radius: 0;
+    margin: 0 0 0.5rem 0;
+    font-size: 1.25rem;
+    color: #2563EB;
+    box-shadow: none;
+    display: block;
+    justify-content: flex-start;
+}
+
+/* ---- Feature titles ---- */
+.feature-title,
+.research-title {
+    font-size: 1rem;
+    font-weight: 600;
+    margin-bottom: 0.4rem;
+    color: #0F172A;
+    text-align: left;
+}
+
+.features-grid,
+.research-grid {
+    gap: 1rem;
+    margin-top: 1.5rem;
+}
+
+/* ---- Hardware / Spec items: borderless list style ---- */
+.hardware-item {
+    background: transparent;
+    padding: 0.75rem 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #E2E8F0;
+    box-shadow: none;
+    transition: background 0.15s ease;
+}
+
+.hardware-item:last-child {
+    border-bottom: none;
+}
+
+.hardware-item:hover {
+    transform: none;
+    box-shadow: none;
+    background: #F8FAFC;
+    border-color: #CBD5E1;
+}
+
+.hardware-name {
+    font-size: 0.9rem;
+}
+
+.hardware-desc {
+    font-size: 0.85rem;
+}
+
+/* ---- Component showcase cards ---- */
+.component-item {
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    box-shadow: none;
+    transition: border-color 0.2s ease;
+}
+
+.component-item:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+    border-color: #CBD5E1;
+}
+
+.component-image {
+    height: 160px;
+}
+
+/* ---- Challenge cards (Smart Helmet) ---- */
+.challenge-card {
+    background: transparent;
+    padding: 1.125rem 1.375rem;
+    border-radius: 6px;
+    border: 1px solid #FECACA;
+    border-left: 3px solid #EF4444;
+    box-shadow: none;
+    margin-bottom: 0.875rem;
+    transition: border-color 0.2s ease;
+}
+
+.challenge-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #FCA5A5;
+}
+
+.challenge-icon {
+    display: none;
+}
+
+.challenge-title {
+    font-size: 0.975rem;
+    font-weight: 600;
+    color: #DC2626;
+    margin-bottom: 0.5rem;
+    gap: 0;
+}
+
+/* ---- Achievement card ---- */
+.achievement-card {
+    background: #EFF6FF;
+    color: #0F172A;
+    padding: 2rem 2.5rem;
+    border-radius: 8px;
+    text-align: center;
+    margin: 2rem 0;
+    border: 1px solid #BFDBFE;
+    box-shadow: none;
+    overflow: visible;
+}
+
+.achievement-card::before {
+    display: none;
+}
+
+.achievement-number {
+    font-size: 2.5rem;
+    color: #2563EB;
+}
+
+.achievement-text {
+    font-size: 1rem;
+    color: #475569;
+}
+
+/* ---- CTA section ---- */
+.cta-section {
+    background: #F8FAFC;
+    color: #0F172A;
+    padding: 2.5rem 2rem;
+    border-radius: 8px;
+    margin: 2rem 0;
+    border: 1px solid #E2E8F0;
+    box-shadow: none;
+}
+
+.cta-button {
+    background: #2563EB;
+    color: #ffffff;
+    border: none;
+    backdrop-filter: none;
+    border-radius: 6px;
+    padding: 0.75rem 1.5rem;
+    font-weight: 500;
+    font-size: 0.95rem;
+}
+
+.cta-button:hover {
+    background: #1D4ED8;
+    color: #ffffff;
+    transform: none;
+    box-shadow: none;
+}
+
+/* ---- Algorithm cards (Book Recommender) ---- */
+.algorithm-card {
+    background: transparent;
+    padding: 1.125rem 1.375rem;
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    border-left: 3px solid #2563EB;
+    box-shadow: none;
+    margin-bottom: 0.875rem;
+    transition: border-color 0.2s ease;
+}
+
+.algorithm-card:hover {
+    transform: none;
+    box-shadow: none;
+    border-color: #CBD5E1;
+}
+
+.algorithm-icon {
+    display: none;
+}
+
+.algorithm-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #0F172A;
+    margin-bottom: 0.5rem;
+    gap: 0;
+}
+
+/* ---- Tech items (Book Recommender) ---- */
+.tech-item {
+    background: transparent;
+    padding: 0.75rem 0;
+    border-radius: 0;
+    border: none;
+    border-bottom: 1px solid #E2E8F0;
+    box-shadow: none;
+    border-left: none;
+    transition: background 0.15s ease;
+}
+
+.tech-item:last-child {
+    border-bottom: none;
+}
+
+.tech-item:hover {
+    transform: none;
+    box-shadow: none;
+    background: #F8FAFC;
+}
+
+.tech-name {
+    font-size: 0.9rem;
+}
+
+.tech-desc {
+    font-size: 0.85rem;
+}
+
+/* ---- Research-specific cards (Fiber Optic) ---- */
+.scope-item {
+    border-radius: 6px;
+    border: 1px solid #E2E8F0;
+    transition: border-color 0.2s ease;
+}
+
+.scope-item:hover {
+    transform: none;
+    border-color: #CBD5E1;
+}
+
+.future-scope {
+    background: transparent;
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    border-top: 2px solid #E2E8F0;
+    margin-top: 2rem;
+    padding-top: 2rem;
+}
+
+/* ---- Timeline (Fiber Optic) ---- */
+.timeline-content {
+    box-shadow: none;
+    border: 1px solid #E2E8F0;
+    border-radius: 6px;
+}
+
+/* ---- Team / Member cards (Fiber Optic) ---- */
+.member-card {
+    box-shadow: none;
+    border: 1px solid #E2E8F0;
+    border-radius: 8px;
+}
+
+.member-card::before {
+    display: none;
+}
+
+.member-card:hover {
+    transform: none;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.07);
+}
+
+/* ---- General text alignment in content sections ---- */
+.project-section p,
+.project-section li {
+    line-height: 1.8;
+}
+
+/* ---- Responsive overrides ---- */
+@media screen and (max-width: 768px) {
+    .section-title {
+        font-size: 1.35rem;
+    }
+
+    .project-section {
+        padding: 2rem 1rem;
+    }
+
+    .section-header {
+        padding-bottom: 0.75rem;
+    }
+
+    .feature-card,
+    .research-card {
+        padding: 1rem 1.125rem;
+    }
+
+    .achievement-card {
+        padding: 1.5rem 1.25rem;
+        margin: 1.5rem 0;
+    }
+
+    .achievement-number {
+        font-size: 2rem;
+    }
+
+    .cta-section {
+        padding: 2rem 1rem;
+        margin: 1.5rem 0;
+        border-radius: 6px;
+    }
+}
